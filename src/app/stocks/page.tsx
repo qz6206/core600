@@ -16,8 +16,14 @@ export default function StocksPage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* 顶部导航 */}
         <nav className="flex items-center justify-between mb-10">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-white to-indigo-300 bg-clip-text text-transparent hover:opacity-80 transition">
-            Core 600
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
+            <svg width="36" height="36" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 12 12 L 48 12 L 48 17 L 17 17 L 17 43 L 48 43 L 48 48 L 12 48 Z" fill="#dc2626"/>
+              <path d="M 17 28 L 48 28 L 48 48 L 43 48 L 43 33 L 17 33 Z" fill="#ffffff"/>
+            </svg>
+            <span className="text-2xl font-bold bg-gradient-to-r from-white to-indigo-300 bg-clip-text text-transparent">
+              Core 600
+            </span>
           </Link>
           <Link
             href="/"

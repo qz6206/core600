@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- 社交分享卡片（Twitter/微信预览推荐尺寸 1200x630）-->
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+
+  <!-- Logo 居中放大 -->
+  <g transform="translate(450, 180) scale(6)">
+    <path d="M 12 12 L 48 12 L 48 17 L 17 17 L 17 43 L 48 43 L 48 48 L 12 48 Z" fill="#dc2626"/>
+    <path d="M 17 28 L 48 28 L 48 48 L 43 48 L 43 33 L 17 33 Z" fill="#ffffff"/>
+  </g>
+
+  <!-- 文字 -->
+  <text x="600" y="500" font-family="Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="middle">Core 600</text>
+  <text x="600" y="555" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#94a3b8" text-anchor="middle">美股核心600强一站式数据中心</text>
+</svg>

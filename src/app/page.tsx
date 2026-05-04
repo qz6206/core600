@@ -6,6 +6,14 @@ export default function Home() {
       <div className="max-w-5xl mx-auto px-6 py-20">
         {/* 标题 */}
         <div className="text-center mb-12">
+          {/* Logo 图标 */}
+          <div className="flex justify-center mb-6">
+            <svg width="100" height="100" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 12 12 L 48 12 L 48 17 L 17 17 L 17 43 L 48 43 L 48 48 L 12 48 Z" fill="#dc2626"/>
+              <path d="M 17 28 L 48 28 L 48 48 L 43 48 L 43 33 L 17 33 Z" fill="#ffffff"/>
+            </svg>
+          </div>
+
           <div className="inline-block px-4 py-1 mb-6 bg-indigo-500/20 text-indigo-300 rounded-full text-sm font-medium">
             🚀 即将上线
           </div>

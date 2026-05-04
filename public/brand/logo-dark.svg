@@ -1,0 +1,6 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- 深色背景版（文字白色）-->
+  <path d="M 12 12 L 48 12 L 48 17 L 17 17 L 17 43 L 48 43 L 48 48 L 12 48 Z" fill="#dc2626"/>
+  <path d="M 17 28 L 48 28 L 48 48 L 43 48 L 43 33 L 17 33 Z" fill="#ffffff"/>
+  <text x="60" y="38" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Core 600</text>
+</svg>
