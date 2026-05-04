@@ -29,6 +29,11 @@ jobs:
           python3 scripts/fetch_stocks.py
           python3 scripts/fill_nasdaq_only.py
 
+      - name: FMP 交叉验证
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python3 scripts/verify_fmp.py
+
       - name: 检测变化
         id: check
         run: |
