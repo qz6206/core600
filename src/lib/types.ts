@@ -1,6 +1,7 @@
 export interface Stock {
   ticker: string;
-  name: string;
+  name: string;        // 英文名（必有）
+  name_cn?: string;    // 中文名（仅热门股票有）
   sector: string;
   industry: string;
   in_sp500: boolean;
@@ -14,7 +15,7 @@ export interface StockData {
   stocks: Stock[];
 }
 
-// 行业的中文翻译
+// 行业的中文翻译（11 个 GICS 一级行业）
 export const SECTOR_CN: Record<string, string> = {
   "Information Technology": "科技",
   "Industrials": "工业",
@@ -28,6 +29,12 @@ export const SECTOR_CN: Record<string, string> = {
   "Real Estate": "房地产",
   "Materials": "材料",
 };
+
+// 中英双显（中文（英文））
+export function sectorBilingual(sector: string): string {
+  const cn = SECTOR_CN[sector];
+  return cn ? `${cn}` : sector;
+}
 
 // 行业对应的颜色（双主题）
 export const SECTOR_COLORS: Record<string, string> = {
@@ -43,3 +50,23 @@ export const SECTOR_COLORS: Record<string, string> = {
   "Real Estate": "bg-pink-100 text-pink-700 border-pink-200 dark:bg-pink-500/20 dark:text-pink-300 dark:border-pink-500/30",
   "Materials": "bg-indigo-100 text-indigo-700 border-indigo-200 dark:bg-indigo-500/20 dark:text-indigo-300 dark:border-indigo-500/30",
 };
+
+// 财务术语中英对照（个股详情页用）
+export const TERM_CN: Record<string, string> = {
+  "Net Income": "净利润",
+  "Revenue": "营收",
+  "EPS": "每股收益",
+  "P/E": "市盈率",
+  "Market Cap": "市值",
+  "Dividend Yield": "股息率",
+  "Free Cash Flow": "自由现金流",
+  "Operating Margin": "营业利润率",
+  "ROE": "净资产收益率",
+  "ROA": "总资产收益率",
+};
+
+// 双显格式化：「净利润 (Net Income)」
+export function termBilingual(en: string): string {
+  const cn = TERM_CN[en];
+  return cn ? `${cn} (${en})` : en;
+}
