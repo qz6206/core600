@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white">
       <div className="max-w-5xl mx-auto px-6 py-20">
         {/* 标题 */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="inline-block px-4 py-1 mb-6 bg-indigo-500/20 text-indigo-300 rounded-full text-sm font-medium">
             🚀 即将上线
           </div>
@@ -13,9 +15,17 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-slate-300 mb-2">
             美股核心 600 强 · 一站式数据中心
           </p>
-          <p className="text-base text-slate-400">
+          <p className="text-base text-slate-400 mb-8">
             标普 500 + 纳斯达克 100 · 中文用户专属
           </p>
+
+          {/* CTA 按钮 */}
+          <Link
+            href="/stocks"
+            className="inline-block px-8 py-3 bg-indigo-500 hover:bg-indigo-600 rounded-lg font-medium transition shadow-lg shadow-indigo-500/30"
+          >
+            查看 516 只股票列表 →
+          </Link>
         </div>
 
         {/* 功能预览卡片 */}
