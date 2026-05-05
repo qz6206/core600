@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 审查报告（含敏感引用，不污染主 repo）
+/review/
+
+# LLM 对比测试结果（含调试数据）
+/scripts/llm_comparison/results/
+/scripts/llm_comparison/_summary.json
+
+# 数据校验中间产物
+/data/_verify_report.txt
+/data/_changes.txt

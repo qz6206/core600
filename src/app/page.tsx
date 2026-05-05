@@ -14,6 +14,7 @@ export default function Home() {
     { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪" },
     { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态" },
     { icon: "📰", title: "8-K 重大事项", desc: "中文化解读时间线" },
+    { icon: "🔮", title: "分析师预期", desc: "EPS / 营收预期 + Beat 历史" },
     { icon: "💰", title: "回购执行", desc: "授权 vs 实际执行追踪" },
     { icon: "📉", title: "股本稀释", desc: "SBC + 流通股变化" },
     { icon: "🎯", title: "期权异动", desc: "聪明钱大单监控" },

@@ -8,7 +8,9 @@ import time
 import urllib.request
 from pathlib import Path
 
-API_KEY = os.environ.get("SILICONFLOW_API_KEY", "sk-hlbtdjxawxitzanwezmkekmllwdqwmszsmwpjeexlctpzwnb")
+API_KEY = os.environ.get("SILICONFLOW_API_KEY")
+if not API_KEY:
+    raise SystemExit("请设置环境变量 SILICONFLOW_API_KEY")
 API_URL = "https://api.siliconflow.cn/v1/chat/completions"
 MODEL = "Qwen/Qwen2.5-32B-Instruct"
 
