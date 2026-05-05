@@ -8,7 +8,18 @@ import Footer from "@/components/Footer";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
-import type { FMPProfile, FMPQuote, FMPIncomeQuarter, Inst13F } from "@/lib/fmp";
+import type {
+  FMPProfile,
+  FMPQuote,
+  FMPIncomeQuarter,
+  Inst13F,
+  FMPExtras,
+  AnalystEstimate,
+  EarningRecord,
+  CashFlowQuarter,
+  ShareCountQuarter,
+  RatingChange,
+} from "@/lib/fmp";
 import type { EdgarFiling } from "@/lib/edgar";
 import { filingUrl, parse8KItems } from "@/lib/edgar";
 import {
@@ -31,6 +42,7 @@ interface Props {
   form4?: EdgarFiling[];
   form8k?: EdgarFiling[];
   inst13f?: Inst13F | null;
+  fmpExtras?: FMPExtras | null;
 }
 
 export default function StockDetailContent({
@@ -39,6 +51,7 @@ export default function StockDetailContent({
   form4 = [],
   form8k = [],
   inst13f = null,
+  fmpExtras = null,
 }: Props) {
   const { t } = useLocale();
   const { profile, quote, quarters } = overview;
@@ -205,20 +218,40 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        <Section icon="🔮" title={t("分析师预期")} subtitle={t("EPS / 营收预期 + Beat 历史")} comingSoon>
-          <Placeholder text={t("分析师对未来季度的预期，以及过去 Beat / Miss 记录...")} />
+        <Section icon="🔮" title={t("分析师预期")} subtitle={t("未来 4 季 + Beat 历史 + 评级变动")}>
+          {fmpExtras && (fmpExtras.estimates.length > 0 || fmpExtras.earnings.length > 0 || fmpExtras.ratings.length > 0) ? (
+            <AnalystEstimatesBlock
+              estimates={fmpExtras.estimates}
+              earnings={fmpExtras.earnings}
+              ratings={fmpExtras.ratings}
+            />
+          ) : (
+            <Placeholder text={t("暂无分析师预期数据")} />
+          )}
         </Section>
 
         <Section icon="🎯" title={t("期权异动")} subtitle={t("聪明钱大单监控")} comingSoon>
           <Placeholder text={t("异常成交量的期权合约 + IV / Greeks 数据...")} />
         </Section>
 
-        <Section icon="📉" title={t("股本动态")} subtitle={t("回购 + SBC 稀释追踪")} comingSoon>
-          <Placeholder text={t("回购授权 vs 实际执行 + 股权激励稀释...")} />
+        <Section icon="📉" title={t("股本动态")} subtitle={t("摊薄股数 + 回购 + SBC 稀释")}>
+          {fmpExtras && (fmpExtras.shares.length > 0 || fmpExtras.sbc.length > 0) ? (
+            <CapitalDynamicsBlock
+              shares={fmpExtras.shares}
+              cashFlow={fmpExtras.sbc}
+              marketCap={quote?.marketCap}
+            />
+          ) : (
+            <Placeholder text={t("暂无股本动态数据")} />
+          )}
         </Section>
 
-        <Section icon="📅" title={t("财报日历")} subtitle={t("下次财报日 + 历史记录")} comingSoon>
-          <Placeholder text={t("财报日期、历史 Beat / Miss、解禁、分红...")} />
+        <Section icon="📅" title={t("财报日历")} subtitle={t("下次财报 + 过去 8 次记录")}>
+          {fmpExtras && fmpExtras.earnings.length > 0 ? (
+            <EarningsCalendarBlock earnings={fmpExtras.earnings} />
+          ) : (
+            <Placeholder text={t("暂无财报日历数据")} />
+          )}
         </Section>
 
         <Section icon="📊" title={t("智能评分")} subtitle={t("多维度综合资金评分")} comingSoon>
@@ -625,6 +658,400 @@ function formatShares(n: number): string {
   if (n >= 1e6) return `${(n / 1e6).toFixed(1)}M`;
   if (n >= 1e3) return `${(n / 1e3).toFixed(0)}K`;
   return n.toLocaleString();
+}
+
+// ====== 分析师预期 ======
+
+function AnalystEstimatesBlock({
+  estimates,
+  earnings,
+  ratings,
+}: {
+  estimates: AnalystEstimate[];
+  earnings: EarningRecord[];
+  ratings: RatingChange[];
+}) {
+  const { t } = useLocale();
+  // 未来季度（按 date 升序，最近在前）
+  const forwardQuarters = [...estimates]
+    .filter(e => e.date)
+    .sort((a, b) => (a.date || "").localeCompare(b.date || ""));
+
+  // 过去 4 次已发财报（计算 Beat/Miss）
+  const past = earnings
+    .filter(e => e.eps_actual != null && e.eps_estimate != null)
+    .slice(0, 4);
+
+  return (
+    <div className="space-y-5">
+      {/* 未来 4 季预期 */}
+      {forwardQuarters.length > 0 && (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+            {t("未来 4 季度预期")}
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {forwardQuarters.slice(0, 4).map(q => (
+              <div
+                key={q.date}
+                className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg"
+              >
+                <div className="text-xs text-slate-500 dark:text-slate-400 mb-1 tabular-nums">
+                  {q.date}
+                </div>
+                <div className="text-sm">
+                  <div>
+                    <span className="text-slate-500 dark:text-slate-400">EPS </span>
+                    <span className="font-semibold tabular-nums">
+                      {q.eps_avg != null ? `$${q.eps_avg.toFixed(2)}` : "—"}
+                    </span>
+                  </div>
+                  <div className="mt-0.5">
+                    <span className="text-slate-500 dark:text-slate-400">{t("营收")} </span>
+                    <span className="font-semibold tabular-nums">
+                      {q.rev_avg ? formatUSD(q.rev_avg) : "—"}
+                    </span>
+                  </div>
+                  {q.num_analysts != null && (
+                    <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+                      {q.num_analysts} {t("位分析师")}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 过去 4 次 Beat / Miss */}
+      {past.length > 0 && (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+            {t("最近 4 次财报 Beat / Miss")}
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+                  <th className="text-left py-2 pr-3 font-normal">{t("发布日")}</th>
+                  <th className="text-right py-2 px-3 font-normal">EPS {t("预期")}</th>
+                  <th className="text-right py-2 px-3 font-normal">EPS {t("实际")}</th>
+                  <th className="text-right py-2 pl-3 font-normal">{t("差异")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {past.map(e => {
+                  const surprise =
+                    e.eps_estimate && e.eps_estimate !== 0
+                      ? ((e.eps_actual! - e.eps_estimate) / Math.abs(e.eps_estimate)) * 100
+                      : null;
+                  return (
+                    <tr
+                      key={e.date}
+                      className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition"
+                    >
+                      <td className="py-2 pr-3 font-medium tabular-nums">{e.date}</td>
+                      <td className="py-2 px-3 text-right tabular-nums text-slate-600 dark:text-slate-400">
+                        ${e.eps_estimate!.toFixed(2)}
+                      </td>
+                      <td className="py-2 px-3 text-right tabular-nums font-semibold">
+                        ${e.eps_actual!.toFixed(2)}
+                      </td>
+                      <td className="py-2 pl-3 text-right tabular-nums">
+                        {surprise != null ? (
+                          <span className={colorClass(surprise)}>
+                            {formatPercent(surprise)}
+                          </span>
+                        ) : "—"}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* 最近评级变动 */}
+      {ratings.length > 0 && (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+            {t("最近评级变动")}
+          </div>
+          <div className="space-y-1.5">
+            {ratings.slice(0, 5).map((r, i) => {
+              const actionColor =
+                r.action === "upgrade"
+                  ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
+                  : r.action === "downgrade"
+                  ? "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300"
+                  : r.action === "initiate"
+                  ? "bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-500/20 dark:text-slate-300";
+              const actionCN: Record<string, string> = {
+                upgrade: "升级",
+                downgrade: "降级",
+                initiate: "首次覆盖",
+                hold: "维持",
+              };
+              return (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 text-sm py-1.5 border-b border-slate-100 dark:border-white/5 last:border-0"
+                >
+                  <span className="text-slate-500 dark:text-slate-400 tabular-nums whitespace-nowrap text-xs">
+                    {r.date}
+                  </span>
+                  <span className={`px-2 py-0.5 rounded text-xs font-medium ${actionColor} whitespace-nowrap`}>
+                    {t(actionCN[r.action || ""] || r.action || "—")}
+                  </span>
+                  <span className="font-medium whitespace-nowrap">{r.company}</span>
+                  {r.target_price && (
+                    <span className="text-slate-500 dark:text-slate-400 text-xs whitespace-nowrap">
+                      → ${r.target_price.toFixed(0)}
+                    </span>
+                  )}
+                  <span className="text-slate-500 dark:text-slate-400 text-xs truncate flex-1">
+                    {r.title}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ====== 财报日历 ======
+
+function EarningsCalendarBlock({ earnings }: { earnings: EarningRecord[] }) {
+  const { t } = useLocale();
+  const today = new Date().toISOString().slice(0, 10);
+
+  // 找下一个未来的财报
+  const upcoming = earnings
+    .filter(e => e.date && e.date >= today && e.eps_actual == null)
+    .sort((a, b) => (a.date || "").localeCompare(b.date || ""))[0];
+
+  // 过去 8 次已发的
+  const past = earnings
+    .filter(e => e.date && e.eps_actual != null)
+    .slice(0, 8);
+
+  const timeLabel = (time: string | null): string => {
+    if (time === "bmo") return t("盘前");
+    if (time === "amc") return t("盘后");
+    return t("未公布");
+  };
+
+  return (
+    <div className="space-y-4">
+      {/* 下次财报 */}
+      {upcoming && (
+        <div className="p-4 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-500/10 dark:to-orange-500/10 border border-amber-200 dark:border-amber-500/30 rounded-xl">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <div className="text-xs text-amber-700 dark:text-amber-400 mb-1 font-medium">
+                {t("下次财报")}
+              </div>
+              <div className="text-2xl font-bold tabular-nums">{upcoming.date}</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                {timeLabel(upcoming.time)}
+                {upcoming.fiscal_period_end && ` · ${t("季度结束")} ${upcoming.fiscal_period_end}`}
+              </div>
+            </div>
+            <div className="text-right">
+              {upcoming.eps_estimate != null && (
+                <div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400">EPS {t("预期")}</div>
+                  <div className="text-lg font-semibold tabular-nums">
+                    ${upcoming.eps_estimate.toFixed(2)}
+                  </div>
+                </div>
+              )}
+              {upcoming.rev_estimate != null && (
+                <div className="mt-1">
+                  <div className="text-xs text-slate-500 dark:text-slate-400">{t("营收预期")}</div>
+                  <div className="text-sm font-medium tabular-nums">
+                    {formatUSD(upcoming.rev_estimate)}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 过去财报记录 */}
+      {past.length > 0 && (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+                <th className="text-left py-2 pr-3 font-normal">{t("发布日")}</th>
+                <th className="text-left py-2 pr-3 font-normal">{t("时段")}</th>
+                <th className="text-right py-2 px-3 font-normal">EPS</th>
+                <th className="text-right py-2 px-3 font-normal">{t("营收")}</th>
+                <th className="text-right py-2 pl-3 font-normal">{t("EPS 差异")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {past.map(e => {
+                const surprise =
+                  e.eps_estimate && e.eps_estimate !== 0 && e.eps_actual != null
+                    ? ((e.eps_actual - e.eps_estimate) / Math.abs(e.eps_estimate)) * 100
+                    : null;
+                return (
+                  <tr
+                    key={e.date}
+                    className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition"
+                  >
+                    <td className="py-2 pr-3 font-medium tabular-nums">{e.date}</td>
+                    <td className="py-2 pr-3 text-xs text-slate-500 dark:text-slate-400">
+                      {timeLabel(e.time)}
+                    </td>
+                    <td className="py-2 px-3 text-right tabular-nums">
+                      {e.eps_actual != null ? `$${e.eps_actual.toFixed(2)}` : "—"}
+                    </td>
+                    <td className="py-2 px-3 text-right tabular-nums">
+                      {e.rev_actual ? formatUSD(e.rev_actual) : "—"}
+                    </td>
+                    <td className="py-2 pl-3 text-right tabular-nums">
+                      {surprise != null ? (
+                        <span className={colorClass(surprise)}>{formatPercent(surprise)}</span>
+                      ) : "—"}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ====== 股本动态 ======
+
+function CapitalDynamicsBlock({
+  shares,
+  cashFlow,
+  marketCap,
+}: {
+  shares: ShareCountQuarter[];
+  cashFlow: CashFlowQuarter[];
+  marketCap?: number;
+}) {
+  const { t } = useLocale();
+  // 倒序排列：最近在前
+  const sortedShares = [...shares].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  const sortedCF = [...cashFlow].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+  // 摊薄股数：最新 vs 4 季度前
+  const latestShs = sortedShares[0]?.weighted_avg_diluted;
+  const yearAgoShs = sortedShares[4]?.weighted_avg_diluted;
+  const dilutionPct =
+    latestShs && yearAgoShs && yearAgoShs !== 0
+      ? ((latestShs - yearAgoShs) / yearAgoShs) * 100
+      : null;
+
+  // SBC TTM（最近 4 季加总）vs 净利润 TTM
+  const ttmSBC = sortedCF.slice(0, 4).reduce((sum, q) => sum + (q.sbc || 0), 0);
+  const ttmNetIncome = sortedShares.slice(0, 4).reduce((sum, q) => sum + (q.net_income || 0), 0);
+  const sbcVsNI = ttmNetIncome ? (ttmSBC / Math.abs(ttmNetIncome)) * 100 : null;
+  const sbcVsCap = marketCap ? (ttmSBC / marketCap) * 100 : null;
+
+  // 回购 TTM
+  const ttmBuyback = sortedCF.slice(0, 4).reduce((sum, q) => sum + (q.buyback || 0), 0);
+
+  return (
+    <div className="space-y-4">
+      {/* 顶部 4 格 */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <Stat
+          label={t("摊薄股数")}
+          value={latestShs ? formatShares(latestShs) : "—"}
+          subtitle={sortedShares[0]?.date ? `${sortedShares[0].calendar_year} ${sortedShares[0].period}` : undefined}
+          delta={dilutionPct}
+        />
+        <Stat
+          label={`SBC TTM`}
+          value={ttmSBC ? formatUSD(ttmSBC) : "—"}
+          subtitle={sbcVsCap != null ? `${sbcVsCap.toFixed(2)}% ${t("市值")}` : undefined}
+          colorOverride={ttmSBC > 0 ? "text-orange-600 dark:text-orange-400" : undefined}
+        />
+        <Stat
+          label={t("回购 TTM")}
+          value={ttmBuyback ? formatUSD(Math.abs(ttmBuyback)) : "—"}
+          colorOverride={ttmBuyback < 0 ? "text-emerald-600 dark:text-emerald-400" : undefined}
+        />
+        <Stat
+          label={t("SBC / 净利")}
+          value={sbcVsNI != null ? `${sbcVsNI.toFixed(1)}%` : "—"}
+          subtitle={t("TTM")}
+          colorOverride={
+            sbcVsNI != null && sbcVsNI > 30
+              ? "text-red-600 dark:text-red-400"
+              : sbcVsNI != null && sbcVsNI < 10
+              ? "text-emerald-600 dark:text-emerald-400"
+              : undefined
+          }
+        />
+      </div>
+
+      {/* 8 季度趋势表 */}
+      {sortedShares.length > 0 && (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+                <th className="text-left py-2 pr-3 font-normal">{t("季度")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("摊薄股数")}</th>
+                <th className="text-right py-2 px-3 font-normal">SBC</th>
+                <th className="text-right py-2 px-3 font-normal">{t("回购")}</th>
+                <th className="text-right py-2 pl-3 font-normal">FCF</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedShares.slice(0, 8).map(s => {
+                const cf = sortedCF.find(c => c.date === s.date);
+                return (
+                  <tr
+                    key={s.date}
+                    className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition"
+                  >
+                    <td className="py-2 pr-3 font-medium whitespace-nowrap">
+                      {s.calendar_year} {s.period}
+                    </td>
+                    <td className="py-2 px-3 text-right tabular-nums">
+                      {s.weighted_avg_diluted ? formatShares(s.weighted_avg_diluted) : "—"}
+                    </td>
+                    <td className="py-2 px-3 text-right tabular-nums text-orange-600 dark:text-orange-400">
+                      {cf?.sbc ? formatUSD(cf.sbc) : "—"}
+                    </td>
+                    <td className="py-2 px-3 text-right tabular-nums text-emerald-600 dark:text-emerald-400">
+                      {cf?.buyback ? formatUSD(Math.abs(cf.buyback)) : "—"}
+                    </td>
+                    <td className="py-2 pl-3 text-right tabular-nums">
+                      {cf?.fcf ? formatUSD(cf.fcf) : "—"}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+            {t("摊薄股数减少 = 回购大于股权激励发行；SBC 占净利润 ≥30% 视为高稀释，≤10% 为低稀释")}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function formatVolume(volume: number | undefined): string {

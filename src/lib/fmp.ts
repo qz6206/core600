@@ -122,6 +122,66 @@ export interface Inst13F {
   topHolders: Inst13FHolder[];
 }
 
+// === 分析师预期 / 财报日历 / 股本动态 类型（来自 fmp_extras.json）===
+
+export interface AnalystEstimate {
+  date: string | null;          // 季度结束日（如 "2026-12-28"）
+  eps_avg: number | null;
+  eps_low: number | null;
+  eps_high: number | null;
+  rev_avg: number | null;
+  num_analysts: number | null;
+}
+
+export interface EarningRecord {
+  date: string | null;          // 财报发布日
+  eps_actual: number | null;    // null = 还没发
+  eps_estimate: number | null;
+  rev_actual: number | null;
+  rev_estimate: number | null;
+  time: string | null;          // "bmo" 盘前 / "amc" 盘后 / "-" 未知
+  fiscal_period_end: string | null;
+}
+
+export interface CashFlowQuarter {
+  date: string | null;
+  period: string | null;        // Q1 / Q2 / Q3 / Q4
+  calendar_year: string | null;
+  sbc: number | null;            // 股权激励 (Stock-Based Compensation)
+  ocf: number | null;            // 经营现金流
+  fcf: number | null;            // 自由现金流
+  buyback: number | null;        // 普通股回购（负数 = 实际回购）
+  issuance: number | null;       // 普通股发行
+}
+
+export interface ShareCountQuarter {
+  date: string | null;
+  period: string | null;
+  calendar_year: string | null;
+  weighted_avg_diluted: number | null;
+  weighted_avg_basic: number | null;
+  net_income: number | null;
+  revenue: number | null;
+}
+
+export interface RatingChange {
+  date: string | null;
+  company: string | null;       // 评级机构（如 "Morgan Stanley"）
+  prev_grade: string | null;
+  new_grade: string | null;
+  action: string | null;        // initiate / upgrade / downgrade / hold
+  target_price: number | null;  // 从新闻标题中解析的目标价
+  title: string | null;
+}
+
+export interface FMPExtras {
+  estimates: AnalystEstimate[];
+  earnings: EarningRecord[];
+  sbc: CashFlowQuarter[];
+  shares: ShareCountQuarter[];
+  ratings: RatingChange[];
+}
+
 // === 高层封装 ===
 
 export async function getProfile(ticker: string): Promise<FMPProfile | null> {

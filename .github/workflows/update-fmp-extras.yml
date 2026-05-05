@@ -1,0 +1,49 @@
+name: 自动刷新 FMP 杂项数据 (分析师预期/财报日历/股本动态)
+
+on:
+  schedule:
+    # 每天早上 7:00 UTC（财报日历会变化，每日刷新）
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 拉取 FMP 数据 (estimates/earnings/cashflow/income/ratings)
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python3 scripts/fetch_fmp_extras.py
+
+      - name: 检查变化
+        id: check
+        run: |
+          if git diff --quiet data/fmp_extras.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "无变化"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "检测到 FMP extras 变化"
+          fi
+
+      - name: 提交变化
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/fmp_extras.json
+          git commit -m "自动更新: FMP 杂项数据刷新
+
+          Triggered by GitHub Actions (daily schedule)"
+          git push
