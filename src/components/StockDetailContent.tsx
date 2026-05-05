@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
+import React, { useState } from "react";
 import type {
   FMPProfile,
   FMPQuote,
@@ -21,6 +22,7 @@ import type {
   RatingChange,
   OptionsActivity,
   OptionsContract,
+  TranscriptCN,
 } from "@/lib/fmp";
 import type { EdgarFiling } from "@/lib/edgar";
 import { filingUrl, parse8KItems } from "@/lib/edgar";
@@ -46,6 +48,8 @@ interface Props {
   inst13f?: Inst13F | null;
   fmpExtras?: FMPExtras | null;
   options?: OptionsActivity | null;
+  descriptionCn?: string | null;
+  transcript?: TranscriptCN | null;
 }
 
 export default function StockDetailContent({
@@ -56,6 +60,8 @@ export default function StockDetailContent({
   inst13f = null,
   fmpExtras = null,
   options = null,
+  descriptionCn = null,
+  transcript = null,
 }: Props) {
   const { t } = useLocale();
   const { profile, quote, quarters } = overview;
@@ -178,8 +184,20 @@ export default function StockDetailContent({
         )}
 
         {/* 9 大功能区块 — 已完成：内部人交易、机构持仓、8-K；其余占位 */}
-        <Section icon="🎙️" title={t("财报会议")} subtitle={t("中文全文")} comingSoon>
-          <Placeholder text={t("财报会议中文全文摘要正在开发中...")} />
+        <Section
+          icon="🎙️"
+          title={t("财报会议")}
+          subtitle={
+            transcript
+              ? `${transcript.year} ${t("财年")} Q${transcript.quarter} · ${transcript.date?.slice(0, 10) || ""} · ${t("中文全文")}`
+              : t("中文全文")
+          }
+        >
+          {transcript ? (
+            <TranscriptBlock data={transcript} />
+          ) : (
+            <Placeholder text={t("此股票暂无财报会议记录")} />
+          )}
         </Section>
 
         <Section
@@ -276,13 +294,13 @@ export default function StockDetailContent({
           <Placeholder text={t("综合内部人、机构、回购、期权等信号的整体评分...")} />
         </Section>
 
-        {/* 公司简介（可选展示） */}
-        {profile?.description && (
+        {/* 公司简介 — 优先中文版（Kimi K2.5 翻译），fallback 英文 */}
+        {(descriptionCn || profile?.description) && (
           <Section icon="ℹ️" title={t("公司简介")}>
-            <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              {profile.description}
+            <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+              {descriptionCn || profile?.description}
             </div>
-            {profile.website && (
+            {profile?.website && (
               <a
                 href={profile.website}
                 target="_blank"
@@ -667,6 +685,73 @@ function Stat({
       {subtitle && (
         <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{subtitle}</div>
       )}
+    </div>
+  );
+}
+
+// ====== 财报会议中文 transcript ======
+
+function TranscriptBlock({ data }: { data: TranscriptCN }) {
+  const { t } = useLocale();
+  const [expanded, setExpanded] = useState(false);
+  const PREVIEW_CHARS = 800;
+  const fullText = data.content_cn;
+  const tooLong = fullText.length > PREVIEW_CHARS;
+  const displayed = expanded || !tooLong ? fullText : fullText.slice(0, PREVIEW_CHARS) + "...";
+
+  // 说话人识别：行首 "XXX：" 或 "XXX:" 加粗
+  const formatLines = (text: string): React.JSX.Element[] => {
+    const lines = text.split("\n");
+    return lines.map((line, i) => {
+      const speakerMatch = line.match(/^([一-鿿\w\s.\-+]+?[：:])(.*)$/);
+      if (speakerMatch && speakerMatch[1].length < 30) {
+        return (
+          <p key={i} className="mb-3 leading-7">
+            <span className="font-semibold text-indigo-700 dark:text-indigo-300">
+              {speakerMatch[1]}
+            </span>
+            <span>{speakerMatch[2]}</span>
+          </p>
+        );
+      }
+      if (line.trim()) {
+        return (
+          <p key={i} className="mb-3 leading-7">
+            {line}
+          </p>
+        );
+      }
+      return null;
+    }).filter((x): x is React.JSX.Element => x !== null);
+  };
+
+  return (
+    <div>
+      <div className="text-xs text-slate-500 dark:text-slate-400 mb-3 flex flex-wrap items-center gap-2">
+        <span>{t("Kimi K2.5 中文翻译")}</span>
+        {data.content_en_chars && (
+          <span>· {t("英文原文")} {(data.content_en_chars / 1000).toFixed(1)}K {t("字符")}</span>
+        )}
+        <span>· {t("中文")} {(fullText.length / 1000).toFixed(1)}K {t("字")}</span>
+      </div>
+
+      <div className="text-sm text-slate-700 dark:text-slate-200 max-w-none">
+        {formatLines(displayed)}
+      </div>
+
+      {tooLong && (
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          className="mt-3 text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
+        >
+          {expanded ? `↑ ${t("收起")}` : `↓ ${t("展开全文")} (${(fullText.length / 1000).toFixed(1)}K ${t("字")})`}
+        </button>
+      )}
+
+      <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400">
+        {t("免责声明")}：{t("中文为机器翻译（Kimi K2.5），仅供参考。投资决策请以英文原文及官方文件为准")}
+      </div>
     </div>
   );
 }

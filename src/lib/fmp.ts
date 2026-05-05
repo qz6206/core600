@@ -198,6 +198,16 @@ export interface OptionsContract {
   change_pct: number | null;     // 今日涨跌 %
 }
 
+// === 财报会议中文 transcript（来自 transcripts.json）===
+
+export interface TranscriptCN {
+  year: number;
+  quarter: number;
+  date: string | null;          // e.g. "2025-05-28 17:00:00"
+  content_cn: string;           // Kimi K2.5 翻译的中文全文
+  content_en_chars?: number;    // 原文长度（参考）
+}
+
 export interface OptionsActivity {
   spot: number | null;           // 标的现价（前一交易日收盘）
   atm_iv: number | null;         // ATM IV (DTE 14-45, OI≥100, 中位数)

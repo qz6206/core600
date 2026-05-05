@@ -1,0 +1,56 @@
+name: 自动刷新中文翻译 (公司简介 + 财报会议)
+
+on:
+  schedule:
+    # 每周一早上 8:00 UTC（季度财报后会更新）
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 翻译公司简介
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+        run: python3 scripts/translate_descriptions.py
+
+      - name: 翻译财报会议 transcripts
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+        run: python3 scripts/translate_transcripts.py
+
+      - name: 检查变化
+        id: check
+        run: |
+          if git diff --quiet data/descriptions_cn.json data/transcripts.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "无变化"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "检测到翻译变化"
+          fi
+
+      - name: 提交变化
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/descriptions_cn.json data/transcripts.json
+          git commit -m "自动更新: 中文翻译刷新 (Kimi K2.5)
+
+          Triggered by GitHub Actions (weekly schedule)"
+          git push
