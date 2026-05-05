@@ -3568,7 +3568,9 @@
       "industry": "Oil & Gas Storage & Transportation",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Oneok"
+      "name_cn": "欧尼克(万欧卡)",
+      "name_cn_old": "Oneok",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "OMC",
@@ -3985,7 +3987,9 @@
       "industry": "Investment Banking & Brokerage",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "雷蒙德·詹姆斯金融"
+      "name_cn": "瑞杰金融",
+      "name_cn_old": "雷蒙德·詹姆斯金融",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "RL",
@@ -4012,7 +4016,9 @@
       "industry": "Electrical Components & Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "洛克威尔自动化"
+      "name_cn": "罗克韦尔自动化",
+      "name_cn_old": "洛克威尔自动化",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "ROL",
@@ -4030,7 +4036,9 @@
       "industry": "Electronic Equipment & Instruments",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "罗珀科技"
+      "name_cn": "儒博实业",
+      "name_cn_old": "罗珀科技",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "ROST",
@@ -4039,7 +4047,9 @@
       "industry": "Apparel Retail",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "罗斯商店"
+      "name_cn": "罗斯百货",
+      "name_cn_old": "罗斯商店",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "RSG",
@@ -4048,7 +4058,9 @@
       "industry": "Environmental & Facilities Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "共和国服务"
+      "name_cn": "共和废品处理",
+      "name_cn_old": "共和国服务",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "RTX",
@@ -4075,7 +4087,9 @@
       "industry": "Wireless Telecommunication Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "回声星"
+      "name_cn": "回声星通信",
+      "name_cn_old": "回声星",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "SBAC",
@@ -4084,7 +4098,9 @@
       "industry": "Telecom Tower REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "SBA通信"
+      "name_cn": "SBA通信公司",
+      "name_cn_old": "SBA通信",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "SBUX",
@@ -4120,7 +4136,9 @@
       "industry": "Specialty Chemicals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "宣伟"
+      "name_cn": "宣伟公司",
+      "name_cn_old": "宣伟",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "SJM",
@@ -4147,7 +4165,9 @@
       "industry": "Technology Hardware, Storage & Peripherals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "超微"
+      "name_cn": "超微电脑",
+      "name_cn_old": "超微",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "SNA",
@@ -4183,7 +4203,9 @@
       "industry": "Electric Utilities",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "南方公司"
+      "name_cn": "美国南方公司",
+      "name_cn_old": "南方公司",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "SOLV",
@@ -4219,7 +4241,9 @@
       "industry": "Multi-Utilities",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "森普拉"
+      "name_cn": "桑普拉能源",
+      "name_cn_old": "森普拉",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "STE",
@@ -4228,7 +4252,9 @@
       "industry": "Health Care Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "斯特里斯"
+      "name_cn": "思泰瑞医疗",
+      "name_cn_old": "斯特里斯",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "STLD",
@@ -4246,7 +4272,9 @@
       "industry": "Asset Management & Custody Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "道富"
+      "name_cn": "道富银行",
+      "name_cn_old": "道富",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "STX",
@@ -4282,7 +4310,9 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "史丹利百得"
+      "name_cn": "美国史丹利公司",
+      "name_cn_old": "史丹利百得",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "SWKS",
@@ -4318,7 +4348,9 @@
       "industry": "Food Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "西斯科"
+      "name_cn": "西思科公司",
+      "name_cn_old": "西斯科",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "T",
@@ -4336,7 +4368,9 @@
       "industry": "Brewers",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "摩森康胜"
+      "name_cn": "莫库酒业",
+      "name_cn_old": "摩森康胜",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "TDG",
@@ -4480,7 +4514,9 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "天宝"
+      "name_cn": "天宝导航公司",
+      "name_cn_old": "天宝",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "TROW",
@@ -4498,7 +4534,9 @@
       "industry": "Property & Casualty Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "旅行者"
+      "name_cn": "旅行者财产险集团",
+      "name_cn_old": "旅行者",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "TSCO",
@@ -4507,7 +4545,9 @@
       "industry": "Other Specialty Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "拖拉机供应"
+      "name_cn": "拖拉机供应公司",
+      "name_cn_old": "拖拉机供应",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "TSLA",
@@ -4534,7 +4574,9 @@
       "industry": "Building Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "特灵科技"
+      "name_cn": "Trane技术",
+      "name_cn_old": "特灵科技",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "TTD",
@@ -4552,7 +4594,9 @@
       "industry": "Interactive Home Entertainment",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Take-Two 互动"
+      "name_cn": "Take-Two互动软件",
+      "name_cn_old": "Take-Two 互动",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "TXN",
@@ -4570,7 +4614,9 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "泰克特朗"
+      "name_cn": "德事隆",
+      "name_cn_old": "泰克特朗",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "TYL",
@@ -4588,7 +4634,9 @@
       "industry": "Passenger Airlines",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "美联航控股"
+      "name_cn": "联合大陆航空",
+      "name_cn_old": "美联航控股",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "UBER",
@@ -4606,7 +4654,9 @@
       "industry": "Multi-Family Residential REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "UDR"
+      "name_cn": "UDR不动产信托",
+      "name_cn_old": "UDR",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "UHS",
@@ -4624,7 +4674,9 @@
       "industry": "Other Specialty Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "ulta美妆"
+      "name_cn": "Ulta美容",
+      "name_cn_old": "ulta美妆",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "UNH",
@@ -4714,7 +4766,9 @@
       "industry": "Construction Materials",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "伏能士材料"
+      "name_cn": "火神材料",
+      "name_cn_old": "伏能士材料",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "VRSK",
@@ -4723,7 +4777,9 @@
       "industry": "Research & Consulting Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "威瑞斯基分析"
+      "name_cn": "Verisk分析",
+      "name_cn_old": "威瑞斯基分析",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "VRSN",
@@ -4768,7 +4824,9 @@
       "industry": "Health Care REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "文塔斯"
+      "name_cn": "芬塔公司",
+      "name_cn_old": "文塔斯",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "VTRS",
@@ -4795,7 +4853,9 @@
       "industry": "Construction Machinery & Heavy Transportation Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "瓦贝特"
+      "name_cn": "美国西屋制动",
+      "name_cn_old": "瓦贝特",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "WAT",
@@ -4840,7 +4900,9 @@
       "industry": "Electric Utilities",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "WEC能源集团"
+      "name_cn": "威州能源",
+      "name_cn_old": "WEC能源集团",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "WELL",
@@ -4867,7 +4929,9 @@
       "industry": "Environmental & Facilities Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "废物管理"
+      "name_cn": "美国废物管理",
+      "name_cn_old": "废物管理",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "WMB",
@@ -4876,7 +4940,9 @@
       "industry": "Oil & Gas Storage & Transportation",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "威廉姆斯公司"
+      "name_cn": "威廉姆斯",
+      "name_cn_old": "威廉姆斯公司",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "WMT",
@@ -4894,7 +4960,9 @@
       "industry": "Property & Casualty Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "W.R.伯克利"
+      "name_cn": "WR柏克利",
+      "name_cn_old": "W.R.伯克利",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "WSM",
@@ -4930,7 +4998,9 @@
       "industry": "Timber REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "惠尔海瑟"
+      "name_cn": "惠好",
+      "name_cn_old": "惠尔海瑟",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "WYNN",
@@ -4948,7 +5018,9 @@
       "industry": "Multi-Utilities",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Xcel能源"
+      "name_cn": "埃克西尔能源",
+      "name_cn_old": "Xcel能源",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "XOM",
@@ -4993,7 +5065,9 @@
       "industry": "Health Care Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "齐默生物"
+      "name_cn": "齐默巴奥米特控股",
+      "name_cn_old": "齐默生物",
+      "name_cn_source": "futu"
     },
     {
       "ticker": "ZBRA",
