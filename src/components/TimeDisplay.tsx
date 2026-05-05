@@ -13,14 +13,23 @@ function formatTime(date: Date, timeZone: string): string {
 }
 
 function getMarketStatus(date: Date): { open: boolean; label: string } {
-  // 简单判断美股是否开市（不含节假日）
-  const ny = new Date(date.toLocaleString("en-US", { timeZone: "America/New_York" }));
-  const day = ny.getDay();
-  const hour = ny.getHours();
-  const min = ny.getMinutes();
+  // 用 Intl.DateTimeFormat 取美东时间字段（避免脆弱的 toLocaleString round-trip）
+  const fmt = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    weekday: "short",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+  });
+  const parts = fmt.formatToParts(date);
+  const get = (type: string) => parts.find(p => p.type === type)?.value ?? "";
+
+  const weekday = get("weekday"); // Mon, Tue, ... Sat, Sun
+  const hour = parseInt(get("hour") || "0", 10);
+  const min = parseInt(get("minute") || "0", 10);
   const totalMin = hour * 60 + min;
 
-  if (day === 0 || day === 6) {
+  if (weekday === "Sat" || weekday === "Sun") {
     return { open: false, label: "周末休市" };
   }
   // 美股盘前 4:00-9:30，正常 9:30-16:00，盘后 16:00-20:00 (美东时间)
