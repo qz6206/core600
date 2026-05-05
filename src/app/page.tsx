@@ -10,14 +10,16 @@ export default function Home() {
   const { t } = useLocale();
 
   const features = [
-    { icon: "🎙️", title: "财报会议", desc: "AI 中文摘要 + 原音对照" },
+    // 第一行：杀手锏
+    { icon: "🎙️", title: "财报会议", desc: "中文摘要 + 原音对照" },
     { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪" },
     { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态" },
-    { icon: "📰", title: "8-K 重大事项", desc: "中文化解读时间线" },
+    // 第二行：实时信号
+    { icon: "📰", title: "8-K 公司重大事项", desc: "中文化解读时间线" },
     { icon: "🔮", title: "分析师预期", desc: "EPS / 营收预期 + Beat 历史" },
-    { icon: "💰", title: "回购执行", desc: "授权 vs 实际执行追踪" },
-    { icon: "📉", title: "股本稀释", desc: "SBC + 流通股变化" },
     { icon: "🎯", title: "期权异动", desc: "聪明钱大单监控" },
+    // 第三行:深度 + 工具 + 综合
+    { icon: "📉", title: "股本动态", desc: "回购 + SBC 稀释追踪" },
     { icon: "📅", title: "财报日历", desc: "解禁日历 · 分红日历" },
     { icon: "📊", title: "智能评分", desc: "多维度综合资金评分" },
   ];
