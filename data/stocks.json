@@ -392,7 +392,9 @@
       "industry": "Industrial Gases",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "空气产品"
+      "name_cn": "空气化工",
+      "name_cn_old": "空气产品",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "APH",
@@ -743,7 +745,9 @@
       "industry": "Insurance Brokers",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "布朗和布朗"
+      "name_cn": "布朗保险",
+      "name_cn_old": "布朗和布朗",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "BSX",
@@ -772,7 +776,9 @@
       "industry": "Office REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "BXP"
+      "name_cn": "波士顿地产",
+      "name_cn_old": "BXP",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "C",
@@ -1425,7 +1431,9 @@
       "industry": "Footwear",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "德克斯品牌"
+      "name_cn": "德克斯户外",
+      "name_cn_old": "德克斯品牌",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "DELL",
@@ -1891,7 +1899,9 @@
       "industry": "Hotels, Resorts & Cruise Lines",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Expedia集团"
+      "name_cn": "亿客行",
+      "name_cn_old": "Expedia集团",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "EXR",
@@ -2195,7 +2205,9 @@
       "industry": "Life & Health Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "环球生命"
+      "name_cn": "环球人寿",
+      "name_cn_old": "环球生命",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "GLW",
@@ -2224,7 +2236,9 @@
       "industry": "Electrical Components & Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Generac"
+      "name_cn": "Generac 控股",
+      "name_cn_old": "Generac",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "GOOG",
@@ -2255,7 +2269,9 @@
       "industry": "Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "真利时"
+      "name_cn": "通用配件",
+      "name_cn_old": "真利时",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "GPN",
@@ -2400,7 +2416,9 @@
       "industry": "Investment Banking & Brokerage",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Robinhood"
+      "name_cn": "罗宾汉",
+      "name_cn_old": "Robinhood",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "HPE",
@@ -3296,7 +3314,9 @@
       "industry": "Financial Exchanges & Data",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "MSCI"
+      "name_cn": "明晟",
+      "name_cn_old": "MSCI",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "MSFT",
@@ -3378,7 +3398,9 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "诺德森"
+      "name_cn": "诺信",
+      "name_cn_old": "诺德森",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "NEE",
@@ -3635,7 +3657,9 @@
       "industry": "Systems Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "帕洛阿尔托网络"
+      "name_cn": "派拓网络",
+      "name_cn_old": "帕洛阿尔托网络",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "PAYX",
@@ -4844,7 +4868,9 @@
       "industry": "Integrated Telecommunication Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "威瑞森"
+      "name_cn": "威瑞森通讯",
+      "name_cn_old": "威瑞森",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "WAB",
@@ -4980,7 +5006,9 @@
       "industry": "Health Care Supplies",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "西特制药服务"
+      "name_cn": "西氏医药服务",
+      "name_cn_old": "西特制药服务",
+      "name_cn_source": "curated"
     },
     {
       "ticker": "WTW",
