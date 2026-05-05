@@ -5,6 +5,7 @@ import StockList from "@/components/StockList";
 import ThemeToggle from "@/components/ThemeToggle";
 import LocaleToggle from "@/components/LocaleToggle";
 import TimeDisplay from "@/components/TimeDisplay";
+import Footer from "@/components/Footer";
 import { Stock } from "@/lib/types";
 import { useLocale } from "@/components/LocaleProvider";
 
@@ -52,6 +53,7 @@ export default function StocksPageContent({ stocks }: { stocks: Stock[] }) {
 
         <StockList stocks={stocks} />
       </div>
+      <Footer />
     </main>
   );
 }

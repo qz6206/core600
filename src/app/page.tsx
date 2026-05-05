@@ -4,6 +4,7 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 import LocaleToggle from "@/components/LocaleToggle";
 import TimeDisplay from "@/components/TimeDisplay";
+import Footer from "@/components/Footer";
 import { useLocale } from "@/components/LocaleProvider";
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
 
   const features = [
     // 第一行：杀手锏
-    { icon: "🎙️", title: "财报会议", desc: "中文摘要 + 原音对照" },
+    { icon: "🎙️", title: "财报会议", desc: "中文全文" },
     { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪" },
     { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态" },
     // 第二行：实时信号
@@ -81,10 +82,8 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="text-center text-slate-500 text-sm">
-          <p>v0.2.0</p>
-        </div>
       </div>
+      <Footer />
     </main>
   );
 }

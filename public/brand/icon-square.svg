@@ -1,7 +1,7 @@
 <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- App 图标版（圆角方形 + 居中 logo）-->
+  <!-- App 图标版（圆角方形 + 居中 logo，path 中心 30,30，缩放 3x，translate(10,10)）-->
   <rect width="200" height="200" rx="40" fill="#fafafa"/>
-  <g transform="translate(70, 70) scale(2)">
+  <g transform="translate(10, 10) scale(3)">
     <path d="M 12 12 L 48 12 L 48 17 L 17 17 L 17 43 L 48 43 L 48 48 L 12 48 Z" fill="#dc2626"/>
     <path d="M 17 28 L 48 28 L 48 48 L 43 48 L 43 33 L 17 33 Z" fill="#0f172a"/>
   </g>
