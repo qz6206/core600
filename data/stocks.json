@@ -12,7 +12,8 @@
       "in_nasdaq100": false,
       "name_cn": "安捷伦科技",
       "name_cn_old": "安捷伦",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001090872"
     },
     {
       "ticker": "AAPL",
@@ -22,7 +23,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "苹果",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000320193"
     },
     {
       "ticker": "ABBV",
@@ -33,7 +35,8 @@
       "in_nasdaq100": false,
       "name_cn": "艾伯维公司",
       "name_cn_old": "艾伯维",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001551152"
     },
     {
       "ticker": "ABNB",
@@ -43,7 +46,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "爱彼迎",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001559720"
     },
     {
       "ticker": "ABT",
@@ -53,7 +57,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "雅培",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000001800"
     },
     {
       "ticker": "ACGL",
@@ -64,7 +69,8 @@
       "in_nasdaq100": false,
       "name_cn": "艾奇资本",
       "name_cn_old": "阿奇资本",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000947484"
     },
     {
       "ticker": "ACN",
@@ -74,7 +80,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "埃森哲",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001467373"
     },
     {
       "ticker": "ADBE",
@@ -83,7 +90,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "奥多比"
+      "name_cn": "奥多比",
+      "cik": "0000796343"
     },
     {
       "ticker": "ADI",
@@ -93,7 +101,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "亚德诺",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000006281"
     },
     {
       "ticker": "ADM",
@@ -102,7 +111,8 @@
       "industry": "Agricultural Products & Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "阿彻丹尼尔斯米德兰"
+      "name_cn": "阿彻丹尼尔斯米德兰",
+      "cik": "0000007084"
     },
     {
       "ticker": "ADP",
@@ -112,7 +122,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "自动数据处理",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000008670"
     },
     {
       "ticker": "ADSK",
@@ -122,7 +133,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "欧特克",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000769397"
     },
     {
       "ticker": "AEE",
@@ -133,7 +145,8 @@
       "in_nasdaq100": false,
       "name_cn": "阿曼瑞恩",
       "name_cn_old": "埃美伦",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001002910"
     },
     {
       "ticker": "AEP",
@@ -143,7 +156,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "美国电力",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000004904"
     },
     {
       "ticker": "AES",
@@ -154,7 +168,8 @@
       "in_nasdaq100": false,
       "name_cn": "AES发电",
       "name_cn_old": "AES",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000874761"
     },
     {
       "ticker": "AFL",
@@ -165,7 +180,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国家庭寿险",
       "name_cn_old": "阿弗拉克",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000004977"
     },
     {
       "ticker": "AIG",
@@ -175,7 +191,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国国际集团",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000005272"
     },
     {
       "ticker": "AIZ",
@@ -186,7 +203,8 @@
       "in_nasdaq100": false,
       "name_cn": "安信龙保险",
       "name_cn_old": "阿苏兰特",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001267238"
     },
     {
       "ticker": "AJG",
@@ -196,7 +214,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "亚瑟加拉格尔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000354190"
     },
     {
       "ticker": "AKAM",
@@ -207,7 +226,8 @@
       "in_nasdaq100": false,
       "name_cn": "阿克迈",
       "name_cn_old": "阿卡迈",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001086222"
     },
     {
       "ticker": "ALB",
@@ -218,7 +238,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国雅保",
       "name_cn_old": "阿尔伯马尔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000915913"
     },
     {
       "ticker": "ALGN",
@@ -229,7 +250,8 @@
       "in_nasdaq100": false,
       "name_cn": "艾利科技",
       "name_cn_old": "爱齐科技",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001097149"
     },
     {
       "ticker": "ALL",
@@ -240,7 +262,8 @@
       "in_nasdaq100": false,
       "name_cn": "好事达",
       "name_cn_old": "好事达保险",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000899051"
     },
     {
       "ticker": "ALLE",
@@ -249,7 +272,8 @@
       "industry": "Building Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "安朗杰"
+      "name_cn": "安朗杰",
+      "cik": "0001579241"
     },
     {
       "ticker": "ALNY",
@@ -260,7 +284,8 @@
       "in_nasdaq100": true,
       "name_cn": "阿里拉姆制药",
       "name_cn_old": "Alnylam 制药",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001178670"
     },
     {
       "ticker": "AMAT",
@@ -270,7 +295,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "应用材料",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000006951"
     },
     {
       "ticker": "AMCR",
@@ -279,7 +305,8 @@
       "industry": "Paper & Plastic Packaging Products & Materials",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "安姆科"
+      "name_cn": "安姆科",
+      "cik": "0001748790"
     },
     {
       "ticker": "AMD",
@@ -290,7 +317,8 @@
       "in_nasdaq100": true,
       "name_cn": "美国超微公司",
       "name_cn_old": "超威半导体",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000002488"
     },
     {
       "ticker": "AME",
@@ -300,7 +328,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "阿美特克",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001037868"
     },
     {
       "ticker": "AMGN",
@@ -310,7 +339,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "安进",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000318154"
     },
     {
       "ticker": "AMP",
@@ -321,7 +351,8 @@
       "in_nasdaq100": false,
       "name_cn": "阿莫斯莱斯金融",
       "name_cn_old": "美国信安金融",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000820027"
     },
     {
       "ticker": "AMT",
@@ -332,7 +363,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国电塔",
       "name_cn_old": "美国铁塔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001053507"
     },
     {
       "ticker": "AMZN",
@@ -342,7 +374,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "亚马逊",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001018724"
     },
     {
       "ticker": "ANET",
@@ -351,7 +384,8 @@
       "industry": "Communications Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Arista Networks"
+      "name_cn": "Arista Networks",
+      "cik": "0001596532"
     },
     {
       "ticker": "AON",
@@ -362,7 +396,8 @@
       "in_nasdaq100": false,
       "name_cn": "怡安保险",
       "name_cn_old": "怡安",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000315293"
     },
     {
       "ticker": "AOS",
@@ -372,7 +407,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "A.O.史密斯",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000091142"
     },
     {
       "ticker": "APA",
@@ -383,7 +419,8 @@
       "in_nasdaq100": false,
       "name_cn": "阿帕奇石油",
       "name_cn_old": "APA",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001841666"
     },
     {
       "ticker": "APD",
@@ -394,7 +431,8 @@
       "in_nasdaq100": false,
       "name_cn": "空气化工",
       "name_cn_old": "空气产品",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0000002969"
     },
     {
       "ticker": "APH",
@@ -404,7 +442,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "安费诺",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000820313"
     },
     {
       "ticker": "APO",
@@ -414,7 +453,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "阿波罗全球管理",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001858681"
     },
     {
       "ticker": "APP",
@@ -423,7 +463,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "AppLovin"
+      "name_cn": "AppLovin",
+      "cik": "0001751008"
     },
     {
       "ticker": "APTV",
@@ -432,7 +473,8 @@
       "industry": "Automotive Parts & Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "安波福"
+      "name_cn": "安波福",
+      "cik": "0001521332"
     },
     {
       "ticker": "ARE",
@@ -442,7 +484,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "亚历山大房地产",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001035443"
     },
     {
       "ticker": "ARES",
@@ -451,7 +494,8 @@
       "industry": "Asset Management & Custody Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "阿雷斯管理"
+      "name_cn": "阿雷斯管理",
+      "cik": "0001176948"
     },
     {
       "ticker": "ARM",
@@ -460,7 +504,8 @@
       "industry": "Semiconductors",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "Arm 控股"
+      "name_cn": "Arm 控股",
+      "cik": "0001973239"
     },
     {
       "ticker": "ASML",
@@ -470,7 +515,8 @@
       "in_sp500": false,
       "in_nasdaq100": true,
       "name_cn": "阿斯麦",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000937966"
     },
     {
       "ticker": "ATO",
@@ -479,7 +525,8 @@
       "industry": "Gas Utilities",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "大气能源"
+      "name_cn": "大气能源",
+      "cik": "0000731802"
     },
     {
       "ticker": "AVB",
@@ -490,7 +537,8 @@
       "in_nasdaq100": false,
       "name_cn": "阿湾物产",
       "name_cn_old": "阿瓦隆贝伊社区",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000915912"
     },
     {
       "ticker": "AVGO",
@@ -500,7 +548,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "博通",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001730168"
     },
     {
       "ticker": "AVY",
@@ -511,7 +560,8 @@
       "in_nasdaq100": false,
       "name_cn": "艾利丹尼森",
       "name_cn_old": "艾维丹尼森",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000008818"
     },
     {
       "ticker": "AWK",
@@ -521,7 +571,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国水务",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001410636"
     },
     {
       "ticker": "AXON",
@@ -530,7 +581,8 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "艾克松企业"
+      "name_cn": "艾克松企业",
+      "cik": "0001069183"
     },
     {
       "ticker": "AXP",
@@ -540,7 +592,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国运通",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000004962"
     },
     {
       "ticker": "AZO",
@@ -550,7 +603,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "汽车地带",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000866787"
     },
     {
       "ticker": "BA",
@@ -560,7 +614,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "波音",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000012927"
     },
     {
       "ticker": "BAC",
@@ -570,7 +625,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国银行",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000070858"
     },
     {
       "ticker": "BALL",
@@ -581,7 +637,8 @@
       "in_nasdaq100": false,
       "name_cn": "鲍尔包装",
       "name_cn_old": "波尔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000009389"
     },
     {
       "ticker": "BAX",
@@ -592,7 +649,8 @@
       "in_nasdaq100": false,
       "name_cn": "百特国际",
       "name_cn_old": "巴克斯特国际",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000010456"
     },
     {
       "ticker": "BBY",
@@ -602,7 +660,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "百思买",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000764478"
     },
     {
       "ticker": "BDX",
@@ -613,7 +672,8 @@
       "in_nasdaq100": false,
       "name_cn": "碧迪医疗",
       "name_cn_old": "贝克顿迪金森",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000010795"
     },
     {
       "ticker": "BEN",
@@ -622,7 +682,8 @@
       "industry": "Asset Management & Custody Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "富兰克林资源"
+      "name_cn": "富兰克林资源",
+      "cik": "0000038777"
     },
     {
       "ticker": "BF-B",
@@ -633,7 +694,8 @@
       "in_nasdaq100": false,
       "name_cn": "百富门-B",
       "name_cn_old": "布朗-福曼",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000014693"
     },
     {
       "ticker": "BG",
@@ -644,7 +706,8 @@
       "in_nasdaq100": false,
       "name_cn": "邦吉",
       "name_cn_old": "邦吉全球",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001996862"
     },
     {
       "ticker": "BIIB",
@@ -655,7 +718,8 @@
       "in_nasdaq100": false,
       "name_cn": "渤健公司",
       "name_cn_old": "渤健",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000875045"
     },
     {
       "ticker": "BK",
@@ -666,7 +730,8 @@
       "in_nasdaq100": false,
       "name_cn": "纽约梅隆银行",
       "name_cn_old": "梅隆银行",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001390777"
     },
     {
       "ticker": "BKNG",
@@ -675,7 +740,8 @@
       "industry": "Hotels, Resorts & Cruise Lines",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Booking 控股"
+      "name_cn": "Booking 控股",
+      "cik": "0001075531"
     },
     {
       "ticker": "BKR",
@@ -684,7 +750,8 @@
       "industry": "Oil & Gas Equipment & Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "贝克休斯"
+      "name_cn": "贝克休斯",
+      "cik": "0001701605"
     },
     {
       "ticker": "BLDR",
@@ -693,7 +760,8 @@
       "industry": "Building Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "建筑商第一资源"
+      "name_cn": "建筑商第一资源",
+      "cik": "0001316835"
     },
     {
       "ticker": "BLK",
@@ -703,7 +771,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "贝莱德",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0002012383"
     },
     {
       "ticker": "BMY",
@@ -714,7 +783,8 @@
       "in_nasdaq100": false,
       "name_cn": "施贵宝",
       "name_cn_old": "百时美施贵宝",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000014272"
     },
     {
       "ticker": "BR",
@@ -725,7 +795,8 @@
       "in_nasdaq100": false,
       "name_cn": "Broadridge金融解决方案",
       "name_cn_old": "博隆金融解决方案",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001383312"
     },
     {
       "ticker": "BRK-B",
@@ -736,7 +807,8 @@
       "in_nasdaq100": false,
       "name_cn": "伯克希尔-B",
       "name_cn_old": "伯克希尔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001067983"
     },
     {
       "ticker": "BRO",
@@ -747,7 +819,8 @@
       "in_nasdaq100": false,
       "name_cn": "布朗保险",
       "name_cn_old": "布朗和布朗",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0000079282"
     },
     {
       "ticker": "BSX",
@@ -757,7 +830,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "波士顿科学",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000885725"
     },
     {
       "ticker": "BX",
@@ -767,7 +841,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "黑石",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001393818"
     },
     {
       "ticker": "BXP",
@@ -778,7 +853,8 @@
       "in_nasdaq100": false,
       "name_cn": "波士顿地产",
       "name_cn_old": "BXP",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0001037540"
     },
     {
       "ticker": "C",
@@ -788,7 +864,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "花旗集团",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000831001"
     },
     {
       "ticker": "CAG",
@@ -799,7 +876,8 @@
       "in_nasdaq100": false,
       "name_cn": "康尼格拉",
       "name_cn_old": "康尼格拉品牌",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000023217"
     },
     {
       "ticker": "CAH",
@@ -809,7 +887,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "卡地纳健康",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000721371"
     },
     {
       "ticker": "CARR",
@@ -819,7 +898,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "开利全球",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001783180"
     },
     {
       "ticker": "CASY",
@@ -828,7 +908,8 @@
       "industry": "Food Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "凯西"
+      "name_cn": "凯西",
+      "cik": "0000726958"
     },
     {
       "ticker": "CAT",
@@ -838,7 +919,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "卡特彼勒",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000018230"
     },
     {
       "ticker": "CB",
@@ -849,7 +931,8 @@
       "in_nasdaq100": false,
       "name_cn": "安达保险",
       "name_cn_old": "丘博",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000896159"
     },
     {
       "ticker": "CBOE",
@@ -860,7 +943,8 @@
       "in_nasdaq100": false,
       "name_cn": "芝加哥期权交易所",
       "name_cn_old": "CBOE全球市场",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001374310"
     },
     {
       "ticker": "CBRE",
@@ -871,7 +955,8 @@
       "in_nasdaq100": false,
       "name_cn": "世邦魏理仕",
       "name_cn_old": "世邦魏理仕集团",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001138118"
     },
     {
       "ticker": "CCEP",
@@ -882,7 +967,8 @@
       "in_nasdaq100": true,
       "name_cn": "可口可乐欧洲太平洋",
       "name_cn_old": "可口可乐欧洲合作伙伴",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001650107"
     },
     {
       "ticker": "CCI",
@@ -893,7 +979,8 @@
       "in_nasdaq100": false,
       "name_cn": "冠城国际",
       "name_cn_old": "皇冠城堡",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001051470"
     },
     {
       "ticker": "CCL",
@@ -904,7 +991,8 @@
       "in_nasdaq100": false,
       "name_cn": "嘉年华邮轮",
       "name_cn_old": "嘉年华",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000815097"
     },
     {
       "ticker": "CDNS",
@@ -915,7 +1003,8 @@
       "in_nasdaq100": true,
       "name_cn": "铿腾电子",
       "name_cn_old": "楷登电子",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000813672"
     },
     {
       "ticker": "CDW",
@@ -924,7 +1013,8 @@
       "industry": "Technology Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "CDW"
+      "name_cn": "CDW",
+      "cik": "0001402057"
     },
     {
       "ticker": "CEG",
@@ -933,7 +1023,8 @@
       "industry": "Electric Utilities",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "星座能源"
+      "name_cn": "星座能源",
+      "cik": "0001868275"
     },
     {
       "ticker": "CF",
@@ -944,7 +1035,8 @@
       "in_nasdaq100": false,
       "name_cn": "CF工业控股",
       "name_cn_old": "CF实业",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001324404"
     },
     {
       "ticker": "CFG",
@@ -953,7 +1045,8 @@
       "industry": "Regional Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "公民金融集团"
+      "name_cn": "公民金融集团",
+      "cik": "0000759944"
     },
     {
       "ticker": "CHD",
@@ -964,7 +1057,8 @@
       "in_nasdaq100": false,
       "name_cn": "丘奇&amp;德怀特",
       "name_cn_old": "丘奇德怀特",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000313927"
     },
     {
       "ticker": "CHRW",
@@ -975,7 +1069,8 @@
       "in_nasdaq100": false,
       "name_cn": "罗宾逊物流",
       "name_cn_old": "C.H. 罗宾逊",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001043277"
     },
     {
       "ticker": "CHTR",
@@ -986,7 +1081,8 @@
       "in_nasdaq100": true,
       "name_cn": "特许通讯",
       "name_cn_old": "Charter通信",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001091667"
     },
     {
       "ticker": "CI",
@@ -996,7 +1092,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "信诺",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001739940"
     },
     {
       "ticker": "CIEN",
@@ -1005,7 +1102,8 @@
       "industry": "Communications Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "锡耶纳"
+      "name_cn": "锡耶纳",
+      "cik": "0000936395"
     },
     {
       "ticker": "CINF",
@@ -1016,7 +1114,8 @@
       "in_nasdaq100": false,
       "name_cn": "辛辛纳提金融",
       "name_cn_old": "辛辛那提金融",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000020286"
     },
     {
       "ticker": "CL",
@@ -1026,7 +1125,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "高露洁",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000021665"
     },
     {
       "ticker": "CLX",
@@ -1036,7 +1136,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "高乐氏",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000021076"
     },
     {
       "ticker": "CMCSA",
@@ -1046,7 +1147,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "康卡斯特",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001166691"
     },
     {
       "ticker": "CME",
@@ -1057,7 +1159,8 @@
       "in_nasdaq100": false,
       "name_cn": "芝加哥商品交易所",
       "name_cn_old": "芝加哥商业交易所",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001156375"
     },
     {
       "ticker": "CMG",
@@ -1068,7 +1171,8 @@
       "in_nasdaq100": false,
       "name_cn": "奇波雷墨西哥烧烤",
       "name_cn_old": "Chipotle",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001058090"
     },
     {
       "ticker": "CMI",
@@ -1078,7 +1182,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "康明斯",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000026172"
     },
     {
       "ticker": "CMS",
@@ -1088,7 +1193,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "CMS能源",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000811156"
     },
     {
       "ticker": "CNC",
@@ -1099,7 +1205,8 @@
       "in_nasdaq100": false,
       "name_cn": "康西哥",
       "name_cn_old": "Centene",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001071739"
     },
     {
       "ticker": "CNP",
@@ -1110,7 +1217,8 @@
       "in_nasdaq100": false,
       "name_cn": "中点能源",
       "name_cn_old": "CenterPoint能源",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001130310"
     },
     {
       "ticker": "COF",
@@ -1121,7 +1229,8 @@
       "in_nasdaq100": false,
       "name_cn": "第一资本信贷",
       "name_cn_old": "第一资本",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000927628"
     },
     {
       "ticker": "COHR",
@@ -1130,7 +1239,8 @@
       "industry": "Electronic Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "相干"
+      "name_cn": "相干",
+      "cik": "0000820318"
     },
     {
       "ticker": "COIN",
@@ -1139,7 +1249,8 @@
       "industry": "Financial Exchanges & Data",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Coinbase"
+      "name_cn": "Coinbase",
+      "cik": "0001679788"
     },
     {
       "ticker": "COO",
@@ -1150,7 +1261,8 @@
       "in_nasdaq100": false,
       "name_cn": "库珀医疗",
       "name_cn_old": "库柏",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000711404"
     },
     {
       "ticker": "COP",
@@ -1160,7 +1272,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "康菲石油",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001163165"
     },
     {
       "ticker": "COR",
@@ -1169,7 +1282,8 @@
       "industry": "Health Care Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Cencora"
+      "name_cn": "Cencora",
+      "cik": "0001140859"
     },
     {
       "ticker": "COST",
@@ -1179,7 +1293,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "好市多",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000909832"
     },
     {
       "ticker": "CPAY",
@@ -1188,7 +1303,8 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Corpay"
+      "name_cn": "Corpay",
+      "cik": "0001175454"
     },
     {
       "ticker": "CPB",
@@ -1199,7 +1315,8 @@
       "in_nasdaq100": false,
       "name_cn": "金宝公司",
       "name_cn_old": "坎贝尔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000016732"
     },
     {
       "ticker": "CPRT",
@@ -1210,7 +1327,8 @@
       "in_nasdaq100": true,
       "name_cn": "科帕特",
       "name_cn_old": "Copart",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000900075"
     },
     {
       "ticker": "CPT",
@@ -1221,7 +1339,8 @@
       "in_nasdaq100": false,
       "name_cn": "卡姆登物业信托",
       "name_cn_old": "Camden物业",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000906345"
     },
     {
       "ticker": "CRH",
@@ -1232,7 +1351,8 @@
       "in_nasdaq100": false,
       "name_cn": "CRH水泥",
       "name_cn_old": "CRH",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000849395"
     },
     {
       "ticker": "CRL",
@@ -1242,7 +1362,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "查尔斯河实验室",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001100682"
     },
     {
       "ticker": "CRM",
@@ -1252,7 +1373,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "赛富时",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001108524"
     },
     {
       "ticker": "CRWD",
@@ -1261,7 +1383,8 @@
       "industry": "Systems Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "CrowdStrike"
+      "name_cn": "CrowdStrike",
+      "cik": "0001535527"
     },
     {
       "ticker": "CSCO",
@@ -1271,7 +1394,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "思科",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000858877"
     },
     {
       "ticker": "CSGP",
@@ -1282,7 +1406,8 @@
       "in_nasdaq100": true,
       "name_cn": "科斯塔",
       "name_cn_old": "CoStar集团",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001057352"
     },
     {
       "ticker": "CSX",
@@ -1293,7 +1418,8 @@
       "in_nasdaq100": true,
       "name_cn": "CSX运输",
       "name_cn_old": "CSX",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000277948"
     },
     {
       "ticker": "CTAS",
@@ -1304,7 +1430,8 @@
       "in_nasdaq100": true,
       "name_cn": "信达思",
       "name_cn_old": "Cintas",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000723254"
     },
     {
       "ticker": "CTRA",
@@ -1313,7 +1440,8 @@
       "industry": "Oil & Gas Exploration & Production",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Coterra"
+      "name_cn": "Coterra",
+      "cik": "0000858470"
     },
     {
       "ticker": "CTSH",
@@ -1323,7 +1451,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "高知特",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001058290"
     },
     {
       "ticker": "CTVA",
@@ -1332,7 +1461,8 @@
       "industry": "Fertilizers & Agricultural Chemicals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "科迪华"
+      "name_cn": "科迪华",
+      "cik": "0001755672"
     },
     {
       "ticker": "CVNA",
@@ -1341,7 +1471,8 @@
       "industry": "Automotive Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Carvana"
+      "name_cn": "Carvana",
+      "cik": "0001690820"
     },
     {
       "ticker": "CVS",
@@ -1352,7 +1483,8 @@
       "in_nasdaq100": false,
       "name_cn": "西维斯健康",
       "name_cn_old": "CVS 健康",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000064803"
     },
     {
       "ticker": "CVX",
@@ -1362,7 +1494,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "雪佛龙",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000093410"
     },
     {
       "ticker": "D",
@@ -1373,7 +1506,8 @@
       "in_nasdaq100": false,
       "name_cn": "道明尼资源",
       "name_cn_old": "道明尼能源",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000715957"
     },
     {
       "ticker": "DAL",
@@ -1383,7 +1517,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "达美航空",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000027904"
     },
     {
       "ticker": "DASH",
@@ -1392,7 +1527,8 @@
       "industry": "Specialized Consumer Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "DoorDash"
+      "name_cn": "DoorDash",
+      "cik": "0001792789"
     },
     {
       "ticker": "DD",
@@ -1402,7 +1538,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "杜邦",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001666700"
     },
     {
       "ticker": "DDOG",
@@ -1411,7 +1548,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Datadog"
+      "name_cn": "Datadog",
+      "cik": "0001561550"
     },
     {
       "ticker": "DE",
@@ -1422,7 +1560,8 @@
       "in_nasdaq100": false,
       "name_cn": "迪尔股份",
       "name_cn_old": "迪尔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000315189"
     },
     {
       "ticker": "DECK",
@@ -1433,7 +1572,8 @@
       "in_nasdaq100": false,
       "name_cn": "德克斯户外",
       "name_cn_old": "德克斯品牌",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0000910521"
     },
     {
       "ticker": "DELL",
@@ -1443,7 +1583,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "戴尔科技",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001571996"
     },
     {
       "ticker": "DG",
@@ -1454,7 +1595,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国达乐公司",
       "name_cn_old": "达乐公司",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000029534"
     },
     {
       "ticker": "DGX",
@@ -1465,7 +1607,8 @@
       "in_nasdaq100": false,
       "name_cn": "奎斯特诊疗",
       "name_cn_old": "奎斯特诊断",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001022079"
     },
     {
       "ticker": "DHI",
@@ -1476,7 +1619,8 @@
       "in_nasdaq100": false,
       "name_cn": "霍顿房屋",
       "name_cn_old": "D.R.霍顿",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000882184"
     },
     {
       "ticker": "DHR",
@@ -1486,7 +1630,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "丹纳赫",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000313616"
     },
     {
       "ticker": "DIS",
@@ -1496,7 +1641,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "迪士尼",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001744489"
     },
     {
       "ticker": "DLR",
@@ -1507,7 +1653,8 @@
       "in_nasdaq100": false,
       "name_cn": "数字房地产信托公司",
       "name_cn_old": "数字房地产",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001297996"
     },
     {
       "ticker": "DLTR",
@@ -1518,7 +1665,8 @@
       "in_nasdaq100": false,
       "name_cn": "美元树公司",
       "name_cn_old": "美元树",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000935703"
     },
     {
       "ticker": "DOC",
@@ -1527,7 +1675,8 @@
       "industry": "Health Care REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Healthpeak物业"
+      "name_cn": "Healthpeak物业",
+      "cik": "0000765880"
     },
     {
       "ticker": "DOV",
@@ -1538,7 +1687,8 @@
       "in_nasdaq100": false,
       "name_cn": "都福集团",
       "name_cn_old": "多佛",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000029905"
     },
     {
       "ticker": "DOW",
@@ -1549,7 +1699,8 @@
       "in_nasdaq100": false,
       "name_cn": "陶氏化学",
       "name_cn_old": "陶氏",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001751788"
     },
     {
       "ticker": "DPZ",
@@ -1560,7 +1711,8 @@
       "in_nasdaq100": false,
       "name_cn": "达美乐比萨",
       "name_cn_old": "达美乐",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001286681"
     },
     {
       "ticker": "DRI",
@@ -1571,7 +1723,8 @@
       "in_nasdaq100": false,
       "name_cn": "达登饭店",
       "name_cn_old": "达登餐厅",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000940944"
     },
     {
       "ticker": "DTE",
@@ -1581,7 +1734,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "DTE能源",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000936340"
     },
     {
       "ticker": "DUK",
@@ -1591,7 +1745,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "杜克能源",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001326160"
     },
     {
       "ticker": "DVA",
@@ -1602,7 +1757,8 @@
       "in_nasdaq100": false,
       "name_cn": "德维特",
       "name_cn_old": "戴维塔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000927066"
     },
     {
       "ticker": "DVN",
@@ -1613,7 +1769,8 @@
       "in_nasdaq100": false,
       "name_cn": "戴文能源",
       "name_cn_old": "德文能源",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001090012"
     },
     {
       "ticker": "DXCM",
@@ -1624,7 +1781,8 @@
       "in_nasdaq100": true,
       "name_cn": "德康医疗",
       "name_cn_old": "德克斯康",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001093557"
     },
     {
       "ticker": "EA",
@@ -1634,7 +1792,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "艺电",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000712515"
     },
     {
       "ticker": "EBAY",
@@ -1643,7 +1802,8 @@
       "industry": "Broadline Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "易贝"
+      "name_cn": "易贝",
+      "cik": "0001065088"
     },
     {
       "ticker": "ECL",
@@ -1654,7 +1814,8 @@
       "in_nasdaq100": false,
       "name_cn": "艺康集团",
       "name_cn_old": "艺康",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000031462"
     },
     {
       "ticker": "ED",
@@ -1665,7 +1826,8 @@
       "in_nasdaq100": false,
       "name_cn": "爱迪生联合电气",
       "name_cn_old": "爱迪生联合",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001047862"
     },
     {
       "ticker": "EFX",
@@ -1675,7 +1837,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "艾可菲",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000033185"
     },
     {
       "ticker": "EG",
@@ -1684,7 +1847,8 @@
       "industry": "Reinsurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "埃弗雷斯特集团"
+      "name_cn": "埃弗雷斯特集团",
+      "cik": "0001095073"
     },
     {
       "ticker": "EIX",
@@ -1694,7 +1858,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "爱迪生国际",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000827052"
     },
     {
       "ticker": "EL",
@@ -1704,7 +1869,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "雅诗兰黛",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001001250"
     },
     {
       "ticker": "ELV",
@@ -1713,7 +1879,8 @@
       "industry": "Managed Health Care",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Elevance Health"
+      "name_cn": "Elevance Health",
+      "cik": "0001156039"
     },
     {
       "ticker": "EME",
@@ -1722,7 +1889,8 @@
       "industry": "Construction & Engineering",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "埃姆科"
+      "name_cn": "埃姆科",
+      "cik": "0000105634"
     },
     {
       "ticker": "EMR",
@@ -1733,7 +1901,8 @@
       "in_nasdaq100": false,
       "name_cn": "艾默生电气",
       "name_cn_old": "艾默生",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000032604"
     },
     {
       "ticker": "EOG",
@@ -1744,7 +1913,8 @@
       "in_nasdaq100": false,
       "name_cn": "EOG能源",
       "name_cn_old": "EOG 资源",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000821189"
     },
     {
       "ticker": "EPAM",
@@ -1753,7 +1923,8 @@
       "industry": "IT Consulting & Other Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "EPAM系统"
+      "name_cn": "EPAM系统",
+      "cik": "0001352010"
     },
     {
       "ticker": "EQIX",
@@ -1764,7 +1935,8 @@
       "in_nasdaq100": false,
       "name_cn": "易昆尼克斯",
       "name_cn_old": "埃奎尼克",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001101239"
     },
     {
       "ticker": "EQR",
@@ -1775,7 +1947,8 @@
       "in_nasdaq100": false,
       "name_cn": "资产住宅公司",
       "name_cn_old": "权益住宅",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000906107"
     },
     {
       "ticker": "EQT",
@@ -1786,7 +1959,8 @@
       "in_nasdaq100": false,
       "name_cn": "EQT能源",
       "name_cn_old": "EQT公司",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000033213"
     },
     {
       "ticker": "ERIE",
@@ -1797,7 +1971,8 @@
       "in_nasdaq100": false,
       "name_cn": "伊瑞保险",
       "name_cn_old": "伊利保险",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000922621"
     },
     {
       "ticker": "ES",
@@ -1806,7 +1981,8 @@
       "industry": "Electric Utilities",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "EVERSOURCE能源"
+      "name_cn": "EVERSOURCE能源",
+      "cik": "0000072741"
     },
     {
       "ticker": "ESS",
@@ -1817,7 +1993,8 @@
       "in_nasdaq100": false,
       "name_cn": "埃塞克斯信托",
       "name_cn_old": "埃塞克斯物业",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000920522"
     },
     {
       "ticker": "ETN",
@@ -1827,7 +2004,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "伊顿",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001551182"
     },
     {
       "ticker": "ETR",
@@ -1838,7 +2016,8 @@
       "in_nasdaq100": false,
       "name_cn": "安特吉",
       "name_cn_old": "恩特吉",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000065984"
     },
     {
       "ticker": "EVRG",
@@ -1849,7 +2028,8 @@
       "in_nasdaq100": false,
       "name_cn": "西星能源",
       "name_cn_old": "EVERGY",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001711269"
     },
     {
       "ticker": "EW",
@@ -1860,7 +2040,8 @@
       "in_nasdaq100": false,
       "name_cn": "爱德华生命科学",
       "name_cn_old": "爱德华兹生命科学",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001099800"
     },
     {
       "ticker": "EXC",
@@ -1871,7 +2052,8 @@
       "in_nasdaq100": true,
       "name_cn": "爱克斯龙电力",
       "name_cn_old": "爱克斯龙",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001109357"
     },
     {
       "ticker": "EXE",
@@ -1880,7 +2062,8 @@
       "industry": "Oil & Gas Exploration & Production",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "EXPAND能源"
+      "name_cn": "EXPAND能源",
+      "cik": "0000895126"
     },
     {
       "ticker": "EXPD",
@@ -1890,7 +2073,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "康捷国际物流",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000746515"
     },
     {
       "ticker": "EXPE",
@@ -1901,7 +2085,8 @@
       "in_nasdaq100": false,
       "name_cn": "亿客行",
       "name_cn_old": "Expedia集团",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0001324424"
     },
     {
       "ticker": "EXR",
@@ -1910,7 +2095,8 @@
       "industry": "Self-Storage REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Extra Space存储"
+      "name_cn": "Extra Space存储",
+      "cik": "0001289490"
     },
     {
       "ticker": "F",
@@ -1921,7 +2107,8 @@
       "in_nasdaq100": false,
       "name_cn": "福特汽车",
       "name_cn_old": "福特",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000037996"
     },
     {
       "ticker": "FANG",
@@ -1930,7 +2117,8 @@
       "industry": "Oil & Gas Exploration & Production",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "响尾蛇能源"
+      "name_cn": "响尾蛇能源",
+      "cik": "0001539838"
     },
     {
       "ticker": "FAST",
@@ -1941,7 +2129,8 @@
       "in_nasdaq100": true,
       "name_cn": "快扣",
       "name_cn_old": "Fastenal",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000815556"
     },
     {
       "ticker": "FCX",
@@ -1952,7 +2141,8 @@
       "in_nasdaq100": false,
       "name_cn": "麦克莫兰铜金",
       "name_cn_old": "自由港麦克莫兰",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000831259"
     },
     {
       "ticker": "FDS",
@@ -1963,7 +2153,8 @@
       "in_nasdaq100": false,
       "name_cn": "慧甚",
       "name_cn_old": "FactSet",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001013237"
     },
     {
       "ticker": "FDX",
@@ -1973,7 +2164,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "联邦快递",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001048911"
     },
     {
       "ticker": "FE",
@@ -1984,7 +2176,8 @@
       "in_nasdaq100": false,
       "name_cn": "第一能源",
       "name_cn_old": "FirstEnergy",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001031296"
     },
     {
       "ticker": "FER",
@@ -1993,7 +2186,8 @@
       "industry": "Construction",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "Ferrovial"
+      "name_cn": "Ferrovial",
+      "cik": "0001468522"
     },
     {
       "ticker": "FFIV",
@@ -2002,7 +2196,8 @@
       "industry": "Communications Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "F5"
+      "name_cn": "F5",
+      "cik": "0001048695"
     },
     {
       "ticker": "FICO",
@@ -2011,7 +2206,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "费埃哲"
+      "name_cn": "费埃哲",
+      "cik": "0000814547"
     },
     {
       "ticker": "FIS",
@@ -2022,7 +2218,8 @@
       "in_nasdaq100": false,
       "name_cn": "繁德信息技术",
       "name_cn_old": "富达国民信息服务",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001136893"
     },
     {
       "ticker": "FISV",
@@ -2033,7 +2230,8 @@
       "in_nasdaq100": false,
       "name_cn": "费哲金融服务",
       "name_cn_old": "费哲",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000798354"
     },
     {
       "ticker": "FITB",
@@ -2044,7 +2242,8 @@
       "in_nasdaq100": false,
       "name_cn": "五三银行",
       "name_cn_old": "Fifth Third 银行",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000035527"
     },
     {
       "ticker": "FIX",
@@ -2055,7 +2254,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国舒适系统",
       "name_cn_old": "Comfort Systems USA",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001035983"
     },
     {
       "ticker": "FOX",
@@ -2066,7 +2266,8 @@
       "in_nasdaq100": false,
       "name_cn": "福克斯公司-B",
       "name_cn_old": "福克斯传媒",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001754301"
     },
     {
       "ticker": "FOXA",
@@ -2077,7 +2278,8 @@
       "in_nasdaq100": false,
       "name_cn": "福克斯公司-A",
       "name_cn_old": "福克斯传媒",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001754301"
     },
     {
       "ticker": "FRT",
@@ -2088,7 +2290,8 @@
       "in_nasdaq100": false,
       "name_cn": "FRT信托",
       "name_cn_old": "联邦房地产投资信托",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000034903"
     },
     {
       "ticker": "FSLR",
@@ -2098,7 +2301,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "第一太阳能",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001274494"
     },
     {
       "ticker": "FTNT",
@@ -2109,7 +2313,8 @@
       "in_nasdaq100": true,
       "name_cn": "飞塔信息",
       "name_cn_old": "飞塔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001262039"
     },
     {
       "ticker": "FTV",
@@ -2118,7 +2323,8 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "福泰"
+      "name_cn": "福泰",
+      "cik": "0001659166"
     },
     {
       "ticker": "GD",
@@ -2128,7 +2334,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "通用动力",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000040533"
     },
     {
       "ticker": "GDDY",
@@ -2137,7 +2344,8 @@
       "industry": "Internet Services & Infrastructure",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "GoDaddy"
+      "name_cn": "GoDaddy",
+      "cik": "0001609711"
     },
     {
       "ticker": "GE",
@@ -2148,7 +2356,8 @@
       "in_nasdaq100": false,
       "name_cn": "GE航天航空",
       "name_cn_old": "GE 航空航天",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000040545"
     },
     {
       "ticker": "GEHC",
@@ -2157,7 +2366,8 @@
       "industry": "Health Care Equipment",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "GE医疗"
+      "name_cn": "GE医疗",
+      "cik": "0001932393"
     },
     {
       "ticker": "GEN",
@@ -2166,7 +2376,8 @@
       "industry": "Systems Software",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Gen数字"
+      "name_cn": "Gen数字",
+      "cik": "0000849399"
     },
     {
       "ticker": "GEV",
@@ -2175,7 +2386,8 @@
       "industry": "Heavy Electrical Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "GE Vernova"
+      "name_cn": "GE Vernova",
+      "cik": "0001996810"
     },
     {
       "ticker": "GILD",
@@ -2186,7 +2398,8 @@
       "in_nasdaq100": true,
       "name_cn": "吉利德科学",
       "name_cn_old": "吉利德",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000882095"
     },
     {
       "ticker": "GIS",
@@ -2196,7 +2409,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "通用磨坊",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000040704"
     },
     {
       "ticker": "GL",
@@ -2207,7 +2421,8 @@
       "in_nasdaq100": false,
       "name_cn": "环球人寿",
       "name_cn_old": "环球生命",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0000320335"
     },
     {
       "ticker": "GLW",
@@ -2217,7 +2432,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "康宁",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000024741"
     },
     {
       "ticker": "GM",
@@ -2227,7 +2443,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "通用汽车",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001467858"
     },
     {
       "ticker": "GNRC",
@@ -2238,7 +2455,8 @@
       "in_nasdaq100": false,
       "name_cn": "Generac 控股",
       "name_cn_old": "Generac",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0001474735"
     },
     {
       "ticker": "GOOG",
@@ -2249,7 +2467,8 @@
       "in_nasdaq100": true,
       "name_cn": "谷歌-C",
       "name_cn_old": "谷歌（C 类）",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001652044"
     },
     {
       "ticker": "GOOGL",
@@ -2260,7 +2479,8 @@
       "in_nasdaq100": true,
       "name_cn": "谷歌-A",
       "name_cn_old": "谷歌（A 类）",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001652044"
     },
     {
       "ticker": "GPC",
@@ -2271,7 +2491,8 @@
       "in_nasdaq100": false,
       "name_cn": "通用配件",
       "name_cn_old": "真利时",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0000040987"
     },
     {
       "ticker": "GPN",
@@ -2282,7 +2503,8 @@
       "in_nasdaq100": false,
       "name_cn": "环汇有限公司",
       "name_cn_old": "全球支付",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001123360"
     },
     {
       "ticker": "GRMN",
@@ -2292,7 +2514,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "佳明",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001121788"
     },
     {
       "ticker": "GS",
@@ -2302,7 +2525,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "高盛",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000886982"
     },
     {
       "ticker": "GWW",
@@ -2313,7 +2537,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国固安捷",
       "name_cn_old": "固安捷",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000277135"
     },
     {
       "ticker": "HAL",
@@ -2323,7 +2548,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "哈里伯顿",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000045012"
     },
     {
       "ticker": "HAS",
@@ -2333,7 +2559,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "孩之宝",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000046080"
     },
     {
       "ticker": "HBAN",
@@ -2343,7 +2570,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "亨廷顿银行",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000049196"
     },
     {
       "ticker": "HCA",
@@ -2354,7 +2582,8 @@
       "in_nasdaq100": false,
       "name_cn": "HCA医疗",
       "name_cn_old": "HCA医疗保健",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000860730"
     },
     {
       "ticker": "HD",
@@ -2364,7 +2593,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "家得宝",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000354950"
     },
     {
       "ticker": "HIG",
@@ -2375,7 +2605,8 @@
       "in_nasdaq100": false,
       "name_cn": "哈特福德金融",
       "name_cn_old": "哈特福德",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000874766"
     },
     {
       "ticker": "HII",
@@ -2386,7 +2617,8 @@
       "in_nasdaq100": false,
       "name_cn": "亨廷顿英格尔斯工业",
       "name_cn_old": "亨廷顿英戈尔斯",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001501585"
     },
     {
       "ticker": "HLT",
@@ -2397,7 +2629,8 @@
       "in_nasdaq100": false,
       "name_cn": "希尔顿酒店",
       "name_cn_old": "希尔顿",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001585689"
     },
     {
       "ticker": "HON",
@@ -2407,7 +2640,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "霍尼韦尔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000773840"
     },
     {
       "ticker": "HOOD",
@@ -2418,7 +2652,8 @@
       "in_nasdaq100": false,
       "name_cn": "罗宾汉",
       "name_cn_old": "Robinhood",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0001783879"
     },
     {
       "ticker": "HPE",
@@ -2429,7 +2664,8 @@
       "in_nasdaq100": false,
       "name_cn": "慧与科技",
       "name_cn_old": "惠普企业",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001645590"
     },
     {
       "ticker": "HPQ",
@@ -2439,7 +2675,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "惠普",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000047217"
     },
     {
       "ticker": "HRL",
@@ -2449,7 +2686,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "荷美尔食品",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000048465"
     },
     {
       "ticker": "HSIC",
@@ -2460,7 +2698,8 @@
       "in_nasdaq100": false,
       "name_cn": "汉瑞祥",
       "name_cn_old": "亨利香恩",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001000228"
     },
     {
       "ticker": "HST",
@@ -2471,7 +2710,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国豪斯特酒店",
       "name_cn_old": "Host酒店及度假村",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001070750"
     },
     {
       "ticker": "HSY",
@@ -2481,7 +2721,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "好时",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000047111"
     },
     {
       "ticker": "HUBB",
@@ -2492,7 +2733,8 @@
       "in_nasdaq100": false,
       "name_cn": "哈勃集团",
       "name_cn_old": "Hubbell",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000048898"
     },
     {
       "ticker": "HUM",
@@ -2502,7 +2744,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "哈门那",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000049071"
     },
     {
       "ticker": "HWM",
@@ -2511,7 +2754,8 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "霍瓦特航空航天"
+      "name_cn": "霍瓦特航空航天",
+      "cik": "0000004281"
     },
     {
       "ticker": "IBKR",
@@ -2521,7 +2765,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "盈透证券",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001381197"
     },
     {
       "ticker": "IBM",
@@ -2530,7 +2775,8 @@
       "industry": "IT Consulting & Other Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "IBM"
+      "name_cn": "IBM",
+      "cik": "0000051143"
     },
     {
       "ticker": "ICE",
@@ -2540,7 +2786,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "洲际交易所",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001571949"
     },
     {
       "ticker": "IDXX",
@@ -2551,7 +2798,8 @@
       "in_nasdaq100": true,
       "name_cn": "爱德士",
       "name_cn_old": "IDEXX实验室",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000874716"
     },
     {
       "ticker": "IEX",
@@ -2560,7 +2808,8 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "IDEX"
+      "name_cn": "IDEX",
+      "cik": "0000832101"
     },
     {
       "ticker": "IFF",
@@ -2571,7 +2820,8 @@
       "in_nasdaq100": false,
       "name_cn": "国际香料香精",
       "name_cn_old": "国际香精香料",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000051253"
     },
     {
       "ticker": "INCY",
@@ -2582,7 +2832,8 @@
       "in_nasdaq100": false,
       "name_cn": "因塞特",
       "name_cn_old": "因赛特",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000879169"
     },
     {
       "ticker": "INSM",
@@ -2591,7 +2842,8 @@
       "industry": "Biotechnology",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "Insmed"
+      "name_cn": "Insmed",
+      "cik": "0001104506"
     },
     {
       "ticker": "INTC",
@@ -2601,7 +2853,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "英特尔",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000050863"
     },
     {
       "ticker": "INTU",
@@ -2611,7 +2864,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "财捷",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000896878"
     },
     {
       "ticker": "INVH",
@@ -2620,7 +2874,8 @@
       "industry": "Single-Family Residential REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "邀请之家"
+      "name_cn": "邀请之家",
+      "cik": "0001687229"
     },
     {
       "ticker": "IP",
@@ -2630,7 +2885,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "国际纸业",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000051434"
     },
     {
       "ticker": "IQV",
@@ -2640,7 +2896,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "艾昆纬",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001478242"
     },
     {
       "ticker": "IR",
@@ -2650,7 +2907,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "英格索兰",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001699150"
     },
     {
       "ticker": "IRM",
@@ -2660,7 +2918,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "铁山",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001020569"
     },
     {
       "ticker": "ISRG",
@@ -2671,7 +2930,8 @@
       "in_nasdaq100": true,
       "name_cn": "直觉外科公司",
       "name_cn_old": "直觉外科",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001035267"
     },
     {
       "ticker": "IT",
@@ -2682,7 +2942,8 @@
       "in_nasdaq100": false,
       "name_cn": "加特纳",
       "name_cn_old": "高德纳",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000749251"
     },
     {
       "ticker": "ITW",
@@ -2693,7 +2954,8 @@
       "in_nasdaq100": false,
       "name_cn": "伊利诺伊机械",
       "name_cn_old": "伊利诺伊工具制品",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000049826"
     },
     {
       "ticker": "IVZ",
@@ -2703,7 +2965,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "景顺",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000914208"
     },
     {
       "ticker": "J",
@@ -2714,7 +2977,8 @@
       "in_nasdaq100": false,
       "name_cn": "雅各布工程",
       "name_cn_old": "雅各布斯",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000052988"
     },
     {
       "ticker": "JBHT",
@@ -2725,7 +2989,8 @@
       "in_nasdaq100": false,
       "name_cn": "JB亨特运输服务",
       "name_cn_old": "JB亨特",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000728535"
     },
     {
       "ticker": "JBL",
@@ -2736,7 +3001,8 @@
       "in_nasdaq100": false,
       "name_cn": "捷普科技",
       "name_cn_old": "捷普",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000898293"
     },
     {
       "ticker": "JCI",
@@ -2746,7 +3012,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "江森自控",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000833444"
     },
     {
       "ticker": "JKHY",
@@ -2756,7 +3023,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "杰克亨利",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000779152"
     },
     {
       "ticker": "JNJ",
@@ -2766,7 +3034,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "强生",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000200406"
     },
     {
       "ticker": "JPM",
@@ -2776,7 +3045,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "摩根大通",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000019617"
     },
     {
       "ticker": "KDP",
@@ -2785,7 +3055,8 @@
       "industry": "Soft Drinks & Non-alcoholic Beverages",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Keurig Dr Pepper"
+      "name_cn": "Keurig Dr Pepper",
+      "cik": "0001418135"
     },
     {
       "ticker": "KEY",
@@ -2794,7 +3065,8 @@
       "industry": "Regional Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "基业"
+      "name_cn": "基业",
+      "cik": "0000091576"
     },
     {
       "ticker": "KEYS",
@@ -2803,7 +3075,8 @@
       "industry": "Electronic Equipment & Instruments",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "是德科技"
+      "name_cn": "是德科技",
+      "cik": "0001601046"
     },
     {
       "ticker": "KHC",
@@ -2812,7 +3085,8 @@
       "industry": "Packaged Foods & Meats",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "卡夫亨氏"
+      "name_cn": "卡夫亨氏",
+      "cik": "0001637459"
     },
     {
       "ticker": "KIM",
@@ -2821,7 +3095,8 @@
       "industry": "Retail REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "金科"
+      "name_cn": "金科",
+      "cik": "0000879101"
     },
     {
       "ticker": "KKR",
@@ -2830,7 +3105,8 @@
       "industry": "Asset Management & Custody Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "KKR"
+      "name_cn": "KKR",
+      "cik": "0001404912"
     },
     {
       "ticker": "KLAC",
@@ -2839,7 +3115,8 @@
       "industry": "Semiconductor Materials & Equipment",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "科磊"
+      "name_cn": "科磊",
+      "cik": "0000319201"
     },
     {
       "ticker": "KMB",
@@ -2848,7 +3125,8 @@
       "industry": "Household Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "金佰利"
+      "name_cn": "金佰利",
+      "cik": "0000055785"
     },
     {
       "ticker": "KMI",
@@ -2857,7 +3135,8 @@
       "industry": "Oil & Gas Storage & Transportation",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "金德尔摩根"
+      "name_cn": "金德尔摩根",
+      "cik": "0001506307"
     },
     {
       "ticker": "KO",
@@ -2866,7 +3145,8 @@
       "industry": "Soft Drinks & Non-alcoholic Beverages",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "可口可乐"
+      "name_cn": "可口可乐",
+      "cik": "0000021344"
     },
     {
       "ticker": "KR",
@@ -2875,7 +3155,8 @@
       "industry": "Food Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "克罗格"
+      "name_cn": "克罗格",
+      "cik": "0000056873"
     },
     {
       "ticker": "KVUE",
@@ -2884,7 +3165,8 @@
       "industry": "Personal Care Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "科赴"
+      "name_cn": "科赴",
+      "cik": "0001944048"
     },
     {
       "ticker": "L",
@@ -2893,7 +3175,8 @@
       "industry": "Multi-line Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "洛斯公司"
+      "name_cn": "洛斯公司",
+      "cik": "0000060086"
     },
     {
       "ticker": "LDOS",
@@ -2902,7 +3185,8 @@
       "industry": "Diversified Support Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "利迪奥斯"
+      "name_cn": "利迪奥斯",
+      "cik": "0001336920"
     },
     {
       "ticker": "LEN",
@@ -2912,7 +3196,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "莱纳建筑",
-      "name_cn_old": "莱纳"
+      "name_cn_old": "莱纳",
+      "cik": "0000920760"
     },
     {
       "ticker": "LH",
@@ -2922,7 +3207,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "徕博科",
-      "name_cn_old": "Labcorp"
+      "name_cn_old": "Labcorp",
+      "cik": "0000920148"
     },
     {
       "ticker": "LHX",
@@ -2931,7 +3217,8 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "L3哈里斯"
+      "name_cn": "L3哈里斯",
+      "cik": "0000202058"
     },
     {
       "ticker": "LII",
@@ -2941,7 +3228,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "雷诺士",
-      "name_cn_old": "伦诺克斯国际"
+      "name_cn_old": "伦诺克斯国际",
+      "cik": "0001069202"
     },
     {
       "ticker": "LIN",
@@ -2951,7 +3239,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "林德气体",
-      "name_cn_old": "林德"
+      "name_cn_old": "林德",
+      "cik": "0001707925"
     },
     {
       "ticker": "LITE",
@@ -2960,7 +3249,8 @@
       "industry": "Communications Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Lumentum"
+      "name_cn": "Lumentum",
+      "cik": "0001633978"
     },
     {
       "ticker": "LLY",
@@ -2969,7 +3259,8 @@
       "industry": "Pharmaceuticals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "礼来"
+      "name_cn": "礼来",
+      "cik": "0000059478"
     },
     {
       "ticker": "LMT",
@@ -2978,7 +3269,8 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "洛克希德马丁"
+      "name_cn": "洛克希德马丁",
+      "cik": "0000936468"
     },
     {
       "ticker": "LNT",
@@ -2988,7 +3280,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国联合能源",
-      "name_cn_old": "埃兰特能源"
+      "name_cn_old": "埃兰特能源",
+      "cik": "0000352541"
     },
     {
       "ticker": "LOW",
@@ -2997,7 +3290,8 @@
       "industry": "Home Improvement Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "劳氏"
+      "name_cn": "劳氏",
+      "cik": "0000060667"
     },
     {
       "ticker": "LRCX",
@@ -3006,7 +3300,8 @@
       "industry": "Semiconductor Materials & Equipment",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "泛林集团"
+      "name_cn": "泛林集团",
+      "cik": "0000707549"
     },
     {
       "ticker": "LULU",
@@ -3015,7 +3310,8 @@
       "industry": "Apparel, Accessories & Luxury Goods",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "露露乐蒙"
+      "name_cn": "露露乐蒙",
+      "cik": "0001397187"
     },
     {
       "ticker": "LUV",
@@ -3024,7 +3320,8 @@
       "industry": "Passenger Airlines",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "西南航空"
+      "name_cn": "西南航空",
+      "cik": "0000092380"
     },
     {
       "ticker": "LVS",
@@ -3034,7 +3331,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "金沙集团",
-      "name_cn_old": "拉斯维加斯金沙"
+      "name_cn_old": "拉斯维加斯金沙",
+      "cik": "0001300514"
     },
     {
       "ticker": "LYB",
@@ -3043,7 +3341,8 @@
       "industry": "Specialty Chemicals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "利安德巴塞尔"
+      "name_cn": "利安德巴塞尔",
+      "cik": "0001489393"
     },
     {
       "ticker": "LYV",
@@ -3052,7 +3351,8 @@
       "industry": "Movies & Entertainment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Live Nation"
+      "name_cn": "Live Nation",
+      "cik": "0001335258"
     },
     {
       "ticker": "MA",
@@ -3061,7 +3361,8 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "万事达"
+      "name_cn": "万事达",
+      "cik": "0001141391"
     },
     {
       "ticker": "MAA",
@@ -3071,7 +3372,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "MAA房产信托",
-      "name_cn_old": "中西部公寓社区"
+      "name_cn_old": "中西部公寓社区",
+      "cik": "0000912595"
     },
     {
       "ticker": "MAR",
@@ -3081,7 +3383,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "万豪酒店",
-      "name_cn_old": "万豪"
+      "name_cn_old": "万豪",
+      "cik": "0001048286"
     },
     {
       "ticker": "MAS",
@@ -3090,7 +3393,8 @@
       "industry": "Building Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "马斯科"
+      "name_cn": "马斯科",
+      "cik": "0000062996"
     },
     {
       "ticker": "MCD",
@@ -3099,7 +3403,8 @@
       "industry": "Restaurants",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "麦当劳"
+      "name_cn": "麦当劳",
+      "cik": "0000063908"
     },
     {
       "ticker": "MCHP",
@@ -3108,7 +3413,8 @@
       "industry": "Semiconductors",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "微芯科技"
+      "name_cn": "微芯科技",
+      "cik": "0000827054"
     },
     {
       "ticker": "MCK",
@@ -3117,7 +3423,8 @@
       "industry": "Health Care Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "麦克森"
+      "name_cn": "麦克森",
+      "cik": "0000927653"
     },
     {
       "ticker": "MCO",
@@ -3126,7 +3433,8 @@
       "industry": "Financial Exchanges & Data",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "穆迪"
+      "name_cn": "穆迪",
+      "cik": "0001059556"
     },
     {
       "ticker": "MDLZ",
@@ -3136,7 +3444,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "亿滋",
-      "name_cn_old": "亿滋国际"
+      "name_cn_old": "亿滋国际",
+      "cik": "0001103982"
     },
     {
       "ticker": "MDT",
@@ -3145,7 +3454,8 @@
       "industry": "Health Care Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "美敦力"
+      "name_cn": "美敦力",
+      "cik": "0001613103"
     },
     {
       "ticker": "MELI",
@@ -3154,7 +3464,8 @@
       "industry": "Internet Retail",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "美客多"
+      "name_cn": "美客多",
+      "cik": "0001099590"
     },
     {
       "ticker": "MET",
@@ -3163,7 +3474,8 @@
       "industry": "Life & Health Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "大都会人寿"
+      "name_cn": "大都会人寿",
+      "cik": "0001099219"
     },
     {
       "ticker": "META",
@@ -3172,7 +3484,8 @@
       "industry": "Interactive Media & Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Meta（脸书）"
+      "name_cn": "Meta（脸书）",
+      "cik": "0001326801"
     },
     {
       "ticker": "MGM",
@@ -3182,7 +3495,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美高梅",
-      "name_cn_old": "美高梅度假村"
+      "name_cn_old": "美高梅度假村",
+      "cik": "0000789570"
     },
     {
       "ticker": "MKC",
@@ -3192,7 +3506,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "味好美",
-      "name_cn_old": "麦考密克"
+      "name_cn_old": "麦考密克",
+      "cik": "0000063754"
     },
     {
       "ticker": "MLM",
@@ -3202,7 +3517,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "马丁-玛丽埃塔材料",
-      "name_cn_old": "马丁马里埃塔材料"
+      "name_cn_old": "马丁马里埃塔材料",
+      "cik": "0000916076"
     },
     {
       "ticker": "MMM",
@@ -3211,7 +3527,8 @@
       "industry": "Industrial Conglomerates",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "3M"
+      "name_cn": "3M",
+      "cik": "0000066740"
     },
     {
       "ticker": "MNST",
@@ -3220,7 +3537,8 @@
       "industry": "Soft Drinks & Non-alcoholic Beverages",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "怪物饮料"
+      "name_cn": "怪物饮料",
+      "cik": "0000865752"
     },
     {
       "ticker": "MO",
@@ -3229,7 +3547,8 @@
       "industry": "Tobacco",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "奥驰亚"
+      "name_cn": "奥驰亚",
+      "cik": "0000764180"
     },
     {
       "ticker": "MOS",
@@ -3239,7 +3558,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国美盛",
-      "name_cn_old": "美盛公司"
+      "name_cn_old": "美盛公司",
+      "cik": "0001285785"
     },
     {
       "ticker": "MPC",
@@ -3249,7 +3569,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "马拉松原油",
-      "name_cn_old": "马拉松石油"
+      "name_cn_old": "马拉松石油",
+      "cik": "0001510295"
     },
     {
       "ticker": "MPWR",
@@ -3258,7 +3579,8 @@
       "industry": "Semiconductors",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "芯源系统"
+      "name_cn": "芯源系统",
+      "cik": "0001280452"
     },
     {
       "ticker": "MRK",
@@ -3268,7 +3590,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "默沙东",
-      "name_cn_old": "默克"
+      "name_cn_old": "默克",
+      "cik": "0000310158"
     },
     {
       "ticker": "MRNA",
@@ -3277,7 +3600,8 @@
       "industry": "Biotechnology",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "莫德纳"
+      "name_cn": "莫德纳",
+      "cik": "0001682852"
     },
     {
       "ticker": "MRSH",
@@ -3286,7 +3610,8 @@
       "industry": "Insurance Brokers",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "达信"
+      "name_cn": "达信",
+      "cik": "0000062709"
     },
     {
       "ticker": "MRVL",
@@ -3296,7 +3621,8 @@
       "in_sp500": false,
       "in_nasdaq100": true,
       "name_cn": "迈威尔科技",
-      "name_cn_old": "迈威尔"
+      "name_cn_old": "迈威尔",
+      "cik": "0001835632"
     },
     {
       "ticker": "MS",
@@ -3305,7 +3631,8 @@
       "industry": "Investment Banking & Brokerage",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "摩根士丹利"
+      "name_cn": "摩根士丹利",
+      "cik": "0000895421"
     },
     {
       "ticker": "MSCI",
@@ -3316,7 +3643,8 @@
       "in_nasdaq100": false,
       "name_cn": "明晟",
       "name_cn_old": "MSCI",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0001408198"
     },
     {
       "ticker": "MSFT",
@@ -3325,7 +3653,8 @@
       "industry": "Systems Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "微软"
+      "name_cn": "微软",
+      "cik": "0000789019"
     },
     {
       "ticker": "MSI",
@@ -3334,7 +3663,8 @@
       "industry": "Communications Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "摩托罗拉解决方案"
+      "name_cn": "摩托罗拉解决方案",
+      "cik": "0000068505"
     },
     {
       "ticker": "MSTR",
@@ -3343,7 +3673,8 @@
       "industry": "Software",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "Strategy（前 MicroStrategy）"
+      "name_cn": "Strategy（前 MicroStrategy）",
+      "cik": "0001050446"
     },
     {
       "ticker": "MTB",
@@ -3353,7 +3684,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国制商银行",
-      "name_cn_old": "M&T银行"
+      "name_cn_old": "M&T银行",
+      "cik": "0000036270"
     },
     {
       "ticker": "MTD",
@@ -3362,7 +3694,8 @@
       "industry": "Life Sciences Tools & Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "梅特勒-托利多"
+      "name_cn": "梅特勒-托利多",
+      "cik": "0001037646"
     },
     {
       "ticker": "MU",
@@ -3371,7 +3704,8 @@
       "industry": "Semiconductors",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "美光科技"
+      "name_cn": "美光科技",
+      "cik": "0000723125"
     },
     {
       "ticker": "NCLH",
@@ -3380,7 +3714,8 @@
       "industry": "Hotels, Resorts & Cruise Lines",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "挪威邮轮"
+      "name_cn": "挪威邮轮",
+      "cik": "0001513761"
     },
     {
       "ticker": "NDAQ",
@@ -3389,7 +3724,8 @@
       "industry": "Financial Exchanges & Data",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "纳斯达克"
+      "name_cn": "纳斯达克",
+      "cik": "0001120193"
     },
     {
       "ticker": "NDSN",
@@ -3400,7 +3736,8 @@
       "in_nasdaq100": false,
       "name_cn": "诺信",
       "name_cn_old": "诺德森",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0000072331"
     },
     {
       "ticker": "NEE",
@@ -3410,7 +3747,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "新纪元能源",
-      "name_cn_old": "NextEra能源"
+      "name_cn_old": "NextEra能源",
+      "cik": "0000753308"
     },
     {
       "ticker": "NEM",
@@ -3420,7 +3758,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "纽曼矿业",
-      "name_cn_old": "纽蒙特"
+      "name_cn_old": "纽蒙特",
+      "cik": "0001164727"
     },
     {
       "ticker": "NFLX",
@@ -3430,7 +3769,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "奈飞",
-      "name_cn_old": "网飞"
+      "name_cn_old": "网飞",
+      "cik": "0001065280"
     },
     {
       "ticker": "NI",
@@ -3440,7 +3780,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "印北瓦电",
-      "name_cn_old": "NiSource"
+      "name_cn_old": "NiSource",
+      "cik": "0001111711"
     },
     {
       "ticker": "NKE",
@@ -3449,7 +3790,8 @@
       "industry": "Apparel, Accessories & Luxury Goods",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "耐克"
+      "name_cn": "耐克",
+      "cik": "0000320187"
     },
     {
       "ticker": "NOC",
@@ -3459,7 +3801,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "诺斯罗普格鲁曼",
-      "name_cn_old": "诺斯罗普·格鲁曼"
+      "name_cn_old": "诺斯罗普·格鲁曼",
+      "cik": "0001133421"
     },
     {
       "ticker": "NOW",
@@ -3468,7 +3811,8 @@
       "industry": "Systems Software",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "ServiceNow"
+      "name_cn": "ServiceNow",
+      "cik": "0001373715"
     },
     {
       "ticker": "NRG",
@@ -3477,7 +3821,8 @@
       "industry": "Independent Power Producers & Energy Traders",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "NRG能源"
+      "name_cn": "NRG能源",
+      "cik": "0001013871"
     },
     {
       "ticker": "NSC",
@@ -3486,7 +3831,8 @@
       "industry": "Rail Transportation",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "诺福克南方"
+      "name_cn": "诺福克南方",
+      "cik": "0000702165"
     },
     {
       "ticker": "NTAP",
@@ -3496,7 +3842,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国网存",
-      "name_cn_old": "NetApp"
+      "name_cn_old": "NetApp",
+      "cik": "0001002047"
     },
     {
       "ticker": "NTRS",
@@ -3505,7 +3852,8 @@
       "industry": "Asset Management & Custody Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "北方信托"
+      "name_cn": "北方信托",
+      "cik": "0000073124"
     },
     {
       "ticker": "NUE",
@@ -3515,7 +3863,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "纽柯钢铁",
-      "name_cn_old": "纽柯"
+      "name_cn_old": "纽柯",
+      "cik": "0000073309"
     },
     {
       "ticker": "NVDA",
@@ -3524,7 +3873,8 @@
       "industry": "Semiconductors",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "英伟达"
+      "name_cn": "英伟达",
+      "cik": "0001045810"
     },
     {
       "ticker": "NVR",
@@ -3533,7 +3883,8 @@
       "industry": "Homebuilding",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "NVR"
+      "name_cn": "NVR",
+      "cik": "0000906163"
     },
     {
       "ticker": "NWS",
@@ -3543,7 +3894,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "新闻集团-B",
-      "name_cn_old": "新闻集团B类股"
+      "name_cn_old": "新闻集团B类股",
+      "cik": "0001564708"
     },
     {
       "ticker": "NWSA",
@@ -3553,7 +3905,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "新闻集团-A",
-      "name_cn_old": "新闻集团A类股"
+      "name_cn_old": "新闻集团A类股",
+      "cik": "0001564708"
     },
     {
       "ticker": "NXPI",
@@ -3563,7 +3916,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "恩智浦",
-      "name_cn_old": "恩智浦半导体"
+      "name_cn_old": "恩智浦半导体",
+      "cik": "0001413447"
     },
     {
       "ticker": "O",
@@ -3572,7 +3926,8 @@
       "industry": "Retail REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Realty Income"
+      "name_cn": "Realty Income",
+      "cik": "0000726728"
     },
     {
       "ticker": "ODFL",
@@ -3581,7 +3936,8 @@
       "industry": "Cargo Ground Transportation",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "老多米尼恩"
+      "name_cn": "老多米尼恩",
+      "cik": "0000878927"
     },
     {
       "ticker": "OKE",
@@ -3592,7 +3948,8 @@
       "in_nasdaq100": false,
       "name_cn": "欧尼克(万欧卡)",
       "name_cn_old": "Oneok",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001039684"
     },
     {
       "ticker": "OMC",
@@ -3601,7 +3958,8 @@
       "industry": "Advertising",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "宏盟集团"
+      "name_cn": "宏盟集团",
+      "cik": "0000029989"
     },
     {
       "ticker": "ON",
@@ -3611,7 +3969,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "安森美半导体",
-      "name_cn_old": "安森美"
+      "name_cn_old": "安森美",
+      "cik": "0001097864"
     },
     {
       "ticker": "ORCL",
@@ -3620,7 +3979,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "甲骨文"
+      "name_cn": "甲骨文",
+      "cik": "0001341439"
     },
     {
       "ticker": "ORLY",
@@ -3630,7 +3990,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "奥莱利",
-      "name_cn_old": "奥赖利汽车"
+      "name_cn_old": "奥赖利汽车",
+      "cik": "0000898173"
     },
     {
       "ticker": "OTIS",
@@ -3639,7 +4000,8 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "奥的斯"
+      "name_cn": "奥的斯",
+      "cik": "0001781335"
     },
     {
       "ticker": "OXY",
@@ -3648,7 +4010,8 @@
       "industry": "Oil & Gas Exploration & Production",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "西方石油"
+      "name_cn": "西方石油",
+      "cik": "0000797468"
     },
     {
       "ticker": "PANW",
@@ -3659,7 +4022,8 @@
       "in_nasdaq100": true,
       "name_cn": "派拓网络",
       "name_cn_old": "帕洛阿尔托网络",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0001327567"
     },
     {
       "ticker": "PAYX",
@@ -3669,7 +4033,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "沛齐",
-      "name_cn_old": "派驰"
+      "name_cn_old": "派驰",
+      "cik": "0000723531"
     },
     {
       "ticker": "PCAR",
@@ -3678,7 +4043,8 @@
       "industry": "Construction Machinery & Heavy Transportation Equipment",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "帕卡"
+      "name_cn": "帕卡",
+      "cik": "0000075362"
     },
     {
       "ticker": "PCG",
@@ -3688,7 +4054,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "太平洋煤电",
-      "name_cn_old": "太平洋天然气与电力"
+      "name_cn_old": "太平洋天然气与电力",
+      "cik": "0001004980"
     },
     {
       "ticker": "PDD",
@@ -3697,7 +4064,8 @@
       "industry": "Internet Retail",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "拼多多"
+      "name_cn": "拼多多",
+      "cik": "0001737806"
     },
     {
       "ticker": "PEG",
@@ -3707,7 +4075,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "公务集团",
-      "name_cn_old": "公共服务企业集团"
+      "name_cn_old": "公共服务企业集团",
+      "cik": "0000788784"
     },
     {
       "ticker": "PEP",
@@ -3717,7 +4086,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "百事可乐",
-      "name_cn_old": "百事"
+      "name_cn_old": "百事",
+      "cik": "0000077476"
     },
     {
       "ticker": "PFE",
@@ -3726,7 +4096,8 @@
       "industry": "Pharmaceuticals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "辉瑞"
+      "name_cn": "辉瑞",
+      "cik": "0000078003"
     },
     {
       "ticker": "PFG",
@@ -3735,7 +4106,8 @@
       "industry": "Life & Health Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "信安金融"
+      "name_cn": "信安金融",
+      "cik": "0001126328"
     },
     {
       "ticker": "PG",
@@ -3744,7 +4116,8 @@
       "industry": "Personal Care Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "宝洁"
+      "name_cn": "宝洁",
+      "cik": "0000080424"
     },
     {
       "ticker": "PGR",
@@ -3754,7 +4127,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "前进保险",
-      "name_cn_old": "进步集团"
+      "name_cn_old": "进步集团",
+      "cik": "0000080661"
     },
     {
       "ticker": "PH",
@@ -3763,7 +4137,8 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "派克汉尼汾"
+      "name_cn": "派克汉尼汾",
+      "cik": "0000076334"
     },
     {
       "ticker": "PHM",
@@ -3773,7 +4148,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "普得集团",
-      "name_cn_old": "普尔特集团"
+      "name_cn_old": "普尔特集团",
+      "cik": "0000822416"
     },
     {
       "ticker": "PKG",
@@ -3783,7 +4159,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "美国包装公司",
-      "name_cn_old": "美国包装"
+      "name_cn_old": "美国包装",
+      "cik": "0000075677"
     },
     {
       "ticker": "PLD",
@@ -3793,7 +4170,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "安博",
-      "name_cn_old": "普洛斯"
+      "name_cn_old": "普洛斯",
+      "cik": "0001045609"
     },
     {
       "ticker": "PLTR",
@@ -3802,7 +4180,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "帕兰提尔"
+      "name_cn": "帕兰提尔",
+      "cik": "0001321655"
     },
     {
       "ticker": "PM",
@@ -3812,7 +4191,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "菲利普莫里斯",
-      "name_cn_old": "菲利普莫里斯国际"
+      "name_cn_old": "菲利普莫里斯国际",
+      "cik": "0001413329"
     },
     {
       "ticker": "PNC",
@@ -3822,7 +4202,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "PNC金融服务集团",
-      "name_cn_old": "PNC金融服务"
+      "name_cn_old": "PNC金融服务",
+      "cik": "0000713676"
     },
     {
       "ticker": "PNR",
@@ -3832,7 +4213,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "滨特尔",
-      "name_cn_old": "潘泰尔"
+      "name_cn_old": "潘泰尔",
+      "cik": "0000077360"
     },
     {
       "ticker": "PNW",
@@ -3842,7 +4224,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "西帕纳卡资本",
-      "name_cn_old": "Pinnacle West"
+      "name_cn_old": "Pinnacle West",
+      "cik": "0000764622"
     },
     {
       "ticker": "PODD",
@@ -3852,7 +4235,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "银休特",
-      "name_cn_old": "Insulet"
+      "name_cn_old": "Insulet",
+      "cik": "0001145197"
     },
     {
       "ticker": "POOL",
@@ -3861,7 +4245,8 @@
       "industry": "Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "泳池公司"
+      "name_cn": "泳池公司",
+      "cik": "0000945841"
     },
     {
       "ticker": "PPG",
@@ -3870,7 +4255,8 @@
       "industry": "Specialty Chemicals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "PPG工业"
+      "name_cn": "PPG工业",
+      "cik": "0000079879"
     },
     {
       "ticker": "PPL",
@@ -3880,7 +4266,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "宾州电力",
-      "name_cn_old": "PPL"
+      "name_cn_old": "PPL",
+      "cik": "0000922224"
     },
     {
       "ticker": "PRU",
@@ -3889,7 +4276,8 @@
       "industry": "Life & Health Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "保德信金融"
+      "name_cn": "保德信金融",
+      "cik": "0001137774"
     },
     {
       "ticker": "PSA",
@@ -3899,7 +4287,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "公共存储公司",
-      "name_cn_old": "公共存储"
+      "name_cn_old": "公共存储",
+      "cik": "0001393311"
     },
     {
       "ticker": "PSKY",
@@ -3908,7 +4297,8 @@
       "industry": "Movies & Entertainment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "派拉蒙天空之舞"
+      "name_cn": "派拉蒙天空之舞",
+      "cik": "0002041610"
     },
     {
       "ticker": "PSX",
@@ -3917,7 +4307,8 @@
       "industry": "Oil & Gas Refining & Marketing",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "菲利普斯66"
+      "name_cn": "菲利普斯66",
+      "cik": "0001534701"
     },
     {
       "ticker": "PTC",
@@ -3926,7 +4317,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "PTC"
+      "name_cn": "PTC",
+      "cik": "0000857005"
     },
     {
       "ticker": "PWR",
@@ -3936,7 +4328,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "广达服务",
-      "name_cn_old": "昆万服务"
+      "name_cn_old": "昆万服务",
+      "cik": "0001050915"
     },
     {
       "ticker": "PYPL",
@@ -3945,7 +4338,8 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "贝宝"
+      "name_cn": "贝宝",
+      "cik": "0001633917"
     },
     {
       "ticker": "Q",
@@ -3954,7 +4348,8 @@
       "industry": "Semiconductor Materials & Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "勤亿电子"
+      "name_cn": "勤亿电子",
+      "cik": "0002058873"
     },
     {
       "ticker": "QCOM",
@@ -3963,7 +4358,8 @@
       "industry": "Semiconductors",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "高通"
+      "name_cn": "高通",
+      "cik": "0000804328"
     },
     {
       "ticker": "RCL",
@@ -3973,7 +4369,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "皇家加勒比邮轮",
-      "name_cn_old": "皇家加勒比"
+      "name_cn_old": "皇家加勒比",
+      "cik": "0000884887"
     },
     {
       "ticker": "REG",
@@ -3982,7 +4379,8 @@
       "industry": "Retail REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "雷格尼西中心"
+      "name_cn": "雷格尼西中心",
+      "cik": "0000910606"
     },
     {
       "ticker": "REGN",
@@ -3992,7 +4390,8 @@
       "in_sp500": true,
       "in_nasdaq100": true,
       "name_cn": "再生元制药公司",
-      "name_cn_old": "再生元"
+      "name_cn_old": "再生元",
+      "cik": "0000872589"
     },
     {
       "ticker": "RF",
@@ -4002,7 +4401,8 @@
       "in_sp500": true,
       "in_nasdaq100": false,
       "name_cn": "地区金融",
-      "name_cn_old": "雷杰斯金融"
+      "name_cn_old": "雷杰斯金融",
+      "cik": "0001281761"
     },
     {
       "ticker": "RJF",
@@ -4013,7 +4413,8 @@
       "in_nasdaq100": false,
       "name_cn": "瑞杰金融",
       "name_cn_old": "雷蒙德·詹姆斯金融",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000720005"
     },
     {
       "ticker": "RL",
@@ -4022,7 +4423,8 @@
       "industry": "Apparel, Accessories & Luxury Goods",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "拉夫劳伦"
+      "name_cn": "拉夫劳伦",
+      "cik": "0001037038"
     },
     {
       "ticker": "RMD",
@@ -4031,7 +4433,8 @@
       "industry": "Health Care Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "瑞思迈"
+      "name_cn": "瑞思迈",
+      "cik": "0000943819"
     },
     {
       "ticker": "ROK",
@@ -4042,7 +4445,8 @@
       "in_nasdaq100": false,
       "name_cn": "罗克韦尔自动化",
       "name_cn_old": "洛克威尔自动化",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001024478"
     },
     {
       "ticker": "ROL",
@@ -4051,7 +4455,8 @@
       "industry": "Environmental & Facilities Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "罗林斯"
+      "name_cn": "罗林斯",
+      "cik": "0000084839"
     },
     {
       "ticker": "ROP",
@@ -4062,7 +4467,8 @@
       "in_nasdaq100": true,
       "name_cn": "儒博实业",
       "name_cn_old": "罗珀科技",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000882835"
     },
     {
       "ticker": "ROST",
@@ -4073,7 +4479,8 @@
       "in_nasdaq100": true,
       "name_cn": "罗斯百货",
       "name_cn_old": "罗斯商店",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000745732"
     },
     {
       "ticker": "RSG",
@@ -4084,7 +4491,8 @@
       "in_nasdaq100": false,
       "name_cn": "共和废品处理",
       "name_cn_old": "共和国服务",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001060391"
     },
     {
       "ticker": "RTX",
@@ -4093,7 +4501,8 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "雷神技术"
+      "name_cn": "雷神技术",
+      "cik": "0000101829"
     },
     {
       "ticker": "RVTY",
@@ -4102,7 +4511,8 @@
       "industry": "Health Care Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "瑞维蒂"
+      "name_cn": "瑞维蒂",
+      "cik": "0000031791"
     },
     {
       "ticker": "SATS",
@@ -4113,7 +4523,8 @@
       "in_nasdaq100": false,
       "name_cn": "回声星通信",
       "name_cn_old": "回声星",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001415404"
     },
     {
       "ticker": "SBAC",
@@ -4124,7 +4535,8 @@
       "in_nasdaq100": false,
       "name_cn": "SBA通信公司",
       "name_cn_old": "SBA通信",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001034054"
     },
     {
       "ticker": "SBUX",
@@ -4133,7 +4545,8 @@
       "industry": "Restaurants",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "星巴克"
+      "name_cn": "星巴克",
+      "cik": "0000829224"
     },
     {
       "ticker": "SCHW",
@@ -4142,7 +4555,8 @@
       "industry": "Investment Banking & Brokerage",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "嘉信理财"
+      "name_cn": "嘉信理财",
+      "cik": "0000316709"
     },
     {
       "ticker": "SHOP",
@@ -4151,7 +4565,8 @@
       "industry": "Software",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "Shopify"
+      "name_cn": "Shopify",
+      "cik": "0001594805"
     },
     {
       "ticker": "SHW",
@@ -4162,7 +4577,8 @@
       "in_nasdaq100": false,
       "name_cn": "宣伟公司",
       "name_cn_old": "宣伟",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000089800"
     },
     {
       "ticker": "SJM",
@@ -4171,7 +4587,8 @@
       "industry": "Packaged Foods & Meats",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "斯马克"
+      "name_cn": "斯马克",
+      "cik": "0000091419"
     },
     {
       "ticker": "SLB",
@@ -4180,7 +4597,8 @@
       "industry": "Oil & Gas Equipment & Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "斯伦贝谢"
+      "name_cn": "斯伦贝谢",
+      "cik": "0000087347"
     },
     {
       "ticker": "SMCI",
@@ -4191,7 +4609,8 @@
       "in_nasdaq100": false,
       "name_cn": "超微电脑",
       "name_cn_old": "超微",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001375365"
     },
     {
       "ticker": "SNA",
@@ -4200,7 +4619,8 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "实耐宝"
+      "name_cn": "实耐宝",
+      "cik": "0000091440"
     },
     {
       "ticker": "SNDK",
@@ -4209,7 +4629,8 @@
       "industry": "Technology Hardware, Storage & Peripherals",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "闪迪"
+      "name_cn": "闪迪",
+      "cik": "0002023554"
     },
     {
       "ticker": "SNPS",
@@ -4218,7 +4639,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "新思科技"
+      "name_cn": "新思科技",
+      "cik": "0000883241"
     },
     {
       "ticker": "SO",
@@ -4229,7 +4651,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国南方公司",
       "name_cn_old": "南方公司",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000092122"
     },
     {
       "ticker": "SOLV",
@@ -4238,7 +4661,8 @@
       "industry": "Health Care Technology",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "索尔文腾"
+      "name_cn": "索尔文腾",
+      "cik": "0001964738"
     },
     {
       "ticker": "SPG",
@@ -4247,7 +4671,8 @@
       "industry": "Retail REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "西蒙地产"
+      "name_cn": "西蒙地产",
+      "cik": "0001063761"
     },
     {
       "ticker": "SPGI",
@@ -4256,7 +4681,8 @@
       "industry": "Financial Exchanges & Data",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "标普全球"
+      "name_cn": "标普全球",
+      "cik": "0000064040"
     },
     {
       "ticker": "SRE",
@@ -4267,7 +4693,8 @@
       "in_nasdaq100": false,
       "name_cn": "桑普拉能源",
       "name_cn_old": "森普拉",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001032208"
     },
     {
       "ticker": "STE",
@@ -4278,7 +4705,8 @@
       "in_nasdaq100": false,
       "name_cn": "思泰瑞医疗",
       "name_cn_old": "斯特里斯",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001757898"
     },
     {
       "ticker": "STLD",
@@ -4287,7 +4715,8 @@
       "industry": "Steel",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "钢铁动力"
+      "name_cn": "钢铁动力",
+      "cik": "0001022671"
     },
     {
       "ticker": "STT",
@@ -4298,7 +4727,8 @@
       "in_nasdaq100": false,
       "name_cn": "道富银行",
       "name_cn_old": "道富",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000093751"
     },
     {
       "ticker": "STX",
@@ -4307,7 +4737,8 @@
       "industry": "Technology Hardware, Storage & Peripherals",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "希捷科技"
+      "name_cn": "希捷科技",
+      "cik": "0001137789"
     },
     {
       "ticker": "STZ",
@@ -4316,7 +4747,8 @@
       "industry": "Distillers & Vintners",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "星座品牌"
+      "name_cn": "星座品牌",
+      "cik": "0000016918"
     },
     {
       "ticker": "SW",
@@ -4325,7 +4757,8 @@
       "industry": "Paper & Plastic Packaging Products & Materials",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "斯穆菲特韦斯特洛克"
+      "name_cn": "斯穆菲特韦斯特洛克",
+      "cik": "0002005951"
     },
     {
       "ticker": "SWK",
@@ -4336,7 +4769,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国史丹利公司",
       "name_cn_old": "史丹利百得",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000093556"
     },
     {
       "ticker": "SWKS",
@@ -4345,7 +4779,8 @@
       "industry": "Semiconductors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "思佳讯"
+      "name_cn": "思佳讯",
+      "cik": "0000004127"
     },
     {
       "ticker": "SYF",
@@ -4354,7 +4789,8 @@
       "industry": "Consumer Finance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "同步金融"
+      "name_cn": "同步金融",
+      "cik": "0001601712"
     },
     {
       "ticker": "SYK",
@@ -4363,7 +4799,8 @@
       "industry": "Health Care Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "史赛克"
+      "name_cn": "史赛克",
+      "cik": "0000310764"
     },
     {
       "ticker": "SYY",
@@ -4374,7 +4811,8 @@
       "in_nasdaq100": false,
       "name_cn": "西思科公司",
       "name_cn_old": "西斯科",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000096021"
     },
     {
       "ticker": "T",
@@ -4383,7 +4821,8 @@
       "industry": "Integrated Telecommunication Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "美国电话电报"
+      "name_cn": "美国电话电报",
+      "cik": "0000732717"
     },
     {
       "ticker": "TAP",
@@ -4394,7 +4833,8 @@
       "in_nasdaq100": false,
       "name_cn": "莫库酒业",
       "name_cn_old": "摩森康胜",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000024545"
     },
     {
       "ticker": "TDG",
@@ -4403,7 +4843,8 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "特兰迪姆集团"
+      "name_cn": "特兰迪姆集团",
+      "cik": "0001260221"
     },
     {
       "ticker": "TDY",
@@ -4412,7 +4853,8 @@
       "industry": "Electronic Equipment & Instruments",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "泰尔达因科技"
+      "name_cn": "泰尔达因科技",
+      "cik": "0001094285"
     },
     {
       "ticker": "TECH",
@@ -4421,7 +4863,8 @@
       "industry": "Life Sciences Tools & Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Bio-Techne"
+      "name_cn": "Bio-Techne",
+      "cik": "0000842023"
     },
     {
       "ticker": "TEL",
@@ -4430,7 +4873,8 @@
       "industry": "Electronic Manufacturing Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "泰科电子"
+      "name_cn": "泰科电子",
+      "cik": "0001385157"
     },
     {
       "ticker": "TER",
@@ -4439,7 +4883,8 @@
       "industry": "Semiconductor Materials & Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "泰瑞达"
+      "name_cn": "泰瑞达",
+      "cik": "0000097210"
     },
     {
       "ticker": "TFC",
@@ -4448,7 +4893,8 @@
       "industry": "Diversified Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Truist 金融"
+      "name_cn": "Truist 金融",
+      "cik": "0000092230"
     },
     {
       "ticker": "TGT",
@@ -4457,7 +4903,8 @@
       "industry": "Consumer Staples Merchandise Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "塔吉特"
+      "name_cn": "塔吉特",
+      "cik": "0000027419"
     },
     {
       "ticker": "TJX",
@@ -4466,7 +4913,8 @@
       "industry": "Apparel Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "TJX 公司"
+      "name_cn": "TJX 公司",
+      "cik": "0000109198"
     },
     {
       "ticker": "TKO",
@@ -4475,7 +4923,8 @@
       "industry": "Movies & Entertainment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "TKO集团"
+      "name_cn": "TKO集团",
+      "cik": "0001973266"
     },
     {
       "ticker": "TMO",
@@ -4484,7 +4933,8 @@
       "industry": "Life Sciences Tools & Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "赛默飞世尔"
+      "name_cn": "赛默飞世尔",
+      "cik": "0000097745"
     },
     {
       "ticker": "TMUS",
@@ -4493,7 +4943,8 @@
       "industry": "Wireless Telecommunication Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "T-Mobile"
+      "name_cn": "T-Mobile",
+      "cik": "0001283699"
     },
     {
       "ticker": "TPL",
@@ -4502,7 +4953,8 @@
       "industry": "Oil & Gas Exploration & Production",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "德克萨斯太平洋土地"
+      "name_cn": "德克萨斯太平洋土地",
+      "cik": "0001811074"
     },
     {
       "ticker": "TPR",
@@ -4511,7 +4963,8 @@
       "industry": "Apparel, Accessories & Luxury Goods",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "泰佩思琦"
+      "name_cn": "泰佩思琦",
+      "cik": "0001116132"
     },
     {
       "ticker": "TRGP",
@@ -4520,7 +4973,8 @@
       "industry": "Oil & Gas Storage & Transportation",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "塔尔加资源"
+      "name_cn": "塔尔加资源",
+      "cik": "0001389170"
     },
     {
       "ticker": "TRI",
@@ -4529,7 +4983,8 @@
       "industry": "Information Services",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "汤森路透"
+      "name_cn": "汤森路透",
+      "cik": "0001075124"
     },
     {
       "ticker": "TRMB",
@@ -4540,7 +4995,8 @@
       "in_nasdaq100": false,
       "name_cn": "天宝导航公司",
       "name_cn_old": "天宝",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000864749"
     },
     {
       "ticker": "TROW",
@@ -4549,7 +5005,8 @@
       "industry": "Asset Management & Custody Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "普信集团"
+      "name_cn": "普信集团",
+      "cik": "0001113169"
     },
     {
       "ticker": "TRV",
@@ -4560,7 +5017,8 @@
       "in_nasdaq100": false,
       "name_cn": "旅行者财产险集团",
       "name_cn_old": "旅行者",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000086312"
     },
     {
       "ticker": "TSCO",
@@ -4571,7 +5029,8 @@
       "in_nasdaq100": false,
       "name_cn": "拖拉机供应公司",
       "name_cn_old": "拖拉机供应",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000916365"
     },
     {
       "ticker": "TSLA",
@@ -4580,7 +5039,8 @@
       "industry": "Automobile Manufacturers",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "特斯拉"
+      "name_cn": "特斯拉",
+      "cik": "0001318605"
     },
     {
       "ticker": "TSN",
@@ -4589,7 +5049,8 @@
       "industry": "Packaged Foods & Meats",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "泰森食品"
+      "name_cn": "泰森食品",
+      "cik": "0000100493"
     },
     {
       "ticker": "TT",
@@ -4600,7 +5061,8 @@
       "in_nasdaq100": false,
       "name_cn": "Trane技术",
       "name_cn_old": "特灵科技",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001466258"
     },
     {
       "ticker": "TTD",
@@ -4609,7 +5071,8 @@
       "industry": "Advertising",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "交易台"
+      "name_cn": "交易台",
+      "cik": "0001671933"
     },
     {
       "ticker": "TTWO",
@@ -4620,7 +5083,8 @@
       "in_nasdaq100": true,
       "name_cn": "Take-Two互动软件",
       "name_cn_old": "Take-Two 互动",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000946581"
     },
     {
       "ticker": "TXN",
@@ -4629,7 +5093,8 @@
       "industry": "Semiconductors",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "德州仪器"
+      "name_cn": "德州仪器",
+      "cik": "0000097476"
     },
     {
       "ticker": "TXT",
@@ -4640,7 +5105,8 @@
       "in_nasdaq100": false,
       "name_cn": "德事隆",
       "name_cn_old": "泰克特朗",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000217346"
     },
     {
       "ticker": "TYL",
@@ -4649,7 +5115,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "泰勒科技"
+      "name_cn": "泰勒科技",
+      "cik": "0000860731"
     },
     {
       "ticker": "UAL",
@@ -4660,7 +5127,8 @@
       "in_nasdaq100": false,
       "name_cn": "联合大陆航空",
       "name_cn_old": "美联航控股",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000100517"
     },
     {
       "ticker": "UBER",
@@ -4669,7 +5137,8 @@
       "industry": "Passenger Ground Transportation",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "优步"
+      "name_cn": "优步",
+      "cik": "0001543151"
     },
     {
       "ticker": "UDR",
@@ -4680,7 +5149,8 @@
       "in_nasdaq100": false,
       "name_cn": "UDR不动产信托",
       "name_cn_old": "UDR",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000074208"
     },
     {
       "ticker": "UHS",
@@ -4689,7 +5159,8 @@
       "industry": "Health Care Facilities",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "通用健康服务"
+      "name_cn": "通用健康服务",
+      "cik": "0000352915"
     },
     {
       "ticker": "ULTA",
@@ -4700,7 +5171,8 @@
       "in_nasdaq100": false,
       "name_cn": "Ulta美容",
       "name_cn_old": "ulta美妆",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001403568"
     },
     {
       "ticker": "UNH",
@@ -4709,7 +5181,8 @@
       "industry": "Managed Health Care",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "联合健康"
+      "name_cn": "联合健康",
+      "cik": "0000731766"
     },
     {
       "ticker": "UNP",
@@ -4718,7 +5191,8 @@
       "industry": "Rail Transportation",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "联合太平洋"
+      "name_cn": "联合太平洋",
+      "cik": "0000100885"
     },
     {
       "ticker": "UPS",
@@ -4727,7 +5201,8 @@
       "industry": "Air Freight & Logistics",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "联合包裹"
+      "name_cn": "联合包裹",
+      "cik": "0001090727"
     },
     {
       "ticker": "URI",
@@ -4736,7 +5211,8 @@
       "industry": "Trading Companies & Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "联合租赁"
+      "name_cn": "联合租赁",
+      "cik": "0001067701"
     },
     {
       "ticker": "USB",
@@ -4745,7 +5221,8 @@
       "industry": "Diversified Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "美国合众银行"
+      "name_cn": "美国合众银行",
+      "cik": "0000036104"
     },
     {
       "ticker": "V",
@@ -4754,7 +5231,8 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "维萨"
+      "name_cn": "维萨",
+      "cik": "0001403161"
     },
     {
       "ticker": "VICI",
@@ -4763,7 +5241,8 @@
       "industry": "Hotel & Resort REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "维西物业"
+      "name_cn": "维西物业",
+      "cik": "0001705696"
     },
     {
       "ticker": "VLO",
@@ -4772,7 +5251,8 @@
       "industry": "Oil & Gas Refining & Marketing",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "瓦莱罗能源"
+      "name_cn": "瓦莱罗能源",
+      "cik": "0001035002"
     },
     {
       "ticker": "VLTO",
@@ -4781,7 +5261,8 @@
       "industry": "Environmental & Facilities Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "维拉尔托"
+      "name_cn": "维拉尔托",
+      "cik": "0001967680"
     },
     {
       "ticker": "VMC",
@@ -4792,7 +5273,8 @@
       "in_nasdaq100": false,
       "name_cn": "火神材料",
       "name_cn_old": "伏能士材料",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001396009"
     },
     {
       "ticker": "VRSK",
@@ -4803,7 +5285,8 @@
       "in_nasdaq100": true,
       "name_cn": "Verisk分析",
       "name_cn_old": "威瑞斯基分析",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001442145"
     },
     {
       "ticker": "VRSN",
@@ -4812,7 +5295,8 @@
       "industry": "Internet Services & Infrastructure",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "威瑞信"
+      "name_cn": "威瑞信",
+      "cik": "0001014473"
     },
     {
       "ticker": "VRT",
@@ -4821,7 +5305,8 @@
       "industry": "Electrical Components & Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "维谛技术"
+      "name_cn": "维谛技术",
+      "cik": "0001674101"
     },
     {
       "ticker": "VRTX",
@@ -4830,7 +5315,8 @@
       "industry": "Biotechnology",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "福泰制药"
+      "name_cn": "福泰制药",
+      "cik": "0000875320"
     },
     {
       "ticker": "VST",
@@ -4839,7 +5325,8 @@
       "industry": "Electric Utilities",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "维斯特拉"
+      "name_cn": "维斯特拉",
+      "cik": "0001692819"
     },
     {
       "ticker": "VTR",
@@ -4850,7 +5337,8 @@
       "in_nasdaq100": false,
       "name_cn": "芬塔公司",
       "name_cn_old": "文塔斯",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000740260"
     },
     {
       "ticker": "VTRS",
@@ -4859,7 +5347,8 @@
       "industry": "Pharmaceuticals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "维亚特里斯"
+      "name_cn": "维亚特里斯",
+      "cik": "0001792044"
     },
     {
       "ticker": "VZ",
@@ -4870,7 +5359,8 @@
       "in_nasdaq100": false,
       "name_cn": "威瑞森通讯",
       "name_cn_old": "威瑞森",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0000732712"
     },
     {
       "ticker": "WAB",
@@ -4881,7 +5371,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国西屋制动",
       "name_cn_old": "瓦贝特",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000943452"
     },
     {
       "ticker": "WAT",
@@ -4890,7 +5381,8 @@
       "industry": "Life Sciences Tools & Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "沃特世"
+      "name_cn": "沃特世",
+      "cik": "0001000697"
     },
     {
       "ticker": "WBD",
@@ -4899,7 +5391,8 @@
       "industry": "Broadcasting",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "华纳兄弟探索"
+      "name_cn": "华纳兄弟探索",
+      "cik": "0001437107"
     },
     {
       "ticker": "WDAY",
@@ -4908,7 +5401,8 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Workday"
+      "name_cn": "Workday",
+      "cik": "0001327811"
     },
     {
       "ticker": "WDC",
@@ -4917,7 +5411,8 @@
       "industry": "Technology Hardware, Storage & Peripherals",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "西部数据"
+      "name_cn": "西部数据",
+      "cik": "0000106040"
     },
     {
       "ticker": "WEC",
@@ -4928,7 +5423,8 @@
       "in_nasdaq100": false,
       "name_cn": "威州能源",
       "name_cn_old": "WEC能源集团",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000783325"
     },
     {
       "ticker": "WELL",
@@ -4937,7 +5433,8 @@
       "industry": "Health Care REITs",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "韦尔斯"
+      "name_cn": "韦尔斯",
+      "cik": "0000766704"
     },
     {
       "ticker": "WFC",
@@ -4946,7 +5443,8 @@
       "industry": "Diversified Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "富国银行"
+      "name_cn": "富国银行",
+      "cik": "0000072971"
     },
     {
       "ticker": "WM",
@@ -4957,7 +5455,8 @@
       "in_nasdaq100": false,
       "name_cn": "美国废物管理",
       "name_cn_old": "废物管理",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000823768"
     },
     {
       "ticker": "WMB",
@@ -4968,7 +5467,8 @@
       "in_nasdaq100": false,
       "name_cn": "威廉姆斯",
       "name_cn_old": "威廉姆斯公司",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000107263"
     },
     {
       "ticker": "WMT",
@@ -4977,7 +5477,8 @@
       "industry": "Consumer Staples Merchandise Retail",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "沃尔玛"
+      "name_cn": "沃尔玛",
+      "cik": "0000104169"
     },
     {
       "ticker": "WRB",
@@ -4988,7 +5489,8 @@
       "in_nasdaq100": false,
       "name_cn": "WR柏克利",
       "name_cn_old": "W.R.伯克利",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000011544"
     },
     {
       "ticker": "WSM",
@@ -4997,7 +5499,8 @@
       "industry": "Homefurnishing Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "威廉姆斯-索诺玛"
+      "name_cn": "威廉姆斯-索诺玛",
+      "cik": "0000719955"
     },
     {
       "ticker": "WST",
@@ -5008,7 +5511,8 @@
       "in_nasdaq100": false,
       "name_cn": "西氏医药服务",
       "name_cn_old": "西特制药服务",
-      "name_cn_source": "curated"
+      "name_cn_source": "curated",
+      "cik": "0000105770"
     },
     {
       "ticker": "WTW",
@@ -5017,7 +5521,8 @@
       "industry": "Insurance Brokers",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "韦莱韬悦"
+      "name_cn": "韦莱韬悦",
+      "cik": "0001140536"
     },
     {
       "ticker": "WY",
@@ -5028,7 +5533,8 @@
       "in_nasdaq100": false,
       "name_cn": "惠好",
       "name_cn_old": "惠尔海瑟",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000106535"
     },
     {
       "ticker": "WYNN",
@@ -5037,7 +5543,8 @@
       "industry": "Casinos & Gaming",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "永利度假村"
+      "name_cn": "永利度假村",
+      "cik": "0001174922"
     },
     {
       "ticker": "XEL",
@@ -5048,7 +5555,8 @@
       "in_nasdaq100": true,
       "name_cn": "埃克西尔能源",
       "name_cn_old": "Xcel能源",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0000072903"
     },
     {
       "ticker": "XOM",
@@ -5057,7 +5565,8 @@
       "industry": "Integrated Oil & Gas",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "埃克森美孚"
+      "name_cn": "埃克森美孚",
+      "cik": "0000034088"
     },
     {
       "ticker": "XYL",
@@ -5066,7 +5575,8 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "赛莱默"
+      "name_cn": "赛莱默",
+      "cik": "0001524472"
     },
     {
       "ticker": "XYZ",
@@ -5075,7 +5585,8 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Block"
+      "name_cn": "Block",
+      "cik": "0001512673"
     },
     {
       "ticker": "YUM",
@@ -5084,7 +5595,8 @@
       "industry": "Restaurants",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "百胜餐饮"
+      "name_cn": "百胜餐饮",
+      "cik": "0001041061"
     },
     {
       "ticker": "ZBH",
@@ -5095,7 +5607,8 @@
       "in_nasdaq100": false,
       "name_cn": "齐默巴奥米特控股",
       "name_cn_old": "齐默生物",
-      "name_cn_source": "futu"
+      "name_cn_source": "futu",
+      "cik": "0001136869"
     },
     {
       "ticker": "ZBRA",
@@ -5104,7 +5617,8 @@
       "industry": "Electronic Equipment & Instruments",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "斑马技术"
+      "name_cn": "斑马技术",
+      "cik": "0000877212"
     },
     {
       "ticker": "ZS",
@@ -5113,7 +5627,8 @@
       "industry": "Software",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "Zscaler"
+      "name_cn": "Zscaler",
+      "cik": "0001713683"
     },
     {
       "ticker": "ZTS",
@@ -5122,7 +5637,8 @@
       "industry": "Pharmaceuticals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "硕腾"
+      "name_cn": "硕腾",
+      "cik": "0001555280"
     }
   ]
 }

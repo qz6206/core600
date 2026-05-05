@@ -6,6 +6,7 @@ export interface Stock {
   industry: string;
   in_sp500: boolean;
   in_nasdaq100: boolean;
+  cik?: string;        // SEC EDGAR 10位 CIK（用于拉 Form 4 / 13F / 8-K）
 }
 
 export interface StockData {

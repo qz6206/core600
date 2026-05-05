@@ -9,6 +9,8 @@ import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
 import type { FMPProfile, FMPQuote, FMPIncomeQuarter } from "@/lib/fmp";
+import type { EdgarFiling } from "@/lib/edgar";
+import { filingUrl } from "@/lib/edgar";
 import {
   formatUSD,
   formatPrice,
@@ -26,9 +28,10 @@ interface Overview {
 interface Props {
   stock: Stock;
   overview: Overview;
+  form4?: EdgarFiling[];
 }
 
-export default function StockDetailContent({ stock, overview }: Props) {
+export default function StockDetailContent({ stock, overview, form4 = [] }: Props) {
   const { t } = useLocale();
   const { profile, quote, quarters } = overview;
 
@@ -154,8 +157,18 @@ export default function StockDetailContent({ stock, overview }: Props) {
           <Placeholder text={t("财报会议中文全文摘要正在开发中...")} />
         </Section>
 
-        <Section icon="👤" title={t("内部人交易")} subtitle="Form 4" comingSoon>
-          <Placeholder text={t("从 SEC EDGAR 抓取的内部人买卖动向...")} />
+        <Section
+          icon="👤"
+          title={t("内部人交易")}
+          subtitle={`Form 4 · ${t("最近")} ${form4.length} ${t("条")}`}
+        >
+          {stock.cik && form4.length > 0 ? (
+            <InsiderTradeList cik={stock.cik} filings={form4} />
+          ) : !stock.cik ? (
+            <Placeholder text={t("此股票暂无 SEC CIK 映射")} />
+          ) : (
+            <Placeholder text={t("最近无内部人 Form 4 申报")} />
+          )}
         </Section>
 
         <Section icon="🏛️" title={t("机构持仓")} subtitle="13F" comingSoon>
@@ -332,6 +345,66 @@ function FinancialRow({
         </td>
       ))}
     </tr>
+  );
+}
+
+function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[] }) {
+  const { t } = useLocale();
+
+  // 按日期倒序（虽然 EDGAR 一般已是倒序，保险起见）
+  const sorted = [...filings].sort((a, b) => b.filingDate.localeCompare(a.filingDate));
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+            <th className="text-left py-2 pr-4 font-normal">{t("申报日")}</th>
+            <th className="text-left py-2 pr-4 font-normal">{t("交易日")}</th>
+            <th className="text-left py-2 pr-4 font-normal">{t("表格")}</th>
+            <th className="text-left py-2 pr-4 font-normal">{t("文档")}</th>
+            <th className="text-right py-2 pl-4 font-normal">{t("查看原文")}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sorted.map(f => {
+            const url = filingUrl(cik, f.accessionNumber, f.primaryDocument);
+            return (
+              <tr
+                key={f.accessionNumber}
+                className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition"
+              >
+                <td className="py-3 pr-4 font-medium tabular-nums">{f.filingDate}</td>
+                <td className="py-3 pr-4 text-slate-500 dark:text-slate-400 tabular-nums">
+                  {f.reportDate || "—"}
+                </td>
+                <td className="py-3 pr-4">
+                  <span className="px-2 py-0.5 text-xs bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-300 rounded">
+                    Form {f.form}
+                  </span>
+                </td>
+                <td className="py-3 pr-4 text-xs text-slate-600 dark:text-slate-400 truncate max-w-[200px]">
+                  {f.primaryDocument}
+                </td>
+                <td className="py-3 pl-4 text-right">
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
+                  >
+                    SEC →
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+        {t("内部人 = 公司高管 / 董事 / 10% 以上股东，必须在交易后 2 个工作日内申报")}
+      </div>
+    </div>
   );
 }
 
