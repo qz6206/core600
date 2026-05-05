@@ -48,9 +48,6 @@ export default function StocksPageContent({ stocks }: { stocks: Stock[] }) {
           <p className="text-slate-600 dark:text-slate-400">
             {t("美股核心 600 强 · 标普 500 + 纳斯达克 100 完整成分股")}
           </p>
-          <div className="text-xs text-slate-500 mt-1">
-            {t("数据来源")}：Wikipedia + FMP {t("交叉验证")} · {t("每周一自动更新")}
-          </div>
         </div>
 
         <StockList stocks={stocks} />

@@ -80,7 +80,7 @@ export default function Home() {
         </div>
 
         <div className="text-center text-slate-500 text-sm">
-          <p>v0.2.0 · Built with Claude Code</p>
+          <p>v0.2.0</p>
         </div>
       </div>
     </main>
