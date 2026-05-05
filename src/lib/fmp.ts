@@ -85,6 +85,43 @@ export interface FMPIncomeQuarter {
   epsdiluted: number;
 }
 
+// === 13F (机构持仓) 类型 ===
+
+export interface Inst13FSummary {
+  date: string | null;                      // 季度截止日（如 "2025-12-31"）
+  investorsHolding: number | null;          // 持仓机构数
+  investorsHoldingChange: number | null;    // 季度环比变化
+  numberOf13Fshares: number | null;         // 13F 申报机构合计持股
+  numberOf13FsharesChange: number | null;
+  totalInvested: number | null;             // 13F 机构合计市值（USD）
+  ownershipPercent: number | null;          // 13F 机构合计占股本 %
+  ownershipPercentChange: number | null;
+  newPositions: number | null;              // 新进
+  increasedPositions: number | null;        // 加仓
+  closedPositions: number | null;           // 清仓
+  reducedPositions: number | null;          // 减仓
+}
+
+export interface Inst13FHolder {
+  investorName: string;
+  cik: string | null;
+  sharesNumber: number | null;
+  lastSharesNumber: number | null;
+  changeInSharesNumber: number | null;
+  changeInSharesNumberPercentage: number | null;
+  ownership: number | null;                 // 占该股本 %
+  weight: number | null;                    // 占该机构组合 %
+  isNew: boolean | null;
+  isSoldOut: boolean | null;
+  holdingPeriod: number | null;             // 持有季度数
+  firstAdded: string | null;                // 首次买入日期
+}
+
+export interface Inst13F {
+  summary: Inst13FSummary;
+  topHolders: Inst13FHolder[];
+}
+
 // === 高层封装 ===
 
 export async function getProfile(ticker: string): Promise<FMPProfile | null> {

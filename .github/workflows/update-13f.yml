@@ -1,0 +1,49 @@
+name: 自动刷新 13F 机构持仓数据
+
+on:
+  schedule:
+    # 每周一早上 6:30 UTC（13F 季度才更新一次，每周拉一次足够）
+    - cron: '30 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 拉取 FMP 13F 数据
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python3 scripts/fetch_13f.py
+
+      - name: 检查变化
+        id: check
+        run: |
+          if git diff --quiet data/13f.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "无变化，跳过"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "检测到 13F 数据变化"
+          fi
+
+      - name: 提交变化
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/13f.json
+          git commit -m "自动更新: 13F 机构持仓数据刷新
+
+          Triggered by GitHub Actions (weekly schedule)"
+          git push

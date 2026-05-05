@@ -90,6 +90,8 @@ export interface EdgarFiling {
   primaryDocument: string;
   primaryDocDescription: string;
   size: number;
+  /** 8-K 的 Item 编号（如 "5.02,9.01"），仅对 8-K 存在 */
+  items?: string;
 }
 
 export interface InsiderTrade {
@@ -97,6 +99,44 @@ export interface InsiderTrade {
   accessionNumber: string;
   insiderName: string;       // 暂时用 filer name 占位
   url: string;               // 跳转到 EDGAR 详情
+}
+
+/** 8-K Item 编号 → 中文标签（覆盖最常见的 30 个）*/
+export const EIGHTK_ITEM_LABELS: Record<string, string> = {
+  "1.01": "签订重大合同",
+  "1.02": "终止重大合同",
+  "1.03": "破产或托管",
+  "2.01": "完成收购或资产处置",
+  "2.02": "业绩公告",
+  "2.03": "新增重大债务",
+  "2.04": "触发债务加速到期",
+  "2.05": "重组承诺",
+  "2.06": "重大资产减值",
+  "3.01": "退市通知",
+  "3.02": "未注册股票发行",
+  "3.03": "股东权利变更",
+  "4.01": "更换审计师",
+  "4.02": "财报不可靠",
+  "5.01": "控制权变更",
+  "5.02": "高管/董事变动",
+  "5.03": "章程修订",
+  "5.04": "暂停董事/高管交易",
+  "5.05": "道德准则修订",
+  "5.07": "股东投票结果",
+  "5.08": "股东大会推迟",
+  "6.01": "ABS 信息披露",
+  "7.01": "Reg FD 披露",
+  "8.01": "其他事项",
+  "9.01": "财务报表与附件",
+};
+
+/** 解析 8-K Items 字符串（"5.02,9.01"）为中文标签数组 */
+export function parse8KItems(items?: string): string[] {
+  if (!items) return [];
+  return items
+    .split(",")
+    .map(s => s.trim())
+    .map(code => EIGHTK_ITEM_LABELS[code] || `Item ${code}`);
 }
 
 // === 高层封装 ===

@@ -8,9 +8,9 @@ import Footer from "@/components/Footer";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
-import type { FMPProfile, FMPQuote, FMPIncomeQuarter } from "@/lib/fmp";
+import type { FMPProfile, FMPQuote, FMPIncomeQuarter, Inst13F } from "@/lib/fmp";
 import type { EdgarFiling } from "@/lib/edgar";
-import { filingUrl } from "@/lib/edgar";
+import { filingUrl, parse8KItems } from "@/lib/edgar";
 import {
   formatUSD,
   formatPrice,
@@ -29,9 +29,17 @@ interface Props {
   stock: Stock;
   overview: Overview;
   form4?: EdgarFiling[];
+  form8k?: EdgarFiling[];
+  inst13f?: Inst13F | null;
 }
 
-export default function StockDetailContent({ stock, overview, form4 = [] }: Props) {
+export default function StockDetailContent({
+  stock,
+  overview,
+  form4 = [],
+  form8k = [],
+  inst13f = null,
+}: Props) {
   const { t } = useLocale();
   const { profile, quote, quarters } = overview;
 
@@ -152,7 +160,7 @@ export default function StockDetailContent({ stock, overview, form4 = [] }: Prop
           </Section>
         )}
 
-        {/* 9 大功能区块 — 全部"敬请期待"占位 */}
+        {/* 9 大功能区块 — 已完成：内部人交易、机构持仓、8-K；其余占位 */}
         <Section icon="🎙️" title={t("财报会议")} subtitle={t("中文全文")} comingSoon>
           <Placeholder text={t("财报会议中文全文摘要正在开发中...")} />
         </Section>
@@ -171,12 +179,30 @@ export default function StockDetailContent({ stock, overview, form4 = [] }: Prop
           )}
         </Section>
 
-        <Section icon="🏛️" title={t("机构持仓")} subtitle="13F" comingSoon>
-          <Placeholder text={t("明星基金的持仓变化追踪...")} />
+        <Section
+          icon="🏛️"
+          title={t("机构持仓")}
+          subtitle={inst13f?.summary?.date ? `13F · ${inst13f.summary.date}` : "13F"}
+        >
+          {inst13f && inst13f.summary?.date ? (
+            <Inst13FBlock data={inst13f} />
+          ) : (
+            <Placeholder text={t("暂无 13F 机构持仓数据")} />
+          )}
         </Section>
 
-        <Section icon="📰" title="8-K" subtitle={t("公司重大事项")} comingSoon>
-          <Placeholder text={t("M&A、CEO 变动、重大合同等 8-K 公告中文化...")} />
+        <Section
+          icon="📰"
+          title="8-K"
+          subtitle={`${t("公司重大事项")} · ${t("最近")} ${form8k.length} ${t("条")}`}
+        >
+          {stock.cik && form8k.length > 0 ? (
+            <Form8KList cik={stock.cik} filings={form8k} />
+          ) : !stock.cik ? (
+            <Placeholder text={t("此股票暂无 SEC CIK 映射")} />
+          ) : (
+            <Placeholder text={t("最近无 8-K 公告")} />
+          )}
         </Section>
 
         <Section icon="🔮" title={t("分析师预期")} subtitle={t("EPS / 营收预期 + Beat 历史")} comingSoon>
@@ -406,6 +432,199 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
       </div>
     </div>
   );
+}
+
+function Form8KList({ cik, filings }: { cik: string; filings: EdgarFiling[] }) {
+  const { t } = useLocale();
+  const sorted = [...filings].sort((a, b) => b.filingDate.localeCompare(a.filingDate));
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+            <th className="text-left py-2 pr-4 font-normal">{t("申报日")}</th>
+            <th className="text-left py-2 pr-4 font-normal">{t("事件")}</th>
+            <th className="text-right py-2 pl-4 font-normal">{t("查看原文")}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sorted.map(f => {
+            const url = filingUrl(cik, f.accessionNumber, f.primaryDocument);
+            const itemLabels = parse8KItems(f.items);
+            return (
+              <tr
+                key={f.accessionNumber}
+                className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition"
+              >
+                <td className="py-3 pr-4 font-medium tabular-nums whitespace-nowrap">{f.filingDate}</td>
+                <td className="py-3 pr-4">
+                  {itemLabels.length > 0 ? (
+                    <div className="flex flex-wrap gap-1.5">
+                      {itemLabels.map((label, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 text-xs bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300 rounded"
+                          title={f.items}
+                        >
+                          {t(label)}
+                        </span>
+                      ))}
+                    </div>
+                  ) : (
+                    <span className="text-slate-400 dark:text-slate-500 text-xs">—</span>
+                  )}
+                </td>
+                <td className="py-3 pl-4 text-right whitespace-nowrap">
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
+                  >
+                    SEC →
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+        {t("8-K 是公司在出现重大事项后 4 个工作日内必须申报的公告（如高管变动、并购、业绩预告等）")}
+      </div>
+    </div>
+  );
+}
+
+function Inst13FBlock({ data }: { data: Inst13F }) {
+  const { t } = useLocale();
+  const { summary, topHolders } = data;
+
+  return (
+    <div className="space-y-4">
+      {/* 聚合统计 */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <Stat
+          label={t("持仓机构")}
+          value={summary.investorsHolding?.toLocaleString() ?? "—"}
+          delta={summary.investorsHoldingChange}
+          isCount
+        />
+        <Stat
+          label={t("13F 持股")}
+          value={summary.numberOf13Fshares ? formatShares(summary.numberOf13Fshares) : "—"}
+          subtitle={summary.ownershipPercent ? `${summary.ownershipPercent.toFixed(1)}% ${t("流通股")}` : undefined}
+        />
+        <Stat
+          label={t("新进")}
+          value={summary.newPositions?.toLocaleString() ?? "—"}
+          isCount
+          colorOverride={summary.newPositions ? "text-emerald-600 dark:text-emerald-400" : undefined}
+        />
+        <Stat
+          label={t("清仓")}
+          value={summary.closedPositions?.toLocaleString() ?? "—"}
+          isCount
+          colorOverride={summary.closedPositions ? "text-red-600 dark:text-red-400" : undefined}
+        />
+      </div>
+
+      {/* Top 10 表 */}
+      {topHolders.length > 0 && (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+                <th className="text-left py-2 pr-3 font-normal">#</th>
+                <th className="text-left py-2 pr-3 font-normal">{t("机构")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("持股数")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("占股本")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("季度变化")}</th>
+                <th className="text-right py-2 pl-3 font-normal">{t("已持")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topHolders.map((h, idx) => (
+                <tr
+                  key={h.cik || h.investorName}
+                  className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition"
+                >
+                  <td className="py-3 pr-3 text-slate-500 dark:text-slate-400 tabular-nums">{idx + 1}</td>
+                  <td className="py-3 pr-3 font-medium">
+                    {h.investorName}
+                    {h.isNew && (
+                      <span className="ml-2 px-1.5 py-0.5 text-xs bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300 rounded">
+                        {t("新进")}
+                      </span>
+                    )}
+                  </td>
+                  <td className="py-3 px-3 text-right tabular-nums">
+                    {h.sharesNumber ? formatShares(h.sharesNumber) : "—"}
+                  </td>
+                  <td className="py-3 px-3 text-right tabular-nums">
+                    {h.ownership != null ? `${h.ownership.toFixed(2)}%` : "—"}
+                  </td>
+                  <td className="py-3 px-3 text-right tabular-nums">
+                    {h.changeInSharesNumberPercentage != null ? (
+                      <span className={colorClass(h.changeInSharesNumberPercentage)}>
+                        {formatPercent(h.changeInSharesNumberPercentage)}
+                      </span>
+                    ) : "—"}
+                  </td>
+                  <td className="py-3 pl-3 text-right text-xs text-slate-500 dark:text-slate-400 tabular-nums whitespace-nowrap">
+                    {h.holdingPeriod ? `${h.holdingPeriod} ${t("季")}` : "—"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+            {t("13F 由管理资产 ≥1 亿美元的机构每季度申报，截止后 45 天内披露。本表按持股占比排序")}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Stat({
+  label,
+  value,
+  subtitle,
+  delta,
+  isCount,
+  colorOverride,
+}: {
+  label: string;
+  value: string;
+  subtitle?: string;
+  delta?: number | null;
+  isCount?: boolean;
+  colorOverride?: string;
+}) {
+  return (
+    <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+      <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">{label}</div>
+      <div className={`text-lg font-semibold ${colorOverride || ""}`}>{value}</div>
+      {delta != null && delta !== 0 && (
+        <div className={`text-xs mt-0.5 ${colorClass(delta)}`}>
+          {delta > 0 ? "+" : ""}
+          {isCount ? delta.toLocaleString() : delta.toFixed(2)}
+        </div>
+      )}
+      {subtitle && (
+        <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{subtitle}</div>
+      )}
+    </div>
+  );
+}
+
+function formatShares(n: number): string {
+  if (n >= 1e9) return `${(n / 1e9).toFixed(2)}B`;
+  if (n >= 1e6) return `${(n / 1e6).toFixed(1)}M`;
+  if (n >= 1e3) return `${(n / 1e3).toFixed(0)}K`;
+  return n.toLocaleString();
 }
 
 function formatVolume(volume: number | undefined): string {

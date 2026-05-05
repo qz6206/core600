@@ -2,9 +2,11 @@ import { notFound } from "next/navigation";
 import { getStockOverview } from "@/lib/fmp";
 import StockDetailContent from "@/components/StockDetailContent";
 import stocksData from "../../../../data/stocks.json";
-import form4Data from "../../../../data/form4.json";
+import edgarData from "../../../../data/edgar_filings.json";
+import inst13fData from "../../../../data/13f.json";
 import type { StockData } from "@/lib/types";
 import type { EdgarFiling } from "@/lib/edgar";
+import type { Inst13F } from "@/lib/fmp";
 
 // 动态路由参数类型（Next.js 16）
 type Params = Promise<{ ticker: string }>;
@@ -35,6 +37,14 @@ export async function generateStaticParams() {
   return data.stocks.map(s => ({ ticker: s.ticker }));
 }
 
+// 类型化的静态数据访问器
+type EdgarFilingsByTicker = {
+  by_ticker: Record<string, { form4: EdgarFiling[]; form8k: EdgarFiling[] }>;
+};
+type Inst13FByTicker = {
+  by_ticker: Record<string, Inst13F>;
+};
+
 export default async function StockDetailPage({ params }: { params: Params }) {
   const { ticker } = await params;
   const upper = ticker.toUpperCase();
@@ -49,9 +59,20 @@ export default async function StockDetailPage({ params }: { params: Params }) {
   // FMP 数据实时拉（30 分钟 ISR）
   const overview = await getStockOverview(upper);
 
-  // EDGAR Form 4 改用预拉取的静态数据（构建时无 SEC API 调用，避免限流）
-  // 数据来源：scripts/fetch_form4.py（建议每 6 小时跑一次）
-  const form4 = ((form4Data as { by_ticker: Record<string, EdgarFiling[]> }).by_ticker[upper]) || [];
+  // 静态预拉数据（构建瞬间完成，无 API 调用）
+  // 数据源：scripts/fetch_edgar.py（每 6 小时）+ scripts/fetch_13f.py（每周）
+  const edgarFilings = (edgarData as EdgarFilingsByTicker).by_ticker[upper];
+  const form4 = edgarFilings?.form4 || [];
+  const form8k = edgarFilings?.form8k || [];
+  const inst13f = (inst13fData as Inst13FByTicker).by_ticker[upper] || null;
 
-  return <StockDetailContent stock={stock} overview={overview} form4={form4} />;
+  return (
+    <StockDetailContent
+      stock={stock}
+      overview={overview}
+      form4={form4}
+      form8k={form8k}
+      inst13f={inst13f}
+    />
+  );
 }

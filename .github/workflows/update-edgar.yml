@@ -1,0 +1,47 @@
+name: 自动刷新 EDGAR (Form 4 + 8-K) 数据
+
+on:
+  schedule:
+    # 每 6 小时跑一次（00:15 / 06:15 / 12:15 / 18:15 UTC）
+    - cron: '15 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 拉取 SEC EDGAR 数据 (Form 4 + 8-K)
+        run: python3 scripts/fetch_edgar.py
+
+      - name: 检查变化
+        id: check
+        run: |
+          if git diff --quiet data/edgar_filings.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "无变化，跳过"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "检测到 EDGAR 数据变化"
+          fi
+
+      - name: 提交变化
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/edgar_filings.json
+          git commit -m "自动更新: EDGAR 数据刷新（Form 4 + 8-K）
+
+          Triggered by GitHub Actions (6h schedule)"
+          git push
