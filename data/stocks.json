@@ -37,7 +37,7 @@
       "industry": "Hotels, Resorts & Cruise Lines",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Airbnb"
+      "name_cn": "爱彼迎"
     },
     {
       "ticker": "ABT",
@@ -55,7 +55,7 @@
       "industry": "Property & Casualty Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "雅阁资本"
+      "name_cn": "阿奇资本"
     },
     {
       "ticker": "ACN",
@@ -73,7 +73,7 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Adobe"
+      "name_cn": "奥多比"
     },
     {
       "ticker": "ADI",
@@ -145,7 +145,7 @@
       "industry": "Life & Health Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "大都会人寿"
+      "name_cn": "阿弗拉克"
     },
     {
       "ticker": "AIG",
@@ -163,7 +163,7 @@
       "industry": "Multi-line Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "安盛"
+      "name_cn": "阿苏兰特"
     },
     {
       "ticker": "AJG",
@@ -172,7 +172,7 @@
       "industry": "Insurance Brokers",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "高尔文"
+      "name_cn": "亚瑟加拉格尔"
     },
     {
       "ticker": "AKAM",
@@ -199,7 +199,7 @@
       "industry": "Health Care Supplies",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "奥对齐科技"
+      "name_cn": "爱齐科技"
     },
     {
       "ticker": "ALL",
@@ -208,7 +208,7 @@
       "industry": "Property & Casualty Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "安盛保险"
+      "name_cn": "好事达保险"
     },
     {
       "ticker": "ALLE",
@@ -217,7 +217,7 @@
       "industry": "Building Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "奥雷根"
+      "name_cn": "安朗杰"
     },
     {
       "ticker": "ALNY",
@@ -487,7 +487,7 @@
       "industry": "Automotive Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "奥托-zone"
+      "name_cn": "汽车地带"
     },
     {
       "ticker": "BA",
@@ -595,7 +595,7 @@
       "industry": "Hotels, Resorts & Cruise Lines",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Booking Holdings"
+      "name_cn": "Booking 控股"
     },
     {
       "ticker": "BKR",
@@ -712,7 +712,7 @@
       "industry": "Health Care Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "卡尔蔡斯健康"
+      "name_cn": "卡地纳健康"
     },
     {
       "ticker": "CARR",
@@ -802,7 +802,7 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Cadence"
+      "name_cn": "楷登电子"
     },
     {
       "ticker": "CDW",
@@ -847,7 +847,7 @@
       "industry": "Household Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Church & Dwight"
+      "name_cn": "丘奇德怀特"
     },
     {
       "ticker": "CHRW",
@@ -883,7 +883,7 @@
       "industry": "Communications Equipment",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Ciena"
+      "name_cn": "锡耶纳"
     },
     {
       "ticker": "CINF",
@@ -910,7 +910,7 @@
       "industry": "Household Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "漂白水"
+      "name_cn": "高乐氏"
     },
     {
       "ticker": "CMCSA",
@@ -937,7 +937,7 @@
       "industry": "Restaurants",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "墨式烧烤"
+      "name_cn": "Chipotle"
     },
     {
       "ticker": "CMI",
@@ -1090,7 +1090,7 @@
       "industry": "Life Sciences Tools & Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Charles River实验室"
+      "name_cn": "查尔斯河实验室"
     },
     {
       "ticker": "CRM",
@@ -1099,7 +1099,7 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Salesforce"
+      "name_cn": "赛富时"
     },
     {
       "ticker": "CRWD",
@@ -1189,7 +1189,7 @@
       "industry": "Health Care Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "CVS Health"
+      "name_cn": "CVS 健康"
     },
     {
       "ticker": "CVX",
@@ -1207,7 +1207,7 @@
       "industry": "Multi-Utilities",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "杜克能源"
+      "name_cn": "道明尼能源"
     },
     {
       "ticker": "DAL",
@@ -1279,7 +1279,7 @@
       "industry": "Consumer Staples Merchandise Retail",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "美元通用"
+      "name_cn": "达乐公司"
     },
     {
       "ticker": "DGX",
@@ -1450,7 +1450,7 @@
       "industry": "Specialty Chemicals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "艾柯实验室"
+      "name_cn": "艺康"
     },
     {
       "ticker": "ED",
@@ -1468,7 +1468,7 @@
       "industry": "Research & Consulting Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "益百利"
+      "name_cn": "艾可菲"
     },
     {
       "ticker": "EG",
@@ -1504,7 +1504,7 @@
       "industry": "Managed Health Care",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "埃莱夫汉斯"
+      "name_cn": "Elevance Health"
     },
     {
       "ticker": "EME",
@@ -1576,7 +1576,7 @@
       "industry": "Insurance Brokers",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "埃里赔偿"
+      "name_cn": "伊利保险"
     },
     {
       "ticker": "ES",
@@ -1639,7 +1639,7 @@
       "industry": "Electric Utilities",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "埃克森"
+      "name_cn": "爱克斯龙"
     },
     {
       "ticker": "EXE",
@@ -1657,7 +1657,7 @@
       "industry": "Air Freight & Logistics",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "EXPEDITORS国际"
+      "name_cn": "康捷国际物流"
     },
     {
       "ticker": "EXPE",
@@ -1693,7 +1693,7 @@
       "industry": "Oil & Gas Exploration & Production",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "钻石回音能源"
+      "name_cn": "响尾蛇能源"
     },
     {
       "ticker": "FAST",
@@ -1774,7 +1774,7 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Fidelity国民信息服务"
+      "name_cn": "富达国民信息服务"
     },
     {
       "ticker": "FISV",
@@ -1783,7 +1783,7 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Fiserv"
+      "name_cn": "费哲"
     },
     {
       "ticker": "FITB",
@@ -1792,7 +1792,7 @@
       "industry": "Regional Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "第五第三"
+      "name_cn": "Fifth Third 银行"
     },
     {
       "ticker": "FIX",
@@ -1846,7 +1846,7 @@
       "industry": "Systems Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Fortinet"
+      "name_cn": "飞塔"
     },
     {
       "ticker": "FTV",
@@ -1882,7 +1882,7 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "通用电气"
+      "name_cn": "GE 航空航天"
     },
     {
       "ticker": "GEHC",
@@ -1972,7 +1972,7 @@
       "industry": "Interactive Media & Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Alphabet（C 类）"
+      "name_cn": "谷歌（C 类）"
     },
     {
       "ticker": "GOOGL",
@@ -1981,7 +1981,7 @@
       "industry": "Interactive Media & Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Alphabet（A 类）"
+      "name_cn": "谷歌（A 类）"
     },
     {
       "ticker": "GPC",
@@ -2026,7 +2026,7 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "固瑞克"
+      "name_cn": "固安捷"
     },
     {
       "ticker": "HAL",
@@ -2152,7 +2152,7 @@
       "industry": "Health Care Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "森斯凯因"
+      "name_cn": "亨利香恩"
     },
     {
       "ticker": "HST",
@@ -2188,7 +2188,7 @@
       "industry": "Managed Health Care",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "联合健康"
+      "name_cn": "哈门那"
     },
     {
       "ticker": "HWM",
@@ -2251,7 +2251,7 @@
       "industry": "Specialty Chemicals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "奇华顿"
+      "name_cn": "国际香精香料"
     },
     {
       "ticker": "INCY",
@@ -2287,7 +2287,7 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Intuit"
+      "name_cn": "财捷"
     },
     {
       "ticker": "INVH",
@@ -2359,7 +2359,7 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "伊藤忠"
+      "name_cn": "伊利诺伊工具制品"
     },
     {
       "ticker": "IVZ",
@@ -2440,7 +2440,7 @@
       "industry": "Soft Drinks & Non-alcoholic Beverages",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "可儿"
+      "name_cn": "Keurig Dr Pepper"
     },
     {
       "ticker": "KEY",
@@ -2539,7 +2539,7 @@
       "industry": "Personal Care Products",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "可悠然"
+      "name_cn": "科赴"
     },
     {
       "ticker": "L",
@@ -2548,7 +2548,7 @@
       "industry": "Multi-line Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "洛克韦尔"
+      "name_cn": "洛斯公司"
     },
     {
       "ticker": "LDOS",
@@ -2575,7 +2575,7 @@
       "industry": "Health Care Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "实验室合作公司"
+      "name_cn": "Labcorp"
     },
     {
       "ticker": "LHX",
@@ -2584,7 +2584,7 @@
       "industry": "Aerospace & Defense",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "莱多斯"
+      "name_cn": "L3哈里斯"
     },
     {
       "ticker": "LII",
@@ -2683,7 +2683,7 @@
       "industry": "Casinos & Gaming",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "美高梅国际酒店"
+      "name_cn": "拉斯维加斯金沙"
     },
     {
       "ticker": "LYB",
@@ -2764,7 +2764,7 @@
       "industry": "Health Care Distributors",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "美凯索"
+      "name_cn": "麦克森"
     },
     {
       "ticker": "MCO",
@@ -2800,7 +2800,7 @@
       "industry": "Internet Retail",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "MercadoLibre"
+      "name_cn": "美客多"
     },
     {
       "ticker": "MET",
@@ -2917,7 +2917,7 @@
       "industry": "Biotechnology",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Moderna"
+      "name_cn": "莫德纳"
     },
     {
       "ticker": "MRSH",
@@ -2926,7 +2926,7 @@
       "industry": "Insurance Brokers",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Marsh McLennan"
+      "name_cn": "达信"
     },
     {
       "ticker": "MRVL",
@@ -3277,7 +3277,7 @@
       "industry": "Systems Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Palo Alto Networks"
+      "name_cn": "帕洛阿尔托网络"
     },
     {
       "ticker": "PAYX",
@@ -3313,7 +3313,7 @@
       "industry": "Internet Retail",
       "in_sp500": false,
       "in_nasdaq100": true,
-      "name_cn": "拼多多控股"
+      "name_cn": "拼多多"
     },
     {
       "ticker": "PEG",
@@ -3349,7 +3349,7 @@
       "industry": "Life & Health Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Principal金融"
+      "name_cn": "信安金融"
     },
     {
       "ticker": "PG",
@@ -3412,7 +3412,7 @@
       "industry": "Application Software",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Palantir"
+      "name_cn": "帕兰提尔"
     },
     {
       "ticker": "PM",
@@ -3493,7 +3493,7 @@
       "industry": "Life & Health Insurance",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "大都会人寿"
+      "name_cn": "保德信金融"
     },
     {
       "ticker": "PSA",
@@ -3547,7 +3547,7 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "PayPal"
+      "name_cn": "贝宝"
     },
     {
       "ticker": "Q",
@@ -3745,7 +3745,7 @@
       "industry": "Specialty Chemicals",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "盛威士"
+      "name_cn": "宣伟"
     },
     {
       "ticker": "SJM",
@@ -3754,7 +3754,7 @@
       "industry": "Packaged Foods & Meats",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "SMUCKER"
+      "name_cn": "斯马克"
     },
     {
       "ticker": "SLB",
@@ -3781,7 +3781,7 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "SNAP-ON"
+      "name_cn": "实耐宝"
     },
     {
       "ticker": "SNDK",
@@ -3817,7 +3817,7 @@
       "industry": "Health Care Technology",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "溶剂姆"
+      "name_cn": "索尔文腾"
     },
     {
       "ticker": "SPG",
@@ -3952,7 +3952,7 @@
       "industry": "Integrated Telecommunication Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "AT&T"
+      "name_cn": "美国电话电报"
     },
     {
       "ticker": "TAP",
@@ -3988,7 +3988,7 @@
       "industry": "Life Sciences Tools & Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "生物技术"
+      "name_cn": "Bio-Techne"
     },
     {
       "ticker": "TEL",
@@ -4015,7 +4015,7 @@
       "industry": "Diversified Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "特里斯特金融"
+      "name_cn": "Truist 金融"
     },
     {
       "ticker": "TGT",
@@ -4078,7 +4078,7 @@
       "industry": "Apparel, Accessories & Luxury Goods",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "贴波瑞"
+      "name_cn": "泰佩思琦"
     },
     {
       "ticker": "TRGP",
@@ -4114,7 +4114,7 @@
       "industry": "Asset Management & Custody Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "特雷沃价格"
+      "name_cn": "普信集团"
     },
     {
       "ticker": "TRV",
@@ -4177,7 +4177,7 @@
       "industry": "Interactive Home Entertainment",
       "in_sp500": true,
       "in_nasdaq100": true,
-      "name_cn": "Take-Two"
+      "name_cn": "Take-Two 互动"
     },
     {
       "ticker": "TXN",
@@ -4276,7 +4276,7 @@
       "industry": "Air Freight & Logistics",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "UPS"
+      "name_cn": "联合包裹"
     },
     {
       "ticker": "URI",
@@ -4294,7 +4294,7 @@
       "industry": "Diversified Banks",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "美国银行家"
+      "name_cn": "美国合众银行"
     },
     {
       "ticker": "V",
@@ -4303,7 +4303,7 @@
       "industry": "Transaction & Payment Processing Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Visa"
+      "name_cn": "维萨"
     },
     {
       "ticker": "VICI",
@@ -4411,7 +4411,7 @@
       "industry": "Integrated Telecommunication Services",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "Verizon"
+      "name_cn": "威瑞森"
     },
     {
       "ticker": "WAB",
@@ -4546,7 +4546,7 @@
       "industry": "Insurance Brokers",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "威达信塔楼 Watson"
+      "name_cn": "韦莱韬悦"
     },
     {
       "ticker": "WY",
@@ -4591,7 +4591,7 @@
       "industry": "Industrial Machinery & Supplies & Components",
       "in_sp500": true,
       "in_nasdaq100": false,
-      "name_cn": "赛莱姆"
+      "name_cn": "赛莱默"
     },
     {
       "ticker": "XYZ",
