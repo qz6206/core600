@@ -182,6 +182,35 @@ export interface FMPExtras {
   ratings: RatingChange[];
 }
 
+// === 期权异动 (Polygon) 类型 ===
+
+export interface OptionsContract {
+  ticker: string | null;        // OCC 合约代码（如 O:AAPL260506C00200000）
+  type: "call" | "put" | null;
+  strike: number | null;
+  exp: string | null;            // 到期日 YYYY-MM-DD
+  vol: number | null;            // 今日成交量
+  oi: number | null;             // 未平仓量
+  vol_oi_ratio: number | null;   // vol/oi，>2 通常视为异动
+  iv: number | null;             // 隐波（小数，如 0.27 = 27%）
+  delta: number | null;
+  last_price: number | null;
+  change_pct: number | null;     // 今日涨跌 %
+}
+
+export interface OptionsActivity {
+  spot: number | null;           // 标的现价（前一交易日收盘）
+  atm_iv: number | null;         // ATM IV (DTE 14-45, OI≥100, 中位数)
+  atm_iv_count: number | null;   // 计算 ATM IV 用了多少个候选合约
+  total_vol: number | null;      // 今日全部合约总成交量
+  call_vol: number | null;
+  put_vol: number | null;
+  put_call_ratio: number | null; // put_vol / call_vol，>1 看跌
+  top_contracts: OptionsContract[];  // 今日成交量 Top 10
+  active_count: number | null;   // 今日有交易的合约数
+  total_chain_count: number | null;
+}
+
 // === 高层封装 ===
 
 export async function getProfile(ticker: string): Promise<FMPProfile | null> {

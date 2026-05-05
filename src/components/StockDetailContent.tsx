@@ -19,6 +19,8 @@ import type {
   CashFlowQuarter,
   ShareCountQuarter,
   RatingChange,
+  OptionsActivity,
+  OptionsContract,
 } from "@/lib/fmp";
 import type { EdgarFiling } from "@/lib/edgar";
 import { filingUrl, parse8KItems } from "@/lib/edgar";
@@ -43,6 +45,7 @@ interface Props {
   form8k?: EdgarFiling[];
   inst13f?: Inst13F | null;
   fmpExtras?: FMPExtras | null;
+  options?: OptionsActivity | null;
 }
 
 export default function StockDetailContent({
@@ -52,6 +55,7 @@ export default function StockDetailContent({
   form8k = [],
   inst13f = null,
   fmpExtras = null,
+  options = null,
 }: Props) {
   const { t } = useLocale();
   const { profile, quote, quarters } = overview;
@@ -230,8 +234,22 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        <Section icon="🎯" title={t("期权异动")} subtitle={t("聪明钱大单监控")} comingSoon>
-          <Placeholder text={t("异常成交量的期权合约 + IV / Greeks 数据...")} />
+        <Section
+          icon="🎯"
+          title={t("期权异动")}
+          subtitle={
+            options?.atm_iv != null
+              ? `ATM IV ${(options.atm_iv * 100).toFixed(1)}% · P/C ${
+                  options.put_call_ratio != null ? options.put_call_ratio.toFixed(2) : "—"
+                }`
+              : t("聪明钱大单监控")
+          }
+        >
+          {options && options.top_contracts.length > 0 ? (
+            <OptionsActivityBlock data={options} />
+          ) : (
+            <Placeholder text={t("暂无期权异动数据")} />
+          )}
         </Section>
 
         <Section icon="📉" title={t("股本动态")} subtitle={t("摊薄股数 + 回购 + SBC 稀释")}>
@@ -648,6 +666,156 @@ function Stat({
       )}
       {subtitle && (
         <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{subtitle}</div>
+      )}
+    </div>
+  );
+}
+
+// ====== 期权异动 ======
+
+function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
+  const { t } = useLocale();
+  const { spot, atm_iv, atm_iv_count, total_vol, call_vol, put_vol, put_call_ratio, top_contracts } = data;
+
+  const today = new Date().toISOString().slice(0, 10);
+  const dteFor = (exp: string | null): number | null => {
+    if (!exp) return null;
+    const expDate = new Date(exp + "T00:00:00Z");
+    const todayDate = new Date(today + "T00:00:00Z");
+    return Math.round((expDate.getTime() - todayDate.getTime()) / 86400000);
+  };
+
+  return (
+    <div className="space-y-4">
+      {/* 顶部 4 格 */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <Stat
+          label="ATM IV"
+          value={atm_iv != null ? `${(atm_iv * 100).toFixed(1)}%` : "—"}
+          subtitle={atm_iv_count ? `${atm_iv_count} ${t("个候选")}` : undefined}
+        />
+        <Stat
+          label={t("Put/Call 量比")}
+          value={put_call_ratio != null ? put_call_ratio.toFixed(2) : "—"}
+          subtitle={put_call_ratio != null ? (put_call_ratio < 0.7 ? t("看涨") : put_call_ratio > 1.0 ? t("看跌") : t("中性")) : undefined}
+          colorOverride={
+            put_call_ratio == null
+              ? undefined
+              : put_call_ratio < 0.7
+              ? "text-emerald-600 dark:text-emerald-400"
+              : put_call_ratio > 1.0
+              ? "text-red-600 dark:text-red-400"
+              : undefined
+          }
+        />
+        <Stat
+          label={t("今日总成交")}
+          value={total_vol != null ? formatShares(total_vol) : "—"}
+          subtitle={`Call ${call_vol != null ? formatShares(call_vol) : "—"} / Put ${put_vol != null ? formatShares(put_vol) : "—"}`}
+        />
+        <Stat
+          label={t("现价")}
+          value={spot != null ? `$${spot.toFixed(2)}` : "—"}
+          subtitle={t("前一交易日收盘")}
+        />
+      </div>
+
+      {/* Top 10 合约表 */}
+      {top_contracts.length > 0 && (
+        <div className="overflow-x-auto">
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+            {t("今日成交量 Top 10 合约")}
+          </div>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+                <th className="text-left py-2 pr-3 font-normal">{t("方向")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("行权价")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("到期")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("DTE")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("成交量")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("未平仓")}</th>
+                <th className="text-right py-2 px-3 font-normal">vol/OI</th>
+                <th className="text-right py-2 px-3 font-normal">IV</th>
+                <th className="text-right py-2 pl-3 font-normal">{t("涨跌")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {top_contracts.map(c => {
+                const dte = dteFor(c.exp);
+                const isUnusual = c.vol_oi_ratio != null && c.vol_oi_ratio >= 2;
+                const itm =
+                  spot != null && c.strike != null && c.type
+                    ? c.type === "call"
+                      ? spot > c.strike
+                      : spot < c.strike
+                    : false;
+                return (
+                  <tr
+                    key={c.ticker}
+                    className={`border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition ${
+                      isUnusual ? "bg-amber-50/40 dark:bg-amber-500/5" : ""
+                    }`}
+                  >
+                    <td className="py-2 pr-3">
+                      <span
+                        className={`px-1.5 py-0.5 text-xs rounded font-medium ${
+                          c.type === "call"
+                            ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
+                            : "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300"
+                        }`}
+                      >
+                        {c.type === "call" ? "Call" : "Put"}
+                      </span>
+                      {itm && (
+                        <span className="ml-1 px-1 py-0.5 text-[10px] bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 rounded">
+                          ITM
+                        </span>
+                      )}
+                    </td>
+                    <td className="py-2 px-3 text-right tabular-nums font-medium">
+                      {c.strike != null ? `$${c.strike}` : "—"}
+                    </td>
+                    <td className="py-2 px-3 text-right text-xs text-slate-500 dark:text-slate-400 tabular-nums whitespace-nowrap">
+                      {c.exp || "—"}
+                    </td>
+                    <td className="py-2 px-3 text-right text-xs text-slate-500 dark:text-slate-400 tabular-nums">
+                      {dte != null ? `${dte}d` : "—"}
+                    </td>
+                    <td className="py-2 px-3 text-right tabular-nums">
+                      {c.vol != null ? c.vol.toLocaleString() : "—"}
+                    </td>
+                    <td className="py-2 px-3 text-right text-xs text-slate-500 dark:text-slate-400 tabular-nums">
+                      {c.oi != null ? c.oi.toLocaleString() : "—"}
+                    </td>
+                    <td
+                      className={`py-2 px-3 text-right tabular-nums ${
+                        isUnusual ? "font-semibold text-amber-700 dark:text-amber-400" : ""
+                      }`}
+                    >
+                      {c.vol_oi_ratio != null ? c.vol_oi_ratio.toFixed(2) : "—"}
+                    </td>
+                    <td className="py-2 px-3 text-right text-xs text-slate-500 dark:text-slate-400 tabular-nums">
+                      {c.iv != null ? `${(c.iv * 100).toFixed(0)}%` : "—"}
+                    </td>
+                    <td className="py-2 pl-3 text-right tabular-nums">
+                      {c.change_pct != null ? (
+                        <span className={colorClass(c.change_pct)}>
+                          {formatPercent(c.change_pct)}
+                        </span>
+                      ) : "—"}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+            {t("vol/OI ≥ 2 标橙底 = 当日成交量超过历史未平仓量 2 倍，属异动")} ·{" "}
+            {t("ATM IV 已过滤 OI<100 + 异常值（防 stale 数据）")} ·{" "}
+            {t("Polygon 数据延迟 15 分钟")}
+          </div>
+        </div>
       )}
     </div>
   );

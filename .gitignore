@@ -50,3 +50,4 @@ next-env.d.ts
 # 数据校验中间产物
 /data/_verify_report.txt
 /data/_changes.txt
+__pycache__/
