@@ -150,22 +150,44 @@ def translate_transcript(ticker: str, name: str, content: str) -> str | None:
     return None
 
 
-def process_one(stock: dict) -> tuple[str, dict | None]:
+def process_one(stock: dict, existing: dict | None = None) -> tuple[str, dict | None, str]:
+    """
+    返回 (ticker, data, reason):
+      reason: 'translated' | 'reused' | 'no_transcript' | 'failed'
+    """
     ticker = stock["ticker"]
     name = stock.get("name") or ticker
     transcript = fetch_latest_transcript(ticker)
     if not transcript:
-        return ticker, None
+        # 保留 existing 已有的 transcript (如 BRK-B 的年度致股东信，FMP 没收录但我们手工放过)
+        if existing:
+            prev = existing.get(ticker)
+            if prev and prev.get("content_cn"):
+                return ticker, prev, "reused"
+        return ticker, None, "no_transcript"
+
+    # 增量优化: 如果 existing 已是同样的 year+quarter，直接复用（不浪费 Kimi 成本）
+    if existing:
+        prev = existing.get(ticker)
+        if (
+            prev
+            and prev.get("year") == transcript["year"]
+            and prev.get("quarter") == transcript["quarter"]
+            and prev.get("content_cn")
+        ):
+            # 完整保留旧记录（含 source_label/source_url 等可选字段）
+            return ticker, prev, "reused"
+
     cn = translate_transcript(ticker, name, transcript["content"])
     if not cn:
-        return ticker, {"failed_translation": True, **transcript}
+        return ticker, {"failed_translation": True, **transcript}, "failed"
     return ticker, {
         "year": transcript["year"],
         "quarter": transcript["quarter"],
         "date": transcript["date"],
         "content_cn": cn,
         "content_en_chars": len(transcript["content"]),
-    }
+    }, "translated"
 
 
 def main():
@@ -175,21 +197,31 @@ def main():
         stocks = json.load(f)["stocks"]
     total = len(stocks)
     print(f"   ✓ {total} 只股票", flush=True)
-    print(f"   🧵 {NUM_WORKERS} 线程并行调 Kimi K2.5", flush=True)
-    print(f"   💰 预计成本 ¥60-80，耗时 ~60-100 min\n", flush=True)
 
-    by_ticker = {}
+    # 加载已有 transcripts (用于增量复用)
+    existing_data: dict | None = None
+    if OUTPUT_JSON.exists():
+        with open(OUTPUT_JSON) as f:
+            existing_data = json.load(f).get("by_ticker", {})
+        print(f"   📂 已有 transcripts: {len(existing_data)} 只 (相同 fiscal 季的将复用，不浪费 Kimi 成本)", flush=True)
+
+    print(f"   🧵 {NUM_WORKERS} 线程并行调 Kimi K2.5", flush=True)
+    print(f"   💰 增量模式：仅翻译新季度，预计 ¥0-30\n", flush=True)
+
+    by_ticker: dict = {}
     failed_fetch = []
     failed_translate = []
+    reused_count = 0
+    translated_count = 0
     completed = 0
 
     with ThreadPoolExecutor(max_workers=NUM_WORKERS) as pool:
-        futures = {pool.submit(process_one, s): s["ticker"] for s in stocks}
+        futures = {pool.submit(process_one, s, existing_data): s["ticker"] for s in stocks}
         for fut in as_completed(futures):
             completed += 1
             ticker = futures[fut]
             try:
-                _, data = fut.result()
+                _, data, reason = fut.result()
             except Exception as e:
                 print(f"[{completed}/{total}] {ticker}: 异常 {e}", flush=True)
                 failed_fetch.append(ticker)
@@ -208,9 +240,14 @@ def main():
                 continue
 
             by_ticker[ticker] = data
-            if completed % 25 == 0:
+            if reason == "reused":
+                reused_count += 1
+            elif reason == "translated":
+                translated_count += 1
                 cn_chars = len(data["content_cn"])
-                print(f"[{completed}/{total}] {ticker}: ✓ {data['year']} Q{data['quarter']} 中文 {cn_chars} 字", flush=True)
+                print(f"[{completed}/{total}] {ticker}: ✓ 新译 {data['year']} Q{data['quarter']} 中文 {cn_chars} 字", flush=True)
+            if completed % 50 == 0:
+                print(f"[{completed}/{total}] 进度（复用 {reused_count} / 新译 {translated_count} / 失败 {len(failed_fetch)+len(failed_translate)}）", flush=True)
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

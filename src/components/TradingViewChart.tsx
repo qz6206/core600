@@ -46,7 +46,14 @@ export default function TradingViewChart({
     // 清空旧 widget (主题切换时重新挂载)
     container.innerHTML = "";
 
-    // TradingView 推荐的 embed 方式: 把 config 放在 script 的 innerHTML 里
+    // 1) 先创建 widget 的内嵌 div (TradingView 把图表挂到这里 — 必需)
+    const widgetDiv = document.createElement("div");
+    widgetDiv.className = "tradingview-widget-container__widget";
+    widgetDiv.style.height = "100%";
+    widgetDiv.style.width = "100%";
+    container.appendChild(widgetDiv);
+
+    // 2) 再加 script (TradingView 推荐方式: 把 config 放在 script 的 innerHTML)
     const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
     script.async = true;
@@ -59,24 +66,20 @@ export default function TradingViewChart({
       theme: resolvedTheme === "dark" ? "dark" : "light",
       style: "1",          // 1 = 蜡烛图 (Candles)
       locale: "zh_CN",
-      toolbar_bg: resolvedTheme === "dark" ? "#0f172a" : "#f8fafc",
       enable_publishing: false,
-      allow_symbol_change: false,    // 禁止改 symbol，免得用户切到别的股
-      hide_side_toolbar: false,      // 保留左侧画线工具栏
+      allow_symbol_change: false,
+      hide_side_toolbar: false,
       hide_legend: false,
       hide_top_toolbar: false,
-      withdateranges: true,           // 顶部时间区间快捷按钮 (1D/5D/1M/3M/6M/YTD/1Y/5Y/All)
-      details: false,                 // 不显示右侧 details panel (有冗余)
-      studies: [],                    // 不预加技术指标，让用户自己加
-      backgroundColor: resolvedTheme === "dark" ? "#0f172a00" : "#ffffff00",
-      gridColor: resolvedTheme === "dark" ? "rgba(148, 163, 184, 0.06)" : "rgba(15, 23, 42, 0.06)",
+      withdateranges: true,
+      details: false,
+      studies: [],
       support_host: "https://www.tradingview.com",
     });
 
     container.appendChild(script);
 
     return () => {
-      // cleanup: 移除 widget DOM (避免内存泄漏)
       if (container) container.innerHTML = "";
     };
   }, [ticker, resolvedTheme]);
