@@ -28,7 +28,9 @@ ENV_LOCAL = ROOT / ".env.local"
 
 NUM_WORKERS = 8  # 单次调用 ~145s，独跑时 8 线程不会触发限流（先前 16 撞限流是因为同时跑 description）
 MAX_RETRIES = 3
-KIMI_MODEL = "Pro/moonshotai/Kimi-K2.5"
+# 2026-05-06 切换: Kimi-K2.5 (¥4 in / ¥16 out) → DeepSeek-V3 (¥2 in / ¥8 out)
+# 财报会议 transcript 翻译, 单价砍 50%, 中文质量足够 (DeepSeek 财经领域稳定)
+KIMI_MODEL = "deepseek-ai/DeepSeek-V3"
 KIMI_URL = "https://api.siliconflow.cn/v1/chat/completions"
 
 

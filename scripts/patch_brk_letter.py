@@ -22,7 +22,8 @@ PDF_PATH = "/tmp/brk_2025.pdf"
 TXT_PATH = "/tmp/brk_2025.txt"
 
 KIMI_URL = "https://api.siliconflow.cn/v1/chat/completions"
-KIMI_MODEL = "Pro/moonshotai/Kimi-K2.5"
+# 2026-05-06 切换到 DeepSeek-V3 (¥2 in / ¥8 out, 比 Kimi-K2.5 砍 50%)
+KIMI_MODEL = "deepseek-ai/DeepSeek-V3"
 
 
 def load_sf_key():

@@ -40,7 +40,8 @@ def load_keys():
 
 KEYS = load_keys()
 KIMI_URL = "https://api.siliconflow.cn/v1/chat/completions"
-KIMI_MODEL = "Pro/moonshotai/Kimi-K2.5"
+# 2026-05-06 切换到 DeepSeek-V3 (¥2 in / ¥8 out, 比 Kimi-K2.5 砍 50%)
+KIMI_MODEL = "deepseek-ai/DeepSeek-V3"
 
 with open(STOCKS_JSON) as f:
     STOCKS = {s["ticker"]: s for s in json.load(f)["stocks"]}
