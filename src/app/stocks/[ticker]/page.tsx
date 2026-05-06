@@ -8,9 +8,10 @@ import fmpExtrasData from "../../../../data/fmp_extras.json";
 import optionsData from "../../../../data/options.json";
 import descriptionsCnData from "../../../../data/descriptions_cn.json";
 import transcriptsData from "../../../../data/transcripts.json";
+import interpretationsData from "../../../../data/earnings_interpretations.json";
 import type { StockData } from "@/lib/types";
 import type { EdgarFiling } from "@/lib/edgar";
-import type { Inst13F, FMPExtras, OptionsActivity, TranscriptCN } from "@/lib/fmp";
+import type { Inst13F, FMPExtras, OptionsActivity, TranscriptCN, EarningsInterpretation } from "@/lib/fmp";
 
 // 动态路由参数类型（Next.js 16）
 type Params = Promise<{ ticker: string }>;
@@ -60,6 +61,9 @@ type DescriptionsCNByTicker = {
 type TranscriptsByTicker = {
   by_ticker: Record<string, TranscriptCN>;
 };
+type InterpretationsByTicker = {
+  by_ticker: Record<string, EarningsInterpretation>;
+};
 
 export default async function StockDetailPage({ params }: { params: Params }) {
   const { ticker } = await params;
@@ -86,6 +90,7 @@ export default async function StockDetailPage({ params }: { params: Params }) {
   const options = (optionsData as OptionsByTicker).by_ticker[upper] || null;
   const descriptionCn = (descriptionsCnData as DescriptionsCNByTicker).by_ticker[upper] || null;
   const transcript = (transcriptsData as TranscriptsByTicker).by_ticker[upper] || null;
+  const interpretation = (interpretationsData as InterpretationsByTicker).by_ticker[upper] || null;
 
   return (
     <StockDetailContent
@@ -99,6 +104,7 @@ export default async function StockDetailPage({ params }: { params: Params }) {
       options={options}
       descriptionCn={descriptionCn}
       transcript={transcript}
+      interpretation={interpretation}
     />
   );
 }

@@ -25,6 +25,7 @@ import type {
   OptionsActivity,
   OptionsContract,
   TranscriptCN,
+  EarningsInterpretation,
 } from "@/lib/fmp";
 import type { EdgarFiling } from "@/lib/edgar";
 import { filingUrl, parse8KItems } from "@/lib/edgar";
@@ -53,6 +54,7 @@ interface Props {
   options?: OptionsActivity | null;
   descriptionCn?: string | null;
   transcript?: TranscriptCN | null;
+  interpretation?: EarningsInterpretation | null;
 }
 
 export default function StockDetailContent({
@@ -66,6 +68,7 @@ export default function StockDetailContent({
   options = null,
   descriptionCn = null,
   transcript = null,
+  interpretation = null,
 }: Props) {
   const { t } = useLocale();
   const { profile, quote, quarters } = overview;
@@ -335,9 +338,33 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        <Section icon="📊" title={t("智能评分")} subtitle={t("多维度综合资金评分")} comingSoon>
-          <Placeholder text={t("综合内部人、机构、回购、期权等信号的整体评分...")} />
-        </Section>
+        {interpretation && interpretation.is_recent ? (
+          <Section
+            icon="📝"
+            title={t("财报速评")}
+            subtitleNode={
+              <>
+                {interpretation.fiscal_label} · {interpretation.earnings_date}
+                {interpretation.release_time === "bmo" && ` (${t("盘前")})`}
+                {interpretation.release_time === "amc" && ` (${t("盘后")})`}
+              </>
+            }
+          >
+            <EarningsInterpretationBlock data={interpretation} />
+          </Section>
+        ) : interpretation ? (
+          <Section
+            icon="📝"
+            title={t("财报速评")}
+            subtitleNode={<>{interpretation.fiscal_label} · {interpretation.earnings_date}</>}
+          >
+            <Placeholder text={t("最近一次财报已超 90 天，本节略")} />
+          </Section>
+        ) : (
+          <Section icon="📝" title={t("财报速评")}>
+            <Placeholder text={t("暂无财报速评数据")} />
+          </Section>
+        )}
 
         {/* 公司简介 — 优先中文版（Kimi K2.5 翻译），fallback 英文 */}
         {(descriptionCn || profile?.description) && (
@@ -1860,4 +1887,326 @@ function formatVolume(volume: number | undefined): string {
   if (volume >= 1e6) return `${(volume / 1e6).toFixed(1)}M`;
   if (volume >= 1e3) return `${(volume / 1e3).toFixed(0)}K`;
   return volume.toString();
+}
+
+// ====== 财报速评 ======
+
+function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation }) {
+  const { t } = useLocale();
+  const dc = data.data_card;
+  const mr = data.market_reaction;
+
+  const resultStyles: Record<string, string> = {
+    beat: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300",
+    miss: "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300",
+    mixed: "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300",
+    inline: "bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300",
+  };
+  const resultCN: Record<string, string> = {
+    beat: "超预期",
+    miss: "低于预期",
+    mixed: "好坏参半",
+    inline: "符合预期",
+  };
+
+  return (
+    <div className="space-y-5">
+      {/* 顶部：result + 倾向标签 */}
+      <div className="flex flex-wrap items-center gap-2">
+        <span
+          className={`px-2 py-0.5 text-xs rounded font-medium ${resultStyles[data.result]}`}
+        >
+          {t(resultCN[data.result])}
+        </span>
+        {data.badges.map((b, i) => (
+          <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+        ))}
+      </div>
+
+      {/* 段 1: 一句话标题 */}
+      <div className="text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
+        {data.headline}
+      </div>
+
+      {/* 段 2: 业绩数据卡 */}
+      <div>
+        <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+          {t("业绩数据")}
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+                <th className="text-left py-2 pr-3 font-normal">{t("指标")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("实际")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("预期")}</th>
+                <th className="text-right py-2 px-3 font-normal">{t("差异")}</th>
+                <th className="text-right py-2 pl-3 font-normal">{t("同比")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-slate-100 dark:border-white/5">
+                <td className="py-2 pr-3"><Term term="EPS">EPS</Term></td>
+                <td className="py-2 px-3 text-right tabular-nums font-semibold">
+                  {dc.eps_actual != null ? `$${dc.eps_actual.toFixed(2)}` : "—"}
+                </td>
+                <td className="py-2 px-3 text-right tabular-nums text-slate-500 dark:text-slate-400">
+                  {dc.eps_estimate != null ? `$${dc.eps_estimate.toFixed(2)}` : "—"}
+                </td>
+                <td className="py-2 px-3 text-right tabular-nums">
+                  {dc.eps_surprise_pct != null ? (
+                    <span className={colorClass(dc.eps_surprise_pct)}>
+                      {formatPercent(dc.eps_surprise_pct)}
+                    </span>
+                  ) : "—"}
+                </td>
+                <td className="py-2 pl-3 text-right text-slate-400 dark:text-slate-500">—</td>
+              </tr>
+              <tr className="border-b border-slate-100 dark:border-white/5">
+                <td className="py-2 pr-3">{t("营收")}</td>
+                <td className="py-2 px-3 text-right tabular-nums font-semibold">
+                  {dc.rev_actual != null ? formatUSD(dc.rev_actual) : "—"}
+                </td>
+                <td className="py-2 px-3 text-right tabular-nums text-slate-500 dark:text-slate-400">
+                  {dc.rev_estimate != null ? formatUSD(dc.rev_estimate) : "—"}
+                </td>
+                <td className="py-2 px-3 text-right tabular-nums">
+                  {dc.rev_surprise_pct != null ? (
+                    <span className={colorClass(dc.rev_surprise_pct)}>
+                      {formatPercent(dc.rev_surprise_pct)}
+                    </span>
+                  ) : "—"}
+                </td>
+                <td className="py-2 pl-3 text-right tabular-nums">
+                  {dc.rev_yoy_pct != null ? (
+                    <span className={colorClass(dc.rev_yoy_pct)}>
+                      {formatPercent(dc.rev_yoy_pct)}
+                    </span>
+                  ) : "—"}
+                </td>
+              </tr>
+              <tr className="border-b border-slate-100 dark:border-white/5">
+                <td className="py-2 pr-3">{t("毛利率")}</td>
+                <td className="py-2 px-3 text-right tabular-nums font-semibold">
+                  {dc.gross_margin != null ? `${(dc.gross_margin * 100).toFixed(1)}%` : "—"}
+                </td>
+                <td className="py-2 px-3 text-right text-slate-400 dark:text-slate-500">—</td>
+                <td className="py-2 px-3 text-right text-slate-400 dark:text-slate-500">—</td>
+                <td className="py-2 pl-3 text-right tabular-nums">
+                  {dc.gross_margin_yoy_bps != null ? (
+                    <span className={colorClass(dc.gross_margin_yoy_bps)}>
+                      {dc.gross_margin_yoy_bps > 0 ? "+" : ""}
+                      {dc.gross_margin_yoy_bps.toFixed(0)} bps
+                    </span>
+                  ) : "—"}
+                </td>
+              </tr>
+              <tr>
+                <td className="py-2 pr-3">{t("净利率")}</td>
+                <td className="py-2 px-3 text-right tabular-nums font-semibold">
+                  {dc.net_margin != null ? `${(dc.net_margin * 100).toFixed(1)}%` : "—"}
+                </td>
+                <td className="py-2 px-3 text-right text-slate-400 dark:text-slate-500">—</td>
+                <td className="py-2 px-3 text-right text-slate-400 dark:text-slate-500">—</td>
+                <td className="py-2 pl-3 text-right tabular-nums">
+                  {dc.net_margin_yoy_bps != null ? (
+                    <span className={colorClass(dc.net_margin_yoy_bps)}>
+                      {dc.net_margin_yoy_bps > 0 ? "+" : ""}
+                      {dc.net_margin_yoy_bps.toFixed(0)} bps
+                    </span>
+                  ) : "—"}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* 段 3: 基本面信号 */}
+      {data.fundamentals.length > 0 && (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+            {t("基本面信号")}
+          </div>
+          <ul className="space-y-1.5 text-sm">
+            {data.fundamentals.map((f, i) => {
+              const dotColor =
+                f.tone === "positive"
+                  ? "bg-emerald-500"
+                  : f.tone === "negative"
+                  ? "bg-red-500"
+                  : "bg-slate-400";
+              return (
+                <li key={i} className="flex items-start gap-2">
+                  <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColor}`} />
+                  <span className="text-slate-700 dark:text-slate-300 leading-relaxed">{f.text}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
+      {/* 段 4: 市场反应 */}
+      <div>
+        <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+          {t("市场反应")}
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+          {/* ATM IV */}
+          <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
+              <Term term="ATM IV">ATM IV</Term>
+            </div>
+            <div className="text-base font-semibold tabular-nums">
+              {mr.atm_iv != null ? `${(mr.atm_iv * 100).toFixed(1)}%` : "—"}
+            </div>
+            <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+              {mr.iv_level === "high"
+                ? t("高位（≥50%）")
+                : mr.iv_level === "medium"
+                ? t("中等")
+                : mr.iv_level === "low"
+                ? t("低位（<20%）")
+                : "—"}
+            </div>
+          </div>
+
+          {/* Put/Call */}
+          <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
+              <Term term="Put/Call">Put/Call</Term>
+            </div>
+            <div
+              className={`text-base font-semibold tabular-nums ${
+                mr.pcr_label === "bullish"
+                  ? "text-emerald-600 dark:text-emerald-400"
+                  : mr.pcr_label === "bearish"
+                  ? "text-red-600 dark:text-red-400"
+                  : ""
+              }`}
+            >
+              {mr.put_call_ratio != null ? mr.put_call_ratio.toFixed(2) : "—"}
+            </div>
+            <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+              {mr.pcr_label === "bullish"
+                ? t("看涨主导")
+                : mr.pcr_label === "bearish"
+                ? t("看跌主导")
+                : mr.pcr_label === "neutral"
+                ? t("中性")
+                : "—"}
+            </div>
+          </div>
+
+          {/* 评级 30 天 */}
+          <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
+              {t("财报后 30 天评级")}
+            </div>
+            <div className="text-sm tabular-nums flex flex-wrap gap-x-2">
+              {mr.ratings_30d ? (
+                <>
+                  {mr.ratings_30d.upgrade > 0 && (
+                    <span className="text-emerald-600 dark:text-emerald-400">
+                      <Term term="升级">{t("升级")}</Term> {mr.ratings_30d.upgrade}
+                    </span>
+                  )}
+                  {mr.ratings_30d.downgrade > 0 && (
+                    <span className="text-red-600 dark:text-red-400">
+                      <Term term="降级">{t("降级")}</Term> {mr.ratings_30d.downgrade}
+                    </span>
+                  )}
+                  {mr.ratings_30d.initiate > 0 && (
+                    <span className="text-blue-600 dark:text-blue-400">
+                      <Term term="首次覆盖">{t("首次覆盖")}</Term> {mr.ratings_30d.initiate}
+                    </span>
+                  )}
+                  {mr.ratings_30d.upgrade + mr.ratings_30d.downgrade + mr.ratings_30d.initiate === 0 && (
+                    <span className="text-slate-400 dark:text-slate-500">{t("无评级变动")}</span>
+                  )}
+                </>
+              ) : (
+                <span className="text-slate-400 dark:text-slate-500">—</span>
+              )}
+            </div>
+          </div>
+
+          {/* 8-K 30 天 */}
+          <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
+              {t("财报后 30 天 ")}<Term term="8-K">8-K</Term>
+            </div>
+            <div className="text-base font-semibold tabular-nums">
+              {mr.form8k_30d}
+            </div>
+            <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+              {mr.form8k_30d === 0
+                ? t("无重大事项")
+                : mr.form8k_30d <= 2
+                ? t("常规公告")
+                : t("公告活跃")}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 段 5: 管理层叙事 (Opus 4.7 提炼) */}
+      {data.narrative_status === "done" && data.narrative ? (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-baseline gap-2">
+            <span>{t("管理层叙事")}</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">
+              {t("基于电话会议中文 transcript 提炼")}
+            </span>
+          </div>
+          <div className="space-y-3">
+            {data.narrative.themes.map((theme, i) => (
+              <div
+                key={i}
+                className="p-3 bg-slate-50 dark:bg-white/5 border-l-4 border-indigo-300 dark:border-indigo-500/50 rounded-r-lg"
+              >
+                <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1">
+                  {i + 1}. {theme.title}
+                </div>
+                <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  {theme.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 flex items-center gap-2 text-xs">
+            <span className="text-slate-500 dark:text-slate-400">{t("整体语气")}：</span>
+            <span
+              className={`px-2 py-0.5 rounded font-medium ${
+                data.narrative.tone === "confident"
+                  ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
+                  : data.narrative.tone === "cautious"
+                  ? "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300"
+                  : "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300"
+              }`}
+            >
+              {data.narrative.tone === "confident"
+                ? t("自信")
+                : data.narrative.tone === "cautious"
+                ? t("谨慎")
+                : t("防御")}
+            </span>
+            <span className="text-slate-500 dark:text-slate-400">
+              · {data.narrative.tone_evidence}
+            </span>
+          </div>
+        </div>
+      ) : data.narrative_status === "pending" ? (
+        <div className="p-3 bg-slate-50 dark:bg-white/5 border border-dashed border-slate-300 dark:border-white/10 rounded-lg text-center text-sm text-slate-400 dark:text-slate-500 italic">
+          {t("管理层叙事提炼中…（基于电话会议 transcript 由 AI 人工审阅生成，逐步覆盖）")}
+        </div>
+      ) : null}
+
+      {/* 免责声明 */}
+      <div className="pt-3 border-t border-slate-200 dark:border-white/10 text-xs text-slate-400 dark:text-slate-500 leading-relaxed">
+        {t("本速评基于公开数据自动生成，仅作信息参考，不构成投资建议。决策请以原始财报、官方公告及独立研究为准。")}
+      </div>
+    </div>
+  );
 }

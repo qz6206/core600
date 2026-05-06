@@ -199,6 +199,86 @@ export interface OptionsContract {
   change_pct: number | null;     // 今日涨跌 %
 }
 
+// === 财报速评（来自 earnings_interpretations.json）===
+
+/** 倾向标签（基本面改善 / 基本面恶化 等），与 ScenarioBadge 同色系 */
+export interface InterpretationBadge {
+  color: "green" | "amber" | "red" | "slate";
+  label: string;
+  hint: string;
+}
+
+/** 段 2: 业绩数据卡（实际 vs 预期 vs 同比） */
+export interface InterpretationDataCard {
+  eps_actual: number | null;
+  eps_estimate: number | null;
+  eps_surprise_pct: number | null;        // (actual - est) / |est| * 100
+  rev_actual: number | null;
+  rev_estimate: number | null;
+  rev_surprise_pct: number | null;
+  rev_yoy_pct: number | null;             // 同比
+  rev_qoq_pct: number | null;             // 环比
+  gross_margin: number | null;            // 0-1
+  gross_margin_yoy_bps: number | null;    // 同比变化（基点 100 bps = 1%）
+  net_margin: number | null;
+  net_margin_yoy_bps: number | null;
+}
+
+/** 段 3: 基本面信号（4-6 条） */
+export interface InterpretationFundamental {
+  category: "earnings" | "growth" | "margin" | "insider" | "institutional" | "buyback" | "sbc";
+  text: string;                           // 中文一句话（30-50 字）
+  tone: "positive" | "neutral" | "negative";
+}
+
+/** 段 4: 市场反应 */
+export interface InterpretationMarketReaction {
+  atm_iv: number | null;
+  iv_level: "high" | "medium" | "low" | null;
+  put_call_ratio: number | null;
+  pcr_label: "bullish" | "neutral" | "bearish" | null;
+  ratings_30d: {
+    upgrade: number;
+    downgrade: number;
+    initiate: number;
+  } | null;
+  form8k_30d: number;                     // 财报后 30 天内的 8-K 数量
+}
+
+/** 段 5: 管理层叙事（Opus 4.7 提炼） */
+export interface InterpretationNarrativeTheme {
+  title: string;                          // 主题（10-20 字）
+  detail: string;                         // 详情（50-100 字）
+}
+export interface InterpretationNarrative {
+  themes: InterpretationNarrativeTheme[]; // 通常 3 条
+  tone: "confident" | "cautious" | "defensive";  // 整体语气
+  tone_evidence: string;                  // 语气依据 (30-60 字)
+  generated_by: string;                   // "opus-4.7"
+  generated_at: string;                   // ISO timestamp
+}
+
+/** 财报速评单条记录 */
+export interface EarningsInterpretation {
+  ticker: string;
+  fiscal_period_end: string;              // "2026-03-31"
+  earnings_date: string;                  // 发布日 "2026-02-11"
+  release_time: "bmo" | "amc" | null;     // 盘前 / 盘后
+  fiscal_label: string;                   // "2026 Q1" / "FY2025"
+  is_recent: boolean;                     // 90 天内 = true，否则 false
+  result: "beat" | "miss" | "mixed" | "inline";
+  generated_at: string;
+
+  headline: string;                       // 段 1: 一句话标题
+  data_card: InterpretationDataCard;      // 段 2
+  fundamentals: InterpretationFundamental[];  // 段 3
+  market_reaction: InterpretationMarketReaction;  // 段 4
+  badges: InterpretationBadge[];          // 倾向标签
+
+  narrative: InterpretationNarrative | null;     // 段 5
+  narrative_status: "done" | "pending" | "no_transcript";
+}
+
 // === 财报会议中文 transcript（来自 transcripts.json）===
 
 export interface TranscriptCN {

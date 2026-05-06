@@ -183,7 +183,7 @@ def fetch_cashflow(ticker: str) -> list:
 
 
 def fetch_income(ticker: str) -> list:
-    """8 季度摊薄股数（看稀释/缩减趋势）"""
+    """8 季度摊薄股数 + 营收 + 毛利率 + 净利率（看稀释/缩减/盈利能力趋势）"""
     data = fmp_get(f"https://financialmodelingprep.com/api/v3/income-statement/{ticker}?period=quarter&limit=8")
     if not data or not isinstance(data, list):
         return []
@@ -197,6 +197,11 @@ def fetch_income(ticker: str) -> list:
             "weighted_avg_basic": e.get("weightedAverageShsOut"),
             "net_income": e.get("netIncome"),
             "revenue": e.get("revenue"),
+            "gross_profit": e.get("grossProfit"),
+            "gross_margin": e.get("grossProfitRatio"),  # 0-1
+            "operating_income": e.get("operatingIncome"),
+            "operating_margin": e.get("operatingIncomeRatio"),
+            "net_margin": e.get("netIncomeRatio"),
         })
     return out
 
