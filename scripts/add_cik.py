@@ -4,10 +4,11 @@
 数据源：SEC 官方 https://www.sec.gov/files/company_tickers.json
 """
 import json
+import os
 import urllib.request
 from pathlib import Path
 
-USER_AGENT = "PersonalResearch research@personal.com"
+USER_AGENT = os.environ.get("EDGAR_USER_AGENT", "Core600 Research qz6206@gmail.com")
 
 JSON_PATH = Path(__file__).parent.parent / "data" / "stocks.json"
 

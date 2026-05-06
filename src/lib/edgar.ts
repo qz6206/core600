@@ -14,7 +14,7 @@ const MAX_RETRIES = 5;
 function getUserAgent(): string {
   const ua = process.env.EDGAR_USER_AGENT;
   if (!ua) {
-    return "Core600 Research contact@core600.com";
+    return "Core600 Research qz6206@gmail.com";
   }
   return ua;
 }
@@ -223,27 +223,5 @@ export function filingUrl(cik: string, accessionNumber: string, primaryDocument:
   return `https://www.sec.gov/Archives/edgar/data/${cikNoLead}/${accessionNoDash}/${primaryDocument}`;
 }
 
-/** 拉 Form 4 XML 并解析关键字段（v1 版，提取核心信息）*/
-export async function parseForm4(cik: string, accessionNumber: string): Promise<{
-  reportingOwnerName: string;
-  reportingOwnerRelationship: string;
-  transactions: Array<{
-    securityTitle: string;
-    transactionDate: string;
-    transactionCode: string;       // P=买, S=卖, A=授予, M=行权 等
-    shares: number;
-    pricePerShare: number;
-    sharesAfter: number;
-  }>;
-} | null> {
-  try {
-    const accessionNoDash = accessionNumber.replace(/-/g, "");
-    const cikNoLead = parseInt(cik, 10).toString();
-    // Form 4 的 XML 文件名通常是 accession 后的 .xml
-    const indexUrl = `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${cik}&type=4&dateb=&owner=include&count=10&output=atom`;
-    // 先简单实现：返回 null，后续详细解析
-    return null;
-  } catch {
-    return null;
-  }
-}
+// Form 4 XML 解析（提取交易方人 + 个笔交易）暂未实现 — 当前页面只显示 filing 列表 + 链接到 SEC
+// 未来如需高保真"内部人交易明细"，可加 parseForm4()，从 .xml 拉 reportingOwner / transactions 等字段

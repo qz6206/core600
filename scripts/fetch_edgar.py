@@ -26,6 +26,7 @@
 频率建议：每 6 小时跑一次（Form 4 申报频率 ~1-2 次/天，8-K 较稀）
 """
 import json
+import os
 import time
 import threading
 import urllib.request
@@ -34,7 +35,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
-USER_AGENT = "Core600 Research contact@core600.com"
+USER_AGENT = os.environ.get("EDGAR_USER_AGENT", "Core600 Research qz6206@gmail.com")
 ROOT = Path(__file__).parent.parent
 STOCKS_JSON = ROOT / "data" / "stocks.json"
 OUTPUT_JSON = ROOT / "data" / "edgar_filings.json"

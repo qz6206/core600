@@ -32,7 +32,7 @@ export default function Footer() {
         {/* 底部信息 */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 dark:text-slate-500">
           <div className="flex items-center gap-2">
-            <span>v0.2.0</span>
+            <span>v0.3.0</span>
             <span>·</span>
             <span>© 2026 Core 600</span>
           </div>

@@ -57,6 +57,12 @@ TOP_N = 10
 MAX_RETRIES = 3
 TIMEOUT = 30
 
+# stocks.json 用 dash 格式（BRK-B），Polygon 用 dot（BRK.B）— 这里映射
+POLYGON_TICKER_OVERRIDES = {
+    "BRK-B": "BRK.B",
+    "BF-B": "BF.B",
+}
+
 
 def load_api_key() -> str:
     key = os.environ.get("POLYGON_API_KEY")
@@ -215,9 +221,11 @@ def process_chain(contracts: list[dict], spot: float | None) -> dict:
     }
 
 
-def fetch_one(ticker: str, today: str, end_date: str) -> dict | None:
-    spot = fetch_spot(ticker)
-    contracts = fetch_chain(ticker, today, end_date)
+def fetch_one(stock_ticker: str, today: str, end_date: str) -> dict | None:
+    """stock_ticker 是 stocks.json 里的格式（如 BRK-B），调 Polygon 时用 mapping 转换"""
+    polygon_ticker = POLYGON_TICKER_OVERRIDES.get(stock_ticker, stock_ticker)
+    spot = fetch_spot(polygon_ticker)
+    contracts = fetch_chain(polygon_ticker, today, end_date)
     if not contracts:
         return None
     return process_chain(contracts, spot)

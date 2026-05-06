@@ -32,20 +32,6 @@ export function colorClass(value: number | undefined | null): string {
   return "text-slate-500";
 }
 
-/** 大数字简化：4500 亿 / 1.2 万亿 */
-export function formatLargeNumberCN(amount: number | undefined | null): string {
-  if (amount === undefined || amount === null || isNaN(amount)) return "—";
-  const abs = Math.abs(amount);
-  if (abs >= 1e12) return `$${(amount / 1e12).toFixed(2)} 万亿`;
-  if (abs >= 1e8) return `$${(amount / 1e8).toFixed(2)} 亿`;
-  if (abs >= 1e4) return `$${(amount / 1e4).toFixed(2)} 万`;
-  return `$${amount.toFixed(2)}`;
-}
-
-/** 季度标签：2026 Q4 / FY2026 Q4 */
-export function quarterLabel(year: string | number, period: string): string {
-  return `${year} ${period}`;
-}
 
 /** 同比/环比变化（输入两个数值，返回带符号百分比）*/
 export function calcChange(current: number, previous: number): number | null {

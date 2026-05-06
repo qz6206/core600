@@ -6,6 +6,10 @@ on:
     - cron: '0 7 * * *'
   workflow_dispatch:
 
+concurrency:
+  group: data-update
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
