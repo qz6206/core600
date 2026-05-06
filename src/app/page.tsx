@@ -10,19 +10,21 @@ import { useLocale } from "@/components/LocaleProvider";
 export default function Home() {
   const { t } = useLocale();
 
+  // 点击后跳转到 NVDA 股票详情页对应 section（用 NVDA 作示范，因为 9 个数据全）
+  const DEMO_TICKER = "NVDA";
   const features = [
-    // 第一行：杀手锏
-    { icon: "🎙️", title: "财报会议", desc: "中文全文" },
-    { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪" },
-    { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态" },
-    // 第二行：实时信号
-    { icon: "📰", title: "8-K 公司重大事项", desc: "中文化解读时间线" },
-    { icon: "🔮", title: "分析师预期", desc: "EPS / 营收预期 + Beat 历史" },
-    { icon: "🎯", title: "期权异动", desc: "聪明钱大单监控" },
-    // 第三行:深度 + 工具 + 综合
-    { icon: "📉", title: "股本动态", desc: "回购 + SBC 稀释追踪" },
-    { icon: "📅", title: "财报日历", desc: "解禁日历 · 分红日历" },
-    { icon: "📊", title: "智能评分", desc: "多维度综合资金评分" },
+    // 第一行：财报核心
+    { icon: "🎙️", title: "财报会议", desc: "中文全文翻译", anchor: "transcript" },
+    { icon: "📝", title: "财报点评", desc: "自动解读 + 倾向标签", anchor: "earnings-interpretation" },
+    { icon: "📅", title: "财报日历", desc: "下次财报 + 历史发布日", anchor: "earnings-calendar" },
+    // 第二行：信号 + 监管
+    { icon: "🔮", title: "分析师预期", desc: "Beat 历史 + 评级变动", anchor: "analyst-estimates" },
+    { icon: "📰", title: "8-K 公司重大事项", desc: "中文化摘要时间线", anchor: "form-8k" },
+    { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪", anchor: "insider-trading" },
+    // 第三行：资金面
+    { icon: "📉", title: "股本动态", desc: "回购 + SBC 稀释追踪", anchor: "capital-dynamics" },
+    { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态", anchor: "inst-13f" },
+    { icon: "🎯", title: "期权异动", desc: "ATM IV + 聪明钱大单", anchor: "options-activity" },
   ];
 
   return (
@@ -68,17 +70,28 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* 功能预览卡片 */}
+        {/* 功能预览卡片 — 点击跳转 NVDA 对应 section */}
+        <div className="text-xs text-slate-500 dark:text-slate-400 text-center mb-3">
+          {t("点击下方功能卡片，跳转")} {DEMO_TICKER} {t("看示范效果")} ↓
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
           {features.map((f) => (
-            <div
+            <Link
               key={f.title}
-              className="p-5 bg-white/80 dark:bg-white/5 backdrop-blur border border-slate-200 dark:border-white/10 rounded-xl hover:bg-white dark:hover:bg-white/10 transition shadow-sm"
+              href={`/stocks/${DEMO_TICKER}#${f.anchor}`}
+              className="group block p-5 bg-white/80 dark:bg-white/5 backdrop-blur border border-slate-200 dark:border-white/10 rounded-xl hover:bg-white dark:hover:bg-white/10 hover:border-indigo-300 dark:hover:border-indigo-500/30 hover:shadow-md transition shadow-sm"
             >
-              <div className="text-3xl mb-2">{f.icon}</div>
-              <div className="font-semibold text-slate-900 dark:text-white mb-1">{t(f.title)}</div>
+              <div className="flex items-start justify-between mb-2">
+                <div className="text-3xl">{f.icon}</div>
+                <span className="text-xs text-slate-300 dark:text-slate-600 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition">
+                  →
+                </span>
+              </div>
+              <div className="font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition">
+                {t(f.title)}
+              </div>
               <div className="text-sm text-slate-600 dark:text-slate-400">{t(f.desc)}</div>
-            </div>
+            </Link>
           ))}
         </div>
 

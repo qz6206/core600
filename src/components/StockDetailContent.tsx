@@ -193,6 +193,7 @@ export default function StockDetailContent({
 
         {/* 2. 财报会议 */}
         <Section
+          id="transcript"
           icon="🎙️"
           title={transcript?.is_annual_letter ? t("年度致股东信") : t("财报会议")}
           subtitle={
@@ -213,6 +214,7 @@ export default function StockDetailContent({
         {/* 3. 财报点评 */}
         {interpretation && interpretation.is_recent ? (
           <Section
+            id="earnings-interpretation"
             icon="📝"
             title={t("财报点评")}
             subtitleNode={
@@ -227,6 +229,7 @@ export default function StockDetailContent({
           </Section>
         ) : interpretation ? (
           <Section
+            id="earnings-interpretation"
             icon="📝"
             title={t("财报点评")}
             subtitleNode={<>{interpretation.fiscal_label} · {interpretation.earnings_date}</>}
@@ -234,13 +237,13 @@ export default function StockDetailContent({
             <Placeholder text={t("最近一次财报已超 90 天，本节略")} />
           </Section>
         ) : (
-          <Section icon="📝" title={t("财报点评")}>
+          <Section id="earnings-interpretation" icon="📝" title={t("财报点评")}>
             <Placeholder text={t("暂无财报点评数据")} />
           </Section>
         )}
 
         {/* 4. 财报日历 */}
-        <Section icon="📅" title={t("财报日历")} subtitle={t("下次财报 + 过去 8 次记录")}>
+        <Section id="earnings-calendar" icon="📅" title={t("财报日历")} subtitle={t("下次财报 + 过去 8 次记录")}>
           {fmpExtras && fmpExtras.earnings.length > 0 ? (
             <EarningsCalendarBlock earnings={fmpExtras.earnings} />
           ) : (
@@ -250,6 +253,7 @@ export default function StockDetailContent({
 
         {/* 5. 分析师预期 */}
         <Section
+          id="analyst-estimates"
           icon="🔮"
           title={t("分析师预期")}
           subtitleNode={
@@ -279,6 +283,7 @@ export default function StockDetailContent({
           );
           return (
             <Section
+              id="form-8k"
               icon="📰"
               title={formLabel}
               subtitleNode={subtitleNode}
@@ -296,6 +301,7 @@ export default function StockDetailContent({
 
         {/* 7. 内部人交易 */}
         <Section
+          id="insider-trading"
           icon="👤"
           title={t("内部人交易")}
           subtitleNode={<><Term term="Form 4">Form 4</Term> · {t("最近")} {form4.length} {t("条")}</>}
@@ -311,6 +317,7 @@ export default function StockDetailContent({
 
         {/* 8. 股本动态 */}
         <Section
+          id="capital-dynamics"
           icon="📉"
           title={t("股本动态")}
           subtitleNode={
@@ -334,6 +341,7 @@ export default function StockDetailContent({
 
         {/* 9. 机构持仓 */}
         <Section
+          id="inst-13f"
           icon="🏛️"
           title={t("机构持仓")}
           subtitleNode={
@@ -353,6 +361,7 @@ export default function StockDetailContent({
 
         {/* 10. 期权异动 */}
         <Section
+          id="options-activity"
           icon="🎯"
           title={t("期权异动")}
           subtitleNode={
@@ -415,6 +424,7 @@ function Section({
   subtitle,
   subtitleNode,
   comingSoon = false,
+  id,
   children,
 }: {
   icon: string;
@@ -422,11 +432,15 @@ function Section({
   subtitle?: string;
   subtitleNode?: React.ReactNode;
   comingSoon?: boolean;
+  id?: string;
   children: React.ReactNode;
 }) {
   const { t } = useLocale();
   return (
-    <section className="mb-6 p-6 bg-white/80 dark:bg-white/5 backdrop-blur border border-slate-200 dark:border-white/10 rounded-2xl shadow-sm">
+    <section
+      id={id}
+      className="mb-6 p-6 bg-white/80 dark:bg-white/5 backdrop-blur border border-slate-200 dark:border-white/10 rounded-2xl shadow-sm scroll-mt-6"
+    >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-baseline gap-3">
           <span className="text-2xl">{icon}</span>
