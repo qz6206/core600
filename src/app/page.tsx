@@ -18,9 +18,9 @@ export default function Home() {
     { icon: "📌", title: "K 线 + 关键事件", desc: "内部人 / 财报 / 8-K / 评级 marker", anchor: "event-chart" },
     { icon: "🎙️", title: "财报会议", desc: "中文全文翻译", anchor: "transcript" },
     // 第二行：财报相关
+    { icon: "🔬", title: "同业对比", desc: "5-8 家同行业指标对比", anchor: "peer-comparison" },
     { icon: "📝", title: "财报点评", desc: "自动解读 + 倾向标签", anchor: "earnings-interpretation" },
     { icon: "📅", title: "财报日历", desc: "下次财报 + 历史发布日", anchor: "earnings-calendar" },
-    { icon: "🔮", title: "分析师预期", desc: "Beat 历史 + 评级变动", anchor: "analyst-estimates" },
     // 第三行：监管 + 资金
     { icon: "📰", title: "8-K 公司重大事项", desc: "中文化摘要时间线", anchor: "form-8k" },
     { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪", anchor: "insider-trading" },

@@ -12,6 +12,7 @@ import MetricsTrendBlock from "@/components/MetricsTrendBlock";
 import EventChart from "@/components/EventChart";
 import WatchlistStar from "@/components/WatchlistStar";
 import VolatilityBlock from "@/components/VolatilityBlock";
+import PeerComparisonBlock, { type PeerComparisonData } from "@/components/PeerComparisonBlock";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
@@ -59,6 +60,7 @@ interface Props {
   descriptionCn?: string | null;
   transcript?: TranscriptCN | null;
   interpretation?: EarningsInterpretation | null;
+  peerComparison?: PeerComparisonData | null;
 }
 
 export default function StockDetailContent({
@@ -73,6 +75,7 @@ export default function StockDetailContent({
   descriptionCn = null,
   transcript = null,
   interpretation = null,
+  peerComparison = null,
 }: Props) {
   const { t } = useLocale();
   const { profile, quote, quarters } = overview;
@@ -228,6 +231,23 @@ export default function StockDetailContent({
                 <MetricsTrendBlock shares={fmpExtras.shares} cashFlow={fmpExtras.sbc} />
               </div>
             )}
+          </Section>
+        )}
+
+        {/* 2b. 同业对比 */}
+        {peerComparison && peerComparison.peers.length > 1 && (
+          <Section
+            id="peer-comparison"
+            icon="🔬"
+            title={t("同业对比")}
+            subtitleNode={
+              <>
+                {peerComparison.industry || peerComparison.sector || ""} · {peerComparison.peer_count}{" "}
+                {t("家公司")}
+              </>
+            }
+          >
+            <PeerComparisonBlock data={peerComparison} />
           </Section>
         )}
 

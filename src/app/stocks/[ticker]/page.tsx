@@ -9,9 +9,11 @@ import optionsData from "../../../../data/options.json";
 import descriptionsCnData from "../../../../data/descriptions_cn.json";
 import transcriptsData from "../../../../data/transcripts.json";
 import interpretationsData from "../../../../data/earnings_interpretations.json";
+import peerComparisonData from "../../../../data/peer_comparison.json";
 import type { StockData } from "@/lib/types";
 import type { EdgarFiling } from "@/lib/edgar";
 import type { Inst13F, FMPExtras, OptionsActivity, TranscriptCN, EarningsInterpretation } from "@/lib/fmp";
+import type { PeerComparisonData } from "@/components/PeerComparisonBlock";
 
 // 动态路由参数类型（Next.js 16）
 type Params = Promise<{ ticker: string }>;
@@ -64,6 +66,9 @@ type TranscriptsByTicker = {
 type InterpretationsByTicker = {
   by_ticker: Record<string, EarningsInterpretation>;
 };
+type PeerComparisonByTicker = {
+  by_ticker: Record<string, PeerComparisonData>;
+};
 
 export default async function StockDetailPage({ params }: { params: Params }) {
   const { ticker } = await params;
@@ -91,6 +96,7 @@ export default async function StockDetailPage({ params }: { params: Params }) {
   const descriptionCn = (descriptionsCnData as DescriptionsCNByTicker).by_ticker[upper] || null;
   const transcript = (transcriptsData as TranscriptsByTicker).by_ticker[upper] || null;
   const interpretation = (interpretationsData as InterpretationsByTicker).by_ticker[upper] || null;
+  const peerComparison = (peerComparisonData as PeerComparisonByTicker).by_ticker[upper] || null;
 
   return (
     <StockDetailContent
@@ -105,6 +111,7 @@ export default async function StockDetailPage({ params }: { params: Params }) {
       descriptionCn={descriptionCn}
       transcript={transcript}
       interpretation={interpretation}
+      peerComparison={peerComparison}
     />
   );
 }
