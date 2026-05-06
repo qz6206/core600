@@ -7,6 +7,7 @@ import TimeDisplay from "@/components/TimeDisplay";
 import Footer from "@/components/Footer";
 import Term from "@/components/Term";
 import ScenarioBadge from "@/components/ScenarioBadge";
+import TradingViewChart from "@/components/TradingViewChart";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
@@ -182,9 +183,19 @@ export default function StockDetailContent({
           )}
         </div>
 
-        {/* 财务概览（最近 4 季度）*/}
+        {/* 1. K 线图 */}
+        <Section
+          id="kline"
+          icon="📈"
+          title={t("K 线图")}
+          subtitle={t("日 / 周 / 月线 · 含技术指标")}
+        >
+          <TradingViewChart ticker={stock.ticker} />
+        </Section>
+
+        {/* 2. 财务概览（最近 4 季度）*/}
         {quarters.length > 0 && (
-          <Section icon="📊" title={t("财务概览")} subtitle={t("最近 4 个季度")}>
+          <Section id="financial-overview" icon="📊" title={t("财务概览")} subtitle={t("最近 4 个季度")}>
             <FinancialTable quarters={quarters} />
           </Section>
         )}

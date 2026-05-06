@@ -13,17 +13,19 @@ export default function Home() {
   // 点击后跳转到 NVDA 股票详情页对应 section（用 NVDA 作示范，因为 9 个数据全）
   const DEMO_TICKER = "NVDA";
   const features = [
-    // 第一行：财报核心
+    // 第一行：图 + 财报
+    { icon: "📈", title: "K 线图", desc: "日/周/月线 · 含技术指标", anchor: "kline" },
     { icon: "🎙️", title: "财报会议", desc: "中文全文翻译", anchor: "transcript" },
     { icon: "📝", title: "财报点评", desc: "自动解读 + 倾向标签", anchor: "earnings-interpretation" },
+    // 第二行：日历 + 信号
     { icon: "📅", title: "财报日历", desc: "下次财报 + 历史发布日", anchor: "earnings-calendar" },
-    // 第二行：信号 + 监管
     { icon: "🔮", title: "分析师预期", desc: "Beat 历史 + 评级变动", anchor: "analyst-estimates" },
     { icon: "📰", title: "8-K 公司重大事项", desc: "中文化摘要时间线", anchor: "form-8k" },
+    // 第三行：监管 + 资金
     { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪", anchor: "insider-trading" },
-    // 第三行：资金面
     { icon: "📉", title: "股本动态", desc: "回购 + SBC 稀释追踪", anchor: "capital-dynamics" },
     { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态", anchor: "inst-13f" },
+    // 第四行：期权
     { icon: "🎯", title: "期权异动", desc: "ATM IV + 聪明钱大单", anchor: "options-activity" },
   ];
 
