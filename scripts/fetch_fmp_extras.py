@@ -80,25 +80,54 @@ def fmp_get(url: str) -> list | dict | None:
     return None
 
 
-def fetch_estimates(ticker: str) -> list:
-    """从今天起的下 4 个未来季度 EPS / 营收预期
+def fetch_estimates(ticker: str, earnings: list | None = None) -> list:
+    """从下次财报开始的下 4 个未来季度 EPS / 营收预期
 
     FMP 返回的 analyst-estimates 默认按日期降序，可能含已发布过的过去季度
     + 远未来季度（甚至 2-3 年后）。我们要做的是：
+
     1. 拉够 limit=12（覆盖近 3 年）
-    2. 筛掉日期 ≤ 今天 的已发布季度
+    2. 筛掉「已发布完成」的季度（用 earnings calendar 交叉验证：fiscal_period_end 有 eps_actual）
     3. 按日期升序排
-    4. 取前 4 个 = 真正的"下 4 季"
+    4. 取前 4 个
+
+    关键修复（2026-05-06）: 之前用 `date > today` 过滤会丢掉「财季已结束但财报还没发」
+    的最近一季（如 APP Q1 2026 fiscal end 2026-03-31，但 release 是 2026-05-06 当晚）。
+    现在改用 earnings calendar 交叉判断：fiscal_period_end 在 reported 集合里 → 已发布 → 跳过；
+    否则 → 未发布 → 保留。
     """
-    from datetime import date as _date
+    from datetime import date as _date, timedelta
     today_str = _date.today().isoformat()
 
-    data = fmp_get(f"https://financialmodelingprep.com/api/v3/analyst-estimates/{ticker}?period=quarter&limit=12")
+    # 注意：FMP 返回降序，对一些大市值股（如 TSLA/META）会先返回最远的 2030 季度。
+    # 必须 limit≥40 才能覆盖到近 1-2 年的真正的「下 4 季」。
+    data = fmp_get(f"https://financialmodelingprep.com/api/v3/analyst-estimates/{ticker}?period=quarter&limit=40")
     if not data or not isinstance(data, list):
         return []
 
-    # 筛选未来 + 升序排
-    future = [e for e in data if e.get("date") and e["date"] > today_str]
+    # 已发布过的 fiscal_period_end 集合（earnings calendar 中 eps_actual 不为 None）
+    reported = set()
+    if earnings:
+        for r in earnings:
+            if r.get("eps_actual") is not None:
+                fpe = r.get("fiscal_period_end")
+                if fpe:
+                    reported.add(fpe)
+
+    # 进一步保险：超过 90 天前的过去季度直接丢（防 FMP 给的 stale 数据漏在 earnings 里）
+    cutoff = (_date.today() - timedelta(days=90)).isoformat()
+
+    future = []
+    for e in data:
+        d = e.get("date")
+        if not d:
+            continue
+        if d in reported:
+            continue  # 已发布
+        if d < cutoff:
+            continue  # 太老的季度（>90 天前），即使 earnings 里没记录也不要
+        future.append(e)
+
     future.sort(key=lambda e: e["date"])
 
     out = []
@@ -199,10 +228,11 @@ def fetch_ratings(ticker: str) -> list:
 
 
 def fetch_one(ticker: str) -> dict:
-    """同时拉 5 类数据"""
+    """同时拉 5 类数据。estimates 依赖 earnings 来交叉判断"已发布"，所以先拉 earnings。"""
+    earnings = fetch_earnings(ticker)
     return {
-        "estimates": fetch_estimates(ticker),
-        "earnings": fetch_earnings(ticker),
+        "estimates": fetch_estimates(ticker, earnings=earnings),
+        "earnings": earnings,
         "sbc": fetch_cashflow(ticker),
         "shares": fetch_income(ticker),
         "ratings": fetch_ratings(ticker),
