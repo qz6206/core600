@@ -180,6 +180,11 @@ def process_one(stock: dict, existing: dict | None = None) -> tuple[str, dict | 
 
     cn = translate_transcript(ticker, name, transcript["content"])
     if not cn:
+        # 翻译失败 — 但保留 existing 旧版本 (即使是上一季的，也比丢了好)
+        if existing:
+            prev = existing.get(ticker)
+            if prev and prev.get("content_cn"):
+                return ticker, prev, "failed_kept_old"
         return ticker, {"failed_translation": True, **transcript}, "failed"
     return ticker, {
         "year": transcript["year"],

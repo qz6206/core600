@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T06:12:23.064458",
+  "generated_at": "2026-05-06T07:08:54.207473",
   "schema_version": 1,
   "stats": {
     "total": 516,
@@ -18,7 +18,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.036112",
+      "generated_at": "2026-05-06T07:08:54.181921",
       "headline": "A 安捷伦科技 2026 Q1 财报符合预期：EPS -0.73%、营收 -0.54%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.36,
@@ -91,7 +91,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.036401",
+      "generated_at": "2026-05-06T07:08:54.181998",
       "headline": "AAPL 苹果 2026 Q2 财报超预期：EPS +3.08%、营收 +1.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.01,
@@ -203,7 +203,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.036584",
+      "generated_at": "2026-05-06T07:08:54.182062",
       "headline": "ABBV 艾伯维公司 2026 Q1 财报超预期：EPS +2.32%、营收 +1.93%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.65,
@@ -281,7 +281,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.036773",
+      "generated_at": "2026-05-06T07:08:54.182147",
       "headline": "ABNB 爱彼迎 2025 Q4 财报好坏参半：EPS -15.92%、营收 +2.32%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.56,
@@ -379,7 +379,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.036857",
+      "generated_at": "2026-05-06T07:08:54.182210",
       "headline": "ABT 雅培 2026 Q1 财报超预期：EPS +0.88%、营收 +1.49%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.15,
@@ -462,7 +462,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.036948",
+      "generated_at": "2026-05-06T07:08:54.182268",
       "headline": "ACGL 艾奇资本 2026 Q1 财报低于预期：EPS +0.81%、营收 -4.45%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.5,
@@ -565,7 +565,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037160",
+      "generated_at": "2026-05-06T07:08:54.182320",
       "headline": "ACN 埃森哲 2026 Q2 财报超预期：EPS +3.17%、营收 +1.13%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.93,
@@ -638,7 +638,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037254",
+      "generated_at": "2026-05-06T07:08:54.182374",
       "headline": "ADBE 奥多比 2026 Q1 财报超预期：EPS +3.24%、营收 +1.94%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.06,
@@ -700,7 +700,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037322",
+      "generated_at": "2026-05-06T07:08:54.182428",
       "headline": "ADI 亚德诺 2026 Q1 财报超预期：EPS +6.49%、营收 +1.37%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.46,
@@ -788,7 +788,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.037387",
+      "generated_at": "2026-05-06T07:08:54.182480",
       "headline": "ADM 阿彻丹尼尔斯米德兰 2026 Q1 财报好坏参半：EPS +10.76%、营收 -4.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.71,
@@ -876,7 +876,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037444",
+      "generated_at": "2026-05-06T07:08:54.182531",
       "headline": "ADP 自动数据处理 2026 Q3 财报超预期：EPS +2.12%、营收 +1.49%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.37,
@@ -954,7 +954,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037505",
+      "generated_at": "2026-05-06T07:08:54.182579",
       "headline": "ADSK 欧特克 2026 Q4 财报超预期：EPS +7.55%、营收 +2.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.85,
@@ -1037,7 +1037,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.037555",
+      "generated_at": "2026-05-06T07:08:54.182628",
       "headline": "AEE 阿曼瑞恩 2026 Q1 财报好坏参半：EPS +9.40%、营收 -3.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.28,
@@ -1125,7 +1125,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037604",
+      "generated_at": "2026-05-06T07:08:54.182676",
       "headline": "AEP 美国电力 2026 Q1 财报超预期：EPS +4.46%、营收 +5.32%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.64,
@@ -1213,7 +1213,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037662",
+      "generated_at": "2026-05-06T07:08:54.182722",
       "headline": "AES AES发电 2026 Q1 财报超预期：EPS +55.80%、营收 +2.37%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.779,
@@ -1301,7 +1301,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037715",
+      "generated_at": "2026-05-06T07:08:54.182773",
       "headline": "AFL 美国家庭寿险 2026 Q1 财报超预期：EPS -2.23%、营收 +3.41%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.75,
@@ -1389,7 +1389,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.037777",
+      "generated_at": "2026-05-06T07:08:54.182821",
       "headline": "AIG 美国国际集团 2026 Q1 财报好坏参半：EPS +11.64%、营收 -3.59%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.11,
@@ -1487,7 +1487,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037840",
+      "generated_at": "2026-05-06T07:08:54.182885",
       "headline": "AIZ 安信龙保险 2026 Q1 财报超预期：EPS +19.66%、营收 +3.88%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.33,
@@ -1565,7 +1565,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.037891",
+      "generated_at": "2026-05-06T07:08:54.182937",
       "headline": "AJG 亚瑟加拉格尔 2026 Q1 财报符合预期：EPS +0.90%、营收 -0.34%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.47,
@@ -1638,7 +1638,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.037945",
+      "generated_at": "2026-05-06T07:08:54.182988",
       "headline": "AKAM 阿克迈 2025 Q4 财报超预期：EPS +4.55%、营收 +1.65%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.84,
@@ -1731,7 +1731,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.038000",
+      "generated_at": "2026-05-06T07:08:54.183041",
       "headline": "ALB 美国雅保 2025 Q4 财报好坏参半：EPS -26.85%、营收 +6.01%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -0.53,
@@ -1819,7 +1819,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038050",
+      "generated_at": "2026-05-06T07:08:54.183091",
       "headline": "ALGN 艾利科技 2026 Q1 财报超预期：EPS +14.16%、营收 +1.84%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.58,
@@ -1897,7 +1897,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.038101",
+      "generated_at": "2026-05-06T07:08:54.183140",
       "headline": "ALL 好事达 2026 Q1 财报好坏参半：EPS +45.69%、营收 -4.04%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 10.65,
@@ -2005,7 +2005,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.038149",
+      "generated_at": "2026-05-06T07:08:54.183184",
       "headline": "ALLE 安朗杰 2026 Q1 财报低于预期：EPS -4.26%、营收 +0.70%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.8,
@@ -2083,7 +2083,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038202",
+      "generated_at": "2026-05-06T07:08:54.183239",
       "headline": "ALNY 阿里拉姆制药 2026 Q1 财报超预期：EPS +73.17%、营收 +4.63%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.51,
@@ -2181,7 +2181,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038252",
+      "generated_at": "2026-05-06T07:08:54.183289",
       "headline": "AMAT 应用材料 2026 Q1 财报超预期：EPS +7.69%、营收 +2.06%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.38,
@@ -2274,7 +2274,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": false,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.038306",
+      "generated_at": "2026-05-06T07:08:54.183339",
       "headline": "AMCR 安姆科 2026 Q2 财报好坏参半：EPS +3.61%、营收 -1.07%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.86,
@@ -2362,7 +2362,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038362",
+      "generated_at": "2026-05-06T07:08:54.183387",
       "headline": "AMD 美国超微公司 2026 Q1 财报超预期：EPS +6.20%、营收 +3.57%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.37,
@@ -2460,7 +2460,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038419",
+      "generated_at": "2026-05-06T07:08:54.183438",
       "headline": "AME 阿美特克 2026 Q1 财报超预期：EPS +3.68%、营收 +0.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.97,
@@ -2543,7 +2543,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038476",
+      "generated_at": "2026-05-06T07:08:54.183485",
       "headline": "AMGN 安进 2026 Q1 财报超预期：EPS +7.97%、营收 +0.50%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.15,
@@ -2636,7 +2636,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038526",
+      "generated_at": "2026-05-06T07:08:54.183532",
       "headline": "AMP 阿莫斯莱斯金融 2026 Q1 财报超预期：EPS +10.28%、营收 +3.60%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 11.26,
@@ -2724,7 +2724,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038576",
+      "generated_at": "2026-05-06T07:08:54.183579",
       "headline": "AMT 美国电塔 2026 Q1 财报超预期：EPS +15.00%、营收 +3.12%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.84,
@@ -2807,7 +2807,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038631",
+      "generated_at": "2026-05-06T07:08:54.183635",
       "headline": "AMZN 亚马逊 2026 Q1 财报超预期：EPS +70.55%、营收 +2.39%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.78,
@@ -2890,7 +2890,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038688",
+      "generated_at": "2026-05-06T07:08:54.183691",
       "headline": "ANET Arista Networks 2026 Q1 财报超预期：EPS +7.67%、营收 +3.52%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.87,
@@ -2983,7 +2983,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038734",
+      "generated_at": "2026-05-06T07:08:54.183737",
       "headline": "AON 怡安保险 2026 Q1 财报超预期：EPS +1.73%、营收 +1.22%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.48,
@@ -3056,7 +3056,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.038783",
+      "generated_at": "2026-05-06T07:08:54.183784",
       "headline": "AOS A.O.史密斯 2026 Q1 财报低于预期：EPS -9.57%、营收 -2.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.85,
@@ -3139,7 +3139,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038834",
+      "generated_at": "2026-05-06T07:08:54.183833",
       "headline": "APA 阿帕奇石油 2025 Q4 财报超预期：EPS +41.30%、营收 +12.14%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.91,
@@ -3237,7 +3237,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038881",
+      "generated_at": "2026-05-06T07:08:54.183882",
       "headline": "APD 空气化工 2026 Q2 财报超预期：EPS +4.58%、营收 +3.32%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.2,
@@ -3315,7 +3315,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038931",
+      "generated_at": "2026-05-06T07:08:54.183932",
       "headline": "APH 安费诺 2026 Q1 财报超预期：EPS +12.65%、营收 +7.63%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.06,
@@ -3423,7 +3423,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.038984",
+      "generated_at": "2026-05-06T07:08:54.183987",
       "headline": "APO 阿波罗全球管理 2025 Q4 财报超预期：EPS +21.08%、营收 +106.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.47,
@@ -3516,7 +3516,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039053",
+      "generated_at": "2026-05-06T07:08:54.184061",
       "headline": "APP AppLovin 2025 Q4 财报超预期：EPS +9.83%、营收 +2.84%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.24,
@@ -3609,7 +3609,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039112",
+      "generated_at": "2026-05-06T07:08:54.184115",
       "headline": "APTV 安波福 2026 Q1 财报超预期：EPS +5.56%、营收 +1.06%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.71,
@@ -3682,7 +3682,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.039168",
+      "generated_at": "2026-05-06T07:08:54.184169",
       "headline": "ARE 亚历山大房地产 2026 Q1 财报低于预期：EPS 0.00%、营收 -4.64%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.73,
@@ -3780,7 +3780,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.039217",
+      "generated_at": "2026-05-06T07:08:54.184215",
       "headline": "ARES 阿雷斯管理 2026 Q1 财报好坏参半：EPS -6.06%、营收 +6.60%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.24,
@@ -3873,7 +3873,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039264",
+      "generated_at": "2026-05-06T07:08:54.184260",
       "headline": "ARM Arm 控股 2026 Q3 财报超预期：EPS +4.88%、营收 +1.23%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.43,
@@ -3946,7 +3946,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039307",
+      "generated_at": "2026-05-06T07:08:54.184303",
       "headline": "ASML 阿斯麦 2026 Q1 财报超预期：EPS +8.42%、营收 +2.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 8.37,
@@ -4034,7 +4034,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039355",
+      "generated_at": "2026-05-06T07:08:54.184349",
       "headline": "ATO 大气能源 2026 Q1 财报超预期：EPS 0.00%、营收 +3.57%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.44,
@@ -4112,7 +4112,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.039402",
+      "generated_at": "2026-05-06T07:08:54.184393",
       "headline": "AVB 阿湾物产 2026 Q1 财报好坏参半：EPS +83.46%、营收 -8.26%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.33,
@@ -4200,7 +4200,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.039455",
+      "generated_at": "2026-05-06T07:08:54.184448",
       "headline": "AVGO 博通 2026 Q1 财报符合预期：EPS +0.99%、营收 +0.28%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.05,
@@ -4288,7 +4288,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039504",
+      "generated_at": "2026-05-06T07:08:54.184497",
       "headline": "AVY 艾利丹尼森 2026 Q1 财报超预期：EPS +2.49%、营收 +1.69%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.47,
@@ -4361,7 +4361,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.039549",
+      "generated_at": "2026-05-06T07:08:54.184542",
       "headline": "AWK 美国水务 2026 Q1 财报好坏参半：EPS -8.18%、营收 +3.13%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.01,
@@ -4434,7 +4434,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039618",
+      "generated_at": "2026-05-06T07:08:54.184599",
       "headline": "AXON 艾克松企业 2025 Q4 财报超预期：EPS +34.37%、营收 +5.45%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.15,
@@ -4537,7 +4537,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039666",
+      "generated_at": "2026-05-06T07:08:54.184647",
       "headline": "AXP 美国运通 2026 Q1 财报超预期：EPS +7.00%、营收 +1.60%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.28,
@@ -4620,7 +4620,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.039718",
+      "generated_at": "2026-05-06T07:08:54.184695",
       "headline": "AZO 汽车地带 2026 Q2 财报符合预期：EPS +1.77%、营收 -0.84%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 27.63,
@@ -4703,7 +4703,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039767",
+      "generated_at": "2026-05-06T07:08:54.184743",
       "headline": "BA 波音 2026 Q1 财报超预期：EPS +70.80%、营收 +1.67%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -0.2,
@@ -4786,7 +4786,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039819",
+      "generated_at": "2026-05-06T07:08:54.184794",
       "headline": "BAC 美国银行 2026 Q1 财报超预期：EPS +9.90%、营收 +1.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.11,
@@ -4884,7 +4884,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039868",
+      "generated_at": "2026-05-06T07:08:54.184845",
       "headline": "BALL 鲍尔包装 2026 Q1 财报超预期：EPS +10.59%、营收 +7.77%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.94,
@@ -4972,7 +4972,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039914",
+      "generated_at": "2026-05-06T07:08:54.184890",
       "headline": "BAX 百特国际 2026 Q1 财报超预期：EPS +16.13%、营收 +3.27%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.36,
@@ -5040,7 +5040,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.039961",
+      "generated_at": "2026-05-06T07:08:54.184935",
       "headline": "BBY 百思买 2026 Q4 财报超预期：EPS +6.10%、营收 -0.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.61,
@@ -5128,7 +5128,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.040011",
+      "generated_at": "2026-05-06T07:08:54.184988",
       "headline": "BDX 碧迪医疗 2026 Q1 财报好坏参半：EPS +31.67%、营收 -12.84%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.91,
@@ -5226,7 +5226,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040058",
+      "generated_at": "2026-05-06T07:08:54.185037",
       "headline": "BEN 富兰克林资源 2026 Q2 财报超预期：EPS +29.09%、营收 +2.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.71,
@@ -5314,7 +5314,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040110",
+      "generated_at": "2026-05-06T07:08:54.185086",
       "headline": "BF-B 百富门-B 2026 Q3 财报超预期：EPS +24.49%、营收 +5.33%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.58,
@@ -5407,7 +5407,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.040158",
+      "generated_at": "2026-05-06T07:08:54.185135",
       "headline": "BG 邦吉 2026 Q1 财报好坏参半：EPS +88.66%、营收 -6.50%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.83,
@@ -5510,7 +5510,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040205",
+      "generated_at": "2026-05-06T07:08:54.185181",
       "headline": "BIIB 渤健公司 2026 Q1 财报超预期：EPS +21.02%、营收 +8.35%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.57,
@@ -5598,7 +5598,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040256",
+      "generated_at": "2026-05-06T07:08:54.185230",
       "headline": "BK 纽约梅隆银行 2026 Q1 财报超预期：EPS +14.80%、营收 +4.36%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.25,
@@ -5701,7 +5701,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040309",
+      "generated_at": "2026-05-06T07:08:54.185279",
       "headline": "BKNG Booking 控股 2026 Q1 财报超预期：EPS +5.56%、营收 +0.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.14,
@@ -5789,7 +5789,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040362",
+      "generated_at": "2026-05-06T07:08:54.185326",
       "headline": "BKR 贝克休斯 2026 Q1 财报超预期：EPS +17.62%、营收 +3.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.58,
@@ -5872,7 +5872,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.040410",
+      "generated_at": "2026-05-06T07:08:54.185374",
       "headline": "BLDR 建筑商第一资源 2026 Q1 财报好坏参半：EPS -30.77%、营收 +3.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.27,
@@ -5960,7 +5960,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040461",
+      "generated_at": "2026-05-06T07:08:54.185424",
       "headline": "BLK 贝莱德 2026 Q1 财报超预期：EPS +7.55%、营收 +2.25%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 12.53,
@@ -6053,7 +6053,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040510",
+      "generated_at": "2026-05-06T07:08:54.185470",
       "headline": "BMY 施贵宝 2026 Q1 财报超预期：EPS +11.27%、营收 +5.14%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.58,
@@ -6151,7 +6151,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040559",
+      "generated_at": "2026-05-06T07:08:54.185518",
       "headline": "BR Broadridge金融解决方案 2026 Q3 财报超预期：EPS +3.42%、营收 +2.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.72,
@@ -6224,7 +6224,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040609",
+      "generated_at": "2026-05-06T07:08:54.185566",
       "headline": "BRK-B 伯克希尔-B 2026 Q1 财报超预期：EPS +3.35%、营收 +0.82%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.25,
@@ -6312,7 +6312,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.040658",
+      "generated_at": "2026-05-06T07:08:54.185613",
       "headline": "BRO 布朗保险 2026 Q1 财报符合预期：EPS +2.21%、营收 +0.62%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.39,
@@ -6390,7 +6390,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.040708",
+      "generated_at": "2026-05-06T07:08:54.185661",
       "headline": "BSX 波士顿科学 2026 Q1 财报符合预期：EPS +1.52%、营收 +0.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.8,
@@ -6473,7 +6473,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.040760",
+      "generated_at": "2026-05-06T07:08:54.185713",
       "headline": "BX 黑石 2026 Q1 财报符合预期：EPS +1.49%、营收 +0.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.36,
@@ -6561,7 +6561,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040808",
+      "generated_at": "2026-05-06T07:08:54.185759",
       "headline": "BXP 波士顿地产 2026 Q1 财报超预期：EPS +0.63%、营收 +3.44%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.59,
@@ -6629,7 +6629,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.040869",
+      "generated_at": "2026-05-06T07:08:54.185809",
       "headline": "C 花旗集团 2026 Q1 财报超预期：EPS +15.47%、营收 +4.38%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.06,
@@ -6727,7 +6727,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.040918",
+      "generated_at": "2026-05-06T07:08:54.185857",
       "headline": "CAG 康尼格拉 2026 Q3 财报符合预期：EPS -2.50%、营收 +0.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.39,
@@ -6815,7 +6815,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.040966",
+      "generated_at": "2026-05-06T07:08:54.185903",
       "headline": "CAH 卡地纳健康 2026 Q3 财报好坏参半：EPS +13.62%、营收 -1.87%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.17,
@@ -6898,7 +6898,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041014",
+      "generated_at": "2026-05-06T07:08:54.185950",
       "headline": "CARR 开利全球 2026 Q1 财报超预期：EPS +12.20%、营收 +6.51%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.57,
@@ -6986,7 +6986,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.041068",
+      "generated_at": "2026-05-06T07:08:54.186002",
       "headline": "CASY 凯西 2026 Q3 财报好坏参半：EPS +16.33%、营收 -3.14%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.49,
@@ -7079,7 +7079,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041122",
+      "generated_at": "2026-05-06T07:08:54.186052",
       "headline": "CAT 卡特彼勒 2026 Q1 财报超预期：EPS +19.14%、营收 +5.38%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.54,
@@ -7167,7 +7167,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041171",
+      "generated_at": "2026-05-06T07:08:54.186099",
       "headline": "CB 安达保险 2026 Q1 财报超预期：EPS +3.33%、营收 +3.25%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.82,
@@ -7250,7 +7250,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041221",
+      "generated_at": "2026-05-06T07:08:54.186150",
       "headline": "CBOE 芝加哥期权交易所 2026 Q1 财报超预期：EPS +10.78%、营收 +5.68%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.7,
@@ -7343,7 +7343,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041272",
+      "generated_at": "2026-05-06T07:08:54.186198",
       "headline": "CBRE 世邦魏理仕 2026 Q1 财报超预期：EPS +42.48%、营收 +2.90%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.61,
@@ -7426,7 +7426,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.041314",
+      "generated_at": "2026-05-06T07:08:54.186237",
       "headline": "CCEP 可口可乐欧洲太平洋 2025 Q4 财报符合预期：EPS +2.08%、营收 -0.48%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.45,
@@ -7494,7 +7494,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.041369",
+      "generated_at": "2026-05-06T07:08:54.186285",
       "headline": "CCI 冠城国际 2026 Q1 财报好坏参半：EPS -9.72%、营收 +1.52%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.34,
@@ -7577,7 +7577,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041418",
+      "generated_at": "2026-05-06T07:08:54.186329",
       "headline": "CCL 嘉年华邮轮 2026 Q1 财报超预期：EPS +8.46%、营收 +0.42%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.2,
@@ -7660,7 +7660,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041472",
+      "generated_at": "2026-05-06T07:08:54.186378",
       "headline": "CDNS 铿腾电子 2026 Q1 财报超预期：EPS +2.62%、营收 +1.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.96,
@@ -7743,7 +7743,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041521",
+      "generated_at": "2026-05-06T07:08:54.186423",
       "headline": "CDW CDW 2026 Q1 财报超预期：EPS 0.00%、营收 +3.64%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.28,
@@ -7816,7 +7816,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041571",
+      "generated_at": "2026-05-06T07:08:54.186471",
       "headline": "CEG 星座能源 2025 Q4 财报超预期：EPS +0.88%、营收 +8.42%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.3,
@@ -7899,7 +7899,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041624",
+      "generated_at": "2026-05-06T07:08:54.186520",
       "headline": "CF CF工业控股 2025 Q4 财报超预期：EPS +23.05%、营收 +4.99%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.99,
@@ -7987,7 +7987,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.041677",
+      "generated_at": "2026-05-06T07:08:54.186571",
       "headline": "CFG 公民金融集团 2026 Q1 财报符合预期：EPS +2.73%、营收 +0.19%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.13,
@@ -8070,7 +8070,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.041725",
+      "generated_at": "2026-05-06T07:08:54.186618",
       "headline": "CHD 丘奇&amp;德怀特 2026 Q1 财报符合预期：EPS +2.15%、营收 +0.93%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.95,
@@ -8143,7 +8143,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041773",
+      "generated_at": "2026-05-06T07:08:54.186665",
       "headline": "CHRW 罗宾逊物流 2026 Q1 财报超预期：EPS +8.87%、营收 -0.83%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.35,
@@ -8231,7 +8231,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.041824",
+      "generated_at": "2026-05-06T07:08:54.186715",
       "headline": "CHTR 特许通讯 2026 Q1 财报低于预期：EPS -7.93%、营收 +0.35%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 9.17,
@@ -8334,7 +8334,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041873",
+      "generated_at": "2026-05-06T07:08:54.186764",
       "headline": "CI 信诺 2026 Q1 财报超预期：EPS +2.50%、营收 +3.32%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 7.79,
@@ -8402,7 +8402,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041933",
+      "generated_at": "2026-05-06T07:08:54.186820",
       "headline": "CIEN 锡耶纳 2026 Q1 财报超预期：EPS +15.38%、营收 +2.01%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.35,
@@ -8505,7 +8505,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.041985",
+      "generated_at": "2026-05-06T07:08:54.186870",
       "headline": "CINF 辛辛纳提金融 2026 Q1 财报超预期：EPS +8.81%、营收 -0.13%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.1,
@@ -8593,7 +8593,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042032",
+      "generated_at": "2026-05-06T07:08:54.186918",
       "headline": "CL 高露洁 2026 Q1 财报超预期：EPS +2.86%、营收 +2.07%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.97,
@@ -8661,7 +8661,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042083",
+      "generated_at": "2026-05-06T07:08:54.186967",
       "headline": "CLX 高乐氏 2026 Q3 财报超预期：EPS +5.81%、营收 +0.05%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.64,
@@ -8744,7 +8744,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042137",
+      "generated_at": "2026-05-06T07:08:54.187016",
       "headline": "CMCSA 康卡斯特 2026 Q1 财报超预期：EPS +8.97%、营收 +3.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.79,
@@ -8832,7 +8832,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.042193",
+      "generated_at": "2026-05-06T07:08:54.187063",
       "headline": "CME 芝加哥商品交易所 2026 Q1 财报符合预期：EPS +0.60%、营收 +0.28%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.36,
@@ -8915,7 +8915,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.042241",
+      "generated_at": "2026-05-06T07:08:54.187111",
       "headline": "CMG 奇波雷墨西哥烧烤 2026 Q1 财报符合预期：EPS +1.05%、营收 +0.70%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.24,
@@ -8988,7 +8988,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042289",
+      "generated_at": "2026-05-06T07:08:54.187160",
       "headline": "CMI 康明斯 2026 Q1 财报超预期：EPS +9.24%、营收 +0.38%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.15,
@@ -9071,7 +9071,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042336",
+      "generated_at": "2026-05-06T07:08:54.187207",
       "headline": "CMS CMS能源 2026 Q1 财报超预期：EPS +1.80%、营收 +11.05%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.13,
@@ -9154,7 +9154,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042386",
+      "generated_at": "2026-05-06T07:08:54.187256",
       "headline": "CNC 康西哥 2026 Q1 财报超预期：EPS +80.21%、营收 +5.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.37,
@@ -9247,7 +9247,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.042432",
+      "generated_at": "2026-05-06T07:08:54.187301",
       "headline": "CNP 中点能源 2026 Q1 财报好坏参半：EPS -3.45%、营收 +4.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.56,
@@ -9330,7 +9330,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.042481",
+      "generated_at": "2026-05-06T07:08:54.187349",
       "headline": "COF 第一资本信贷 2026 Q1 财报符合预期：EPS -1.78%、营收 -0.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.42,
@@ -9413,7 +9413,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042532",
+      "generated_at": "2026-05-06T07:08:54.187399",
       "headline": "COHR 相干 2026 Q2 财报超预期：EPS +6.61%、营收 +2.69%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.29,
@@ -9501,7 +9501,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.042585",
+      "generated_at": "2026-05-06T07:08:54.187454",
       "headline": "COIN Coinbase 2025 Q4 财报低于预期：EPS -350.50%、营收 -1.54%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -2.49,
@@ -9609,7 +9609,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042631",
+      "generated_at": "2026-05-06T07:08:54.187499",
       "headline": "COO 库珀医疗 2026 Q1 财报超预期：EPS +6.80%、营收 +0.01%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.1,
@@ -9682,7 +9682,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042684",
+      "generated_at": "2026-05-06T07:08:54.187552",
       "headline": "COP 康菲石油 2026 Q1 财报超预期：EPS +9.88%、营收 +2.79%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.89,
@@ -9775,7 +9775,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": false,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.042735",
+      "generated_at": "2026-05-06T07:08:54.187601",
       "headline": "COR Cencora 2026 Q1 财报符合预期：EPS +0.74%、营收 -0.15%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.08,
@@ -9853,7 +9853,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.042783",
+      "generated_at": "2026-05-06T07:08:54.187647",
       "headline": "COST 好市多 2026 Q2 财报符合预期：EPS +0.66%、营收 +0.45%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.58,
@@ -9926,7 +9926,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042831",
+      "generated_at": "2026-05-06T07:08:54.187691",
       "headline": "CPAY Corpay 2025 Q4 财报超预期：EPS +1.51%、营收 +1.12%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.04,
@@ -9999,7 +9999,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.042879",
+      "generated_at": "2026-05-06T07:08:54.187742",
       "headline": "CPB 金宝公司 2026 Q2 财报低于预期：EPS -10.53%、营收 -1.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.51,
@@ -10087,7 +10087,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.042926",
+      "generated_at": "2026-05-06T07:08:54.187790",
       "headline": "CPRT 科帕特 2026 Q2 财报低于预期：EPS -8.28%、营收 -2.36%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.36,
@@ -10170,7 +10170,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.042971",
+      "generated_at": "2026-05-06T07:08:54.187843",
       "headline": "CPT 卡姆登物业信托 2026 Q1 财报超预期：EPS +42.15%、营收 +2.82%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.4,
@@ -10263,7 +10263,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.043020",
+      "generated_at": "2026-05-06T07:08:54.187891",
       "headline": "CRH CRH水泥 2026 Q1 财报好坏参半：EPS -23.47%、营收 +4.26%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -0.27,
@@ -10341,7 +10341,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.043070",
+      "generated_at": "2026-05-06T07:08:54.187944",
       "headline": "CRL 查尔斯河实验室 2025 Q4 财报符合预期：EPS +2.58%、营收 +0.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.39,
@@ -10424,7 +10424,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043127",
+      "generated_at": "2026-05-06T07:08:54.187999",
       "headline": "CRM 赛富时 2026 Q4 财报超预期：EPS +24.92%、营收 +0.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.81,
@@ -10517,7 +10517,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.043176",
+      "generated_at": "2026-05-06T07:08:54.188049",
       "headline": "CRWD CrowdStrike 2026 Q4 财报符合预期：EPS +1.82%、营收 +0.61%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.12,
@@ -10590,7 +10590,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043225",
+      "generated_at": "2026-05-06T07:08:54.188099",
       "headline": "CSCO 思科 2026 Q2 财报超预期：EPS +1.96%、营收 +1.56%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.04,
@@ -10673,7 +10673,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043273",
+      "generated_at": "2026-05-06T07:08:54.188147",
       "headline": "CSGP 科斯塔 2026 Q1 财报超预期：EPS +27.78%、营收 +0.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.23,
@@ -10771,7 +10771,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043320",
+      "generated_at": "2026-05-06T07:08:54.188194",
       "headline": "CSX CSX运输 2026 Q1 财报超预期：EPS +10.54%、营收 -0.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.43,
@@ -10859,7 +10859,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.043367",
+      "generated_at": "2026-05-06T07:08:54.188241",
       "headline": "CTAS 信达思 2026 Q3 财报符合预期：EPS 0.00%、营收 +0.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.24,
@@ -10932,7 +10932,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.043418",
+      "generated_at": "2026-05-06T07:08:54.188291",
       "headline": "CTRA Coterra 2025 Q4 财报好坏参半：EPS -17.23%、营收 +4.87%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.39,
@@ -11020,7 +11020,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043467",
+      "generated_at": "2026-05-06T07:08:54.188345",
       "headline": "CTSH 高知特 2026 Q1 财报超预期：EPS +5.26%、营收 -0.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.4,
@@ -11108,7 +11108,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043516",
+      "generated_at": "2026-05-06T07:08:54.188394",
       "headline": "CTVA 科迪华 2026 Q1 财报超预期：EPS +28.21%、营收 +5.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.5,
@@ -11196,7 +11196,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043568",
+      "generated_at": "2026-05-06T07:08:54.188446",
       "headline": "CVNA Carvana 2026 Q1 财报超预期：EPS +10.76%、营收 +5.06%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.75,
@@ -11299,7 +11299,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043619",
+      "generated_at": "2026-05-06T07:08:54.188492",
       "headline": "CVS 西维斯健康 2025 Q4 财报超预期：EPS +9.00%、营收 +1.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.09,
@@ -11392,7 +11392,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.043668",
+      "generated_at": "2026-05-06T07:08:54.188542",
       "headline": "CVX 雪佛龙 2026 Q1 财报好坏参半：EPS +41.00%、营收 -6.27%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.41,
@@ -11490,7 +11490,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043715",
+      "generated_at": "2026-05-06T07:08:54.188588",
       "headline": "D 道明尼资源 2026 Q1 财报超预期：EPS +5.32%、营收 +13.29%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.95,
@@ -11568,7 +11568,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043762",
+      "generated_at": "2026-05-06T07:08:54.188631",
       "headline": "DAL 达美航空 2026 Q1 财报超预期：EPS +10.34%、营收 +1.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.64,
@@ -11661,7 +11661,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.043813",
+      "generated_at": "2026-05-06T07:08:54.188680",
       "headline": "DASH DoorDash 2025 Q4 财报低于预期：EPS -18.64%、营收 -1.01%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.48,
@@ -11759,7 +11759,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043860",
+      "generated_at": "2026-05-06T07:08:54.188727",
       "headline": "DD 杜邦 2026 Q1 财报超预期：EPS +14.58%、营收 +0.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.55,
@@ -11852,7 +11852,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043908",
+      "generated_at": "2026-05-06T07:08:54.188777",
       "headline": "DDOG Datadog 2025 Q4 财报超预期：EPS +6.31%、营收 +3.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.59,
@@ -11935,7 +11935,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.043957",
+      "generated_at": "2026-05-06T07:08:54.188827",
       "headline": "DE 迪尔股份 2026 Q1 财报超预期：EPS +19.80%、营收 +5.45%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.42,
@@ -12033,7 +12033,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044005",
+      "generated_at": "2026-05-06T07:08:54.188874",
       "headline": "DECK 德克斯户外 2026 Q3 财报超预期：EPS +20.22%、营收 +4.74%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.33,
@@ -12121,7 +12121,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044079",
+      "generated_at": "2026-05-06T07:08:54.188943",
       "headline": "DELL 戴尔科技 2026 Q4 财报超预期：EPS +10.20%、营收 +5.39%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.89,
@@ -12229,7 +12229,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044132",
+      "generated_at": "2026-05-06T07:08:54.188990",
       "headline": "DG 美国达乐公司 2025 Q4 财报超预期：EPS +16.27%、营收 +0.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.93,
@@ -12317,7 +12317,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044180",
+      "generated_at": "2026-05-06T07:08:54.189036",
       "headline": "DGX 奎斯特诊疗 2026 Q1 财报超预期：EPS +5.49%、营收 +2.35%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.5,
@@ -12390,7 +12390,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044231",
+      "generated_at": "2026-05-06T07:08:54.189084",
       "headline": "DHI 霍顿房屋 2026 Q2 财报超预期：EPS +4.19%、营收 +0.11%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.24,
@@ -12473,7 +12473,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044282",
+      "generated_at": "2026-05-06T07:08:54.189133",
       "headline": "DHR 丹纳赫 2026 Q1 财报超预期：EPS +6.19%、营收 -0.51%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.06,
@@ -12561,7 +12561,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044339",
+      "generated_at": "2026-05-06T07:08:54.189181",
       "headline": "DIS 迪士尼 2026 Q1 财报超预期：EPS +3.82%、营收 +1.11%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.63,
@@ -12644,7 +12644,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044386",
+      "generated_at": "2026-05-06T07:08:54.189227",
       "headline": "DLR 数字房地产信托公司 2026 Q1 财报超预期：EPS +4.19%、营收 +2.10%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.46,
@@ -12722,7 +12722,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.044436",
+      "generated_at": "2026-05-06T07:08:54.189273",
       "headline": "DLTR 美元树公司 2025 Q4 财报符合预期：EPS +1.19%、营收 -0.19%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.56,
@@ -12800,7 +12800,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044484",
+      "generated_at": "2026-05-06T07:08:54.189318",
       "headline": "DOC Healthpeak物业 2026 Q1 财报超预期：EPS +430.71%、营收 +6.36%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.28,
@@ -12888,7 +12888,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044532",
+      "generated_at": "2026-05-06T07:08:54.189364",
       "headline": "DOV 都福集团 2026 Q1 财报超预期：EPS +0.44%、营收 +2.51%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.28,
@@ -12961,7 +12961,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044585",
+      "generated_at": "2026-05-06T07:08:54.189412",
       "headline": "DOW 陶氏化学 2026 Q1 财报超预期：EPS +64.10%、营收 +1.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -0.14,
@@ -13044,7 +13044,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.044632",
+      "generated_at": "2026-05-06T07:08:54.189457",
       "headline": "DPZ 达美乐比萨 2026 Q1 财报低于预期：EPS -3.73%、营收 -1.05%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.13,
@@ -13127,7 +13127,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.044684",
+      "generated_at": "2026-05-06T07:08:54.189505",
       "headline": "DRI 达登饭店 2026 Q3 财报符合预期：EPS +0.34%、营收 +0.32%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.95,
@@ -13205,7 +13205,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044734",
+      "generated_at": "2026-05-06T07:08:54.189552",
       "headline": "DTE DTE能源 2026 Q1 财报超预期：EPS -1.52%、营收 +17.64%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.95,
@@ -13288,7 +13288,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044783",
+      "generated_at": "2026-05-06T07:08:54.189595",
       "headline": "DUK 杜克能源 2026 Q1 财报超预期：EPS +3.21%、营收 +8.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.93,
@@ -13371,7 +13371,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044832",
+      "generated_at": "2026-05-06T07:08:54.189642",
       "headline": "DVA 德维特 2026 Q1 财报超预期：EPS +23.18%、营收 +1.76%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.87,
@@ -13449,7 +13449,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.044903",
+      "generated_at": "2026-05-06T07:08:54.189705",
       "headline": "DVN 戴文能源 2026 Q1 财报低于预期：EPS -1.89%、营收 -12.25%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.04,
@@ -13527,7 +13527,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.044951",
+      "generated_at": "2026-05-06T07:08:54.189752",
       "headline": "DXCM 德康医疗 2026 Q1 财报超预期：EPS +19.15%、营收 +1.47%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.56,
@@ -13615,7 +13615,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.045003",
+      "generated_at": "2026-05-06T07:08:54.189798",
       "headline": "EA 艺电 2026 Q4 财报低于预期：EPS -37.24%、营收 -5.68%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.5,
@@ -13713,7 +13713,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045056",
+      "generated_at": "2026-05-06T07:08:54.189847",
       "headline": "EBAY 易贝 2026 Q1 财报超预期：EPS +5.06%、营收 +1.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.66,
@@ -13796,7 +13796,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.045106",
+      "generated_at": "2026-05-06T07:08:54.189894",
       "headline": "ECL 艺康集团 2026 Q1 财报符合预期：EPS 0.00%、营收 +0.99%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.7,
@@ -13874,7 +13874,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045165",
+      "generated_at": "2026-05-06T07:08:54.189948",
       "headline": "ED 爱迪生联合电气 2025 Q4 财报超预期：EPS +3.97%、营收 +10.60%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.89,
@@ -13962,7 +13962,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045213",
+      "generated_at": "2026-05-06T07:08:54.190002",
       "headline": "EFX 艾可菲 2026 Q1 财报超预期：EPS +10.06%、营收 +1.97%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.86,
@@ -14045,7 +14045,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.045260",
+      "generated_at": "2026-05-06T07:08:54.190046",
       "headline": "EG 埃弗雷斯特集团 2026 Q1 财报好坏参半：EPS +15.10%、营收 -2.37%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 16.08,
@@ -14133,7 +14133,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.045312",
+      "generated_at": "2026-05-06T07:08:54.190092",
       "headline": "EIX 爱迪生国际 2026 Q1 财报好坏参半：EPS +7.58%、营收 -1.21%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.42,
@@ -14221,7 +14221,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045361",
+      "generated_at": "2026-05-06T07:08:54.190137",
       "headline": "EL 雅诗兰黛 2026 Q3 财报超预期：EPS +37.88%、营收 +0.62%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.91,
@@ -14309,7 +14309,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045412",
+      "generated_at": "2026-05-06T07:08:54.190183",
       "headline": "ELV Elevance Health 2026 Q1 财报超预期：EPS +14.05%、营收 +2.68%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 12.58,
@@ -14397,7 +14397,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045463",
+      "generated_at": "2026-05-06T07:08:54.190229",
       "headline": "EME 埃姆科 2026 Q1 财报超预期：EPS +15.93%、营收 +10.23%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.84,
@@ -14485,7 +14485,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.045515",
+      "generated_at": "2026-05-06T07:08:54.190280",
       "headline": "EMR 艾默生电气 2026 Q2 财报符合预期：EPS +0.65%、营收 -0.70%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.54,
@@ -14563,7 +14563,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045567",
+      "generated_at": "2026-05-06T07:08:54.190328",
       "headline": "EOG EOG能源 2026 Q1 财报超预期：EPS +5.57%、营收 +11.91%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.41,
@@ -14651,7 +14651,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045619",
+      "generated_at": "2026-05-06T07:08:54.190377",
       "headline": "EPAM EPAM系统 2025 Q4 财报超预期：EPS +3.16%、营收 +1.17%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.26,
@@ -14724,7 +14724,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.045672",
+      "generated_at": "2026-05-06T07:08:54.190424",
       "headline": "EQIX 易昆尼克斯 2026 Q1 财报低于预期：EPS -1.86%、营收 -2.82%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.22,
@@ -14802,7 +14802,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045721",
+      "generated_at": "2026-05-06T07:08:54.190469",
       "headline": "EQR 资产住宅公司 2026 Q1 财报超预期：EPS +4.21%、营收 -0.25%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.99,
@@ -14870,7 +14870,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045775",
+      "generated_at": "2026-05-06T07:08:54.190522",
       "headline": "EQT EQT能源 2026 Q1 财报超预期：EPS +12.02%、营收 +5.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.33,
@@ -14978,7 +14978,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.045821",
+      "generated_at": "2026-05-06T07:08:54.190568",
       "headline": "ERIE 伊瑞保险 2026 Q1 财报低于预期：EPS -5.88%、营收 -7.01%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.88,
@@ -15066,7 +15066,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045875",
+      "generated_at": "2026-05-06T07:08:54.190619",
       "headline": "ES EVERSOURCE能源 2025 Q4 财报超预期：EPS +1.82%、营收 +24.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.12,
@@ -15149,7 +15149,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045922",
+      "generated_at": "2026-05-06T07:08:54.190667",
       "headline": "ESS 埃塞克斯信托 2026 Q1 财报超预期：EPS +183.92%、营收 +0.53%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.06,
@@ -15232,7 +15232,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.045969",
+      "generated_at": "2026-05-06T07:08:54.190719",
       "headline": "ETN 伊顿 2026 Q1 财报超预期：EPS +2.93%、营收 +4.30%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.81,
@@ -15310,7 +15310,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046015",
+      "generated_at": "2026-05-06T07:08:54.190765",
       "headline": "ETR 安特吉 2026 Q1 财报超预期：EPS +2.38%、营收 +10.27%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.86,
@@ -15398,7 +15398,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.046068",
+      "generated_at": "2026-05-06T07:08:54.190820",
       "headline": "EVRG 西星能源 2025 Q4 财报低于预期：EPS -23.77%、营收 -6.12%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.42,
@@ -15496,7 +15496,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046116",
+      "generated_at": "2026-05-06T07:08:54.190871",
       "headline": "EW 爱德华生命科学 2026 Q1 财报超预期：EPS +7.00%、营收 +3.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.78,
@@ -15579,7 +15579,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046170",
+      "generated_at": "2026-05-06T07:08:54.190918",
       "headline": "EXC 爱克斯龙电力 2025 Q4 财报超预期：EPS +7.86%、营收 +0.39%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.59,
@@ -15667,7 +15667,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046219",
+      "generated_at": "2026-05-06T07:08:54.190973",
       "headline": "EXE EXPAND能源 2026 Q1 财报超预期：EPS +3.79%、营收 +24.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.83,
@@ -15760,7 +15760,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046340",
+      "generated_at": "2026-05-06T07:08:54.191023",
       "headline": "EXPD 康捷国际物流 2026 Q1 财报超预期：EPS +28.57%、营收 +6.59%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.71,
@@ -15853,7 +15853,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046410",
+      "generated_at": "2026-05-06T07:08:54.191076",
       "headline": "EXPE 亿客行 2025 Q4 财报超预期：EPS +12.84%、营收 +3.84%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.78,
@@ -15946,7 +15946,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046462",
+      "generated_at": "2026-05-06T07:08:54.191126",
       "headline": "EXR Extra Space存储 2026 Q1 财报超预期：EPS +75.86%、营收 +0.55%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.04,
@@ -16034,7 +16034,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046511",
+      "generated_at": "2026-05-06T07:08:54.191174",
       "headline": "F 福特汽车 2026 Q1 财报超预期：EPS +260.85%、营收 +1.38%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.66,
@@ -16117,7 +16117,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046568",
+      "generated_at": "2026-05-06T07:08:54.191221",
       "headline": "FANG 响尾蛇能源 2026 Q1 财报超预期：EPS +13.10%、营收 +10.57%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.23,
@@ -16215,7 +16215,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.046615",
+      "generated_at": "2026-05-06T07:08:54.191270",
       "headline": "FAST 快扣 2026 Q1 财报符合预期：EPS +0.44%、营收 +0.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.3,
@@ -16283,7 +16283,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046665",
+      "generated_at": "2026-05-06T07:08:54.191321",
       "headline": "FCX 麦克莫兰铜金 2026 Q1 财报超预期：EPS +22.19%、营收 +8.82%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.57,
@@ -16381,7 +16381,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046712",
+      "generated_at": "2026-05-06T07:08:54.191366",
       "headline": "FDS 慧甚 2026 Q2 财报超预期：EPS +2.06%、营收 +1.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.46,
@@ -16449,7 +16449,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046771",
+      "generated_at": "2026-05-06T07:08:54.191419",
       "headline": "FDX 联邦快递 2026 Q3 财报超预期：EPS +26.51%、营收 +2.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.25,
@@ -16552,7 +16552,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046819",
+      "generated_at": "2026-05-06T07:08:54.191470",
       "headline": "FE 第一能源 2026 Q1 财报超预期：EPS 0.00%、营收 +10.51%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.72,
@@ -16635,7 +16635,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046862",
+      "generated_at": "2026-05-06T07:08:54.191509",
       "headline": "FER Ferrovial 2025 Q4 财报超预期：EPS +293.26%、营收 +35.12%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.3406,
@@ -16728,7 +16728,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046912",
+      "generated_at": "2026-05-06T07:08:54.191560",
       "headline": "FFIV F5 2026 Q2 财报超预期：EPS +12.39%、营收 +3.56%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.9,
@@ -16831,7 +16831,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.046960",
+      "generated_at": "2026-05-06T07:08:54.191604",
       "headline": "FICO 费埃哲 2026 Q2 财报超预期：EPS +14.78%、营收 +9.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 12.5,
@@ -16929,7 +16929,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047012",
+      "generated_at": "2026-05-06T07:08:54.191656",
       "headline": "FIS 繁德信息技术 2025 Q4 财报超预期：EPS -0.59%、营收 +2.49%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.68,
@@ -17007,7 +17007,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.047060",
+      "generated_at": "2026-05-06T07:08:54.191705",
       "headline": "FISV 费哲金融服务 2026 Q1 财报好坏参半：EPS +14.01%、营收 -1.11%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.79,
@@ -17095,7 +17095,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047113",
+      "generated_at": "2026-05-06T07:08:54.191757",
       "headline": "FITB 五三银行 2026 Q1 财报超预期：EPS +254.65%、营收 +0.52%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.16,
@@ -17203,7 +17203,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047168",
+      "generated_at": "2026-05-06T07:08:54.191811",
       "headline": "FIX 美国舒适系统 2026 Q1 财报超预期：EPS +54.33%、营收 +19.74%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 10.51,
@@ -17311,7 +17311,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047219",
+      "generated_at": "2026-05-06T07:08:54.191861",
       "headline": "FOX 福克斯公司-B 2026 Q2 财报超预期：EPS +60.78%、营收 +2.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.82,
@@ -17394,7 +17394,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047280",
+      "generated_at": "2026-05-06T07:08:54.191911",
       "headline": "FOXA 福克斯公司-A 2026 Q2 财报超预期：EPS +74.47%、营收 +2.45%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.82,
@@ -17482,7 +17482,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047329",
+      "generated_at": "2026-05-06T07:08:54.191956",
       "headline": "FRT FRT信托 2026 Q1 财报超预期：EPS +149.32%、营收 +0.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.82,
@@ -17565,7 +17565,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047385",
+      "generated_at": "2026-05-06T07:08:54.192006",
       "headline": "FSLR 第一太阳能 2026 Q1 财报超预期：EPS +12.20%、营收 +0.93%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.22,
@@ -17663,7 +17663,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047442",
+      "generated_at": "2026-05-06T07:08:54.192056",
       "headline": "FTNT 飞塔信息 2025 Q4 财报超预期：EPS +9.02%、营收 +2.44%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.81,
@@ -17741,7 +17741,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047491",
+      "generated_at": "2026-05-06T07:08:54.192106",
       "headline": "FTV 福泰 2026 Q1 财报超预期：EPS +9.37%、营收 +2.97%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.7,
@@ -17819,7 +17819,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047539",
+      "generated_at": "2026-05-06T07:08:54.192196",
       "headline": "GD 通用动力 2026 Q1 财报超预期：EPS +11.72%、营收 +6.14%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.1,
@@ -17907,7 +17907,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047588",
+      "generated_at": "2026-05-06T07:08:54.192250",
       "headline": "GDDY GoDaddy 2026 Q1 财报超预期：EPS +4.58%、营收 +0.33%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.6,
@@ -17995,7 +17995,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047639",
+      "generated_at": "2026-05-06T07:08:54.192306",
       "headline": "GE GE航天航空 2026 Q1 财报超预期：EPS +16.25%、营收 +8.39%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.86,
@@ -18093,7 +18093,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.047695",
+      "generated_at": "2026-05-06T07:08:54.192359",
       "headline": "GEHC GE医疗 2026 Q1 财报好坏参半：EPS -7.48%、营收 +1.76%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.99,
@@ -18181,7 +18181,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047744",
+      "generated_at": "2026-05-06T07:08:54.192408",
       "headline": "GEN Gen数字 2026 Q3 财报超预期：EPS +1.59%、营收 +1.11%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.64,
@@ -18259,7 +18259,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.047800",
+      "generated_at": "2026-05-06T07:08:54.192458",
       "headline": "GEV GE Vernova 2026 Q1 财报符合预期：EPS +1.54%、营收 +0.94%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.98,
@@ -18337,7 +18337,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.047853",
+      "generated_at": "2026-05-06T07:08:54.192509",
       "headline": "GILD 吉利德科学 2025 Q4 财报超预期：EPS +2.76%、营收 +3.05%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.86,
@@ -18415,7 +18415,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.047901",
+      "generated_at": "2026-05-06T07:08:54.192559",
       "headline": "GIS 通用磨坊 2026 Q3 财报低于预期：EPS -12.09%、营收 +0.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.64,
@@ -18503,7 +18503,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.047952",
+      "generated_at": "2026-05-06T07:08:54.192608",
       "headline": "GL 环球人寿 2026 Q1 财报符合预期：EPS -0.87%、营收 -0.27%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.43,
@@ -18586,7 +18586,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048003",
+      "generated_at": "2026-05-06T07:08:54.192658",
       "headline": "GLW 康宁 2026 Q1 财报超预期：EPS +1.16%、营收 +1.09%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.7,
@@ -18659,7 +18659,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048053",
+      "generated_at": "2026-05-06T07:08:54.192708",
       "headline": "GM 通用汽车 2026 Q1 财报超预期：EPS +41.76%、营收 +0.27%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.7,
@@ -18752,7 +18752,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048104",
+      "generated_at": "2026-05-06T07:08:54.192765",
       "headline": "GNRC Generac 控股 2026 Q1 财报超预期：EPS +35.34%、营收 +0.69%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.8,
@@ -18845,7 +18845,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048156",
+      "generated_at": "2026-05-06T07:08:54.192821",
       "headline": "GOOG 谷歌-C 2026 Q1 财报超预期：EPS +90.67%、营收 +2.74%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.11,
@@ -18948,7 +18948,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048213",
+      "generated_at": "2026-05-06T07:08:54.192875",
       "headline": "GOOGL 谷歌-A 2026 Q1 财报超预期：EPS +93.56%、营收 +2.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.11,
@@ -19051,7 +19051,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048264",
+      "generated_at": "2026-05-06T07:08:54.192923",
       "headline": "GPC 通用配件 2026 Q1 财报超预期：EPS -2.21%、营收 +1.63%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.77,
@@ -19124,7 +19124,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.048315",
+      "generated_at": "2026-05-06T07:08:54.192977",
       "headline": "GPN 环汇有限公司 2025 Q4 财报符合预期：EPS +0.63%、营收 +0.63%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.18,
@@ -19197,7 +19197,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048365",
+      "generated_at": "2026-05-06T07:08:54.193023",
       "headline": "GRMN 佳明 2026 Q1 财报超预期：EPS +13.04%、营收 +1.71%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.08,
@@ -19275,7 +19275,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048417",
+      "generated_at": "2026-05-06T07:08:54.193079",
       "headline": "GS 高盛 2026 Q1 财报超预期：EPS +6.56%、营收 +1.39%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 17.55,
@@ -19368,7 +19368,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": false,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.048463",
+      "generated_at": "2026-05-06T07:08:54.193127",
       "headline": "GWW 美国固安捷 2025 Q4 财报符合预期：EPS -0.21%、营收 +0.62%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 9.44,
@@ -19436,7 +19436,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048512",
+      "generated_at": "2026-05-06T07:08:54.193178",
       "headline": "HAL 哈里伯顿 2026 Q1 财报超预期：EPS +10.33%、营收 +1.80%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.55,
@@ -19529,7 +19529,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048558",
+      "generated_at": "2026-05-06T07:08:54.193224",
       "headline": "HAS 孩之宝 2025 Q4 财报超预期：EPS +52.53%、营收 +14.49%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.51,
@@ -19617,7 +19617,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048608",
+      "generated_at": "2026-05-06T07:08:54.193272",
       "headline": "HBAN 亨廷顿银行 2026 Q1 财报超预期：EPS +13.94%、营收 +0.98%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.26,
@@ -19710,7 +19710,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.048663",
+      "generated_at": "2026-05-06T07:08:54.193325",
       "headline": "HCA HCA医疗 2026 Q1 财报符合预期：EPS +0.42%、营收 +0.11%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 7.15,
@@ -19793,7 +19793,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048714",
+      "generated_at": "2026-05-06T07:08:54.193377",
       "headline": "HD 家得宝 2025 Q4 财报超预期：EPS +7.51%、营收 +0.28%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.72,
@@ -19876,7 +19876,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.048766",
+      "generated_at": "2026-05-06T07:08:54.193422",
       "headline": "HIG 哈特福德金融 2026 Q1 财报低于预期：EPS -8.85%、营收 -1.68%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.09,
@@ -19964,7 +19964,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.048812",
+      "generated_at": "2026-05-06T07:08:54.193466",
       "headline": "HII 亨廷顿英格尔斯工业 2026 Q1 财报超预期：EPS +2.43%、营收 +2.61%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.79,
@@ -20047,7 +20047,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.048863",
+      "generated_at": "2026-05-06T07:08:54.193516",
       "headline": "HLT 希尔顿酒店 2026 Q1 财报符合预期：EPS +1.52%、营收 -0.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.01,
@@ -20120,7 +20120,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.048915",
+      "generated_at": "2026-05-06T07:08:54.193566",
       "headline": "HON 霍尼韦尔 2026 Q1 财报好坏参半：EPS +5.60%、营收 -1.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.45,
@@ -20198,7 +20198,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.048972",
+      "generated_at": "2026-05-06T07:08:54.193618",
       "headline": "HOOD 罗宾汉 2026 Q1 财报低于预期：EPS -1.38%、营收 -6.37%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.38,
@@ -20286,7 +20286,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049021",
+      "generated_at": "2026-05-06T07:08:54.193662",
       "headline": "HPE 慧与科技 2026 Q1 财报超预期：EPS +10.73%、营收 -0.52%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.65,
@@ -20374,7 +20374,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049081",
+      "generated_at": "2026-05-06T07:08:54.193709",
       "headline": "HPQ 惠普 2026 Q1 财报超预期：EPS +5.88%、营收 +3.57%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.81,
@@ -20441,7 +20441,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.049130",
+      "generated_at": "2026-05-06T07:08:54.193755",
       "headline": "HRL 荷美尔食品 2026 Q1 财报好坏参半：EPS +6.25%、营收 -1.30%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.34,
@@ -20514,7 +20514,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049177",
+      "generated_at": "2026-05-06T07:08:54.193798",
       "headline": "HSIC 汉瑞祥 2026 Q1 财报超预期：EPS +10.00%、营收 +0.77%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.32,
@@ -20592,7 +20592,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049231",
+      "generated_at": "2026-05-06T07:08:54.193850",
       "headline": "HST 美国豪斯特酒店 2025 Q4 财报超预期：EPS +165.35%、营收 +7.15%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.51,
@@ -20690,7 +20690,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049298",
+      "generated_at": "2026-05-06T07:08:54.193913",
       "headline": "HSY 好时 2026 Q1 财报超预期：EPS +15.20%、营收 +2.52%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.35,
@@ -20788,7 +20788,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049349",
+      "generated_at": "2026-05-06T07:08:54.193961",
       "headline": "HUBB 哈勃集团 2026 Q1 财报超预期：EPS +1.55%、营收 +1.05%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.93,
@@ -20861,7 +20861,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049401",
+      "generated_at": "2026-05-06T07:08:54.194009",
       "headline": "HUM 哈门那 2026 Q1 财报超预期：EPS +3.41%、营收 +0.70%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 10.31,
@@ -20939,7 +20939,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049451",
+      "generated_at": "2026-05-06T07:08:54.194057",
       "headline": "HWM 霍瓦特航空航天 2025 Q4 财报超预期：EPS +8.81%、营收 +2.12%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.05,
@@ -21032,7 +21032,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049505",
+      "generated_at": "2026-05-06T07:08:54.194105",
       "headline": "IBKR 盈透证券 2026 Q1 财报超预期：EPS +5.26%、营收 -0.30%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.6,
@@ -21130,7 +21130,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049555",
+      "generated_at": "2026-05-06T07:08:54.194152",
       "headline": "IBM IBM 2026 Q1 财报超预期：EPS +5.52%、营收 +1.83%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.91,
@@ -21213,7 +21213,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049606",
+      "generated_at": "2026-05-06T07:08:54.194198",
       "headline": "ICE 洲际交易所 2026 Q1 财报超预期：EPS +5.38%、营收 +3.44%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.35,
@@ -21296,7 +21296,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049658",
+      "generated_at": "2026-05-06T07:08:54.194247",
       "headline": "IDXX 爱德士 2026 Q1 财报超预期：EPS +1.76%、营收 +2.00%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.47,
@@ -21374,7 +21374,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049710",
+      "generated_at": "2026-05-06T07:08:54.194295",
       "headline": "IEX IDEX 2026 Q1 财报超预期：EPS +12.36%、营收 +4.89%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2,
@@ -21452,7 +21452,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049762",
+      "generated_at": "2026-05-06T07:08:54.194342",
       "headline": "IFF 国际香料香精 2026 Q1 财报超预期：EPS +15.74%、营收 +3.71%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.25,
@@ -21530,7 +21530,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049812",
+      "generated_at": "2026-05-06T07:08:54.194390",
       "headline": "INCY 因塞特 2026 Q1 财报超预期：EPS +31.16%、营收 +4.66%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.81,
@@ -21618,7 +21618,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.049874",
+      "generated_at": "2026-05-06T07:08:54.194446",
       "headline": "INSM Insmed 2025 Q4 财报好坏参半：EPS -43.93%、营收 +14.10%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -1.54,
@@ -21721,7 +21721,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049933",
+      "generated_at": "2026-05-06T07:08:54.194500",
       "headline": "INTC 英特尔 2026 Q1 财报超预期：EPS +1428.73%、营收 +9.33%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.29,
@@ -21814,7 +21814,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.049987",
+      "generated_at": "2026-05-06T07:08:54.194550",
       "headline": "INTU 财捷 2026 Q2 财报超预期：EPS +12.77%、营收 +2.59%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.15,
@@ -21912,7 +21912,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050044",
+      "generated_at": "2026-05-06T07:08:54.194598",
       "headline": "INVH 邀请之家 2026 Q1 财报超预期：EPS +46.31%、营收 +6.41%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.26,
@@ -22005,7 +22005,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.050097",
+      "generated_at": "2026-05-06T07:08:54.194649",
       "headline": "IP 国际纸业 2026 Q1 财报低于预期：EPS -16.67%、营收 -0.74%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.15,
@@ -22098,7 +22098,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050149",
+      "generated_at": "2026-05-06T07:08:54.194699",
       "headline": "IQV 艾昆纬 2026 Q1 财报超预期：EPS +2.47%、营收 +1.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.9,
@@ -22166,7 +22166,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050201",
+      "generated_at": "2026-05-06T07:08:54.194748",
       "headline": "IR 英格索兰 2026 Q1 财报超预期：EPS +4.05%、营收 +0.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.77,
@@ -22244,7 +22244,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050258",
+      "generated_at": "2026-05-06T07:08:54.194797",
       "headline": "IRM 铁山 2026 Q1 财报超预期：EPS +19.76%、营收 +4.00%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.6,
@@ -22327,7 +22327,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050306",
+      "generated_at": "2026-05-06T07:08:54.194845",
       "headline": "ISRG 直觉外科公司 2026 Q1 财报超预期：EPS +17.92%、营收 +5.81%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.5,
@@ -22420,7 +22420,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050357",
+      "generated_at": "2026-05-06T07:08:54.194891",
       "headline": "IT 加特纳 2026 Q1 财报超预期：EPS +11.04%、营收 -0.23%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.32,
@@ -22513,7 +22513,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050409",
+      "generated_at": "2026-05-06T07:08:54.194937",
       "headline": "ITW 伊利诺伊机械 2026 Q1 财报超预期：EPS +3.50%、营收 +0.15%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.66,
@@ -22581,7 +22581,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.050463",
+      "generated_at": "2026-05-06T07:08:54.194985",
       "headline": "IVZ 景顺 2026 Q1 财报符合预期：EPS -1.72%、营收 -0.34%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.57,
@@ -22669,7 +22669,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050511",
+      "generated_at": "2026-05-06T07:08:54.195030",
       "headline": "J 雅各布工程 2026 Q2 财报超预期：EPS +6.71%、营收 +2.21%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.75,
@@ -22747,7 +22747,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050566",
+      "generated_at": "2026-05-06T07:08:54.195086",
       "headline": "JBHT JB亨特运输服务 2026 Q1 财报超预期：EPS +2.76%、营收 +3.38%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.49,
@@ -22830,7 +22830,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050617",
+      "generated_at": "2026-05-06T07:08:54.195134",
       "headline": "JBL 捷普科技 2026 Q2 财报超预期：EPS +7.17%、营收 +6.48%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.69,
@@ -22923,7 +22923,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050673",
+      "generated_at": "2026-05-06T07:08:54.195185",
       "headline": "JCI 江森自控 2026 Q1 财报超预期：EPS +5.83%、营收 +2.80%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.89,
@@ -23011,7 +23011,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050720",
+      "generated_at": "2026-05-06T07:08:54.195228",
       "headline": "JKHY 杰克亨利 2026 Q3 财报超预期：EPS +19.58%、营收 +2.67%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.71,
@@ -23094,7 +23094,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050769",
+      "generated_at": "2026-05-06T07:08:54.195276",
       "headline": "JNJ 强生 2026 Q1 财报超预期：EPS +0.75%、营收 +1.89%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.7,
@@ -23172,7 +23172,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050827",
+      "generated_at": "2026-05-06T07:08:54.195327",
       "headline": "JPM 摩根大通 2026 Q1 财报超预期：EPS +8.59%、营收 +1.33%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.94,
@@ -23270,7 +23270,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050876",
+      "generated_at": "2026-05-06T07:08:54.195371",
       "headline": "KDP Keurig Dr Pepper 2026 Q1 财报超预期：EPS +4.73%、营收 +3.65%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.39,
@@ -23338,7 +23338,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050928",
+      "generated_at": "2026-05-06T07:08:54.195418",
       "headline": "KEY 基业 2026 Q1 财报超预期：EPS +7.32%、营收 +0.83%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.44,
@@ -23426,7 +23426,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.050982",
+      "generated_at": "2026-05-06T07:08:54.195469",
       "headline": "KEYS 是德科技 2026 Q1 财报超预期：EPS +8.50%、营收 +3.87%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.17,
@@ -23504,7 +23504,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051031",
+      "generated_at": "2026-05-06T07:08:54.195516",
       "headline": "KHC 卡夫亨氏 2026 Q1 财报超预期：EPS +16.00%、营收 +2.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.58,
@@ -23587,7 +23587,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051078",
+      "generated_at": "2026-05-06T07:08:54.195559",
       "headline": "KIM 金科 2026 Q1 财报超预期：EPS +17.35%、营收 +1.86%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.23,
@@ -23665,7 +23665,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051147",
+      "generated_at": "2026-05-06T07:08:54.195626",
       "headline": "KKR KKR 2026 Q1 财报超预期：EPS +10.32%、营收 +7.62%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.39,
@@ -23748,7 +23748,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051194",
+      "generated_at": "2026-05-06T07:08:54.195676",
       "headline": "KLAC 科磊 2026 Q3 财报超预期：EPS +2.51%、营收 +1.22%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 9.4,
@@ -23821,7 +23821,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051250",
+      "generated_at": "2026-05-06T07:08:54.195731",
       "headline": "KMB 金佰利 2026 Q1 财报超预期：EPS +2.07%、营收 +1.90%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.97,
@@ -23904,7 +23904,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051297",
+      "generated_at": "2026-05-06T07:08:54.195778",
       "headline": "KMI 金德尔摩根 2026 Q1 财报超预期：EPS +21.24%、营收 +4.35%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.48,
@@ -23992,7 +23992,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051348",
+      "generated_at": "2026-05-06T07:08:54.195825",
       "headline": "KO 可口可乐 2026 Q1 财报超预期：EPS +5.91%、营收 +1.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.86,
@@ -24070,7 +24070,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051406",
+      "generated_at": "2026-05-06T07:08:54.195882",
       "headline": "KR 克罗格 2025 Q4 财报超预期：EPS +6.67%、营收 -0.67%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.28,
@@ -24137,7 +24137,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051459",
+      "generated_at": "2026-05-06T07:08:54.195931",
       "headline": "KVUE 科赴 2025 Q4 财报超预期：EPS +21.24%、营收 +2.57%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.27,
@@ -24215,7 +24215,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.051503",
+      "generated_at": "2026-05-06T07:08:54.195974",
       "headline": "L 洛斯公司 2026 Q1 财报符合预期",
       "data_card": {
         "eps_actual": 1.63,
@@ -24303,7 +24303,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051551",
+      "generated_at": "2026-05-06T07:08:54.196025",
       "headline": "LDOS 利迪奥斯 2026 Q1 财报超预期：EPS +8.68%、营收 +2.84%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.13,
@@ -24386,7 +24386,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.051602",
+      "generated_at": "2026-05-06T07:08:54.196078",
       "headline": "LEN 莱纳建筑 2026 Q1 财报低于预期：EPS -2.41%、营收 -3.17%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.93,
@@ -24469,7 +24469,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051652",
+      "generated_at": "2026-05-06T07:08:54.196123",
       "headline": "LH 徕博科 2026 Q1 财报超预期：EPS +3.91%、营收 +0.82%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.25,
@@ -24542,7 +24542,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051702",
+      "generated_at": "2026-05-06T07:08:54.196172",
       "headline": "LHX L3哈里斯 2026 Q1 财报超预期：EPS +7.51%、营收 +6.04%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.72,
@@ -24635,7 +24635,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051750",
+      "generated_at": "2026-05-06T07:08:54.196213",
       "headline": "LII 雷诺士 2026 Q1 财报超预期：EPS +6.01%、营收 +5.96%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.35,
@@ -24713,7 +24713,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051802",
+      "generated_at": "2026-05-06T07:08:54.196263",
       "headline": "LIN 林德气体 2026 Q1 财报超预期：EPS +1.41%、营收 +2.13%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.33,
@@ -24786,7 +24786,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051852",
+      "generated_at": "2026-05-06T07:08:54.196313",
       "headline": "LITE Lumentum 2026 Q3 财报超预期：EPS +4.41%、营收 -0.20%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.37,
@@ -24879,7 +24879,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051899",
+      "generated_at": "2026-05-06T07:08:54.196360",
       "headline": "LLY 礼来 2026 Q1 财报超预期：EPS +22.67%、营收 +11.11%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 8.55,
@@ -24977,7 +24977,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.051950",
+      "generated_at": "2026-05-06T07:08:54.196406",
       "headline": "LMT 洛克希德马丁 2026 Q1 财报低于预期：EPS -4.45%、营收 -1.10%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.44,
@@ -25060,7 +25060,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.051999",
+      "generated_at": "2026-05-06T07:08:54.196453",
       "headline": "LNT 美国联合能源 2026 Q1 财报超预期：EPS 0.00%、营收 +10.09%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.82,
@@ -25138,7 +25138,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052049",
+      "generated_at": "2026-05-06T07:08:54.196502",
       "headline": "LOW 劳氏 2025 Q4 财报超预期：EPS +2.06%、营收 +1.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.98,
@@ -25211,7 +25211,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052099",
+      "generated_at": "2026-05-06T07:08:54.196550",
       "headline": "LRCX 泛林集团 2026 Q3 财报超预期：EPS +8.09%、营收 +1.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.47,
@@ -25299,7 +25299,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052156",
+      "generated_at": "2026-05-06T07:08:54.196600",
       "headline": "LULU 露露乐蒙 2025 Q4 财报超预期：EPS +4.59%、营收 +1.80%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.01,
@@ -25382,7 +25382,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.052207",
+      "generated_at": "2026-05-06T07:08:54.196648",
       "headline": "LUV 西南航空 2026 Q1 财报符合预期：EPS 0.00%、营收 -0.31%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.45,
@@ -25465,7 +25465,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052258",
+      "generated_at": "2026-05-06T07:08:54.196695",
       "headline": "LVS 金沙集团 2026 Q1 财报超预期：EPS +20.37%、营收 +6.64%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.91,
@@ -25568,7 +25568,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.052305",
+      "generated_at": "2026-05-06T07:08:54.196743",
       "headline": "LYB 利安德巴塞尔 2026 Q1 财报好坏参半：EPS +58.06%、营收 -4.42%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.49,
@@ -25661,7 +25661,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.052356",
+      "generated_at": "2026-05-06T07:08:54.196794",
       "headline": "LYV Live Nation 2026 Q1 财报好坏参半：EPS -427.25%、营收 +6.21%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -1.85,
@@ -25754,7 +25754,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052409",
+      "generated_at": "2026-05-06T07:08:54.196848",
       "headline": "MA 万事达 2026 Q1 财报超预期：EPS +4.31%、营收 +1.68%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.6,
@@ -25832,7 +25832,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.052460",
+      "generated_at": "2026-05-06T07:08:54.196897",
       "headline": "MAA MAA房产信托 2026 Q1 财报符合预期：EPS +0.47%、营收 -0.36%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.13,
@@ -25910,7 +25910,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.052516",
+      "generated_at": "2026-05-06T07:08:54.196951",
       "headline": "MAR 万豪酒店 2025 Q4 财报符合预期：EPS -0.77%、营收 +0.29%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.58,
@@ -25998,7 +25998,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052563",
+      "generated_at": "2026-05-06T07:08:54.196995",
       "headline": "MAS 马斯科 2026 Q1 财报超预期：EPS +18.18%、营收 +4.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.04,
@@ -26076,7 +26076,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052620",
+      "generated_at": "2026-05-06T07:08:54.197052",
       "headline": "MCD 麦当劳 2025 Q4 财报超预期：EPS +2.30%、营收 +2.50%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.12,
@@ -26159,7 +26159,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.052676",
+      "generated_at": "2026-05-06T07:08:54.197107",
       "headline": "MCHP 微芯科技 2026 Q3 财报符合预期：EPS +2.68%、营收 +0.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.44,
@@ -26242,7 +26242,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": false,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.052725",
+      "generated_at": "2026-05-06T07:08:54.197155",
       "headline": "MCK 麦克森 2026 Q3 财报符合预期：EPS +1.85%、营收 +0.34%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 9.34,
@@ -26325,7 +26325,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.052774",
+      "generated_at": "2026-05-06T07:08:54.197206",
       "headline": "MCO 穆迪 2026 Q1 财报符合预期：EPS +2.61%、营收 +0.49%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.33,
@@ -26418,7 +26418,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052827",
+      "generated_at": "2026-05-06T07:08:54.197257",
       "headline": "MDLZ 亿滋 2026 Q1 财报超预期：EPS +10.20%、营收 +3.39%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.67,
@@ -26506,7 +26506,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.052880",
+      "generated_at": "2026-05-06T07:08:54.197305",
       "headline": "MDT 美敦力 2026 Q3 财报超预期：EPS +1.49%、营收 +1.19%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.36,
@@ -26589,7 +26589,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.052931",
+      "generated_at": "2026-05-06T07:08:54.197352",
       "headline": "MELI 美客多 2025 Q4 财报好坏参半：EPS -3.67%、营收 +3.66%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 11.03,
@@ -26687,7 +26687,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": false,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.052978",
+      "generated_at": "2026-05-06T07:08:54.197398",
       "headline": "MET 大都会人寿 2025 Q4 财报好坏参半：EPS +10.26%、营收 -12.51%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.58,
@@ -26775,7 +26775,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053036",
+      "generated_at": "2026-05-06T07:08:54.197453",
       "headline": "META Meta（脸书） 2026 Q1 财报超预期：EPS +9.10%、营收 +1.36%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 7.31,
@@ -26873,7 +26873,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.053094",
+      "generated_at": "2026-05-06T07:08:54.197500",
       "headline": "MGM 美高梅 2026 Q1 财报好坏参半：EPS -12.50%、营收 +1.97%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.49,
@@ -26956,7 +26956,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053145",
+      "generated_at": "2026-05-06T07:08:54.197549",
       "headline": "MKC 味好美 2026 Q1 财报超预期：EPS +8.20%、营收 +4.89%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.66,
@@ -27039,7 +27039,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053192",
+      "generated_at": "2026-05-06T07:08:54.197597",
       "headline": "MLM 马丁-玛丽埃塔材料 2026 Q1 财报超预期：EPS +8.43%、营收 +3.74%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.93,
@@ -27122,7 +27122,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053245",
+      "generated_at": "2026-05-06T07:08:54.197647",
       "headline": "MMM 3M 2026 Q1 财报超预期：EPS +8.08%、营收 -0.09%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.14,
@@ -27210,7 +27210,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053298",
+      "generated_at": "2026-05-06T07:08:54.197702",
       "headline": "MNST 怪物饮料 2025 Q4 财报超预期：EPS +5.37%、营收 +4.21%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.51,
@@ -27293,7 +27293,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053348",
+      "generated_at": "2026-05-06T07:08:54.197752",
       "headline": "MO 奥驰亚 2026 Q1 财报超预期：EPS +5.60%、营收 +3.94%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.32,
@@ -27371,7 +27371,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.053399",
+      "generated_at": "2026-05-06T07:08:54.197801",
       "headline": "MOS 美国美盛 2025 Q4 财报好坏参半：EPS -54.17%、营收 +1.35%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.22,
@@ -27464,7 +27464,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053453",
+      "generated_at": "2026-05-06T07:08:54.197849",
       "headline": "MPC 马拉松原油 2026 Q1 财报超预期：EPS +123.27%、营收 +3.44%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.65,
@@ -27547,7 +27547,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053512",
+      "generated_at": "2026-05-06T07:08:54.197907",
       "headline": "MPWR 芯源系统 2026 Q1 财报超预期：EPS +4.08%、营收 +2.85%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.1,
@@ -27630,7 +27630,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.053564",
+      "generated_at": "2026-05-06T07:08:54.197958",
       "headline": "MRK 默沙东 2026 Q1 财报超预期：EPS +12.93%、营收 +2.77%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -1.28,
@@ -27718,7 +27718,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.053616",
+      "generated_at": "2026-05-06T07:08:54.198009",
       "headline": "MRNA 莫德纳 2026 Q1 财报好坏参半：EPS -12.58%、营收 +64.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -3.4,
@@ -27806,7 +27806,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.053737",
+      "generated_at": "2026-05-06T07:08:54.198056",
       "headline": "MRSH 达信 2026 Q1 财报低于预期：EPS +2.17%、营收 -1.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.29,
@@ -27874,7 +27874,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.053957",
+      "generated_at": "2026-05-06T07:08:54.198109",
       "headline": "MRVL 迈威尔科技 2026 Q4 财报符合预期：EPS +1.01%、营收 +0.54%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.8,
@@ -27957,7 +27957,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.054126",
+      "generated_at": "2026-05-06T07:08:54.198160",
       "headline": "MS 摩根士丹利 2026 Q1 财报超预期：EPS +13.58%、营收 +4.26%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.43,
@@ -28065,7 +28065,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.054281",
+      "generated_at": "2026-05-06T07:08:54.198206",
       "headline": "MSCI 明晟 2026 Q1 财报超预期：EPS +2.48%、营收 +1.53%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.55,
@@ -28138,7 +28138,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.054448",
+      "generated_at": "2026-05-06T07:08:54.198257",
       "headline": "MSFT 微软 2026 Q3 财报超预期：EPS +5.17%、营收 +1.77%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.27,
@@ -28221,7 +28221,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.054564",
+      "generated_at": "2026-05-06T07:08:54.198310",
       "headline": "MSI 摩托罗拉解决方案 2025 Q4 财报超预期：EPS +5.52%、营收 +1.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.59,
@@ -28304,7 +28304,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.054778",
+      "generated_at": "2026-05-06T07:08:54.198363",
       "headline": "MSTR Strategy（前 MicroStrategy） 2026 Q1 财报好坏参半：EPS -4337.35%、营收 +2.94%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -38.25,
@@ -28392,7 +28392,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.054873",
+      "generated_at": "2026-05-06T07:08:54.198413",
       "headline": "MTB 美国制商银行 2026 Q1 财报超预期：EPS +3.98%、营收 +0.44%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.18,
@@ -28480,7 +28480,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.054931",
+      "generated_at": "2026-05-06T07:08:54.198461",
       "headline": "MTD 梅特勒-托利多 2025 Q4 财报超预期：EPS +4.37%、营收 +2.31%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 13.36,
@@ -28563,7 +28563,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.054991",
+      "generated_at": "2026-05-06T07:08:54.198520",
       "headline": "MU 美光科技 2026 Q2 财报超预期：EPS +32.75%、营收 +19.50%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 12.2,
@@ -28676,7 +28676,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.055041",
+      "generated_at": "2026-05-06T07:08:54.198568",
       "headline": "NCLH 挪威邮轮 2026 Q1 财报好坏参半：EPS +53.33%、营收 -1.09%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.23,
@@ -28759,7 +28759,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055098",
+      "generated_at": "2026-05-06T07:08:54.198620",
       "headline": "NDAQ 纳斯达克 2026 Q1 财报超预期：EPS +3.23%、营收 +2.65%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.96,
@@ -28857,7 +28857,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055164",
+      "generated_at": "2026-05-06T07:08:54.198680",
       "headline": "NDSN 诺信 2026 Q1 财报超预期：EPS 0.00%、营收 +2.55%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.37,
@@ -28945,7 +28945,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.055216",
+      "generated_at": "2026-05-06T07:08:54.198730",
       "headline": "NEE 新纪元能源 2026 Q1 财报好坏参半：EPS +5.83%、营收 -7.77%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.09,
@@ -29033,7 +29033,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055265",
+      "generated_at": "2026-05-06T07:08:54.198829",
       "headline": "NEM 纽曼矿业 2026 Q1 财报超预期：EPS +40.10%、营收 +8.00%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.9,
@@ -29141,7 +29141,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055325",
+      "generated_at": "2026-05-06T07:08:54.198901",
       "headline": "NFLX 奈飞 2026 Q1 财报超预期：EPS +61.21%、营收 +0.60%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.23,
@@ -29219,7 +29219,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055380",
+      "generated_at": "2026-05-06T07:08:54.198961",
       "headline": "NI 印北瓦电 2025 Q4 财报超预期：EPS +2.93%、营收 +33.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.51,
@@ -29307,7 +29307,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055434",
+      "generated_at": "2026-05-06T07:08:54.199016",
       "headline": "NKE 耐克 2026 Q3 财报超预期：EPS +20.36%、营收 +0.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.35,
@@ -29400,7 +29400,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055490",
+      "generated_at": "2026-05-06T07:08:54.199067",
       "headline": "NOC 诺斯罗普格鲁曼 2026 Q1 财报超预期：EPS +1.32%、营收 +1.34%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.14,
@@ -29493,7 +29493,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.055540",
+      "generated_at": "2026-05-06T07:08:54.199120",
       "headline": "NOW ServiceNow 2026 Q1 财报符合预期：EPS 0.00%、营收 +0.78%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.97,
@@ -29581,7 +29581,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055590",
+      "generated_at": "2026-05-06T07:08:54.199174",
       "headline": "NRG NRG能源 2025 Q4 财报超预期：EPS +5.97%、营收 +16.26%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.03,
@@ -29659,7 +29659,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055639",
+      "generated_at": "2026-05-06T07:08:54.199224",
       "headline": "NSC 诺福克南方 2026 Q1 财报超预期：EPS +6.43%、营收 +0.14%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.65,
@@ -29737,7 +29737,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055688",
+      "generated_at": "2026-05-06T07:08:54.199274",
       "headline": "NTAP 美国网存 2026 Q3 财报超预期：EPS +2.91%、营收 +1.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.12,
@@ -29810,7 +29810,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055741",
+      "generated_at": "2026-05-06T07:08:54.199324",
       "headline": "NTRS 北方信托 2026 Q1 财报超预期：EPS +14.35%、营收 +4.42%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.71,
@@ -29903,7 +29903,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055794",
+      "generated_at": "2026-05-06T07:08:54.199378",
       "headline": "NUE 纽柯钢铁 2026 Q1 财报超预期：EPS +14.54%、营收 +6.92%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.23,
@@ -30006,7 +30006,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055861",
+      "generated_at": "2026-05-06T07:08:54.199434",
       "headline": "NVDA 英伟达 2026 Q4 财报超预期：EPS +5.19%、营收 +3.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.62,
@@ -30123,7 +30123,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.055911",
+      "generated_at": "2026-05-06T07:08:54.199486",
       "headline": "NVR NVR 2026 Q1 财报低于预期：EPS -13.41%、营收 -8.13%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.6776000000000001,
@@ -30216,7 +30216,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.055959",
+      "generated_at": "2026-05-06T07:08:54.199533",
       "headline": "NWS 新闻集团-B 2026 Q2 财报超预期：EPS +60.00%、营收 +2.44%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.4,
@@ -30299,7 +30299,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056006",
+      "generated_at": "2026-05-06T07:08:54.199583",
       "headline": "NWSA 新闻集团-A 2026 Q2 财报超预期：EPS +21.21%、营收 +2.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.4,
@@ -30382,7 +30382,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056065",
+      "generated_at": "2026-05-06T07:08:54.199633",
       "headline": "NXPI 恩智浦 2026 Q1 财报超预期：EPS +2.35%、营收 +1.15%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.05,
@@ -30449,7 +30449,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.056118",
+      "generated_at": "2026-05-06T07:08:54.199687",
       "headline": "O Realty Income 2025 Q4 财报好坏参半：EPS -16.56%、营收 +2.81%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.32,
@@ -30537,7 +30537,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056166",
+      "generated_at": "2026-05-06T07:08:54.199733",
       "headline": "ODFL 老多米尼恩 2026 Q1 财报超预期：EPS +8.57%、营收 +1.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.14,
@@ -30630,7 +30630,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.056217",
+      "generated_at": "2026-05-06T07:08:54.199782",
       "headline": "OKE 欧尼克(万欧卡) 2026 Q1 财报好坏参半：EPS -5.38%、营收 +16.80%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.23,
@@ -30723,7 +30723,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056265",
+      "generated_at": "2026-05-06T07:08:54.199831",
       "headline": "OMC 宏盟集团 2026 Q1 财报超预期：EPS +3.26%、营收 +6.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.9,
@@ -30811,7 +30811,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056318",
+      "generated_at": "2026-05-06T07:08:54.199879",
       "headline": "ON 安森美半导体 2026 Q1 财报超预期：EPS +4.40%、营收 +1.72%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.64,
@@ -30894,7 +30894,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056365",
+      "generated_at": "2026-05-06T07:08:54.199927",
       "headline": "ORCL 甲骨文 2026 Q3 财报超预期：EPS +5.29%、营收 +1.56%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.79,
@@ -30982,7 +30982,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.056415",
+      "generated_at": "2026-05-06T07:08:54.199975",
       "headline": "ORLY 奥莱利 2026 Q1 财报符合预期：EPS +0.14%、营收 +0.20%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.72,
@@ -31050,7 +31050,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056461",
+      "generated_at": "2026-05-06T07:08:54.200021",
       "headline": "OTIS 奥的斯 2026 Q1 财报超预期：EPS -2.20%、营收 +1.75%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.89,
@@ -31118,7 +31118,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.056511",
+      "generated_at": "2026-05-06T07:08:54.200069",
       "headline": "OXY 西方石油 2026 Q1 财报好坏参半：EPS +76.67%、营收 -3.86%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.06,
@@ -31216,7 +31216,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056560",
+      "generated_at": "2026-05-06T07:08:54.200118",
       "headline": "PANW 派拓网络 2026 Q2 财报超预期：EPS +9.69%、营收 +0.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.03,
@@ -31304,7 +31304,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056611",
+      "generated_at": "2026-05-06T07:08:54.200167",
       "headline": "PAYX 沛齐 2026 Q3 财报超预期：EPS +2.40%、营收 +1.50%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.71,
@@ -31372,7 +31372,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.056662",
+      "generated_at": "2026-05-06T07:08:54.200212",
       "headline": "PCAR 帕卡 2026 Q1 财报低于预期：EPS 0.00%、营收 -3.19%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.15,
@@ -31460,7 +31460,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056714",
+      "generated_at": "2026-05-06T07:08:54.200261",
       "headline": "PCG 太平洋煤电 2026 Q1 财报超预期：EPS +8.01%、营收 +9.95%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.43,
@@ -31548,7 +31548,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.056770",
+      "generated_at": "2026-05-06T07:08:54.200307",
       "headline": "PDD 拼多多 2025 Q4 财报低于预期：EPS -15.10%、营收 -0.47%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.53,
@@ -31641,7 +31641,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056825",
+      "generated_at": "2026-05-06T07:08:54.200355",
       "headline": "PEG 公务集团 2026 Q1 财报超预期：EPS +7.64%、营收 +14.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.55,
@@ -31734,7 +31734,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056872",
+      "generated_at": "2026-05-06T07:08:54.200402",
       "headline": "PEP 百事可乐 2026 Q1 财报超预期：EPS +4.55%、营收 +2.63%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.61,
@@ -31812,7 +31812,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.056919",
+      "generated_at": "2026-05-06T07:08:54.200447",
       "headline": "PFE 辉瑞 2026 Q1 财报超预期：EPS +3.88%、营收 +4.41%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.75,
@@ -31900,7 +31900,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.056968",
+      "generated_at": "2026-05-06T07:08:54.200494",
       "headline": "PFG 信安金融 2026 Q1 财报低于预期：EPS +2.99%、营收 -14.63%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.07,
@@ -31998,7 +31998,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057017",
+      "generated_at": "2026-05-06T07:08:54.200542",
       "headline": "PG 宝洁 2026 Q3 财报超预期：EPS +1.92%、营收 +3.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.59,
@@ -32076,7 +32076,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057070",
+      "generated_at": "2026-05-06T07:08:54.200591",
       "headline": "PGR 前进保险 2026 Q1 财报超预期：EPS +2.27%、营收 +2.87%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.96,
@@ -32159,7 +32159,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057125",
+      "generated_at": "2026-05-06T07:08:54.200640",
       "headline": "PH 派克汉尼汾 2026 Q3 财报超预期：EPS +4.21%、营收 +1.62%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 8.17,
@@ -32242,7 +32242,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057173",
+      "generated_at": "2026-05-06T07:08:54.200685",
       "headline": "PHM 普得集团 2026 Q1 财报超预期：EPS -0.56%、营收 +1.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.79,
@@ -32320,7 +32320,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.057224",
+      "generated_at": "2026-05-06T07:08:54.200735",
       "headline": "PKG 美国包装公司 2026 Q1 财报好坏参半：EPS +10.60%、营收 -2.37%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.4,
@@ -32408,7 +32408,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057273",
+      "generated_at": "2026-05-06T07:08:54.200784",
       "headline": "PLD 安博 2026 Q1 财报超预期：EPS +30.27%、营收 +0.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.05,
@@ -32506,7 +32506,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057328",
+      "generated_at": "2026-05-06T07:08:54.200838",
       "headline": "PLTR 帕兰提尔 2026 Q1 财报超预期：EPS +18.96%、营收 +5.85%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.33,
@@ -32619,7 +32619,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057378",
+      "generated_at": "2026-05-06T07:08:54.200887",
       "headline": "PM 菲利普莫里斯 2026 Q1 财报超预期：EPS +5.38%、营收 +1.94%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.96,
@@ -32697,7 +32697,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.057429",
+      "generated_at": "2026-05-06T07:08:54.200938",
       "headline": "PNC PNC金融服务集团 2026 Q1 财报好坏参半：EPS +5.09%、营收 -1.25%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.13,
@@ -32790,7 +32790,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057477",
+      "generated_at": "2026-05-06T07:08:54.200985",
       "headline": "PNR 滨特尔 2026 Q1 财报超预期：EPS +4.27%、营收 +0.90%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.22,
@@ -32863,7 +32863,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057532",
+      "generated_at": "2026-05-06T07:08:54.201037",
       "headline": "PNW 西帕纳卡资本 2026 Q1 财报超预期：EPS +1000.00%、营收 +6.01%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.27,
@@ -32951,7 +32951,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057584",
+      "generated_at": "2026-05-06T07:08:54.201088",
       "headline": "PODD 银休特 2025 Q4 财报超预期：EPS +5.44%、营收 +1.93%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.55,
@@ -33029,7 +33029,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057639",
+      "generated_at": "2026-05-06T07:08:54.201139",
       "headline": "POOL 泳池公司 2026 Q1 财报超预期：EPS +6.72%、营收 +3.60%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.43,
@@ -33107,7 +33107,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057688",
+      "generated_at": "2026-05-06T07:08:54.201189",
       "headline": "PPG PPG工业 2026 Q1 财报超预期：EPS +2.81%、营收 +2.05%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.83,
@@ -33175,7 +33175,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.057737",
+      "generated_at": "2026-05-06T07:08:54.201236",
       "headline": "PPL 宾州电力 2025 Q4 财报低于预期：EPS +0.20%、营收 -6.05%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.41,
@@ -33258,7 +33258,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057787",
+      "generated_at": "2026-05-06T07:08:54.201284",
       "headline": "PRU 保德信金融 2026 Q1 财报超预期：EPS +16.83%、营收 +0.54%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.61,
@@ -33356,7 +33356,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057839",
+      "generated_at": "2026-05-06T07:08:54.201338",
       "headline": "PSA 公共存储公司 2026 Q1 财报超预期：EPS +12.40%、营收 +0.22%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.72,
@@ -33434,7 +33434,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057888",
+      "generated_at": "2026-05-06T07:08:54.201386",
       "headline": "PSKY 派拉蒙天空之舞 2026 Q1 财报超预期：EPS +53.33%、营收 +4.37%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.23,
@@ -33507,7 +33507,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.057936",
+      "generated_at": "2026-05-06T07:08:54.201432",
       "headline": "PSX 菲利普斯66 2026 Q1 财报好坏参半：EPS +190.33%、营收 -7.97%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.49,
@@ -33610,7 +33610,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.057992",
+      "generated_at": "2026-05-06T07:08:54.201480",
       "headline": "PTC PTC 2026 Q1 财报超预期：EPS +20.75%、营收 +7.33%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.92,
@@ -33708,7 +33708,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058041",
+      "generated_at": "2026-05-06T07:08:54.201528",
       "headline": "PWR 广达服务 2026 Q1 财报超预期：EPS +31.37%、营收 +12.47%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.68,
@@ -33796,7 +33796,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058099",
+      "generated_at": "2026-05-06T07:08:54.201575",
       "headline": "PYPL 贝宝 2026 Q1 财报超预期：EPS +5.51%、营收 +3.77%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.34,
@@ -33879,7 +33879,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058144",
+      "generated_at": "2026-05-06T07:08:54.201617",
       "headline": "Q 勤亿电子 2025 Q4 财报超预期：EPS +30.57%、营收 +2.79%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.82,
@@ -33967,7 +33967,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058198",
+      "generated_at": "2026-05-06T07:08:54.201667",
       "headline": "QCOM 高通 2026 Q2 财报超预期：EPS +3.52%、营收 +0.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.65,
@@ -34060,7 +34060,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058249",
+      "generated_at": "2026-05-06T07:08:54.201718",
       "headline": "RCL 皇家加勒比邮轮 2026 Q1 财报超预期：EPS +11.11%、营收 -0.27%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.6,
@@ -34138,7 +34138,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058299",
+      "generated_at": "2026-05-06T07:08:54.201765",
       "headline": "REG 雷格尼西中心 2026 Q1 财报超预期：EPS +92.93%、营收 +2.02%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.2,
@@ -34226,7 +34226,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058351",
+      "generated_at": "2026-05-06T07:08:54.201814",
       "headline": "REGN 再生元制药公司 2026 Q1 财报超预期：EPS +6.29%、营收 +3.59%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 9.47,
@@ -34319,7 +34319,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.058404",
+      "generated_at": "2026-05-06T07:08:54.201865",
       "headline": "RF 地区金融 2026 Q1 财报低于预期：EPS +1.64%、营收 -2.16%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.62,
@@ -34407,7 +34407,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.058451",
+      "generated_at": "2026-05-06T07:08:54.201909",
       "headline": "RJF 瑞杰金融 2026 Q2 财报符合预期：EPS +2.54%、营收 +0.36%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.83,
@@ -34480,7 +34480,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058520",
+      "generated_at": "2026-05-06T07:08:54.201961",
       "headline": "RL 拉夫劳伦 2026 Q3 财报超预期：EPS +7.24%、营收 +4.11%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 6.22,
@@ -34568,7 +34568,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.058570",
+      "generated_at": "2026-05-06T07:08:54.202005",
       "headline": "RMD 瑞思迈 2026 Q3 财报符合预期：EPS +2.51%、营收 +0.81%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.86,
@@ -34646,7 +34646,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058623",
+      "generated_at": "2026-05-06T07:08:54.202053",
       "headline": "ROK 罗克韦尔自动化 2026 Q2 财报超预期：EPS +14.58%、营收 +3.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.3,
@@ -34744,7 +34744,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058673",
+      "generated_at": "2026-05-06T07:08:54.202100",
       "headline": "ROL 罗林斯 2026 Q1 财报超预期：EPS 0.00%、营收 +1.22%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.24,
@@ -34817,7 +34817,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058722",
+      "generated_at": "2026-05-06T07:08:54.202148",
       "headline": "ROP 儒博实业 2026 Q1 财报超预期：EPS +3.41%、营收 +1.55%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.16,
@@ -34885,7 +34885,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058774",
+      "generated_at": "2026-05-06T07:08:54.202197",
       "headline": "ROST 罗斯百货 2025 Q4 财报超预期：EPS +5.26%、营收 +3.44%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2,
@@ -34973,7 +34973,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.058822",
+      "generated_at": "2026-05-06T07:08:54.202242",
       "headline": "RSG 共和废品处理 2025 Q4 财报好坏参半：EPS +8.64%、营收 -1.72%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.76,
@@ -35046,7 +35046,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058878",
+      "generated_at": "2026-05-06T07:08:54.202290",
       "headline": "RTX 雷神技术 2026 Q1 财报超预期：EPS +17.88%、营收 +2.87%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.78,
@@ -35134,7 +35134,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.058927",
+      "generated_at": "2026-05-06T07:08:54.202334",
       "headline": "RVTY 瑞维蒂 2026 Q1 财报超预期：EPS +3.92%、营收 +1.00%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.06,
@@ -35217,7 +35217,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.058979",
+      "generated_at": "2026-05-06T07:08:54.202382",
       "headline": "SATS 回声星通信 2025 Q4 财报低于预期：EPS -9.99%、营收 +0.78%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -1.03,
@@ -35325,7 +35325,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.059036",
+      "generated_at": "2026-05-06T07:08:54.202436",
       "headline": "SBAC SBA通信公司 2026 Q1 财报好坏参半：EPS -10.31%、营收 +1.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.74,
@@ -35408,7 +35408,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059087",
+      "generated_at": "2026-05-06T07:08:54.202482",
       "headline": "SBUX 星巴克 2026 Q2 财报超预期：EPS +17.56%、营收 +3.95%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.5,
@@ -35486,7 +35486,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.059141",
+      "generated_at": "2026-05-06T07:08:54.202531",
       "headline": "SCHW 嘉信理财 2026 Q1 财报符合预期：EPS +2.14%、营收 -0.28%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.43,
@@ -35584,7 +35584,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059191",
+      "generated_at": "2026-05-06T07:08:54.202577",
       "headline": "SHOP Shopify 2026 Q1 财报超预期：EPS +2.12%、营收 +1.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.3331,
@@ -35657,7 +35657,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059237",
+      "generated_at": "2026-05-06T07:08:54.202620",
       "headline": "SHW 宣伟公司 2026 Q1 财报超预期：EPS +3.52%、营收 +1.91%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.35,
@@ -35735,7 +35735,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059289",
+      "generated_at": "2026-05-06T07:08:54.202669",
       "headline": "SJM 斯马克 2026 Q3 财报超预期：EPS +4.85%、营收 +0.71%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.38,
@@ -35818,7 +35818,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059339",
+      "generated_at": "2026-05-06T07:08:54.202716",
       "headline": "SLB 斯伦贝谢 2026 Q1 财报超预期：EPS +2.56%、营收 +1.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.52,
@@ -35906,7 +35906,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.059390",
+      "generated_at": "2026-05-06T07:08:54.202761",
       "headline": "SMCI 超微电脑 2026 Q3 财报好坏参半：EPS +33.33%、营收 -17.31%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.84,
@@ -35999,7 +35999,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059442",
+      "generated_at": "2026-05-06T07:08:54.202815",
       "headline": "SNA 实耐宝 2026 Q1 财报超预期：EPS +0.21%、营收 +2.53%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.69,
@@ -36082,7 +36082,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059491",
+      "generated_at": "2026-05-06T07:08:54.202862",
       "headline": "SNDK 闪迪 2026 Q3 财报超预期：EPS +60.12%、营收 +26.06%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 23.41,
@@ -36185,7 +36185,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059542",
+      "generated_at": "2026-05-06T07:08:54.202908",
       "headline": "SNPS 新思科技 2026 Q1 财报超预期：EPS +5.90%、营收 +0.79%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.77,
@@ -36268,7 +36268,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059590",
+      "generated_at": "2026-05-06T07:08:54.202955",
       "headline": "SO 美国南方公司 2026 Q1 财报超预期：EPS +9.09%、营收 +4.02%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.32,
@@ -36346,7 +36346,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059636",
+      "generated_at": "2026-05-06T07:08:54.203002",
       "headline": "SOLV 索尔文腾 2026 Q1 财报超预期：EPS +9.63%、营收 +2.01%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.48,
@@ -36439,7 +36439,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059682",
+      "generated_at": "2026-05-06T07:08:54.203052",
       "headline": "SPG 西蒙地产 2025 Q4 财报超预期：EPS +392.11%、营收 +19.99%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 9.35,
@@ -36532,7 +36532,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059731",
+      "generated_at": "2026-05-06T07:08:54.203099",
       "headline": "SPGI 标普全球 2026 Q1 财报超预期：EPS +2.69%、营收 +2.13%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.97,
@@ -36620,7 +36620,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.059780",
+      "generated_at": "2026-05-06T07:08:54.203145",
       "headline": "SRE 桑普拉能源 2025 Q4 财报好坏参半：EPS +3.23%、营收 -7.41%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.28,
@@ -36718,7 +36718,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059829",
+      "generated_at": "2026-05-06T07:08:54.203191",
       "headline": "STE 思泰瑞医疗 2026 Q3 财报超预期：EPS 0.00%、营收 +1.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.53,
@@ -36796,7 +36796,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059880",
+      "generated_at": "2026-05-06T07:08:54.203240",
       "headline": "STLD 钢铁动力 2026 Q1 财报超预期：EPS -2.11%、营收 +2.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.78,
@@ -36889,7 +36889,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059928",
+      "generated_at": "2026-05-06T07:08:54.203286",
       "headline": "STT 道富银行 2026 Q1 财报超预期：EPS +7.58%、营收 +3.56%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.84,
@@ -36987,7 +36987,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.059981",
+      "generated_at": "2026-05-06T07:08:54.203338",
       "headline": "STX 希捷科技 2026 Q3 财报超预期：EPS +16.81%、营收 +5.10%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.1,
@@ -37100,7 +37100,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060034",
+      "generated_at": "2026-05-06T07:08:54.203389",
       "headline": "STZ 星座品牌 2026 Q4 财报超预期：EPS +11.11%、营收 +2.06%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.9,
@@ -37188,7 +37188,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.060086",
+      "generated_at": "2026-05-06T07:08:54.203440",
       "headline": "SW 斯穆菲特韦斯特洛克 2026 Q1 财报好坏参半：EPS -8.33%、营收 +1.91%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.33,
@@ -37276,7 +37276,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060136",
+      "generated_at": "2026-05-06T07:08:54.203490",
       "headline": "SWK 美国史丹利公司 2026 Q1 财报超预期：EPS +31.15%、营收 +2.64%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.8,
@@ -37354,7 +37354,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060184",
+      "generated_at": "2026-05-06T07:08:54.203534",
       "headline": "SWKS 思佳讯 2026 Q2 财报超预期：EPS +10.58%、营收 +4.65%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.15,
@@ -37442,7 +37442,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.060235",
+      "generated_at": "2026-05-06T07:08:54.203582",
       "headline": "SYF 同步金融 2026 Q1 财报低于预期：EPS +2.25%、营收 -2.39%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.27,
@@ -37535,7 +37535,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.060285",
+      "generated_at": "2026-05-06T07:08:54.203628",
       "headline": "SYK 史赛克 2026 Q1 财报低于预期：EPS -12.75%、营收 -5.00%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.6,
@@ -37613,7 +37613,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.060333",
+      "generated_at": "2026-05-06T07:08:54.203676",
       "headline": "SYY 西思科公司 2026 Q3 财报符合预期：EPS -0.53%、营收 -0.19%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.94,
@@ -37681,7 +37681,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060383",
+      "generated_at": "2026-05-06T07:08:54.203723",
       "headline": "T 美国电话电报 2026 Q1 财报超预期：EPS +3.26%、营收 +0.82%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.57,
@@ -37759,7 +37759,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060430",
+      "generated_at": "2026-05-06T07:08:54.203767",
       "headline": "TAP 莫库酒业 2026 Q1 财报超预期：EPS +72.22%、营收 +1.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.62,
@@ -37832,7 +37832,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060485",
+      "generated_at": "2026-05-06T07:08:54.203819",
       "headline": "TDG 特兰迪姆集团 2026 Q2 财报超预期：EPS +4.12%、营收 +3.06%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 9.85,
@@ -37920,7 +37920,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060536",
+      "generated_at": "2026-05-06T07:08:54.203867",
       "headline": "TDY 泰尔达因科技 2026 Q1 财报超预期：EPS +5.84%、营收 +2.96%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.8,
@@ -37998,7 +37998,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060585",
+      "generated_at": "2026-05-06T07:08:54.203918",
       "headline": "TECH Bio-Techne 2026 Q2 财报超预期：EPS +6.98%、营收 +1.86%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.46,
@@ -38081,7 +38081,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.060637",
+      "generated_at": "2026-05-06T07:08:54.203963",
       "headline": "TEL 泰科电子 2026 Q2 财报符合预期：EPS +1.49%、营收 -0.04%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.73,
@@ -38164,7 +38164,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060688",
+      "generated_at": "2026-05-06T07:08:54.204013",
       "headline": "TER 泰瑞达 2026 Q1 财报超预期：EPS +21.33%、营收 +6.87%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.56,
@@ -38267,7 +38267,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060738",
+      "generated_at": "2026-05-06T07:08:54.204060",
       "headline": "TFC Truist 金融 2026 Q1 财报超预期：EPS +9.33%、营收 +0.63%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.09,
@@ -38355,7 +38355,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060788",
+      "generated_at": "2026-05-06T07:08:54.204107",
       "headline": "TGT 塔吉特 2025 Q4 财报超预期：EPS +12.96%、营收 -0.03%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.44,
@@ -38448,7 +38448,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060841",
+      "generated_at": "2026-05-06T07:08:54.204152",
       "headline": "TJX TJX 公司 2026 Q4 财报超预期：EPS +2.88%、营收 +2.21%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.43,
@@ -38531,7 +38531,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.060897",
+      "generated_at": "2026-05-06T07:08:54.204206",
       "headline": "TKO TKO集团 2025 Q4 财报好坏参半：EPS -133.70%、营收 +1.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -0.08,
@@ -38634,7 +38634,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060948",
+      "generated_at": "2026-05-06T07:08:54.204252",
       "headline": "TMO 赛默飞世尔 2026 Q1 财报超预期：EPS +3.62%、营收 +1.29%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.44,
@@ -38717,7 +38717,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.060996",
+      "generated_at": "2026-05-06T07:08:54.204297",
       "headline": "TMUS T-Mobile 2026 Q1 财报超预期：EPS +13.43%、营收 +0.55%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.28,
@@ -38800,7 +38800,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061042",
+      "generated_at": "2026-05-06T07:08:54.204342",
       "headline": "TPL 德克萨斯太平洋土地 2025 Q4 财报超预期：EPS 0.00%、营收 +1.97%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.79,
@@ -38883,7 +38883,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061099",
+      "generated_at": "2026-05-06T07:08:54.204396",
       "headline": "TPR 泰佩思琦 2026 Q2 财报超预期：EPS +21.17%、营收 +7.69%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.69,
@@ -38976,7 +38976,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.061157",
+      "generated_at": "2026-05-06T07:08:54.204448",
       "headline": "TRGP 塔尔加资源 2025 Q4 财报好坏参半：EPS +9.13%、营收 -14.25%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.51,
@@ -39074,7 +39074,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061204",
+      "generated_at": "2026-05-06T07:08:54.204490",
       "headline": "TRI 汤森路透 2026 Q1 财报超预期：EPS +4.24%、营收 +1.99%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.23,
@@ -39152,7 +39152,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061293",
+      "generated_at": "2026-05-06T07:08:54.204560",
       "headline": "TRMB 天宝导航公司 2026 Q1 财报超预期：EPS +9.72%、营收 +3.79%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.79,
@@ -39235,7 +39235,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061353",
+      "generated_at": "2026-05-06T07:08:54.204607",
       "headline": "TROW 普信集团 2026 Q1 财报超预期：EPS +6.33%、营收 +0.12%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.52,
@@ -39313,7 +39313,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.061407",
+      "generated_at": "2026-05-06T07:08:54.204657",
       "headline": "TRV 旅行者财产险集团 2026 Q1 财报好坏参半：EPS +9.05%、营收 -3.52%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 7.71,
@@ -39421,7 +39421,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.061454",
+      "generated_at": "2026-05-06T07:08:54.204703",
       "headline": "TSCO 拖拉机供应公司 2026 Q1 财报低于预期：EPS -11.43%、营收 -1.08%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.31,
@@ -39509,7 +39509,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061510",
+      "generated_at": "2026-05-06T07:08:54.204766",
       "headline": "TSLA 特斯拉 2026 Q1 财报超预期：EPS +15.85%、营收 +1.30%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.41,
@@ -39607,7 +39607,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061562",
+      "generated_at": "2026-05-06T07:08:54.204810",
       "headline": "TSN 泰森食品 2026 Q2 财报超预期：EPS +14.47%、营收 +0.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.87,
@@ -39690,7 +39690,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061623",
+      "generated_at": "2026-05-06T07:08:54.204855",
       "headline": "TT Trane技术 2026 Q1 财报超预期：EPS +3.95%、营收 +3.21%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.63,
@@ -39768,7 +39768,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061677",
+      "generated_at": "2026-05-06T07:08:54.204905",
       "headline": "TTD 交易台 2025 Q4 财报超预期：EPS +15.11%、营收 +0.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.39,
@@ -39856,7 +39856,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": false,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061737",
+      "generated_at": "2026-05-06T07:08:54.204955",
       "headline": "TTWO Take-Two互动软件 2026 Q3 财报超预期：EPS +47.66%、营收 +10.93%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.23,
@@ -39944,7 +39944,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061803",
+      "generated_at": "2026-05-06T07:08:54.205012",
       "headline": "TXN 德州仪器 2026 Q1 财报超预期：EPS +23.53%、营收 +6.60%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.68,
@@ -40037,7 +40037,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061856",
+      "generated_at": "2026-05-06T07:08:54.205059",
       "headline": "TXT 德事隆 2026 Q1 财报超预期：EPS +11.54%、营收 +5.46%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.45,
@@ -40140,7 +40140,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.061906",
+      "generated_at": "2026-05-06T07:08:54.205107",
       "headline": "TYL 泰勒科技 2026 Q1 财报符合预期：EPS +2.66%、营收 +0.80%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.09,
@@ -40218,7 +40218,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.061957",
+      "generated_at": "2026-05-06T07:08:54.205152",
       "headline": "UAL 联合大陆航空 2026 Q1 财报超预期：EPS +10.19%、营收 +1.54%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.19,
@@ -40306,7 +40306,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.062022",
+      "generated_at": "2026-05-06T07:08:54.205207",
       "headline": "UBER 优步 2026 Q1 财报低于预期：EPS -81.69%、营收 -0.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.13,
@@ -40394,7 +40394,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062075",
+      "generated_at": "2026-05-06T07:08:54.205253",
       "headline": "UDR UDR不动产信托 2026 Q1 财报超预期：EPS +376.92%、营收 -0.88%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.62,
@@ -40482,7 +40482,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062124",
+      "generated_at": "2026-05-06T07:08:54.205299",
       "headline": "UHS 通用健康服务 2026 Q1 财报超预期：EPS +6.24%、营收 +2.45%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 5.62,
@@ -40560,7 +40560,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062172",
+      "generated_at": "2026-05-06T07:08:54.205344",
       "headline": "ULTA Ulta美容 2025 Q4 财报超预期：EPS -1.11%、营收 +1.56%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 8.01,
@@ -40643,7 +40643,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062227",
+      "generated_at": "2026-05-06T07:08:54.205394",
       "headline": "UNH 联合健康 2026 Q1 财报超预期：EPS +9.88%、营收 +2.09%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 7.23,
@@ -40726,7 +40726,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.062282",
+      "generated_at": "2026-05-06T07:08:54.205441",
       "headline": "UNP 联合太平洋 2026 Q1 财报符合预期：EPS +2.45%、营收 -0.19%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.93,
@@ -40809,7 +40809,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062331",
+      "generated_at": "2026-05-06T07:08:54.205486",
       "headline": "UPS 联合包裹 2026 Q1 财报超预期：EPS +4.90%、营收 +1.00%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.07,
@@ -40892,7 +40892,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062381",
+      "generated_at": "2026-05-06T07:08:54.205531",
       "headline": "URI 联合租赁 2026 Q1 财报超预期：EPS +8.49%、营收 +2.84%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 9.71,
@@ -40985,7 +40985,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062433",
+      "generated_at": "2026-05-06T07:08:54.205578",
       "headline": "USB 美国合众银行 2026 Q1 财报超预期：EPS +3.51%、营收 +0.10%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.18,
@@ -41078,7 +41078,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062484",
+      "generated_at": "2026-05-06T07:08:54.205625",
       "headline": "V 维萨 2026 Q2 财报超预期：EPS +6.77%、营收 +4.46%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.31,
@@ -41161,7 +41161,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062533",
+      "generated_at": "2026-05-06T07:08:54.205672",
       "headline": "VICI 维西物业 2026 Q1 财报超预期：EPS +34.43%、营收 +0.42%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.82,
@@ -41239,7 +41239,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062589",
+      "generated_at": "2026-05-06T07:08:54.205720",
       "headline": "VLO 瓦莱罗能源 2026 Q1 财报超预期：EPS +33.54%、营收 +3.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.22,
@@ -41327,7 +41327,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062642",
+      "generated_at": "2026-05-06T07:08:54.205768",
       "headline": "VLTO 维拉尔托 2026 Q1 财报超预期：EPS +4.90%、营收 +1.61%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.07,
@@ -41410,7 +41410,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062693",
+      "generated_at": "2026-05-06T07:08:54.205817",
       "headline": "VMC 火神材料 2026 Q1 财报超预期：EPS +22.73%、营收 +7.11%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.35,
@@ -41503,7 +41503,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062747",
+      "generated_at": "2026-05-06T07:08:54.205865",
       "headline": "VRSK Verisk分析 2026 Q1 财报超预期：EPS +3.41%、营收 +1.42%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.82,
@@ -41581,7 +41581,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062795",
+      "generated_at": "2026-05-06T07:08:54.205910",
       "headline": "VRSN 威瑞信 2026 Q1 财报超预期：EPS +1.74%、营收 +1.04%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.34,
@@ -41654,7 +41654,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062847",
+      "generated_at": "2026-05-06T07:08:54.205961",
       "headline": "VRT 维谛技术 2026 Q1 财报超预期：EPS +17.00%、营收 +0.40%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.17,
@@ -41752,7 +41752,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062898",
+      "generated_at": "2026-05-06T07:08:54.206013",
       "headline": "VRTX 福泰制药 2026 Q1 财报超预期：EPS +5.42%、营收 -0.24%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.47,
@@ -41830,7 +41830,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.062949",
+      "generated_at": "2026-05-06T07:08:54.206063",
       "headline": "VST 维斯特拉 2025 Q4 财报低于预期：EPS -76.49%、营收 -20.82%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.543,
@@ -41933,7 +41933,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.062999",
+      "generated_at": "2026-05-06T07:08:54.206111",
       "headline": "VTR 芬塔公司 2026 Q1 财报超预期：EPS -2.36%、营收 +4.51%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.12,
@@ -42011,7 +42011,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063055",
+      "generated_at": "2026-05-06T07:08:54.206165",
       "headline": "VTRS 维亚特里斯 2025 Q4 财报超预期：EPS +7.14%、营收 +4.85%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.57,
@@ -42099,7 +42099,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.063106",
+      "generated_at": "2026-05-06T07:08:54.206217",
       "headline": "VZ 威瑞森通讯 2026 Q1 财报好坏参半：EPS +5.79%、营收 -1.22%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.28,
@@ -42177,7 +42177,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063157",
+      "generated_at": "2026-05-06T07:08:54.206265",
       "headline": "WAB 美国西屋制动 2026 Q1 财报超预期：EPS +7.97%、营收 -0.45%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.71,
@@ -42250,7 +42250,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063205",
+      "generated_at": "2026-05-06T07:08:54.206309",
       "headline": "WAT 沃特世 2026 Q1 财报超预期：EPS +16.88%、营收 +5.30%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.7,
@@ -42343,7 +42343,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.063265",
+      "generated_at": "2026-05-06T07:08:54.206366",
       "headline": "WBD 华纳兄弟探索 2025 Q4 财报好坏参半：EPS -209.79%、营收 +1.17%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": -0.1,
@@ -42451,7 +42451,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063323",
+      "generated_at": "2026-05-06T07:08:54.206421",
       "headline": "WDAY Workday 2026 Q4 财报超预期：EPS +6.47%、营收 +0.33%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.47,
@@ -42539,7 +42539,7 @@
       "fiscal_label": "2026 Q3",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063376",
+      "generated_at": "2026-05-06T07:08:54.206470",
       "headline": "WDC 西部数据 2026 Q3 财报超预期：EPS +13.81%、营收 +2.79%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.72,
@@ -42647,7 +42647,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063422",
+      "generated_at": "2026-05-06T07:08:54.206515",
       "headline": "WEC 威州能源 2026 Q1 财报超预期：EPS +6.52%、营收 +3.40%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.45,
@@ -42725,7 +42725,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063473",
+      "generated_at": "2026-05-06T07:08:54.206563",
       "headline": "WELL 韦尔斯 2026 Q1 财报超预期：EPS +53.17%、营收 +7.43%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.04,
@@ -42823,7 +42823,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.063521",
+      "generated_at": "2026-05-06T07:08:54.206609",
       "headline": "WFC 富国银行 2026 Q1 财报低于预期：EPS -1.27%、营收 -1.59%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.56,
@@ -42906,7 +42906,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063569",
+      "generated_at": "2026-05-06T07:08:54.206658",
       "headline": "WM 美国废物管理 2026 Q1 财报超预期：EPS +3.43%、营收 -0.83%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.81,
@@ -42984,7 +42984,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.063618",
+      "generated_at": "2026-05-06T07:08:54.206706",
       "headline": "WMB 威廉姆斯 2026 Q1 财报好坏参半：EPS +15.14%、营收 -7.62%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.73,
@@ -43092,7 +43092,7 @@
       "fiscal_label": "2026 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.063671",
+      "generated_at": "2026-05-06T07:08:54.206756",
       "headline": "WMT 沃尔玛 2026 Q4 财报符合预期：EPS +1.79%、营收 +0.09%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.74,
@@ -43170,7 +43170,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.063723",
+      "generated_at": "2026-05-06T07:08:54.206805",
       "headline": "WRB WR柏克利 2026 Q1 财报好坏参半：EPS +15.04%、营收 -2.44%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.3,
@@ -43253,7 +43253,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "mixed",
-      "generated_at": "2026-05-06T06:12:23.063780",
+      "generated_at": "2026-05-06T07:08:54.206859",
       "headline": "WSM 威廉姆斯-索诺玛 2025 Q4 财报好坏参半：EPS +4.83%、营收 -2.39%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.04,
@@ -43341,7 +43341,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063830",
+      "generated_at": "2026-05-06T07:08:54.206907",
       "headline": "WST 西氏医药服务 2026 Q1 财报超预期：EPS +26.79%、营收 +8.28%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.13,
@@ -43434,7 +43434,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.063884",
+      "generated_at": "2026-05-06T07:08:54.206958",
       "headline": "WTW 韦莱韬悦 2026 Q1 财报符合预期：EPS +1.92%、营收 -0.06%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 3.72,
@@ -43517,7 +43517,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.063942",
+      "generated_at": "2026-05-06T07:08:54.207003",
       "headline": "WY 惠好 2026 Q1 财报超预期：EPS +175.00%、营收 +0.47%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.11,
@@ -43600,7 +43600,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.063998",
+      "generated_at": "2026-05-06T07:08:54.207053",
       "headline": "WYNN 永利度假村 2025 Q4 财报低于预期：EPS -12.03%、营收 +0.73%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.17,
@@ -43683,7 +43683,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "miss",
-      "generated_at": "2026-05-06T06:12:23.064046",
+      "generated_at": "2026-05-06T07:08:54.207099",
       "headline": "XEL 埃克西尔能源 2026 Q1 财报低于预期：EPS +0.33%、营收 -4.47%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.91,
@@ -43766,7 +43766,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.064096",
+      "generated_at": "2026-05-06T07:08:54.207146",
       "headline": "XOM 埃克森美孚 2026 Q1 财报超预期：EPS +17.89%、营收 +4.94%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.16,
@@ -43854,7 +43854,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.064148",
+      "generated_at": "2026-05-06T07:08:54.207192",
       "headline": "XYL 赛莱默 2026 Q1 财报符合预期：EPS +2.75%、营收 +0.72%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.12,
@@ -43937,7 +43937,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.064198",
+      "generated_at": "2026-05-06T07:08:54.207240",
       "headline": "XYZ Block 2025 Q4 财报符合预期：EPS -0.31%、营收 -0.42%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 0.65,
@@ -44020,7 +44020,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.064250",
+      "generated_at": "2026-05-06T07:08:54.207288",
       "headline": "YUM 百胜餐饮 2026 Q1 财报超预期：EPS +8.70%、营收 +0.72%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.5,
@@ -44108,7 +44108,7 @@
       "fiscal_label": "2026 Q1",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.064306",
+      "generated_at": "2026-05-06T07:08:54.207336",
       "headline": "ZBH 齐默巴奥米特控股 2026 Q1 财报超预期：EPS +12.37%、营收 +0.78%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 2.09,
@@ -44181,7 +44181,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "inline",
-      "generated_at": "2026-05-06T06:12:23.064360",
+      "generated_at": "2026-05-06T07:08:54.207383",
       "headline": "ZBRA 斑马技术 2025 Q4 财报符合预期：EPS -0.23%、营收 +0.58%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 4.33,
@@ -44269,7 +44269,7 @@
       "fiscal_label": "2026 Q2",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.064411",
+      "generated_at": "2026-05-06T07:08:54.207428",
       "headline": "ZS Zscaler 2026 Q2 财报超预期：EPS +12.98%、营收 +2.18%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.01,
@@ -44352,7 +44352,7 @@
       "fiscal_label": "2025 Q4",
       "is_recent": true,
       "result": "beat",
-      "generated_at": "2026-05-06T06:12:23.064456",
+      "generated_at": "2026-05-06T07:08:54.207472",
       "headline": "ZTS 硕腾 2025 Q4 财报超预期：EPS +5.71%、营收 +1.14%（vs 华尔街预期）",
       "data_card": {
         "eps_actual": 1.48,
