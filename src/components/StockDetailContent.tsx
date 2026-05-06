@@ -753,7 +753,7 @@ function TranscriptBlock({ data }: { data: TranscriptCN }) {
   return (
     <div>
       <div className="text-xs text-slate-500 dark:text-slate-400 mb-3 flex flex-wrap items-center gap-2">
-        <span>{t("Kimi K2.5 中文翻译")}</span>
+        <span>{t("中文翻译")}</span>
         {data.content_en_chars && (
           <span>· {t("英文原文")} {(data.content_en_chars / 1000).toFixed(1)}K {t("字符")}</span>
         )}
@@ -785,7 +785,7 @@ function TranscriptBlock({ data }: { data: TranscriptCN }) {
       )}
 
       <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400">
-        {t("免责声明")}：{t("中文为机器翻译（Kimi K2.5），仅供参考。投资决策请以英文原文及官方文件为准")}
+        {t("免责声明")}：{t("中文翻译，仅供参考。投资决策请以英文原文及官方文件为准")}
       </div>
     </div>
   );
@@ -932,8 +932,7 @@ function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
           </table>
           <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
             {t("vol/OI ≥ 2 标橙底 = 当日成交量超过历史未平仓量 2 倍，属异动")} ·{" "}
-            {t("ATM IV 已过滤 OI<100 + 异常值（防 stale 数据）")} ·{" "}
-            {t("Polygon 数据延迟 15 分钟")}
+            {t("ATM IV 已过滤 OI<100 + 异常值（防 stale 数据）")}
           </div>
         </div>
       )}
