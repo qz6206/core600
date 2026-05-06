@@ -34,14 +34,22 @@ STOCKS_JSON = ROOT / "data" / "stocks.json"
 EDGAR_JSON = ROOT / "data" / "edgar_filings.json"
 ENV_LOCAL = ROOT / ".env.local"
 
-# SEC 抓 HTML 用 4 线程；Kimi 总结独立 8 线程并行（IO 密集，CPU 闲）
+# SEC 抓 HTML 用 4 线程；LLM 总结独立 8 线程并行（IO 密集，CPU 闲）
 NUM_WORKERS_FETCH = 4
 MIN_INTERVAL_SEC = 0.5
 NUM_WORKERS_LLM = 8
 MAX_RETRIES = 3
-KIMI_URL = "https://api.siliconflow.cn/v1/chat/completions"
-KIMI_MODEL = "Pro/moonshotai/Kimi-K2.5"
-MAX_TEXT_CHARS = 12000  # 截断到约 3K tokens 输入
+LLM_URL = "https://api.siliconflow.cn/v1/chat/completions"
+# 成本对比 (per 1M tokens, 2026-05 SiliconFlow):
+#   Pro/moonshotai/Kimi-K2.5         ¥4 in / ¥16 out  ← 最贵, 上次用这个超支
+#   Pro/moonshotai/Kimi-K2-Instruct  ¥4 in / ¥16 out  ← 同价 (老版本)
+#   deepseek-ai/DeepSeek-V3          ¥2 in / ¥8 out   ← 便宜一半, 短摘要够用 ✅
+#   Qwen/Qwen2.5-72B-Instruct        ¥1.26 / ¥1.26    ← 最便宜, 但中文质量一般
+LLM_MODEL = "deepseek-ai/DeepSeek-V3"
+MAX_TEXT_CHARS = 8000  # 从 12000 降到 8000 (约 2K tokens 输入), 8-K 关键事实通常在前面
+
+# 熔断: 连续失败 N 次后立即停 (防止余额耗尽时浪费 retry token)
+CIRCUIT_BREAKER_THRESHOLD = 30
 
 # Form 4/13F/季报这种格式化重复内容跳过摘要（仍保留 Item 中文标签）
 # 重点摘要的 8-K Items（覆盖 ~70%）：
@@ -141,29 +149,29 @@ def html_to_text(html: str) -> str:
     return text.strip()
 
 
-def summarize_kimi(ticker: str, name: str, item_codes: str | None, text: str, form_type: str) -> str | None:
-    """调 Kimi K2.5 出 ≤80 字中文摘要"""
+def summarize_llm(ticker: str, name: str, item_codes: str | None, text: str, form_type: str) -> tuple[str | None, str | None]:
+    """
+    调 LLM 出 ≤80 字中文摘要
+
+    返回 (summary, error_kind):
+      summary 非 None  → 成功
+      error_kind != None → 失败, kind 用来判断要不要触发熔断:
+        "auth"   - 401/402/403 余额耗尽 / key 无效 → 熔断器立即打开
+        "transient" - 429/5xx → retry 后仍失败, 单次失败计数
+        "other"  - 其他 → 单次失败计数
+    """
     if len(text) > MAX_TEXT_CHARS:
         text = text[:MAX_TEXT_CHARS] + "..."
 
-    items_hint = f"事件类型: {item_codes}（参考）" if item_codes else f"表单类型: {form_type}"
-    prompt = f"""下面是美股 {ticker}（{name}）的 SEC {form_type} 公告原文。{items_hint}
+    # 精简 prompt: 从 ~150 token 缩到 ~50 token
+    items_hint = f"({item_codes})" if item_codes else ""
+    prompt = f"""美股 {ticker} {form_type}{items_hint} 关键事实，≤80 字中文。
+公司名/人名/职位保留英文，数字精确，直接陈述事实，不加冗余开头。
 
-请用 1-2 句中文（**总长 ≤ 80 字**）总结**最关键的事实**：
-
-要求：
-1. 公司名（{name}）、人名、职位（CEO/CFO/Director 等）保留英文原文
-2. 关键数字保留精确（金额、百分比、日期、股数）
-3. **直接陈述事实**，不要 "该公司宣布"、"根据 8-K 公告" 等冗余开头
-4. 不要重复 Item 编号或事件类型（如 "高管变动"），用户已看到标签
-5. 优先抓"谁、做了什么、多少、何时"四要素
-6. 直接输出总结，不加任何前缀
-
-英文原文：
 {text}"""
 
     body = {
-        "model": KIMI_MODEL,
+        "model": LLM_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": 200,
         "temperature": 0.3,
@@ -172,7 +180,7 @@ def summarize_kimi(ticker: str, name: str, item_codes: str | None, text: str, fo
     for attempt in range(MAX_RETRIES):
         try:
             req = urllib.request.Request(
-                KIMI_URL,
+                LLM_URL,
                 data=json.dumps(body).encode(),
                 headers={"Authorization": f"Bearer {SF_KEY}", "Content-Type": "application/json"},
                 method="POST",
@@ -180,22 +188,26 @@ def summarize_kimi(ticker: str, name: str, item_codes: str | None, text: str, fo
             with urllib.request.urlopen(req, timeout=120) as r:
                 data = json.loads(r.read())
             text = data["choices"][0]["message"]["content"].strip()
-            # 去掉 markdown 引号 / 多余换行
             text = re.sub(r"^[\"\'`]+|[\"\'`]+$", "", text).strip()
             text = re.sub(r"\s+", " ", text)
-            return text
+            return text, None
         except urllib.error.HTTPError as e:
+            # 401/402/403 = 余额 / key / 权限问题, 立刻熔断 (不重试)
+            if e.code in (401, 402, 403):
+                return None, "auth"
             if e.code in (429, 500, 502, 503, 504):
                 time.sleep(2 ** attempt * 3)
                 continue
-            return None
+            return None, "other"
         except Exception:
             time.sleep(2 ** attempt * 2)
-    return None
+    return None, "transient"
 
 
-def enrich_one(cik: str, ticker: str, name: str, entry: dict, form_type: str) -> dict:
-    """如果 entry 没有 summary_cn 字段，抓 HTML + 总结"""
+def enrich_one(cik: str, ticker: str, name: str, entry: dict, form_type: str, circuit: dict) -> dict:
+    """如果 entry 没有 summary_cn 字段，抓 HTML + 总结。
+    circuit 是熔断器状态字典 (跨线程共享): {"open": False, "consecutive_failures": 0, "lock": Lock}
+    """
     if "summary_cn" in entry:
         return entry  # 已总结过
 
@@ -204,6 +216,12 @@ def enrich_one(cik: str, ticker: str, name: str, entry: dict, form_type: str) ->
     if not is_summary_worth(items):
         entry["summary_cn"] = None  # 标记为"故意不做"
         entry["summary_skipped"] = "routine"
+        return entry
+
+    # 熔断检查: 如果断路器打开, 直接返回失败 (不烧 token)
+    if circuit.get("open"):
+        entry["summary_cn"] = None
+        entry["summary_skipped"] = "circuit_breaker"
         return entry
 
     html = fetch_filing_html(cik, entry["accessionNumber"], entry["primaryDocument"])
@@ -218,7 +236,30 @@ def enrich_one(cik: str, ticker: str, name: str, entry: dict, form_type: str) ->
         entry["summary_skipped"] = "text_too_short"
         return entry
 
-    summary = summarize_kimi(ticker, name, items, text, form_type)
+    summary, err = summarize_llm(ticker, name, items, text, form_type)
+
+    # 熔断器: 401/402/403 直接打开断路器 (余额 / key 问题, 后面所有都会失败)
+    if err == "auth":
+        with circuit["lock"]:
+            if not circuit["open"]:
+                circuit["open"] = True
+                print(f"   🚨 熔断打开: {ticker} 收到 4xx (余额/key 问题), 后续全部跳过", flush=True)
+        entry["summary_cn"] = None
+        entry["summary_skipped"] = "auth_failed"
+        return entry
+
+    # 累计连续失败 → 触发熔断
+    if not summary:
+        with circuit["lock"]:
+            circuit["consecutive_failures"] += 1
+            if circuit["consecutive_failures"] >= CIRCUIT_BREAKER_THRESHOLD and not circuit["open"]:
+                circuit["open"] = True
+                print(f"   🚨 熔断打开: 连续 {CIRCUIT_BREAKER_THRESHOLD} 条失败", flush=True)
+    else:
+        # 成功 → 重置连续失败计数
+        with circuit["lock"]:
+            circuit["consecutive_failures"] = 0
+
     entry["summary_cn"] = summary or None
     if not summary:
         entry["summary_skipped"] = "llm_failed"
@@ -239,6 +280,10 @@ def main():
     total = 0
     already_done = 0
     routine_skipped = 0
+    retry_count = 0  # 之前 llm_failed / auth_failed / circuit_breaker 重新尝试
+
+    # 上次跑因 LLM 问题失败的，本次重试（清除标记，让流程当全新处理）
+    RETRY_REASONS = {"llm_failed", "auth_failed", "circuit_breaker"}
 
     for ticker, data in edgar.get("by_ticker", {}).items():
         stock = ticker_to_stock.get(ticker)
@@ -250,23 +295,40 @@ def main():
             for i, entry in enumerate(data.get(form_field, [])):
                 total += 1
                 if "summary_cn" in entry:
-                    if entry.get("summary_skipped") == "routine":
+                    skipped_reason = entry.get("summary_skipped")
+                    if skipped_reason == "routine":
                         routine_skipped += 1
+                    elif skipped_reason in RETRY_REASONS:
+                        # 重试: 清除上次失败标记
+                        del entry["summary_cn"]
+                        if "summary_skipped" in entry:
+                            del entry["summary_skipped"]
+                        retry_count += 1
+                        todos.append((cik, ticker, name, form_label, form_field, i, entry))
                     else:
                         already_done += 1
                 else:
                     todos.append((cik, ticker, name, form_label, form_field, i, entry))
 
+    # DeepSeek-V3 单价: ¥2 in / ¥8 out per 1M tokens
+    # 每条平均: ~2K input + ~80 output → ~¥0.005-0.008/条
+    est_cost = len(todos) * 0.007
     print(f"   ✓ 8-K + 6-K 总数: {total}", flush=True)
     print(f"   ✓ 已总结: {already_done}", flush=True)
     print(f"   ⊘ 跳过（业绩公告等常规事项）: {routine_skipped}", flush=True)
-    print(f"   📋 待处理: {len(todos)}", flush=True)
+    print(f"   🔁 重试上次 LLM 失败: {retry_count}", flush=True)
+    print(f"   📋 待处理: {len(todos)} (含重试)", flush=True)
+    print(f"   🤖 模型: {LLM_MODEL}", flush=True)
     print(f"   🧵 LLM 并发 {NUM_WORKERS_LLM} 线程", flush=True)
-    print(f"   💰 预计成本 ¥{len(todos) * 0.024:.1f}\n", flush=True)
+    print(f"   🚨 熔断阈值: 连续 {CIRCUIT_BREAKER_THRESHOLD} 失败", flush=True)
+    print(f"   💰 预计成本 ¥{est_cost:.1f}\n", flush=True)
 
     if not todos:
         print("✅ 全部已处理")
         return
+
+    # 熔断器状态 (跨线程共享)
+    circuit = {"open": False, "consecutive_failures": 0, "lock": threading.Lock()}
 
     completed = 0
     success = 0
@@ -275,7 +337,7 @@ def main():
 
     def task(item):
         cik, ticker, name, form_label, form_field, idx, entry = item
-        result = enrich_one(cik, ticker, name, entry, form_label)
+        result = enrich_one(cik, ticker, name, entry, form_label, circuit)
         return ticker, form_field, idx, result
 
     with ThreadPoolExecutor(max_workers=NUM_WORKERS_LLM) as pool:
@@ -298,7 +360,8 @@ def main():
                 failed += 1
 
             if completed % 100 == 0:
-                print(f"[{completed}/{len(todos)}] 进度 (总结 {success} / 跳过 {skipped} / 失败 {failed})", flush=True)
+                cb_msg = " 🚨 熔断已打开" if circuit["open"] else ""
+                print(f"[{completed}/{len(todos)}] 进度 (总结 {success} / 跳过 {skipped} / 失败 {failed}){cb_msg}", flush=True)
                 # 每 500 条增量保存一次（防中断丢数据）
                 if completed % 500 == 0:
                     EDGAR_JSON.write_text(json.dumps(edgar, ensure_ascii=False, indent=2))
@@ -309,6 +372,8 @@ def main():
     elapsed = time.time() - t_start
     size_mb = EDGAR_JSON.stat().st_size / 1024 / 1024
     print(f"\n📊 完成（耗时 {elapsed/60:.1f} min）:")
+    if circuit["open"]:
+        print(f"   🚨 熔断曾打开 (大概率因余额耗尽 / key 失效)，未处理项标 summary_skipped=auth_failed/circuit_breaker")
     print(f"   ✅ 总结成功: {success}")
     print(f"   ⊘ 跳过: {skipped}")
     print(f"   ❌ 失败: {failed}")
