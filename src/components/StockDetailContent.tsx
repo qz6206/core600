@@ -5,6 +5,8 @@ import ThemeToggle from "@/components/ThemeToggle";
 import LocaleToggle from "@/components/LocaleToggle";
 import TimeDisplay from "@/components/TimeDisplay";
 import Footer from "@/components/Footer";
+import Term from "@/components/Term";
+import ScenarioBadge from "@/components/ScenarioBadge";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
@@ -158,7 +160,7 @@ export default function StockDetailContent({
             <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
               <Metric label={t("市值")} value={formatUSD(quote.marketCap)} />
               <Metric label={t("PE")} value={quote.pe ? quote.pe.toFixed(2) : "—"} />
-              <Metric label="EPS" value={quote.eps ? `$${quote.eps.toFixed(2)}` : "—"} />
+              <Metric label={<Term term="EPS">EPS</Term>} value={quote.eps ? `$${quote.eps.toFixed(2)}` : "—"} />
               <Metric
                 label={t("52周区间")}
                 value={`${formatPrice(quote.yearLow)} - ${formatPrice(quote.yearHigh)}`}
@@ -207,7 +209,7 @@ export default function StockDetailContent({
         <Section
           icon="👤"
           title={t("内部人交易")}
-          subtitle={`Form 4 · ${t("最近")} ${form4.length} ${t("条")}`}
+          subtitleNode={<><Term term="Form 4">Form 4</Term> · {t("最近")} {form4.length} {t("条")}</>}
         >
           {stock.cik && form4.length > 0 ? (
             <InsiderTradeList cik={stock.cik} filings={form4} />
@@ -221,7 +223,13 @@ export default function StockDetailContent({
         <Section
           icon="🏛️"
           title={t("机构持仓")}
-          subtitle={inst13f?.summary?.date ? `13F · ${inst13f.summary.date}` : "13F"}
+          subtitleNode={
+            inst13f?.summary?.date ? (
+              <><Term term="13F">13F</Term> · {inst13f.summary.date}</>
+            ) : (
+              <Term term="13F">13F</Term>
+            )
+          }
         >
           {inst13f && inst13f.summary?.date ? (
             <Inst13FBlock data={inst13f} />
@@ -235,11 +243,17 @@ export default function StockDetailContent({
           const useForm6K = form8k.length === 0 && form6k.length > 0;
           const filingsToShow = useForm6K ? form6k : form8k;
           const formLabel = useForm6K ? "6-K" : "8-K";
-          const subtitleText = useForm6K
-            ? `6-K · ${t("外国发行人公告")} · ${t("最近")} ${form6k.length} ${t("条")}`
-            : `${t("公司重大事项")} · ${t("最近")} ${form8k.length} ${t("条")}`;
+          const subtitleNode = useForm6K ? (
+            <><Term term="6-K">6-K</Term> · {t("外国发行人公告")} · {t("最近")} {form6k.length} {t("条")}</>
+          ) : (
+            <><Term term="8-K">{t("公司重大事项")}</Term> · {t("最近")} {form8k.length} {t("条")}</>
+          );
           return (
-            <Section icon="📰" title={formLabel} subtitle={subtitleText}>
+            <Section
+              icon="📰"
+              title={formLabel}
+              subtitleNode={subtitleNode}
+            >
               {stock.cik && filingsToShow.length > 0 ? (
                 <Form8KList cik={stock.cik} filings={filingsToShow} isForm6K={useForm6K} />
               ) : !stock.cik ? (
@@ -251,7 +265,13 @@ export default function StockDetailContent({
           );
         })()}
 
-        <Section icon="🔮" title={t("分析师预期")} subtitle={t("未来 4 季 + Beat 历史 + 评级变动")}>
+        <Section
+          icon="🔮"
+          title={t("分析师预期")}
+          subtitleNode={
+            <>{t("未来 4 季 + ")}<Term term="Beat">Beat</Term>{t(" 历史 + 评级变动")}</>
+          }
+        >
           {fmpExtras && (fmpExtras.estimates.length > 0 || fmpExtras.earnings.length > 0 || fmpExtras.ratings.length > 0) ? (
             <AnalystEstimatesBlock
               estimates={fmpExtras.estimates}
@@ -266,12 +286,16 @@ export default function StockDetailContent({
         <Section
           icon="🎯"
           title={t("期权异动")}
-          subtitle={
-            options?.atm_iv != null
-              ? `ATM IV ${(options.atm_iv * 100).toFixed(1)}% · P/C ${
-                  options.put_call_ratio != null ? options.put_call_ratio.toFixed(2) : "—"
-                }`
-              : t("聪明钱大单监控")
+          subtitleNode={
+            options?.atm_iv != null ? (
+              <>
+                <Term term="ATM IV">ATM IV</Term> {(options.atm_iv * 100).toFixed(1)}% ·{" "}
+                <Term term="Put/Call">P/C</Term>{" "}
+                {options.put_call_ratio != null ? options.put_call_ratio.toFixed(2) : "—"}
+              </>
+            ) : (
+              t("聪明钱大单监控")
+            )
           }
         >
           {options && options.top_contracts.length > 0 ? (
@@ -281,7 +305,17 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        <Section icon="📉" title={t("股本动态")} subtitle={t("摊薄股数 + 回购 + SBC 稀释")}>
+        <Section
+          icon="📉"
+          title={t("股本动态")}
+          subtitleNode={
+            <>
+              <Term term="摊薄股数">{t("摊薄股数")}</Term> +{" "}
+              <Term term="回购">{t("回购")}</Term> +{" "}
+              <Term term="SBC">SBC</Term> {t("稀释")}
+            </>
+          }
+        >
           {fmpExtras && (fmpExtras.shares.length > 0 || fmpExtras.sbc.length > 0) ? (
             <CapitalDynamicsBlock
               shares={fmpExtras.shares}
@@ -331,7 +365,7 @@ export default function StockDetailContent({
 
 // ====== 子组件 ======
 
-function Metric({ label, value, small = false }: { label: string; value: string; small?: boolean }) {
+function Metric({ label, value, small = false }: { label: React.ReactNode; value: string; small?: boolean }) {
   return (
     <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
       <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">{label}</div>
@@ -344,12 +378,14 @@ function Section({
   icon,
   title,
   subtitle,
+  subtitleNode,
   comingSoon = false,
   children,
 }: {
   icon: string;
   title: string;
   subtitle?: string;
+  subtitleNode?: React.ReactNode;
   comingSoon?: boolean;
   children: React.ReactNode;
 }) {
@@ -360,9 +396,11 @@ function Section({
         <div className="flex items-baseline gap-3">
           <span className="text-2xl">{icon}</span>
           <h2 className="text-xl font-semibold">{title}</h2>
-          {subtitle && (
+          {subtitleNode ? (
+            <span className="text-sm text-slate-500 dark:text-slate-400">{subtitleNode}</span>
+          ) : subtitle ? (
             <span className="text-sm text-slate-500 dark:text-slate-400">{subtitle}</span>
-          )}
+          ) : null}
         </div>
         {comingSoon && (
           <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300 rounded">
@@ -497,7 +535,66 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
   // 按日期倒序（虽然 EDGAR 一般已是倒序，保险起见）
   const sorted = [...filings].sort((a, b) => b.filingDate.localeCompare(a.filingDate));
 
+  // ====== 场景标签：统计买入/卖出信号 ======
+  const insiderBadges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  // 90 天内的统计
+  const now = new Date();
+  const ninetyDaysAgo = new Date(now.getTime() - 90 * 86400000).toISOString().slice(0, 10);
+  const recent = sorted.filter(f => f.filingDate >= ninetyDaysAgo);
+  let buyCount = 0;
+  let sellCount = 0;
+  let buyValue = 0;
+  let sellValue = 0;
+  for (const f of recent) {
+    const txs = f.parsed?.transactions || [];
+    for (const tx of txs) {
+      if (tx.kind !== "non-derivative") continue;
+      if (tx.acquired_disposed === "A") {
+        // 仅算公开市场买入（非授予 / 非行权）
+        if (tx.code === "P") {
+          buyCount++;
+          buyValue += tx.value || 0;
+        }
+      } else if (tx.acquired_disposed === "D") {
+        // 公开市场卖出
+        if (tx.code === "S") {
+          sellCount++;
+          sellValue += tx.value || 0;
+        }
+      }
+    }
+  }
+  if (buyCount >= 3) {
+    insiderBadges.push({
+      color: "green",
+      label: "内部人买入",
+      hint: `90 天内 ${buyCount} 笔公开市场买入，合计 ${formatUSD(buyValue)}`,
+    });
+  }
+  if (sellCount >= 5 && buyCount === 0) {
+    insiderBadges.push({
+      color: "red",
+      label: "持续套现",
+      hint: `90 天内 ${sellCount} 笔卖出 (${formatUSD(sellValue)})，无买入`,
+    });
+  } else if (sellCount > 0 && buyCount === 0) {
+    insiderBadges.push({
+      color: "amber",
+      label: "仅有卖出",
+      hint: `90 天内 ${sellCount} 笔卖出，无买入`,
+    });
+  }
+
   return (
+    <div className="space-y-3">
+      {insiderBadges.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
+          {insiderBadges.map((b, i) => (
+            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+          ))}
+        </div>
+      )}
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
@@ -575,6 +672,7 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
         </div>
       </div>
     </div>
+    </div>
   );
 }
 
@@ -595,28 +693,30 @@ function Form8KList({
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
-            <th className="text-left py-2 pr-4 font-normal">{t("申报日")}</th>
-            <th className="text-left py-2 pr-4 font-normal">{isForm6K ? t("文档") : t("事件")}</th>
-            <th className="text-right py-2 pl-4 font-normal">{t("查看原文")}</th>
+            <th className="text-left py-2 pr-3 font-normal whitespace-nowrap">{t("申报日")}</th>
+            <th className="text-left py-2 pr-3 font-normal">{isForm6K ? t("文档") : t("事件")}</th>
+            <th className="text-left py-2 pr-3 font-normal">{t("中文摘要")}</th>
+            <th className="text-right py-2 pl-3 font-normal whitespace-nowrap">SEC</th>
           </tr>
         </thead>
         <tbody>
           {sorted.map(f => {
             const url = filingUrl(cik, f.accessionNumber, f.primaryDocument);
             const itemLabels = isForm6K ? [] : parse8KItems(f.items);
+            const isRoutine = f.summary_skipped === "routine";
             return (
               <tr
                 key={f.accessionNumber}
-                className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition"
+                className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition align-top"
               >
-                <td className="py-3 pr-4 font-medium tabular-nums whitespace-nowrap">{f.filingDate}</td>
-                <td className="py-3 pr-4">
+                <td className="py-3 pr-3 font-medium tabular-nums whitespace-nowrap">{f.filingDate}</td>
+                <td className="py-3 pr-3">
                   {isForm6K ? (
-                    <span className="text-xs text-slate-600 dark:text-slate-400 truncate max-w-[280px] inline-block align-middle">
+                    <span className="text-xs text-slate-600 dark:text-slate-400 truncate max-w-[200px] inline-block align-middle">
                       {f.primaryDocDescription || f.primaryDocument || "—"}
                     </span>
                   ) : itemLabels.length > 0 ? (
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1.5 max-w-[180px]">
                       {itemLabels.map((label, i) => (
                         <span
                           key={i}
@@ -631,14 +731,27 @@ function Form8KList({
                     <span className="text-slate-400 dark:text-slate-500 text-xs">—</span>
                   )}
                 </td>
-                <td className="py-3 pl-4 text-right whitespace-nowrap">
+                <td className="py-3 pr-3 text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-w-[420px]">
+                  {f.summary_cn ? (
+                    <span>{f.summary_cn}</span>
+                  ) : isRoutine ? (
+                    <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                      {t("常规公告（业绩公告 / 财务表 等），详见原文")}
+                    </span>
+                  ) : (
+                    <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                      {t("摘要生成中…")}
+                    </span>
+                  )}
+                </td>
+                <td className="py-3 pl-3 text-right whitespace-nowrap">
                   <a
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
                   >
-                    SEC →
+                    →
                   </a>
                 </td>
               </tr>
@@ -647,9 +760,17 @@ function Form8KList({
         </tbody>
       </table>
       <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-        {isForm6K
-          ? t("Form 6-K 是外国发行人 (foreign private issuer) 用来替代 8-K 的报告，发生重大事件时申报")
-          : t("8-K 是公司在出现重大事项后 4 个工作日内必须申报的公告（如高管变动、并购、业绩预告等）")}
+        {isForm6K ? (
+          <>
+            <Term term="6-K">Form 6-K</Term>{" "}
+            {t("是外国发行人 (foreign private issuer) 用来替代 8-K 的报告，发生重大事件时申报")}
+          </>
+        ) : (
+          <>
+            <Term term="8-K">8-K</Term>{" "}
+            {t("是公司在出现重大事项后 4 个工作日内必须申报的公告（如高管变动、并购、业绩预告等）")}
+          </>
+        )}
       </div>
     </div>
   );
@@ -659,8 +780,71 @@ function Inst13FBlock({ data }: { data: Inst13F }) {
   const { t } = useLocale();
   const { summary, topHolders } = data;
 
+  // ====== 场景标签：机构持仓动向 ======
+  const instBadges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  const investorChange = summary.investorsHoldingChange;
+  if (investorChange != null && summary.investorsHolding) {
+    const pct = (investorChange / summary.investorsHolding) * 100;
+    if (pct >= 5) {
+      instBadges.push({
+        color: "green",
+        label: "机构增持",
+        hint: `本季度机构数 +${investorChange.toLocaleString()} (${pct.toFixed(1)}%)`,
+      });
+    } else if (pct <= -5) {
+      instBadges.push({
+        color: "red",
+        label: "机构减持",
+        hint: `本季度机构数 ${investorChange.toLocaleString()} (${pct.toFixed(1)}%)`,
+      });
+    }
+  }
+  // 新进 vs 清仓
+  if (summary.newPositions != null && summary.closedPositions != null) {
+    const net = summary.newPositions - summary.closedPositions;
+    if (net >= 50) {
+      instBadges.push({
+        color: "green",
+        label: "新建仓多",
+        hint: `本季度新进 ${summary.newPositions} - 清仓 ${summary.closedPositions} = +${net}`,
+      });
+    } else if (net <= -50) {
+      instBadges.push({
+        color: "red",
+        label: "清仓潮",
+        hint: `本季度新进 ${summary.newPositions} - 清仓 ${summary.closedPositions} = ${net}`,
+      });
+    }
+  }
+  // 高度机构化
+  if (summary.ownershipPercent != null) {
+    if (summary.ownershipPercent >= 90) {
+      instBadges.push({
+        color: "slate",
+        label: "高度机构化",
+        hint: `13F 机构合计持有 ${summary.ownershipPercent.toFixed(1)}% 流通股 (≥90%)`,
+      });
+    } else if (summary.ownershipPercent < 50) {
+      instBadges.push({
+        color: "amber",
+        label: "机构化偏低",
+        hint: `13F 机构合计持有 ${summary.ownershipPercent.toFixed(1)}% 流通股 (<50%)`,
+      });
+    }
+  }
+
   return (
     <div className="space-y-4">
+      {/* 场景标签 */}
+      {instBadges.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
+          {instBadges.map((b, i) => (
+            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+          ))}
+        </div>
+      )}
+
       {/* 聚合统计 */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <Stat
@@ -675,13 +859,13 @@ function Inst13FBlock({ data }: { data: Inst13F }) {
           subtitle={summary.ownershipPercent ? `${summary.ownershipPercent.toFixed(1)}% ${t("流通股")}` : undefined}
         />
         <Stat
-          label={t("新进")}
+          label={<Term term="新进">{t("新进")}</Term>}
           value={summary.newPositions?.toLocaleString() ?? "—"}
           isCount
           colorOverride={summary.newPositions ? "text-emerald-600 dark:text-emerald-400" : undefined}
         />
         <Stat
-          label={t("清仓")}
+          label={<Term term="清仓">{t("清仓")}</Term>}
           value={summary.closedPositions?.toLocaleString() ?? "—"}
           isCount
           colorOverride={summary.closedPositions ? "text-red-600 dark:text-red-400" : undefined}
@@ -738,7 +922,8 @@ function Inst13FBlock({ data }: { data: Inst13F }) {
             </tbody>
           </table>
           <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-            {t("13F 由管理资产 ≥1 亿美元的机构每季度申报，截止后 45 天内披露。本表按持股占比排序")}
+            <Term term="13F">13F</Term>{" "}
+            {t("由管理资产 ≥1 亿美元的机构每季度申报，截止后 45 天内披露。本表按持股占比排序")}
           </div>
         </div>
       )}
@@ -754,7 +939,7 @@ function Stat({
   isCount,
   colorOverride,
 }: {
-  label: string;
+  label: React.ReactNode;
   value: string;
   subtitle?: string;
   delta?: number | null;
@@ -869,17 +1054,68 @@ function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
     return Math.round((expDate.getTime() - todayDate.getTime()) / 86400000);
   };
 
+  // ====== 场景标签：期权情绪 ======
+  const optBadges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  if (put_call_ratio != null) {
+    if (put_call_ratio < 0.7) {
+      optBadges.push({
+        color: "green",
+        label: "看涨情绪",
+        hint: `Put/Call = ${put_call_ratio.toFixed(2)} (<0.7)，多头主导`,
+      });
+    } else if (put_call_ratio > 1.2) {
+      optBadges.push({
+        color: "red",
+        label: "看跌情绪",
+        hint: `Put/Call = ${put_call_ratio.toFixed(2)} (>1.2)，空头主导`,
+      });
+    }
+  }
+  if (atm_iv != null) {
+    if (atm_iv >= 0.5) {
+      optBadges.push({
+        color: "amber",
+        label: "高 IV",
+        hint: `ATM IV ${(atm_iv * 100).toFixed(1)}% (≥50%)，市场预期大波动`,
+      });
+    } else if (atm_iv < 0.2) {
+      optBadges.push({
+        color: "slate",
+        label: "低 IV",
+        hint: `ATM IV ${(atm_iv * 100).toFixed(1)}% (<20%)，市场平静`,
+      });
+    }
+  }
+  // 异动合约数量
+  const unusualCount = top_contracts.filter(c => c.vol_oi_ratio != null && c.vol_oi_ratio >= 2).length;
+  if (unusualCount >= 3) {
+    optBadges.push({
+      color: "amber",
+      label: "异动密集",
+      hint: `Top 10 中有 ${unusualCount} 个合约 vol/OI ≥ 2`,
+    });
+  }
+
   return (
     <div className="space-y-4">
+      {/* 场景标签 */}
+      {optBadges.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
+          {optBadges.map((b, i) => (
+            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+          ))}
+        </div>
+      )}
       {/* 顶部 4 格 */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <Stat
-          label="ATM IV"
+          label={<Term term="ATM IV">ATM IV</Term>}
           value={atm_iv != null ? `${(atm_iv * 100).toFixed(1)}%` : "—"}
           subtitle={atm_iv_count ? `${atm_iv_count} ${t("个候选")}` : undefined}
         />
         <Stat
-          label={t("Put/Call 量比")}
+          label={<><Term term="Put/Call">Put/Call</Term> {t("量比")}</>}
           value={put_call_ratio != null ? put_call_ratio.toFixed(2) : "—"}
           subtitle={put_call_ratio != null ? (put_call_ratio < 0.7 ? t("看涨") : put_call_ratio > 1.0 ? t("看跌") : t("中性")) : undefined}
           colorOverride={
@@ -916,10 +1152,10 @@ function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
                 <th className="text-left py-2 pr-3 font-normal">{t("方向")}</th>
                 <th className="text-right py-2 px-3 font-normal">{t("行权价")}</th>
                 <th className="text-right py-2 px-3 font-normal">{t("到期")}</th>
-                <th className="text-right py-2 px-3 font-normal">{t("DTE")}</th>
+                <th className="text-right py-2 px-3 font-normal"><Term term="DTE">DTE</Term></th>
                 <th className="text-right py-2 px-3 font-normal">{t("成交量")}</th>
                 <th className="text-right py-2 px-3 font-normal">{t("未平仓")}</th>
-                <th className="text-right py-2 px-3 font-normal">vol/OI</th>
+                <th className="text-right py-2 px-3 font-normal"><Term term="vol/OI">vol/OI</Term></th>
                 <th className="text-right py-2 px-3 font-normal">IV</th>
                 <th className="text-right py-2 pl-3 font-normal">{t("涨跌")}</th>
               </tr>
@@ -995,8 +1231,11 @@ function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
             </tbody>
           </table>
           <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-            {t("vol/OI ≥ 2 标橙底 = 当日成交量超过历史未平仓量 2 倍，属异动")} ·{" "}
-            {t("ATM IV 已过滤 OI<100 + 异常值（防 stale 数据）")}
+            <Term term="vol/OI">vol/OI</Term>{" "}
+            {t("≥ 2 标橙底 = 当日成交量超过历史未平仓量 2 倍，属异动")} ·{" "}
+            <Term term="ATM IV">ATM IV</Term>{" "}
+            {t("已过滤")} <Term term="OI">OI</Term>{"<100 "}
+            {t("+ 异常值（防 stale 数据）")}
           </div>
         </div>
       )}
@@ -1033,8 +1272,69 @@ function AnalystEstimatesBlock({
     .filter(e => e.eps_actual != null && e.eps_estimate != null)
     .slice(0, 4);
 
+  // ====== 场景标签：Beat/Miss 历史 + 评级动向 ======
+  const analystBadges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  if (past.length >= 4) {
+    let beatCount = 0;
+    let missCount = 0;
+    for (const e of past) {
+      const surprise =
+        e.eps_estimate && e.eps_estimate !== 0
+          ? ((e.eps_actual! - e.eps_estimate) / Math.abs(e.eps_estimate)) * 100
+          : null;
+      if (surprise == null) continue;
+      if (surprise > 3) beatCount++;
+      else if (surprise < -3) missCount++;
+    }
+    if (beatCount >= 4) {
+      analystBadges.push({
+        color: "green",
+        label: "连续超预期",
+        hint: `最近 ${past.length} 次财报全部 Beat (差异 >3%)`,
+      });
+    } else if (beatCount >= 3) {
+      analystBadges.push({
+        color: "green",
+        label: "多次超预期",
+        hint: `最近 ${past.length} 次财报中 ${beatCount} 次 Beat`,
+      });
+    } else if (missCount >= 2) {
+      analystBadges.push({
+        color: "red",
+        label: "多次低于预期",
+        hint: `最近 ${past.length} 次财报中 ${missCount} 次 Miss (差异 <-3%)`,
+      });
+    }
+  }
+  // 评级动向（最近 5 次）
+  const recentRatings = ratings.slice(0, 5);
+  const upCount = recentRatings.filter(r => r.action === "upgrade").length;
+  const downCount = recentRatings.filter(r => r.action === "downgrade").length;
+  if (upCount >= 2 && upCount > downCount) {
+    analystBadges.push({
+      color: "green",
+      label: "评级上调",
+      hint: `最近 5 次评级中 ${upCount} 次升级 vs ${downCount} 次降级`,
+    });
+  } else if (downCount >= 2 && downCount > upCount) {
+    analystBadges.push({
+      color: "red",
+      label: "评级下调",
+      hint: `最近 5 次评级中 ${downCount} 次降级 vs ${upCount} 次升级`,
+    });
+  }
+
   return (
     <div className="space-y-5">
+      {/* 场景标签 */}
+      {analystBadges.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
+          {analystBadges.map((b, i) => (
+            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+          ))}
+        </div>
+      )}
       {/* 未来 4 季预期 */}
       {forwardQuarters.length > 0 && (
         <div>
@@ -1079,7 +1379,7 @@ function AnalystEstimatesBlock({
       {past.length > 0 && (
         <div>
           <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-            {t("最近 4 次财报 Beat / Miss")}
+            {t("最近 4 次财报")} <Term term="Beat">Beat</Term> / <Term term="Miss">Miss</Term>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -1152,6 +1452,11 @@ function AnalystEstimatesBlock({
                 initiate: "首次覆盖",
                 hold: "维持",
               };
+              const actionTermKey: Record<string, string> = {
+                upgrade: "升级",
+                downgrade: "降级",
+                initiate: "首次覆盖",
+              };
               return (
                 <div
                   key={i}
@@ -1161,7 +1466,13 @@ function AnalystEstimatesBlock({
                     {r.date}
                   </span>
                   <span className={`px-2 py-0.5 rounded text-xs font-medium ${actionColor} whitespace-nowrap`}>
-                    {t(actionCN[r.action || ""] || r.action || "—")}
+                    {actionTermKey[r.action || ""] ? (
+                      <Term term={actionTermKey[r.action || ""]}>
+                        {t(actionCN[r.action || ""] || r.action || "—")}
+                      </Term>
+                    ) : (
+                      t(actionCN[r.action || ""] || r.action || "—")
+                    )}
                   </span>
                   <span className="font-medium whitespace-nowrap">{r.company}</span>
                   {r.target_price && (
@@ -1198,9 +1509,9 @@ function EarningsCalendarBlock({ earnings }: { earnings: EarningRecord[] }) {
     .filter(e => e.date && e.eps_actual != null)
     .slice(0, 8);
 
-  const timeLabel = (time: string | null): string => {
-    if (time === "bmo") return t("盘前");
-    if (time === "amc") return t("盘后");
+  const timeLabelNode = (time: string | null): React.ReactNode => {
+    if (time === "bmo") return <Term term="盘前">{t("盘前")}</Term>;
+    if (time === "amc") return <Term term="盘后">{t("盘后")}</Term>;
     return t("未公布");
   };
 
@@ -1216,7 +1527,7 @@ function EarningsCalendarBlock({ earnings }: { earnings: EarningRecord[] }) {
               </div>
               <div className="text-2xl font-bold tabular-nums">{upcoming.date}</div>
               <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                {timeLabel(upcoming.time)}
+                {timeLabelNode(upcoming.time)}
                 {upcoming.fiscal_period_end && ` · ${t("季度结束")} ${upcoming.fiscal_period_end}`}
               </div>
             </div>
@@ -1268,7 +1579,7 @@ function EarningsCalendarBlock({ earnings }: { earnings: EarningRecord[] }) {
                   >
                     <td className="py-2 pr-3 font-medium tabular-nums">{e.date}</td>
                     <td className="py-2 pr-3 text-xs text-slate-500 dark:text-slate-400">
-                      {timeLabel(e.time)}
+                      {timeLabelNode(e.time)}
                     </td>
                     <td className="py-2 px-3 text-right tabular-nums">
                       {e.eps_actual != null ? `$${e.eps_actual.toFixed(2)}` : "—"}
@@ -1325,29 +1636,94 @@ function CapitalDynamicsBlock({
   // 回购 TTM
   const ttmBuyback = sortedCF.slice(0, 4).reduce((sum, q) => sum + (q.buyback || 0), 0);
 
+  // ====== 场景标签计算（纯规则）======
+  const badges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  if (dilutionPct != null) {
+    if (dilutionPct <= -1) {
+      badges.push({
+        color: "green",
+        label: "持续缩股",
+        hint: `8 季度股本变化 ${dilutionPct.toFixed(2)}% (回购大于稀释)`,
+      });
+    } else if (dilutionPct >= 1) {
+      badges.push({
+        color: "red",
+        label: "显著稀释",
+        hint: `8 季度股本变化 +${dilutionPct.toFixed(2)}% (新发大于回购)`,
+      });
+    } else {
+      badges.push({
+        color: "slate",
+        label: "股本平稳",
+        hint: `8 季度股本变化 ${dilutionPct.toFixed(2)}%`,
+      });
+    }
+  }
+  if (sbcVsNI != null) {
+    if (sbcVsNI <= 10) {
+      badges.push({
+        color: "green",
+        label: "低稀释",
+        hint: `SBC/净利 = ${sbcVsNI.toFixed(1)}% (≤10%)`,
+      });
+    } else if (sbcVsNI >= 30) {
+      badges.push({
+        color: "red",
+        label: "高稀释",
+        hint: `SBC/净利 = ${sbcVsNI.toFixed(1)}% (≥30%)`,
+      });
+    }
+  }
+  // 回购放缓：最近 4 季 vs 前 4 季
+  const recentBuyback = sortedCF.slice(0, 4).reduce((sum, q) => sum + Math.abs(q.buyback || 0), 0);
+  const priorBuyback = sortedCF.slice(4, 8).reduce((sum, q) => sum + Math.abs(q.buyback || 0), 0);
+  if (priorBuyback > 0 && recentBuyback < priorBuyback * 0.5) {
+    badges.push({
+      color: "amber",
+      label: "回购放缓",
+      hint: `最近 4 季回购 ${formatUSD(recentBuyback)} vs 前 4 季 ${formatUSD(priorBuyback)} (<50%)`,
+    });
+  } else if (priorBuyback > 0 && recentBuyback > priorBuyback * 1.5) {
+    badges.push({
+      color: "green",
+      label: "加大回购",
+      hint: `最近 4 季回购 ${formatUSD(recentBuyback)} vs 前 4 季 ${formatUSD(priorBuyback)} (>150%)`,
+    });
+  }
+
   return (
     <div className="space-y-4">
+      {/* 场景标签 */}
+      {badges.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
+          {badges.map((b, i) => (
+            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+          ))}
+        </div>
+      )}
+
       {/* 顶部 4 格 */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <Stat
-          label={t("摊薄股数")}
+          label={<Term term="摊薄股数">{t("摊薄股数")}</Term>}
           value={latestShs ? formatShares(latestShs) : "—"}
           subtitle={sortedShares[0]?.date ? `${sortedShares[0].calendar_year} ${sortedShares[0].period}` : undefined}
           delta={dilutionPct}
         />
         <Stat
-          label={`SBC TTM`}
+          label={<><Term term="SBC">SBC</Term> <Term term="TTM">TTM</Term></>}
           value={ttmSBC ? formatUSD(ttmSBC) : "—"}
           subtitle={sbcVsCap != null ? `${sbcVsCap.toFixed(2)}% ${t("市值")}` : undefined}
           colorOverride={ttmSBC > 0 ? "text-orange-600 dark:text-orange-400" : undefined}
         />
         <Stat
-          label={t("回购 TTM")}
+          label={<><Term term="回购">{t("回购")}</Term> <Term term="TTM">TTM</Term></>}
           value={ttmBuyback ? formatUSD(Math.abs(ttmBuyback)) : "—"}
           colorOverride={ttmBuyback < 0 ? "text-emerald-600 dark:text-emerald-400" : undefined}
         />
         <Stat
-          label={t("SBC / 净利")}
+          label={<><Term term="SBC">SBC</Term> / {t("净利")}</>}
           value={sbcVsNI != null ? `${sbcVsNI.toFixed(1)}%` : "—"}
           subtitle={t("TTM")}
           colorOverride={
@@ -1367,10 +1743,14 @@ function CapitalDynamicsBlock({
             <thead>
               <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
                 <th className="text-left py-2 pr-3 font-normal">{t("季度")}</th>
-                <th className="text-right py-2 px-3 font-normal">{t("摊薄股数")}</th>
-                <th className="text-right py-2 px-3 font-normal">SBC</th>
-                <th className="text-right py-2 px-3 font-normal">{t("回购")}</th>
-                <th className="text-right py-2 pl-3 font-normal">FCF</th>
+                <th className="text-right py-2 px-3 font-normal">
+                  <Term term="摊薄股数">{t("摊薄股数")}</Term>
+                </th>
+                <th className="text-right py-2 px-3 font-normal"><Term term="SBC">SBC</Term></th>
+                <th className="text-right py-2 px-3 font-normal">
+                  <Term term="回购">{t("回购")}</Term>
+                </th>
+                <th className="text-right py-2 pl-3 font-normal"><Term term="FCF">FCF</Term></th>
               </tr>
             </thead>
             <tbody>
@@ -1402,7 +1782,10 @@ function CapitalDynamicsBlock({
             </tbody>
           </table>
           <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-            {t("摊薄股数减少 = 回购大于股权激励发行；SBC 占净利润 ≥30% 视为高稀释，≤10% 为低稀释")}
+            <Term term="摊薄股数">{t("摊薄股数")}</Term>
+            {t(" 减少 = 回购大于股权激励发行；")}
+            <Term term="SBC">SBC</Term>
+            {t(" 占净利润 ≥30% 视为高稀释，≤10% 为低稀释")}
           </div>
         </div>
       )}

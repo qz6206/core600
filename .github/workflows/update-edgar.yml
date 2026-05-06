@@ -35,6 +35,12 @@ jobs:
           EDGAR_USER_AGENT: ${{ secrets.EDGAR_USER_AGENT }}
         run: python3 scripts/enrich_form4.py
 
+      - name: 增量总结 8-K / 6-K 公告（Kimi K2.5 → 中文摘要）
+        env:
+          EDGAR_USER_AGENT: ${{ secrets.EDGAR_USER_AGENT }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+        run: python3 scripts/enrich_form8k.py
+
       - name: 检查变化
         id: check
         run: |

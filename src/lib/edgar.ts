@@ -94,6 +94,10 @@ export interface EdgarFiling {
   items?: string;
   /** Form 4 解析后的中文结构化数据（由 enrich_form4.py 增量补充）*/
   parsed?: Form4Parsed | null;
+  /** 8-K / 6-K 的中文一句话总结（由 enrich_form8k.py 增量补充）*/
+  summary_cn?: string | null;
+  /** 跳过总结的原因（routine / fetch_failed / llm_failed / text_too_short）*/
+  summary_skipped?: string;
 }
 
 export interface Form4Transaction {
