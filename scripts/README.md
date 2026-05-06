@@ -20,6 +20,14 @@ Core 600 数据 pipeline 脚本。分两类：
 | `translate_descriptions.py` | `update-translations.yml` | `data/descriptions_cn.json`（中文简介）| 周一 8:00 UTC |
 | `translate_transcripts.py` | `update-translations.yml` | `data/transcripts.json`（中文财报会议）| 周一 8:00 UTC |
 
+## 预案脚本（暂未启用，未来需要时跑）
+
+| 脚本 | 触发条件 | 用途 |
+|------|---------|------|
+| `split_by_ticker.py` | transcripts.json > 80 MB / 仓库 > 3 GB / build > 5 min | 按 ticker 拆大 JSON 成单股票文件，绕开 GitHub 单文件 100 MB 限制 |
+
+详细用法看脚本顶部 docstring。一键 `--dry-run` / `--apply` / `--verify` / `--rollback`。
+
 ## One-off 脚本（历史建库，已完成任务）
 
 ### 中文名修正（4 轮迭代）

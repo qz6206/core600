@@ -454,6 +454,43 @@ function FinancialRow({
   );
 }
 
+function ownerTitleLabel(parsed: { is_director: boolean; is_officer: boolean; is_ten_pct: boolean; owner_title_cn: string | null }, t: (s: string) => string): string {
+  // 优先用 officerTitle，否则按角色拼
+  if (parsed.owner_title_cn) return parsed.owner_title_cn;
+  const roles: string[] = [];
+  if (parsed.is_director) roles.push(t("董事"));
+  if (parsed.is_officer) roles.push(t("高管"));
+  if (parsed.is_ten_pct) roles.push(t("10%+ 股东"));
+  return roles.join(" / ") || t("内部人");
+}
+
+function summarizeFiling(parsed: NonNullable<EdgarFiling["parsed"]>, t: (s: string) => string): { actionCN: string; actionColor: string; sharesText: string; priceText: string; valueText: string } {
+  // 选第一笔最有信号的交易做总结：优先 non-derivative，因为是真金白银
+  const txs = parsed.transactions || [];
+  const main = txs.find(x => x.kind === "non-derivative") || txs[0];
+  if (!main) {
+    return { actionCN: "—", actionColor: "text-slate-500", sharesText: "—", priceText: "—", valueText: "—" };
+  }
+  const isAcquire = main.acquired_disposed === "A";
+  const actionColor = isAcquire
+    ? "text-emerald-600 dark:text-emerald-400"
+    : main.acquired_disposed === "D"
+    ? "text-red-600 dark:text-red-400"
+    : "text-slate-600 dark:text-slate-400";
+  const sharesText = main.shares ? formatShares(main.shares) : "—";
+  const priceText = main.price ? `$${main.price.toFixed(2)}` : "—";
+  const valueText = main.value && main.value > 0 ? formatUSD(main.value) : "—";
+  // 多笔交易在标签里加 +N
+  const extra = txs.length > 1 ? ` +${txs.length - 1}` : "";
+  return {
+    actionCN: t(main.code_label_cn) + extra,
+    actionColor,
+    sharesText,
+    priceText,
+    valueText,
+  };
+}
+
 function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[] }) {
   const { t } = useLocale();
 
@@ -465,41 +502,60 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
-            <th className="text-left py-2 pr-4 font-normal">{t("申报日")}</th>
-            <th className="text-left py-2 pr-4 font-normal">{t("交易日")}</th>
-            <th className="text-left py-2 pr-4 font-normal">{t("表格")}</th>
-            <th className="text-left py-2 pr-4 font-normal">{t("文档")}</th>
-            <th className="text-right py-2 pl-4 font-normal">{t("查看原文")}</th>
+            <th className="text-left py-2 pr-3 font-normal">{t("申报日")}</th>
+            <th className="text-left py-2 pr-3 font-normal">{t("内部人")}</th>
+            <th className="text-left py-2 pr-3 font-normal">{t("动作")}</th>
+            <th className="text-right py-2 px-3 font-normal">{t("股数")}</th>
+            <th className="text-right py-2 px-3 font-normal">{t("价格")}</th>
+            <th className="text-right py-2 px-3 font-normal">{t("金额")}</th>
+            <th className="text-right py-2 pl-3 font-normal">SEC</th>
           </tr>
         </thead>
         <tbody>
           {sorted.map(f => {
             const url = filingUrl(cik, f.accessionNumber, f.primaryDocument);
+            const parsed = f.parsed;
+            const summary = parsed ? summarizeFiling(parsed, t) : null;
+            const ownerName = parsed?.owner_name || "—";
+            const ownerTitle = parsed ? ownerTitleLabel(parsed, t) : "";
             return (
               <tr
                 key={f.accessionNumber}
                 className="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition"
               >
-                <td className="py-3 pr-4 font-medium tabular-nums">{f.filingDate}</td>
-                <td className="py-3 pr-4 text-slate-500 dark:text-slate-400 tabular-nums">
-                  {f.reportDate || "—"}
+                <td className="py-3 pr-3 font-medium tabular-nums whitespace-nowrap">{f.filingDate}</td>
+                <td className="py-3 pr-3">
+                  {parsed ? (
+                    <div>
+                      <div className="font-medium">{ownerName}</div>
+                      {ownerTitle && (
+                        <div className="text-xs text-slate-500 dark:text-slate-400">{ownerTitle}</div>
+                      )}
+                    </div>
+                  ) : (
+                    <span className="text-xs text-slate-400">{t("解析中")}</span>
+                  )}
                 </td>
-                <td className="py-3 pr-4">
-                  <span className="px-2 py-0.5 text-xs bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-300 rounded">
-                    Form {f.form}
-                  </span>
+                <td className={`py-3 pr-3 text-sm ${summary?.actionColor || "text-slate-500"}`}>
+                  {summary?.actionCN || "—"}
                 </td>
-                <td className="py-3 pr-4 text-xs text-slate-600 dark:text-slate-400 truncate max-w-[200px]">
-                  {f.primaryDocument}
+                <td className="py-3 px-3 text-right tabular-nums">
+                  {summary?.sharesText || "—"}
                 </td>
-                <td className="py-3 pl-4 text-right">
+                <td className="py-3 px-3 text-right tabular-nums text-slate-600 dark:text-slate-400">
+                  {summary?.priceText || "—"}
+                </td>
+                <td className="py-3 px-3 text-right tabular-nums font-medium">
+                  {summary?.valueText || "—"}
+                </td>
+                <td className="py-3 pl-3 text-right whitespace-nowrap">
                   <a
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-indigo-600 dark:text-indigo-400 hover:underline text-sm"
                   >
-                    SEC →
+                    →
                   </a>
                 </td>
               </tr>
@@ -507,8 +563,16 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
           })}
         </tbody>
       </table>
-      <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-        {t("内部人 = 公司高管 / 董事 / 10% 以上股东，必须在交易后 2 个工作日内申报")}
+      <div className="mt-3 text-xs text-slate-500 dark:text-slate-400 space-y-1">
+        <div>
+          {t("内部人 = 公司高管 / 董事 / 10% 以上股东，必须在交易后 2 个工作日内申报")}
+        </div>
+        <div>
+          <span className="text-emerald-600 dark:text-emerald-400">{t("绿色")}</span> = {t("买入/获得")} ·{" "}
+          <span className="text-red-600 dark:text-red-400">{t("红色")}</span> = {t("卖出/处置")} ·{" "}
+          {t("「+N」表示同一申报含多笔交易")} ·{" "}
+          {t("点击 SEC → 看完整原文")}
+        </div>
       </div>
     </div>
   );

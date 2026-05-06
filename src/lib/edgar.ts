@@ -92,6 +92,31 @@ export interface EdgarFiling {
   size: number;
   /** 8-K 的 Item 编号（如 "5.02,9.01"），仅对 8-K 存在 */
   items?: string;
+  /** Form 4 解析后的中文结构化数据（由 enrich_form4.py 增量补充）*/
+  parsed?: Form4Parsed | null;
+}
+
+export interface Form4Transaction {
+  kind: "non-derivative" | "derivative"; // 普通股 vs 期权/RSU
+  security: string;
+  date: string;
+  code: string;                          // P/S/A/M/F 等 SEC 代码
+  code_label_cn: string;                 // 中文标签（"公开市场卖出"等）
+  shares: number;
+  price: number;                         // 单价；授予/行权可能为 0
+  value?: number;                        // shares × price（仅 non-derivative）
+  acquired_disposed: string;             // A=买入 / D=卖出
+  shares_owned_after?: number;           // 交易后持股
+  underlying_shares?: number;            // 衍生品对应的标的股数
+}
+
+export interface Form4Parsed {
+  owner_name: string | null;             // 如 "HUANG JEN-HSUN"
+  owner_title_cn: string | null;         // 如 "President & CEO"
+  is_director: boolean;
+  is_officer: boolean;
+  is_ten_pct: boolean;                   // 是否 10% 以上股东
+  transactions: Form4Transaction[];
 }
 
 export interface InsiderTrade {

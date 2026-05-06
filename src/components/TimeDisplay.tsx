@@ -12,6 +12,19 @@ function formatTime(date: Date, timeZone: string): string {
   }).format(date);
 }
 
+function formatDateShort(date: Date, timeZone: string): string {
+  // 输出 "11/05" 这种 MM/DD 格式
+  const fmt = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    month: "2-digit",
+    day: "2-digit",
+  });
+  const parts = fmt.formatToParts(date);
+  const month = parts.find(p => p.type === "month")?.value ?? "";
+  const day = parts.find(p => p.type === "day")?.value ?? "";
+  return `${month}/${day}`;
+}
+
 function getMarketStatus(date: Date): { open: boolean; label: string } {
   // 用 Intl.DateTimeFormat 取美东时间字段（避免脆弱的 toLocaleString round-trip）
   const fmt = new Intl.DateTimeFormat("en-US", {
@@ -52,7 +65,9 @@ export default function TimeDisplay() {
   if (!now) return null;
 
   const beijing = formatTime(now, "Asia/Shanghai");
+  const beijingDate = formatDateShort(now, "Asia/Shanghai");
   const newYork = formatTime(now, "America/New_York");
+  const newYorkDate = formatDateShort(now, "America/New_York");
   const status = getMarketStatus(now);
 
   const statusColor = status.label === "开市中"
@@ -65,11 +80,11 @@ export default function TimeDisplay() {
     <div className="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-400">
       <div className="flex items-center gap-1.5">
         <span className="w-1.5 h-1.5 rounded-full bg-current opacity-60" />
-        <span>{t("北京")} {beijing}</span>
+        <span>{t("北京")} {beijingDate} {beijing}</span>
       </div>
       <div className="text-slate-300 dark:text-slate-600">·</div>
       <div className="flex items-center gap-1.5">
-        <span>{t("美东")} {newYork}</span>
+        <span>{t("美东")} {newYorkDate} {newYork}</span>
       </div>
       <div className="text-slate-300 dark:text-slate-600">·</div>
       <div className={`flex items-center gap-1 font-medium ${statusColor}`}>

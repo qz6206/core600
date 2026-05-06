@@ -81,12 +81,28 @@ def fmp_get(url: str) -> list | dict | None:
 
 
 def fetch_estimates(ticker: str) -> list:
-    """未来 4 季度 EPS / 营收预期"""
-    data = fmp_get(f"https://financialmodelingprep.com/api/v3/analyst-estimates/{ticker}?period=quarter&limit=4")
+    """从今天起的下 4 个未来季度 EPS / 营收预期
+
+    FMP 返回的 analyst-estimates 默认按日期降序，可能含已发布过的过去季度
+    + 远未来季度（甚至 2-3 年后）。我们要做的是：
+    1. 拉够 limit=12（覆盖近 3 年）
+    2. 筛掉日期 ≤ 今天 的已发布季度
+    3. 按日期升序排
+    4. 取前 4 个 = 真正的"下 4 季"
+    """
+    from datetime import date as _date
+    today_str = _date.today().isoformat()
+
+    data = fmp_get(f"https://financialmodelingprep.com/api/v3/analyst-estimates/{ticker}?period=quarter&limit=12")
     if not data or not isinstance(data, list):
         return []
+
+    # 筛选未来 + 升序排
+    future = [e for e in data if e.get("date") and e["date"] > today_str]
+    future.sort(key=lambda e: e["date"])
+
     out = []
-    for e in data[:4]:
+    for e in future[:4]:
         out.append({
             "date": e.get("date"),
             "eps_avg": e.get("estimatedEpsAvg"),

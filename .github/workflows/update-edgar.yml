@@ -25,8 +25,15 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 拉取 SEC EDGAR 数据 (Form 4 + 8-K)
+      - name: 拉取 SEC EDGAR 数据 (Form 4 + 8-K + 6-K)
+        env:
+          EDGAR_USER_AGENT: ${{ secrets.EDGAR_USER_AGENT }}
         run: python3 scripts/fetch_edgar.py
+
+      - name: 增量解析 Form 4 XML（人名/动作/股数/价格 → 中文）
+        env:
+          EDGAR_USER_AGENT: ${{ secrets.EDGAR_USER_AGENT }}
+        run: python3 scripts/enrich_form4.py
 
       - name: 检查变化
         id: check
