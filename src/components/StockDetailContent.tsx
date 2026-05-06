@@ -7,7 +7,6 @@ import TimeDisplay from "@/components/TimeDisplay";
 import Footer from "@/components/Footer";
 import Term from "@/components/Term";
 import ScenarioBadge from "@/components/ScenarioBadge";
-import TradingViewChart from "@/components/TradingViewChart";
 import MetricsTrendBlock from "@/components/MetricsTrendBlock";
 import EventChart from "@/components/EventChart";
 import WatchlistStar from "@/components/WatchlistStar";
@@ -191,20 +190,10 @@ export default function StockDetailContent({
           )}
         </div>
 
-        {/* 1. K 线图 */}
-        <Section
-          id="kline"
-          icon="📈"
-          title={t("K 线图")}
-          subtitle={t("日 / 周 / 月线 · 含技术指标")}
-        >
-          <TradingViewChart ticker={stock.ticker} />
-        </Section>
-
-        {/* 1b. K 线 + 事件 marker */}
+        {/* 1. K 线 + 事件 marker */}
         <Section
           id="event-chart"
-          icon="📌"
+          icon="📈"
           title={t("K 线 + 关键事件")}
           subtitle={t("过去 1 年 · 内部人 / 财报 / 8-K / 评级")}
         >
@@ -2210,11 +2199,8 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
             </span>
           </div>
         </div>
-      ) : data.narrative_status === "pending" ? (
-        <div className="p-3 bg-slate-50 dark:bg-white/5 border border-dashed border-slate-300 dark:border-white/10 rounded-lg text-center text-sm text-slate-400 dark:text-slate-500 italic">
-          {t("管理层叙事提炼中…（基于电话会议 transcript 由 AI 人工审阅生成，逐步覆盖）")}
-        </div>
       ) : null}
+      {/* narrative_status=pending / no_transcript 时不显示这一段（保持页面紧凑）*/}
 
       {/* 免责声明 */}
       <div className="pt-3 border-t border-slate-200 dark:border-white/10 text-xs text-slate-400 dark:text-slate-500 leading-relaxed">
