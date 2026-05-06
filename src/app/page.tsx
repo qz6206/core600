@@ -25,8 +25,9 @@ export default function Home() {
     { icon: "📰", title: "8-K 公司重大事项", desc: "中文化摘要时间线", anchor: "form-8k" },
     { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪", anchor: "insider-trading" },
     { icon: "📉", title: "股本动态", desc: "回购 + SBC 稀释追踪", anchor: "capital-dynamics" },
-    // 第四行：机构 + 期权
+    // 第四行：机构 + 波动 + 期权
     { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态", anchor: "inst-13f" },
+    { icon: "📊", title: "波动率分析", desc: "HV30 + IV/HV 偏贵/偏便宜", anchor: "volatility" },
     { icon: "🎯", title: "期权异动", desc: "ATM IV + 聪明钱大单", anchor: "options-activity" },
   ];
 

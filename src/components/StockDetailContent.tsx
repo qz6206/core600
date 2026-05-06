@@ -11,6 +11,7 @@ import TradingViewChart from "@/components/TradingViewChart";
 import MetricsTrendBlock from "@/components/MetricsTrendBlock";
 import EventChart from "@/components/EventChart";
 import WatchlistStar from "@/components/WatchlistStar";
+import VolatilityBlock from "@/components/VolatilityBlock";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
@@ -398,6 +399,16 @@ export default function StockDetailContent({
           ) : (
             <Placeholder text={t("暂无 13F 机构持仓数据")} />
           )}
+        </Section>
+
+        {/* 9.5 波动率分析 (HV30 + IV/HV) */}
+        <Section
+          id="volatility"
+          icon="📊"
+          title={t("波动率分析")}
+          subtitle={t("HV30 + IV/HV 比 + 1 年走势")}
+        >
+          <VolatilityBlock ticker={stock.ticker} atmIv={options?.atm_iv ?? null} />
         </Section>
 
         {/* 10. 期权异动 */}
