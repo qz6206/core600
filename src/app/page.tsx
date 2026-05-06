@@ -13,19 +13,20 @@ export default function Home() {
   // 点击后跳转到 NVDA 股票详情页对应 section（用 NVDA 作示范，因为 9 个数据全）
   const DEMO_TICKER = "NVDA";
   const features = [
-    // 第一行：图 + 财报
+    // 第一行：图表
     { icon: "📈", title: "K 线图", desc: "日/周/月线 · 含技术指标", anchor: "kline" },
+    { icon: "📌", title: "K 线 + 关键事件", desc: "内部人 / 财报 / 8-K / 评级 marker", anchor: "event-chart" },
     { icon: "🎙️", title: "财报会议", desc: "中文全文翻译", anchor: "transcript" },
+    // 第二行：财报相关
     { icon: "📝", title: "财报点评", desc: "自动解读 + 倾向标签", anchor: "earnings-interpretation" },
-    // 第二行：日历 + 信号
     { icon: "📅", title: "财报日历", desc: "下次财报 + 历史发布日", anchor: "earnings-calendar" },
     { icon: "🔮", title: "分析师预期", desc: "Beat 历史 + 评级变动", anchor: "analyst-estimates" },
-    { icon: "📰", title: "8-K 公司重大事项", desc: "中文化摘要时间线", anchor: "form-8k" },
     // 第三行：监管 + 资金
+    { icon: "📰", title: "8-K 公司重大事项", desc: "中文化摘要时间线", anchor: "form-8k" },
     { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪", anchor: "insider-trading" },
     { icon: "📉", title: "股本动态", desc: "回购 + SBC 稀释追踪", anchor: "capital-dynamics" },
+    // 第四行：机构 + 期权
     { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态", anchor: "inst-13f" },
-    // 第四行：期权
     { icon: "🎯", title: "期权异动", desc: "ATM IV + 聪明钱大单", anchor: "options-activity" },
   ];
 

@@ -9,6 +9,7 @@ import Term from "@/components/Term";
 import ScenarioBadge from "@/components/ScenarioBadge";
 import TradingViewChart from "@/components/TradingViewChart";
 import MetricsTrendBlock from "@/components/MetricsTrendBlock";
+import EventChart from "@/components/EventChart";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
@@ -192,6 +193,22 @@ export default function StockDetailContent({
           subtitle={t("日 / 周 / 月线 · 含技术指标")}
         >
           <TradingViewChart ticker={stock.ticker} />
+        </Section>
+
+        {/* 1b. K 线 + 事件 marker */}
+        <Section
+          id="event-chart"
+          icon="📌"
+          title={t("K 线 + 关键事件")}
+          subtitle={t("过去 1 年 · 内部人 / 财报 / 8-K / 评级")}
+        >
+          <EventChart
+            ticker={stock.ticker}
+            form4={form4}
+            form8k={form8k}
+            earnings={fmpExtras?.earnings}
+            ratings={fmpExtras?.ratings}
+          />
         </Section>
 
         {/* 2. 财务概览（最近 4 季度表格 + 8 季度趋势图）*/}
