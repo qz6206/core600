@@ -14,7 +14,7 @@ export default function Home() {
   const DEMO_TICKER = "NVDA";
   const features = [
     // 第一行：AI + 图表 + 财报
-    { icon: "🤖", title: "AI 问答", desc: "DeepSeek-V3 答关于股票的财务问题", anchor: "ask-ai" },
+    { icon: "🤖", title: "AI 问答", desc: "回答关于该股的财务问题", anchor: "ask-ai" },
     { icon: "📈", title: "K 线 + 关键事件", desc: "1 年日线 · 内部人 / 财报 / 8-K / 评级 marker", anchor: "event-chart" },
     { icon: "🎙️", title: "财报会议", desc: "中文全文翻译", anchor: "transcript" },
     // 第二行：财报相关

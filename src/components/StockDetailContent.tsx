@@ -196,7 +196,7 @@ export default function StockDetailContent({
           id="ask-ai"
           icon="🤖"
           title={t("AI 问答")}
-          subtitle={t(`关于 ${stock.ticker} 的财务问题, 由 DeepSeek-V3 回答`)}
+          subtitle={t(`关于 ${stock.ticker} 的财务问题`)}
         >
           <AskAI ticker={stock.ticker} stockName={stock.name_cn || stock.name} />
         </Section>
