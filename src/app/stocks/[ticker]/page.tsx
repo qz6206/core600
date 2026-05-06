@@ -43,7 +43,7 @@ export async function generateStaticParams() {
 
 // 类型化的静态数据访问器
 type EdgarFilingsByTicker = {
-  by_ticker: Record<string, { form4: EdgarFiling[]; form8k: EdgarFiling[] }>;
+  by_ticker: Record<string, { form4: EdgarFiling[]; form8k: EdgarFiling[]; form6k?: EdgarFiling[] }>;
 };
 type Inst13FByTicker = {
   by_ticker: Record<string, Inst13F>;
@@ -80,6 +80,7 @@ export default async function StockDetailPage({ params }: { params: Params }) {
   const edgarFilings = (edgarData as EdgarFilingsByTicker).by_ticker[upper];
   const form4 = edgarFilings?.form4 || [];
   const form8k = edgarFilings?.form8k || [];
+  const form6k = edgarFilings?.form6k || [];
   const inst13f = (inst13fData as Inst13FByTicker).by_ticker[upper] || null;
   const fmpExtras = (fmpExtrasData as FMPExtrasByTicker).by_ticker[upper] || null;
   const options = (optionsData as OptionsByTicker).by_ticker[upper] || null;
@@ -92,6 +93,7 @@ export default async function StockDetailPage({ params }: { params: Params }) {
       overview={overview}
       form4={form4}
       form8k={form8k}
+      form6k={form6k}
       inst13f={inst13f}
       fmpExtras={fmpExtras}
       options={options}

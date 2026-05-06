@@ -46,9 +46,12 @@ LIMIT_PER_FORM = 15  # 每只股票每种表单最多取 15 条
 MAX_RETRIES = 4
 
 # 要提取的表单类型（key=form 字段值，value=输出字段名）
+# Form 6-K：外国发行人 (foreign private issuer) 用来替代 8-K 的表单
+# 例如 ASML/CCEP/FER/ARM/PDD/TRI 等 ADR 不报 8-K，只报 6-K
 FORMS_TO_EXTRACT = {
     "4": "form4",
     "8-K": "form8k",
+    "6-K": "form6k",
 }
 
 _thread_local = threading.local()
@@ -150,6 +153,7 @@ def main():
     completed = 0
     with_form4 = 0
     with_form8k = 0
+    with_form6k = 0
 
     with ThreadPoolExecutor(max_workers=NUM_WORKERS) as pool:
         futures = {pool.submit(process_one, s): s for s in has_cik}
@@ -174,9 +178,11 @@ def main():
                 with_form4 += 1
             if filings["form8k"]:
                 with_form8k += 1
+            if filings["form6k"]:
+                with_form6k += 1
 
             if completed % 50 == 0:
-                print(f"[{completed}/{total}] 进度（{ticker}: F4={len(filings['form4'])} 8K={len(filings['form8k'])}）", flush=True)
+                print(f"[{completed}/{total}] 进度（{ticker}: F4={len(filings['form4'])} 8K={len(filings['form8k'])} 6K={len(filings['form6k'])}）", flush=True)
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -184,6 +190,7 @@ def main():
             "total": total,
             "with_form4": with_form4,
             "with_form8k": with_form8k,
+            "with_form6k": with_form6k,
             "failed": len(failed),
         },
         "by_ticker": by_ticker,
@@ -197,6 +204,7 @@ def main():
     print(f"\n📊 完成（耗时 {elapsed:.1f}s）:", flush=True)
     print(f"   ✅ 有 Form 4: {with_form4} / {total}", flush=True)
     print(f"   ✅ 有 8-K:    {with_form8k} / {total}", flush=True)
+    print(f"   ✅ 有 6-K:    {with_form6k} / {total} (外国 ADR)", flush=True)
     print(f"   ❌ 失败:      {len(failed)}", flush=True)
     if failed:
         print(f"   失败列表: {failed[:20]}{'...' if len(failed) > 20 else ''}", flush=True)

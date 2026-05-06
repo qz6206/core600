@@ -172,6 +172,7 @@ export interface RatingChange {
   action: string | null;        // initiate / upgrade / downgrade / hold
   target_price: number | null;  // 从新闻标题中解析的目标价
   title: string | null;
+  source_class?: string;        // 来源标注（如 "来源：BRK-A（同公司另一类股）"）
 }
 
 export interface FMPExtras {
@@ -202,10 +203,13 @@ export interface OptionsContract {
 
 export interface TranscriptCN {
   year: number;
-  quarter: number;
+  quarter: number;              // 0 = 年度致股东信（如 BRK-B），1-4 = 季度财报
   date: string | null;          // e.g. "2025-05-28 17:00:00"
   content_cn: string;           // Kimi K2.5 翻译的中文全文
   content_en_chars?: number;    // 原文长度（参考）
+  is_annual_letter?: boolean;   // true = 年度致股东信
+  source_label?: string;        // UI 标题（如 "Berkshire 2025 年度致股东信"）
+  source_url?: string;          // 原文链接
 }
 
 export interface OptionsActivity {

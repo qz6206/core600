@@ -45,6 +45,7 @@ interface Props {
   overview: Overview;
   form4?: EdgarFiling[];
   form8k?: EdgarFiling[];
+  form6k?: EdgarFiling[];
   inst13f?: Inst13F | null;
   fmpExtras?: FMPExtras | null;
   options?: OptionsActivity | null;
@@ -57,6 +58,7 @@ export default function StockDetailContent({
   overview,
   form4 = [],
   form8k = [],
+  form6k = [],
   inst13f = null,
   fmpExtras = null,
   options = null,
@@ -186,9 +188,11 @@ export default function StockDetailContent({
         {/* 9 大功能区块 — 已完成：内部人交易、机构持仓、8-K；其余占位 */}
         <Section
           icon="🎙️"
-          title={t("财报会议")}
+          title={transcript?.is_annual_letter ? t("年度致股东信") : t("财报会议")}
           subtitle={
-            transcript
+            transcript?.is_annual_letter
+              ? `${transcript.source_label || `${transcript.year} ${t("年度致股东信")}`} · ${t("中文全文")}`
+              : transcript
               ? `${transcript.year} ${t("财年")} Q${transcript.quarter} · ${transcript.date?.slice(0, 10) || ""} · ${t("中文全文")}`
               : t("中文全文")
           }
@@ -226,19 +230,26 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        <Section
-          icon="📰"
-          title="8-K"
-          subtitle={`${t("公司重大事项")} · ${t("最近")} ${form8k.length} ${t("条")}`}
-        >
-          {stock.cik && form8k.length > 0 ? (
-            <Form8KList cik={stock.cik} filings={form8k} />
-          ) : !stock.cik ? (
-            <Placeholder text={t("此股票暂无 SEC CIK 映射")} />
-          ) : (
-            <Placeholder text={t("最近无 8-K 公告")} />
-          )}
-        </Section>
+        {(() => {
+          // 外国发行人 (foreign private issuer) 用 Form 6-K 替代 8-K
+          const useForm6K = form8k.length === 0 && form6k.length > 0;
+          const filingsToShow = useForm6K ? form6k : form8k;
+          const formLabel = useForm6K ? "6-K" : "8-K";
+          const subtitleText = useForm6K
+            ? `6-K · ${t("外国发行人公告")} · ${t("最近")} ${form6k.length} ${t("条")}`
+            : `${t("公司重大事项")} · ${t("最近")} ${form8k.length} ${t("条")}`;
+          return (
+            <Section icon="📰" title={formLabel} subtitle={subtitleText}>
+              {stock.cik && filingsToShow.length > 0 ? (
+                <Form8KList cik={stock.cik} filings={filingsToShow} isForm6K={useForm6K} />
+              ) : !stock.cik ? (
+                <Placeholder text={t("此股票暂无 SEC CIK 映射")} />
+              ) : (
+                <Placeholder text={t("最近无 8-K / 6-K 公告")} />
+              )}
+            </Section>
+          );
+        })()}
 
         <Section icon="🔮" title={t("分析师预期")} subtitle={t("未来 4 季 + Beat 历史 + 评级变动")}>
           {fmpExtras && (fmpExtras.estimates.length > 0 || fmpExtras.earnings.length > 0 || fmpExtras.ratings.length > 0) ? (
@@ -503,7 +514,15 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
   );
 }
 
-function Form8KList({ cik, filings }: { cik: string; filings: EdgarFiling[] }) {
+function Form8KList({
+  cik,
+  filings,
+  isForm6K = false,
+}: {
+  cik: string;
+  filings: EdgarFiling[];
+  isForm6K?: boolean;
+}) {
   const { t } = useLocale();
   const sorted = [...filings].sort((a, b) => b.filingDate.localeCompare(a.filingDate));
 
@@ -513,14 +532,14 @@ function Form8KList({ cik, filings }: { cik: string; filings: EdgarFiling[] }) {
         <thead>
           <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
             <th className="text-left py-2 pr-4 font-normal">{t("申报日")}</th>
-            <th className="text-left py-2 pr-4 font-normal">{t("事件")}</th>
+            <th className="text-left py-2 pr-4 font-normal">{isForm6K ? t("文档") : t("事件")}</th>
             <th className="text-right py-2 pl-4 font-normal">{t("查看原文")}</th>
           </tr>
         </thead>
         <tbody>
           {sorted.map(f => {
             const url = filingUrl(cik, f.accessionNumber, f.primaryDocument);
-            const itemLabels = parse8KItems(f.items);
+            const itemLabels = isForm6K ? [] : parse8KItems(f.items);
             return (
               <tr
                 key={f.accessionNumber}
@@ -528,7 +547,11 @@ function Form8KList({ cik, filings }: { cik: string; filings: EdgarFiling[] }) {
               >
                 <td className="py-3 pr-4 font-medium tabular-nums whitespace-nowrap">{f.filingDate}</td>
                 <td className="py-3 pr-4">
-                  {itemLabels.length > 0 ? (
+                  {isForm6K ? (
+                    <span className="text-xs text-slate-600 dark:text-slate-400 truncate max-w-[280px] inline-block align-middle">
+                      {f.primaryDocDescription || f.primaryDocument || "—"}
+                    </span>
+                  ) : itemLabels.length > 0 ? (
                     <div className="flex flex-wrap gap-1.5">
                       {itemLabels.map((label, i) => (
                         <span
@@ -560,7 +583,9 @@ function Form8KList({ cik, filings }: { cik: string; filings: EdgarFiling[] }) {
         </tbody>
       </table>
       <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
-        {t("8-K 是公司在出现重大事项后 4 个工作日内必须申报的公告（如高管变动、并购、业绩预告等）")}
+        {isForm6K
+          ? t("Form 6-K 是外国发行人 (foreign private issuer) 用来替代 8-K 的报告，发生重大事件时申报")
+          : t("8-K 是公司在出现重大事项后 4 个工作日内必须申报的公告（如高管变动、并购、业绩预告等）")}
       </div>
     </div>
   );
@@ -733,6 +758,16 @@ function TranscriptBlock({ data }: { data: TranscriptCN }) {
           <span>· {t("英文原文")} {(data.content_en_chars / 1000).toFixed(1)}K {t("字符")}</span>
         )}
         <span>· {t("中文")} {(fullText.length / 1000).toFixed(1)}K {t("字")}</span>
+        {data.source_url && (
+          <a
+            href={data.source_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline ml-2"
+          >
+            · {t("英文原文 PDF")} →
+          </a>
+        )}
       </div>
 
       <div className="text-sm text-slate-700 dark:text-slate-200 max-w-none">
@@ -1030,8 +1065,13 @@ function AnalystEstimatesBlock({
       {/* 最近评级变动 */}
       {ratings.length > 0 && (
         <div>
-          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-            {t("最近评级变动")}
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-baseline gap-2">
+            <span>{t("最近评级变动")}</span>
+            {ratings[0]?.source_class && (
+              <span className="text-xs text-amber-600 dark:text-amber-400 font-normal">
+                ({ratings[0].source_class})
+              </span>
+            )}
           </div>
           <div className="space-y-1.5">
             {ratings.slice(0, 5).map((r, i) => {
