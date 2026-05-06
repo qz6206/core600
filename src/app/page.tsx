@@ -13,10 +13,10 @@ export default function Home() {
   // 点击后跳转到 NVDA 股票详情页对应 section（用 NVDA 作示范，因为 9 个数据全）
   const DEMO_TICKER = "NVDA";
   const features = [
-    // 第一行：图表 + 财报
+    // 第一行：AI + 图表 + 财报
+    { icon: "🤖", title: "AI 问答", desc: "DeepSeek-V3 答关于股票的财务问题", anchor: "ask-ai" },
     { icon: "📈", title: "K 线 + 关键事件", desc: "1 年日线 · 内部人 / 财报 / 8-K / 评级 marker", anchor: "event-chart" },
     { icon: "🎙️", title: "财报会议", desc: "中文全文翻译", anchor: "transcript" },
-    { icon: "🔬", title: "同业对比", desc: "5-8 家同行业指标对比", anchor: "peer-comparison" },
     // 第二行：财报相关
     { icon: "📝", title: "财报点评", desc: "自动解读 + 倾向标签", anchor: "earnings-interpretation" },
     { icon: "📅", title: "财报日历", desc: "下次财报 + 历史发布日", anchor: "earnings-calendar" },

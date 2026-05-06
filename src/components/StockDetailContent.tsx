@@ -10,6 +10,7 @@ import ScenarioBadge from "@/components/ScenarioBadge";
 import MetricsTrendBlock from "@/components/MetricsTrendBlock";
 import EventChart from "@/components/EventChart";
 import WatchlistStar from "@/components/WatchlistStar";
+import AskAI from "@/components/AskAI";
 import VolatilityBlock from "@/components/VolatilityBlock";
 import PeerComparisonBlock, { type PeerComparisonData } from "@/components/PeerComparisonBlock";
 import { useLocale } from "@/components/LocaleProvider";
@@ -189,6 +190,16 @@ export default function StockDetailContent({
             </div>
           )}
         </div>
+
+        {/* 0. AI 问答 */}
+        <Section
+          id="ask-ai"
+          icon="🤖"
+          title={t("AI 问答")}
+          subtitle={t(`关于 ${stock.ticker} 的财务问题, 由 DeepSeek-V3 回答`)}
+        >
+          <AskAI ticker={stock.ticker} stockName={stock.name_cn || stock.name} />
+        </Section>
 
         {/* 1. K 线 + 事件 marker */}
         <Section
