@@ -1342,35 +1342,96 @@ function AnalystEstimatesBlock({
             {t("未来 4 季度预期")}
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {forwardQuarters.slice(0, 4).map(q => (
-              <div
-                key={q.date}
-                className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg"
-              >
-                <div className="text-xs text-slate-500 dark:text-slate-400 mb-1 tabular-nums">
-                  {q.date}
-                </div>
-                <div className="text-sm">
-                  <div>
-                    <span className="text-slate-500 dark:text-slate-400">EPS </span>
-                    <span className="font-semibold tabular-nums">
-                      {q.eps_avg != null ? `$${q.eps_avg.toFixed(2)}` : "—"}
-                    </span>
+            {forwardQuarters.slice(0, 4).map(q => {
+              // 用 fiscal_period_end 匹配 earnings calendar，取 release date
+              const earningRec = earnings.find(
+                e => e.fiscal_period_end === q.date && e.eps_actual == null
+              );
+              const releaseDate = earningRec?.date || null;
+              const today = new Date().toISOString().slice(0, 10);
+              const daysToRelease = releaseDate
+                ? (new Date(releaseDate).getTime() - new Date(today).getTime()) / 86400000
+                : null;
+              const isImminent = daysToRelease != null && daysToRelease <= 0; // 今天或已过的发布日
+              const isUpcomingSoon = daysToRelease != null && daysToRelease > 0 && daysToRelease <= 14;
+              // bmo / amc → 盘前 / 盘后
+              const releaseTime = earningRec?.time;
+              const releaseTimeLabel =
+                releaseTime === "bmo" ? t("盘前") : releaseTime === "amc" ? t("盘后") : null;
+
+              return (
+                <div
+                  key={q.date}
+                  className={`p-3 border rounded-lg ${
+                    isImminent
+                      ? "bg-amber-50 dark:bg-amber-500/10 border-amber-300 dark:border-amber-500/40"
+                      : isUpcomingSoon
+                      ? "bg-indigo-50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/30"
+                      : "bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10"
+                  }`}
+                >
+                  {/* 标题：发布日（如果有）+ 财季 */}
+                  <div className="mb-1.5">
+                    {releaseDate ? (
+                      <>
+                        <div className="text-sm font-semibold tabular-nums flex items-center flex-wrap gap-1">
+                          <span>{releaseDate} {t("发布")}</span>
+                          {releaseTimeLabel && (
+                            <span className="text-[11px] font-normal text-slate-500 dark:text-slate-400">
+                              ({releaseTimeLabel})
+                            </span>
+                          )}
+                          {isImminent && (
+                            <span className="px-1.5 py-0.5 text-[10px] bg-amber-200 dark:bg-amber-500/30 text-amber-800 dark:text-amber-200 rounded">
+                              {releaseTime === "bmo" ? t("今早") : t("今晚")}
+                            </span>
+                          )}
+                          {!isImminent && isUpcomingSoon && daysToRelease != null && (
+                            <span className="px-1.5 py-0.5 text-[10px] bg-indigo-200 dark:bg-indigo-500/30 text-indigo-800 dark:text-indigo-200 rounded">
+                              {Math.round(daysToRelease)} {t("天后")}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400 tabular-nums">
+                          {t("财季截止")} {q.date}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-sm font-semibold tabular-nums">
+                          {t("财季截止")} {q.date}
+                        </div>
+                        <div className="text-[11px] text-slate-400 dark:text-slate-500">
+                          {t("发布日待定")}
+                        </div>
+                      </>
+                    )}
                   </div>
-                  <div className="mt-0.5">
-                    <span className="text-slate-500 dark:text-slate-400">{t("营收")} </span>
-                    <span className="font-semibold tabular-nums">
-                      {q.rev_avg ? formatUSD(q.rev_avg) : "—"}
-                    </span>
-                  </div>
-                  {q.num_analysts != null && (
-                    <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">
-                      {q.num_analysts} {t("位分析师")}
+
+                  <div className="text-sm">
+                    <div>
+                      <span className="text-slate-500 dark:text-slate-400">
+                        <Term term="EPS">EPS</Term>{" "}
+                      </span>
+                      <span className="font-semibold tabular-nums">
+                        {q.eps_avg != null ? `$${q.eps_avg.toFixed(2)}` : "—"}
+                      </span>
                     </div>
-                  )}
+                    <div className="mt-0.5">
+                      <span className="text-slate-500 dark:text-slate-400">{t("营收")} </span>
+                      <span className="font-semibold tabular-nums">
+                        {q.rev_avg ? formatUSD(q.rev_avg) : "—"}
+                      </span>
+                    </div>
+                    {q.num_analysts != null && (
+                      <div className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+                        {q.num_analysts} {t("位分析师")}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
