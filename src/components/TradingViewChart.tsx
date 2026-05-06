@@ -1,30 +1,26 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 
 /**
  * TradingView Advanced Chart Widget
  *
- * 嵌入 TradingView 免费 widget — 用户可加 MA / RSI / MACD / 画线等
  * 文档: https://www.tradingview.com/widget/advanced-chart/
  *
- * - 主题自动跟 next-themes (light/dark)
- * - 中文界面 (locale: zh_CN)
- * - 默认 D 线，用户可切换 (1m/5m/15m/1h/4h/D/W/M)
- * - 自动适配父容器宽度
+ * 实现说明:
+ * - 用 key={ticker+theme} 强制 remount, 主题切换时新建 widget
+ * - 内嵌 widget div + 兄弟 script 的结构 (TV 官方规范)
+ * - script 用 innerHTML 传配置 (JSON 字符串)
  *
  * 注意 ticker 格式: TradingView 对 BRK-B 用 BRK.B (用 . 不用 -)
  */
 
-// 部分股票 TradingView 用的代码不同（带 . 而非 -）
 const TV_TICKER_OVERRIDES: Record<string, string> = {
   "BRK-B": "BRK.B",
   "BF-B": "BF.B",
 };
 
-// SP500 / NDX 大部分在 NASDAQ 或 NYSE，TradingView 一般能自动识别
-// 我们不强制加交易所前缀，让 TV 自己 resolve
 function tvSymbol(ticker: string): string {
   return TV_TICKER_OVERRIDES[ticker] ?? ticker;
 }
@@ -36,24 +32,44 @@ export default function TradingViewChart({
   ticker: string;
   height?: number;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // SSR / 第一次渲染：占位，避免 hydration mismatch + theme=undefined 闪烁
+  if (!mounted) {
+    return (
+      <div
+        className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl flex items-center justify-center"
+        style={{ height: `${height}px` }}
+      >
+        <span className="text-sm text-slate-400 dark:text-slate-500">{"加载 K 线图…"}</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full">
+      {/* key 强制 remount: ticker / 主题变化时全新加载 */}
+      <Widget key={`${ticker}-${resolvedTheme}`} ticker={ticker} theme={resolvedTheme === "dark" ? "dark" : "light"} height={height} />
+      <div className="mt-2 text-xs text-slate-400 dark:text-slate-500 text-center">
+        可加技术指标 / 画线 / 切换周期 · 拖拽移动 K 线 · 滚轮缩放
+      </div>
+    </div>
+  );
+}
+
+function Widget({ ticker, theme, height }: { ticker: string; theme: "dark" | "light"; height: number }) {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // 清空旧 widget (主题切换时重新挂载)
-    container.innerHTML = "";
-
-    // 1) 先创建 widget 的内嵌 div (TradingView 把图表挂到这里 — 必需)
-    const widgetDiv = document.createElement("div");
-    widgetDiv.className = "tradingview-widget-container__widget";
-    widgetDiv.style.height = "100%";
-    widgetDiv.style.width = "100%";
-    container.appendChild(widgetDiv);
-
-    // 2) 再加 script (TradingView 推荐方式: 把 config 放在 script 的 innerHTML)
+    // 创建 script 并 append (TV 会自动找同级 .tradingview-widget-container__widget div)
     const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
     script.async = true;
@@ -63,8 +79,8 @@ export default function TradingViewChart({
       symbol: tvSymbol(ticker),
       interval: "D",
       timezone: "America/New_York",
-      theme: resolvedTheme === "dark" ? "dark" : "light",
-      style: "1",          // 1 = 蜡烛图 (Candles)
+      theme,
+      style: "1",
       locale: "zh_CN",
       enable_publishing: false,
       allow_symbol_change: false,
@@ -80,20 +96,23 @@ export default function TradingViewChart({
     container.appendChild(script);
 
     return () => {
-      if (container) container.innerHTML = "";
+      // cleanup: 移除 script + 清空 widget DOM
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
     };
-  }, [ticker, resolvedTheme]);
+  }, [ticker, theme]);
 
   return (
-    <div className="w-full">
+    <div
+      ref={containerRef}
+      className="tradingview-widget-container w-full rounded-xl overflow-hidden"
+      style={{ height: `${height}px` }}
+    >
       <div
-        ref={containerRef}
-        className="tradingview-widget-container w-full rounded-xl overflow-hidden"
-        style={{ height: `${height}px` }}
+        className="tradingview-widget-container__widget"
+        style={{ height: "100%", width: "100%" }}
       />
-      <div className="mt-2 text-xs text-slate-400 dark:text-slate-500 text-center">
-        可加技术指标 / 画线 / 切换周期 · 拖拽移动 K 线 · 滚轮缩放
-      </div>
     </div>
   );
 }
