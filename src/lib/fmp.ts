@@ -162,6 +162,12 @@ export interface ShareCountQuarter {
   weighted_avg_basic: number | null;
   net_income: number | null;
   revenue: number | null;
+  // 2026-05-06 加：盈利能力字段（用于趋势图）
+  gross_profit?: number | null;
+  gross_margin?: number | null;       // 0-1
+  operating_income?: number | null;
+  operating_margin?: number | null;
+  net_margin?: number | null;
 }
 
 export interface RatingChange {

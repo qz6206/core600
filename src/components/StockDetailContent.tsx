@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Term from "@/components/Term";
 import ScenarioBadge from "@/components/ScenarioBadge";
 import TradingViewChart from "@/components/TradingViewChart";
+import MetricsTrendBlock from "@/components/MetricsTrendBlock";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
@@ -193,10 +194,20 @@ export default function StockDetailContent({
           <TradingViewChart ticker={stock.ticker} />
         </Section>
 
-        {/* 2. 财务概览（最近 4 季度）*/}
-        {quarters.length > 0 && (
-          <Section id="financial-overview" icon="📊" title={t("财务概览")} subtitle={t("最近 4 个季度")}>
-            <FinancialTable quarters={quarters} />
+        {/* 2. 财务概览（最近 4 季度表格 + 8 季度趋势图）*/}
+        {(quarters.length > 0 || (fmpExtras && fmpExtras.shares.length > 0)) && (
+          <Section
+            id="financial-overview"
+            icon="📊"
+            title={t("财务概览")}
+            subtitle={t("4 季度表格 + 8 季度趋势图")}
+          >
+            {quarters.length > 0 && <FinancialTable quarters={quarters} />}
+            {fmpExtras && fmpExtras.shares.length > 0 && (
+              <div className="mt-6">
+                <MetricsTrendBlock shares={fmpExtras.shares} cashFlow={fmpExtras.sbc} />
+              </div>
+            )}
           </Section>
         )}
 
