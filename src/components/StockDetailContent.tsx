@@ -10,6 +10,7 @@ import ScenarioBadge from "@/components/ScenarioBadge";
 import TradingViewChart from "@/components/TradingViewChart";
 import MetricsTrendBlock from "@/components/MetricsTrendBlock";
 import EventChart from "@/components/EventChart";
+import WatchlistStar from "@/components/WatchlistStar";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
@@ -114,8 +115,9 @@ export default function StockDetailContent({
         <div className="mb-8 p-6 bg-white/80 dark:bg-white/5 backdrop-blur border border-slate-200 dark:border-white/10 rounded-2xl shadow-sm">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
-              <div className="flex items-baseline gap-3 mb-2">
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
                 <h1 className="text-4xl font-bold">{stock.ticker}</h1>
+                <WatchlistStar ticker={stock.ticker} size="md" />
                 <div className="flex gap-1.5">
                   {stock.in_sp500 && (
                     <span className="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300 rounded">

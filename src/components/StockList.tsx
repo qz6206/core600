@@ -1,17 +1,32 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { Stock, SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
 import { useLocale } from "./LocaleProvider";
+import { readWatchlist } from "@/lib/watchlist";
+import WatchlistStar from "@/components/WatchlistStar";
 
-type IndexFilter = "all" | "sp500" | "nasdaq100" | "both";
+type IndexFilter = "all" | "sp500" | "nasdaq100" | "both" | "watchlist";
 
 export default function StockList({ stocks }: { stocks: Stock[] }) {
   const { t } = useLocale();
   const [search, setSearch] = useState("");
   const [selectedSector, setSelectedSector] = useState<string>("all");
   const [indexFilter, setIndexFilter] = useState<IndexFilter>("all");
+  const [watchlist, setWatchlist] = useState<string[]>([]);
+
+  // 同步 watchlist (mount + 收藏变化)
+  useEffect(() => {
+    setWatchlist(readWatchlist());
+    const handler = () => setWatchlist(readWatchlist());
+    window.addEventListener("core600:watchlist-changed", handler);
+    window.addEventListener("storage", handler);
+    return () => {
+      window.removeEventListener("core600:watchlist-changed", handler);
+      window.removeEventListener("storage", handler);
+    };
+  }, []);
 
   const sectors = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -20,6 +35,8 @@ export default function StockList({ stocks }: { stocks: Stock[] }) {
     });
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
   }, [stocks]);
+
+  const watchlistSet = useMemo(() => new Set(watchlist), [watchlist]);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -31,9 +48,10 @@ export default function StockList({ stocks }: { stocks: Stock[] }) {
       if (indexFilter === "sp500" && !s.in_sp500) return false;
       if (indexFilter === "nasdaq100" && !s.in_nasdaq100) return false;
       if (indexFilter === "both" && !(s.in_sp500 && s.in_nasdaq100)) return false;
+      if (indexFilter === "watchlist" && !watchlistSet.has(s.ticker)) return false;
       return true;
     });
-  }, [stocks, search, selectedSector, indexFilter]);
+  }, [stocks, search, selectedSector, indexFilter, watchlistSet]);
 
   return (
     <div>
@@ -59,6 +77,13 @@ export default function StockList({ stocks }: { stocks: Stock[] }) {
       {/* 索引筛选 */}
       <div className="mb-4 flex flex-wrap gap-2">
         <FilterPill active={indexFilter === "all"} onClick={() => setIndexFilter("all")}>{t("全部")}</FilterPill>
+        <FilterPill
+          active={indexFilter === "watchlist"}
+          onClick={() => setIndexFilter("watchlist")}
+        >
+          ⭐ {t("我的关注")}{" "}
+          <span className="text-amber-200/80 dark:text-amber-300/70">({watchlist.length})</span>
+        </FilterPill>
         <FilterPill active={indexFilter === "sp500"} onClick={() => setIndexFilter("sp500")}>{t("只看 S&P 500")}</FilterPill>
         <FilterPill active={indexFilter === "nasdaq100"} onClick={() => setIndexFilter("nasdaq100")}>{t("只看纳指 100")}</FilterPill>
         <FilterPill active={indexFilter === "both"} onClick={() => setIndexFilter("both")}>{t("两个都在")}</FilterPill>
@@ -158,17 +183,20 @@ function StockCard({ stock }: { stock: Stock }) {
             </div>
           )}
         </div>
-        <div className="flex flex-col gap-1 ml-2 shrink-0">
-          {stock.in_sp500 && (
-            <span className="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300 rounded">
-              S&P
-            </span>
-          )}
-          {stock.in_nasdaq100 && (
-            <span className="px-2 py-0.5 text-xs bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300 rounded">
-              NDX
-            </span>
-          )}
+        <div className="flex flex-col items-end gap-1 ml-2 shrink-0">
+          <WatchlistStar ticker={stock.ticker} size="sm" />
+          <div className="flex flex-col gap-1">
+            {stock.in_sp500 && (
+              <span className="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300 rounded">
+                S&P
+              </span>
+            )}
+            {stock.in_nasdaq100 && (
+              <span className="px-2 py-0.5 text-xs bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300 rounded">
+                NDX
+              </span>
+            )}
+          </div>
         </div>
       </div>
       {stock.sector && (
