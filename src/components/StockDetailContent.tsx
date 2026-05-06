@@ -189,7 +189,9 @@ export default function StockDetailContent({
           </Section>
         )}
 
-        {/* 9 大功能区块 — 已完成：内部人交易、机构持仓、8-K；其余占位 */}
+        {/* 顺序：财报会议 → 财报点评 → 财报日历 → 分析师预期 → 8-K → 内部人交易 → 股本动态 → 机构持仓 → 期权异动 → 公司简介 */}
+
+        {/* 2. 财报会议 */}
         <Section
           icon="🎙️"
           title={transcript?.is_annual_letter ? t("年度致股东信") : t("财报会议")}
@@ -208,38 +210,63 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        <Section
-          icon="👤"
-          title={t("内部人交易")}
-          subtitleNode={<><Term term="Form 4">Form 4</Term> · {t("最近")} {form4.length} {t("条")}</>}
-        >
-          {stock.cik && form4.length > 0 ? (
-            <InsiderTradeList cik={stock.cik} filings={form4} />
-          ) : !stock.cik ? (
-            <Placeholder text={t("此股票暂无 SEC CIK 映射")} />
+        {/* 3. 财报点评 */}
+        {interpretation && interpretation.is_recent ? (
+          <Section
+            icon="📝"
+            title={t("财报点评")}
+            subtitleNode={
+              <>
+                {interpretation.fiscal_label} · {interpretation.earnings_date}
+                {interpretation.release_time === "bmo" && ` (${t("盘前")})`}
+                {interpretation.release_time === "amc" && ` (${t("盘后")})`}
+              </>
+            }
+          >
+            <EarningsInterpretationBlock data={interpretation} />
+          </Section>
+        ) : interpretation ? (
+          <Section
+            icon="📝"
+            title={t("财报点评")}
+            subtitleNode={<>{interpretation.fiscal_label} · {interpretation.earnings_date}</>}
+          >
+            <Placeholder text={t("最近一次财报已超 90 天，本节略")} />
+          </Section>
+        ) : (
+          <Section icon="📝" title={t("财报点评")}>
+            <Placeholder text={t("暂无财报点评数据")} />
+          </Section>
+        )}
+
+        {/* 4. 财报日历 */}
+        <Section icon="📅" title={t("财报日历")} subtitle={t("下次财报 + 过去 8 次记录")}>
+          {fmpExtras && fmpExtras.earnings.length > 0 ? (
+            <EarningsCalendarBlock earnings={fmpExtras.earnings} />
           ) : (
-            <Placeholder text={t("最近无内部人 Form 4 申报")} />
+            <Placeholder text={t("暂无财报日历数据")} />
           )}
         </Section>
 
+        {/* 5. 分析师预期 */}
         <Section
-          icon="🏛️"
-          title={t("机构持仓")}
+          icon="🔮"
+          title={t("分析师预期")}
           subtitleNode={
-            inst13f?.summary?.date ? (
-              <><Term term="13F">13F</Term> · {inst13f.summary.date}</>
-            ) : (
-              <Term term="13F">13F</Term>
-            )
+            <><Term term="Beat">Beat</Term>{t(" 历史 + 评级变动")}</>
           }
         >
-          {inst13f && inst13f.summary?.date ? (
-            <Inst13FBlock data={inst13f} />
+          {fmpExtras && (fmpExtras.earnings.length > 0 || fmpExtras.ratings.length > 0) ? (
+            <AnalystEstimatesBlock
+              earnings={fmpExtras.earnings}
+              ratings={fmpExtras.ratings}
+            />
           ) : (
-            <Placeholder text={t("暂无 13F 机构持仓数据")} />
+            <Placeholder text={t("暂无分析师预期数据")} />
           )}
         </Section>
 
+        {/* 6. 8-K / 6-K */}
         {(() => {
           // 外国发行人 (foreign private issuer) 用 Form 6-K 替代 8-K
           const useForm6K = form8k.length === 0 && form6k.length > 0;
@@ -267,45 +294,22 @@ export default function StockDetailContent({
           );
         })()}
 
+        {/* 7. 内部人交易 */}
         <Section
-          icon="🔮"
-          title={t("分析师预期")}
-          subtitleNode={
-            <><Term term="Beat">Beat</Term>{t(" 历史 + 评级变动")}</>
-          }
+          icon="👤"
+          title={t("内部人交易")}
+          subtitleNode={<><Term term="Form 4">Form 4</Term> · {t("最近")} {form4.length} {t("条")}</>}
         >
-          {fmpExtras && (fmpExtras.earnings.length > 0 || fmpExtras.ratings.length > 0) ? (
-            <AnalystEstimatesBlock
-              earnings={fmpExtras.earnings}
-              ratings={fmpExtras.ratings}
-            />
+          {stock.cik && form4.length > 0 ? (
+            <InsiderTradeList cik={stock.cik} filings={form4} />
+          ) : !stock.cik ? (
+            <Placeholder text={t("此股票暂无 SEC CIK 映射")} />
           ) : (
-            <Placeholder text={t("暂无分析师预期数据")} />
+            <Placeholder text={t("最近无内部人 Form 4 申报")} />
           )}
         </Section>
 
-        <Section
-          icon="🎯"
-          title={t("期权异动")}
-          subtitleNode={
-            options?.atm_iv != null ? (
-              <>
-                <Term term="ATM IV">ATM IV</Term> {(options.atm_iv * 100).toFixed(1)}% ·{" "}
-                <Term term="Put/Call">P/C</Term>{" "}
-                {options.put_call_ratio != null ? options.put_call_ratio.toFixed(2) : "—"}
-              </>
-            ) : (
-              t("聪明钱大单监控")
-            )
-          }
-        >
-          {options && options.top_contracts.length > 0 ? (
-            <OptionsActivityBlock data={options} />
-          ) : (
-            <Placeholder text={t("暂无期权异动数据")} />
-          )}
-        </Section>
-
+        {/* 8. 股本动态 */}
         <Section
           icon="📉"
           title={t("股本动态")}
@@ -328,41 +332,47 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        <Section icon="📅" title={t("财报日历")} subtitle={t("下次财报 + 过去 8 次记录")}>
-          {fmpExtras && fmpExtras.earnings.length > 0 ? (
-            <EarningsCalendarBlock earnings={fmpExtras.earnings} />
+        {/* 9. 机构持仓 */}
+        <Section
+          icon="🏛️"
+          title={t("机构持仓")}
+          subtitleNode={
+            inst13f?.summary?.date ? (
+              <><Term term="13F">13F</Term> · {inst13f.summary.date}</>
+            ) : (
+              <Term term="13F">13F</Term>
+            )
+          }
+        >
+          {inst13f && inst13f.summary?.date ? (
+            <Inst13FBlock data={inst13f} />
           ) : (
-            <Placeholder text={t("暂无财报日历数据")} />
+            <Placeholder text={t("暂无 13F 机构持仓数据")} />
           )}
         </Section>
 
-        {interpretation && interpretation.is_recent ? (
-          <Section
-            icon="📝"
-            title={t("财报速评")}
-            subtitleNode={
+        {/* 10. 期权异动 */}
+        <Section
+          icon="🎯"
+          title={t("期权异动")}
+          subtitleNode={
+            options?.atm_iv != null ? (
               <>
-                {interpretation.fiscal_label} · {interpretation.earnings_date}
-                {interpretation.release_time === "bmo" && ` (${t("盘前")})`}
-                {interpretation.release_time === "amc" && ` (${t("盘后")})`}
+                <Term term="ATM IV">ATM IV</Term> {(options.atm_iv * 100).toFixed(1)}% ·{" "}
+                <Term term="Put/Call">P/C</Term>{" "}
+                {options.put_call_ratio != null ? options.put_call_ratio.toFixed(2) : "—"}
               </>
-            }
-          >
-            <EarningsInterpretationBlock data={interpretation} />
-          </Section>
-        ) : interpretation ? (
-          <Section
-            icon="📝"
-            title={t("财报速评")}
-            subtitleNode={<>{interpretation.fiscal_label} · {interpretation.earnings_date}</>}
-          >
-            <Placeholder text={t("最近一次财报已超 90 天，本节略")} />
-          </Section>
-        ) : (
-          <Section icon="📝" title={t("财报速评")}>
-            <Placeholder text={t("暂无财报速评数据")} />
-          </Section>
-        )}
+            ) : (
+              t("聪明钱大单监控")
+            )
+          }
+        >
+          {options && options.top_contracts.length > 0 ? (
+            <OptionsActivityBlock data={options} />
+          ) : (
+            <Placeholder text={t("暂无期权异动数据")} />
+          )}
+        </Section>
 
         {/* 公司简介 — 优先中文版（Kimi K2.5 翻译），fallback 英文 */}
         {(descriptionCn || profile?.description) && (
