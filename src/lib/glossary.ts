@@ -13,6 +13,7 @@ export const GLOSSARY: Record<string, string> = {
   "FCF": "Free Cash Flow，自由现金流 = 经营现金流 - 资本支出。剔除维持业务必需的开销后，公司真正可自由支配的现金。比净利润更难「做账」。",
   "OCF": "Operating Cash Flow，经营性现金流。主营业务带来的现金流入减流出，反映公司「造血能力」。",
   "Capex": "Capital Expenditures，资本开支。公司为了维持或扩张业务投入的固定资产钱（建厂房、买设备、买服务器）。\n\n公式：Capex = OCF − FCF。\n\nCapex 高 = 重资产 / 增长投入大；Capex 低 = 轻资产模型（如软件公司）。",
+  "FCF/营收": "FCF Margin，自由现金流率 = FCF ÷ 营收。每 1 美元营收里多少能变成自由现金流。\n\n判读：\n> 20%：优质资产（典型如 ADBE / Visa / MSFT）\n10-20%：健康\n5-10%：偏紧\n< 5%：现金流堪忧 / 重资产模型（如航空、零售）\n\n比净利率更「硬核」：已扣掉 Capex / 应收账款 / 库存堆积等会计技巧的影响。",
 
   // ===== 期权相关 =====
   "ATM IV": "At-The-Money Implied Volatility，平价隐含波动率。当行权价 ≈ 现价时，市场对该股未来波动幅度的预期（年化）。\n\n例：ATM IV 30% = 市场预期未来一年股价波动幅度约 ±30%。IV 高 = 市场紧张，IV 低 = 平静。",

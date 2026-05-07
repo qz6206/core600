@@ -13,8 +13,8 @@ export default function Home() {
   // 点击后跳转到 NVDA 股票详情页对应 section（用 NVDA 作示范）
   const DEMO_TICKER = "NVDA";
   const features = [
-    // 第一行：图表 + 财报
-    { icon: "📈", title: "K 线 + 关键事件", desc: "1 年日线 · 内部人 / 财报 / 8-K / 评级 marker", anchor: "event-chart" },
+    // 第一行：财报核心
+    { icon: "📊", title: "财务概览", desc: "营收 / 毛利率 / FCF / Capex", anchor: "financial-overview" },
     { icon: "🎙️", title: "财报会议", desc: "中文全文翻译", anchor: "transcript" },
     { icon: "📝", title: "财报点评", desc: "自动解读 + 倾向标签", anchor: "earnings-interpretation" },
     // 第二行：日历 + 信号

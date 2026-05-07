@@ -7,7 +7,6 @@ import TimeDisplay from "@/components/TimeDisplay";
 import Footer from "@/components/Footer";
 import Term from "@/components/Term";
 import ScenarioBadge from "@/components/ScenarioBadge";
-import EventChart from "@/components/EventChart";
 import WatchlistStar from "@/components/WatchlistStar";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
@@ -185,23 +184,7 @@ export default function StockDetailContent({
           )}
         </div>
 
-        {/* 1. K 线 + 事件 marker */}
-        <Section
-          id="event-chart"
-          icon="📈"
-          title={t("K 线 + 关键事件")}
-          subtitle={t("过去 1 年 · 内部人 / 财报 / 8-K / 评级")}
-        >
-          <EventChart
-            ticker={stock.ticker}
-            form4={form4}
-            form8k={form8k}
-            earnings={fmpExtras?.earnings}
-            ratings={fmpExtras?.ratings}
-          />
-        </Section>
-
-        {/* 2. 财务概览（最近 4 季度表格）*/}
+        {/* 财务概览（最近 4 季度表格）*/}
         {quarters.length > 0 && (
           <Section
             id="financial-overview"
@@ -575,12 +558,12 @@ function FinancialTable({
             formatter={formatUSD}
           />
           <FinancialRow
-            label={t("Capex 资本开支")}
+            label={<><Term term="Capex">Capex</Term> {t("资本开支")}</>}
             values={cfData.map(c => c.capex as number)}
             formatter={v => formatUSD(Math.abs(v))}
           />
           <FinancialRow
-            label={<><Term term="FCF">FCF</Term> / {t("营收")}</>}
+            label={<Term term="FCF/营收">FCF / {t("营收")}</Term>}
             values={sorted.map((q, i) => {
               const fcf = cfData[i]?.fcf;
               return fcf && q.revenue ? (fcf / q.revenue) * 100 : (NaN as unknown as number);
