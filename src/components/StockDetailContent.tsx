@@ -1979,6 +1979,19 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
         {data.headline}
       </div>
 
+      {/* 数据完整性警示 banner (data_complete=false 或 pending_transcript_lag) */}
+      {(data.data_complete === false || data.narrative_status === "pending_transcript_lag") && (
+        <div className="rounded-md border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 px-3 py-2 text-xs text-amber-800 dark:text-amber-300 leading-relaxed">
+          ⏳ {t("部分数据正在更新")}：
+          {data.data_complete === false && (
+            <span> {t("现金流数据(KPI / Beat 质量 / 健康度)未对齐当季,等待数据源同步,通常 1-7 天内自动补齐。")}</span>
+          )}
+          {data.narrative_status === "pending_transcript_lag" && (
+            <span> {t("电话会议中文翻译还在处理,管理层叙事段落将在下周一翻译刷新后自动出现。")}</span>
+          )}
+        </div>
+      )}
+
       {/* ① 业绩数据 */}
       <div>
         <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">

@@ -356,7 +356,8 @@ export interface EarningsInterpretation {
   health?: InterpretationHealth | null;    // ⑤ 健康度 5 维红绿灯
 
   narrative: InterpretationNarrative | null;     // ⑥ 管理层叙事
-  narrative_status: "done" | "pending" | "no_transcript";
+  narrative_status: "done" | "pending" | "pending_transcript_lag" | "no_transcript";
+  data_complete?: boolean;  // false = cashflow 滞后, KPI/Beat/Health 必然为空
 }
 
 // === 财报会议中文 transcript（来自 transcripts.json）===

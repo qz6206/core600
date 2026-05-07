@@ -1211,16 +1211,34 @@ def process_ticker(
     beat_quality = make_beat_quality(shares, sbc, fpe, data_card.get("eps_surprise_pct"))
     health = make_health(shares, sbc, fpe)
 
+    # ⭐ 数据完整性检查 (修 Bug 2: cashflow 滞后导致 KPI/Beat/Health 全空)
+    # cashflow 没对齐 fpe 时 → KPI/Beat/Health 必然全空
+    cashflow_aligned = _find_q_idx(sbc, fpe) is not None
+    data_complete = cashflow_aligned and len(kpis) > 0
+
     # badges
     badges = make_badges(data_card, fundamentals, market_reaction, earnings, cur_idx)
 
-    # narrative status: 看 transcript 是否对应这次财报
+    # ⭐ narrative status (修 Bug 1 + 3):
+    # - 无 transcript → "no_transcript" (永久, UI 显示"年度信"或"无电话会议")
+    # - 有 transcript 但季度不对应 → "pending" (等下次 transcript 更新)
+    # - 有 transcript 且季度对应 → "pending" (等 LLM 富化)
+    # - LLM 富化完成后由 enrich 脚本设为 "done"
     narrative_status = "no_transcript"
     transcript = transcripts.get(ticker)
     if transcript:
-        # 如果 transcript 的 quarter/year 跟最近这次财报对应（粗略判断）
-        # 暂时只要有 transcript 就标 pending（即使是上次的 transcript，Opus 评估时再决定）
-        narrative_status = "pending"
+        t_year = transcript.get("year")
+        t_q = transcript.get("quarter")
+        if transcript.get("is_annual_letter"):
+            # BRK 等年度致股东信, 不区分季度
+            narrative_status = "pending"
+        elif t_year and t_q:
+            t_label = f"{t_year} Q{t_q}"
+            if t_label == fiscal_label:
+                narrative_status = "pending"
+            else:
+                # transcript 是老一季, 不能用 → 等下次 transcript cron
+                narrative_status = "pending_transcript_lag"
 
     return {
         "ticker": ticker,
@@ -1236,6 +1254,7 @@ def process_ticker(
         "kpis": kpis,                    # ⭐ 新: 段 ②
         "beat_quality": beat_quality,    # ⭐ 新: 段 ④
         "health": health,                # ⭐ 新: 段 ⑤
+        "data_complete": data_complete,  # ⭐ 新: cashflow 对齐, KPI 才有数 (UI 用此判断是否展示警告)
         "fundamentals": fundamentals,    # 旧字段保留, 用于回退
         "market_reaction": market_reaction,  # 旧字段保留, 用于回退
         "badges": badges,
@@ -1290,11 +1309,17 @@ def main():
 
         # 保留 LLM 写过的字段 (narrative / guidance / data_card.third_metric / data_card.rev_yoy_pct_alt):
         # 只要 fiscal_period_end 没变, 这些字段就沿用旧的, 避免 LLM 白跑
+        # ⭐ 新: 但如果新算出来的 narrative_status 是 'pending_transcript_lag', 不沿用 done
+        # (因为旧的 narrative 是基于错误的老 transcript 抽的)
         prior = existing_bt.get(tk)
         same_fiscal = prior and prior.get("fiscal_period_end") == rec["fiscal_period_end"]
         if same_fiscal:
             # narrative
-            if prior.get("narrative") and prior.get("narrative_status") == "done":
+            if (
+                prior.get("narrative")
+                and prior.get("narrative_status") == "done"
+                and rec["narrative_status"] != "pending_transcript_lag"
+            ):
                 rec["narrative"] = prior["narrative"]
                 rec["narrative_status"] = "done"
                 stats["narrative_kept"] += 1

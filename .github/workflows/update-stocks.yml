@@ -38,6 +38,9 @@ jobs:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
         run: python3 scripts/verify_fmp.py
 
+      - name: 数据完整性 + 数量 sanity check
+        run: python3 scripts/validate_data.py stocks
+
       - name: 检测变化
         id: check
         run: |
@@ -89,4 +92,17 @@ jobs:
               title: `📊 成分股自动更新 - ${new Date().toISOString().split('T')[0]}`,
               body: '## 检测到成分股变化\n\n```\n' + changes + '\n```\n\n已自动提交并部署。',
               labels: ['stock-update']
+            });
+
+      - name: 失败告警 (创建 GitHub Issue)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 cron 失败: update-stocks (${new Date().toISOString().split('T')[0]})`,
+              body: `## 自动更新成分股 失败\n\n[查看 workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`,
+              labels: ['cron-failure']
             });

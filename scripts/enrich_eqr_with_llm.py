@@ -394,6 +394,19 @@ def main() -> int:
             failed.append((tk, "无中文 transcript"))
             continue
 
+        # ⭐ 季度对齐检查 (修 Bug 1: transcript 老一季时, narrative 引语跟数据卡矛盾)
+        # transcript.year/quarter 必须等于 EQR 的 fiscal_label
+        # 不对应就跳过, 等下次 transcript cron 拿到新一季再跑
+        eqr_fiscal = rec.get("fiscal_label", "")
+        t_year = trans.get("year")
+        t_q = trans.get("quarter")
+        if t_year and t_q:
+            t_label = f"{t_year} Q{t_q}"
+            if t_label != eqr_fiscal and not trans.get("is_annual_letter"):
+                failed.append((tk, f"transcript 季度 {t_label} ≠ EQR {eqr_fiscal}, 跳过等 transcript 更新"))
+                continue
+        # is_annual_letter (BRK 等) 没 quarter, 不做对齐检查 (年度信不区分季度)
+
         stock = stocks_map.get(tk, {})
         sector = stock.get("sector", "")
         industry = stock.get("industry", "")
