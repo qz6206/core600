@@ -354,7 +354,15 @@ def main() -> int:
     by_ticker = interp["by_ticker"]
     trans_bt = transcripts.get("by_ticker", {})
 
-    # 候选: is_recent=True + 有 transcript + (force 或 narrative_status != done)
+    # 候选: is_recent=True + 有 transcript + 状态需要 LLM 处理
+    # 跳过: done (已成功) / pending_transcript_lag (transcript 老一季) /
+    #       transcript_unavailable_in_fmp (FMP 永远没有) / no_transcript (无)
+    SKIP_STATUSES = {
+        "done",
+        "pending_transcript_lag",
+        "transcript_unavailable_in_fmp",
+        "no_transcript",
+    }
     candidates: list[str] = []
     if args.tickers:
         candidates = [t.strip().upper() for t in args.tickers.split(",")]
@@ -364,7 +372,7 @@ def main() -> int:
                 continue
             if tk not in trans_bt:
                 continue
-            if not args.force and rec.get("narrative_status") == "done":
+            if not args.force and rec.get("narrative_status") in SKIP_STATUSES:
                 continue
             candidates.append(tk)
         candidates.sort()
