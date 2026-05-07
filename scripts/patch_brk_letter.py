@@ -21,9 +21,9 @@ LETTER_URL = "https://www.berkshirehathaway.com/letters/2025ltr.pdf"
 PDF_PATH = "/tmp/brk_2025.pdf"
 TXT_PATH = "/tmp/brk_2025.txt"
 
-KIMI_URL = "https://api.siliconflow.cn/v1/chat/completions"
-# 2026-05-06 切换到 DeepSeek-V3 (¥2 in / ¥8 out, 比 Kimi-K2.5 砍 50%)
-KIMI_MODEL = "deepseek-ai/DeepSeek-V3"
+LLM_URL = "https://api.siliconflow.cn/v1/chat/completions"
+# 2026-05-06 切换到 DeepSeek-V3 (¥2 in / ¥8 out, 比 Kimi K2.5 砍 50%)
+LLM_MODEL = "deepseek-ai/DeepSeek-V3"
 
 
 def load_sf_key():
@@ -55,14 +55,14 @@ def fetch_letter():
     if marker in text:
         idx = text.rfind(marker)
         # 截到这之前的位置（保留表格头但去掉数字海洋）
-        # 实际上完整表格也保留，让 Kimi 自己处理
+        # 实际上完整表格也保留，让 LLM 自己处理
         pass
     print(f"   ✓ {len(text)} 字符 / ~{len(text)//4} tokens")
     return text
 
 
 def translate_letter(text: str):
-    """调 Kimi K2.5 翻译"""
+    """调 DeepSeek-V3 翻译"""
     prompt = f"""你是一位专业财经译者。下面是 Berkshire Hathaway（BRK，伯克希尔哈撒韦）2025 年度致股东信全文，由现任 CEO Greg Abel 撰写（继任 Warren Buffett）。
 
 请翻译成中文。要求：
@@ -78,17 +78,17 @@ def translate_letter(text: str):
 {text}"""
 
     body = {
-        "model": KIMI_MODEL,
+        "model": LLM_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": 16000,
         "temperature": 0.3,
     }
-    print(f"🤖 调 Kimi K2.5 翻译...")
+    print(f"🤖 调 DeepSeek-V3 翻译...")
     t0 = time.time()
     for attempt in range(3):
         try:
             req = urllib.request.Request(
-                KIMI_URL,
+                LLM_URL,
                 data=json.dumps(body).encode(),
                 headers={"Authorization": f"Bearer {SF_KEY}",
                          "Content-Type": "application/json"},

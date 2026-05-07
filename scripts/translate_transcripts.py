@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""用 Kimi K2.5 翻译所有 600 强最近 1 季度财报会议 transcript → data/transcripts.json
+"""用 DeepSeek-V3 翻译所有 600 强最近 1 季度财报会议 transcript → data/transcripts.json
 
 流程：
 1. 从 FMP 拉每只股票最近 1 个 quarter 的 earnings call transcript
    - 自动尝试 [当前年 Q4-Q1, 上一年 Q4-Q1]，取最新非空
-2. Kimi K2.5 翻译全文（200k context 够装下任何 transcript）
+2. DeepSeek-V3 翻译全文（200k context 够装下任何 transcript）
 3. 输出 data/transcripts.json：
    { "by_ticker": { "AAPL": { "year": 2026, "quarter": 1, "date": "...", "content_cn": "..." } } }
 
@@ -28,10 +28,10 @@ ENV_LOCAL = ROOT / ".env.local"
 
 NUM_WORKERS = 8  # 单次调用 ~145s，独跑时 8 线程不会触发限流（先前 16 撞限流是因为同时跑 description）
 MAX_RETRIES = 3
-# 2026-05-06 切换: Kimi-K2.5 (¥4 in / ¥16 out) → DeepSeek-V3 (¥2 in / ¥8 out)
+# 2026-05-06 切换: Kimi K2.5 (¥4 in / ¥16 out) → DeepSeek-V3 (¥2 in / ¥8 out)
 # 财报会议 transcript 翻译, 单价砍 50%, 中文质量足够 (DeepSeek 财经领域稳定)
-KIMI_MODEL = "deepseek-ai/DeepSeek-V3"
-KIMI_URL = "https://api.siliconflow.cn/v1/chat/completions"
+LLM_MODEL = "deepseek-ai/DeepSeek-V3"
+LLM_URL = "https://api.siliconflow.cn/v1/chat/completions"
 
 
 def load_keys() -> tuple[str, str]:
@@ -95,7 +95,7 @@ def fetch_latest_transcript(ticker: str) -> dict | None:
 
 
 def translate_transcript(ticker: str, name: str, content: str) -> str | None:
-    """调 Kimi K2.5 翻译全文（带详细诊断日志）"""
+    """调 DeepSeek-V3 翻译全文（带详细诊断日志）"""
     prompt = f"""你是一位专业财经译者，下面是美股 {ticker}（{name}）的财报会议（earnings call）transcript 全文。请翻译成中文。
 
 要求：
@@ -110,7 +110,7 @@ def translate_transcript(ticker: str, name: str, content: str) -> str | None:
 {content}"""
 
     body = {
-        "model": KIMI_MODEL,
+        "model": LLM_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": 12000,
         "temperature": 0.3,
@@ -120,7 +120,7 @@ def translate_transcript(ticker: str, name: str, content: str) -> str | None:
         t0 = time.time()
         try:
             req = urllib.request.Request(
-                KIMI_URL,
+                LLM_URL,
                 data=json.dumps(body).encode(),
                 headers={
                     "Authorization": f"Bearer {SF_KEY}",
@@ -132,7 +132,7 @@ def translate_transcript(ticker: str, name: str, content: str) -> str | None:
                 data = json.loads(r.read())
             elapsed = time.time() - t0
             usage = data.get("usage", {})
-            print(f"   ✓ [t{thread_id}] {ticker} Kimi OK ({elapsed:.1f}s, in={usage.get('prompt_tokens', 0)} out={usage.get('completion_tokens', 0)})", flush=True)
+            print(f"   ✓ [t{thread_id}] {ticker} LLM OK ({elapsed:.1f}s, in={usage.get('prompt_tokens', 0)} out={usage.get('completion_tokens', 0)})", flush=True)
             return data["choices"][0]["message"]["content"].strip()
         except urllib.error.HTTPError as e:
             elapsed = time.time() - t0
@@ -168,7 +168,7 @@ def process_one(stock: dict, existing: dict | None = None) -> tuple[str, dict | 
                 return ticker, prev, "reused"
         return ticker, None, "no_transcript"
 
-    # 增量优化: 如果 existing 已是同样的 year+quarter，直接复用（不浪费 Kimi 成本）
+    # 增量优化: 如果 existing 已是同样的 year+quarter，直接复用（不浪费 LLM 成本）
     if existing:
         prev = existing.get(ticker)
         if (
@@ -210,9 +210,9 @@ def main():
     if OUTPUT_JSON.exists():
         with open(OUTPUT_JSON) as f:
             existing_data = json.load(f).get("by_ticker", {})
-        print(f"   📂 已有 transcripts: {len(existing_data)} 只 (相同 fiscal 季的将复用，不浪费 Kimi 成本)", flush=True)
+        print(f"   📂 已有 transcripts: {len(existing_data)} 只 (相同 fiscal 季的将复用，不浪费 LLM 成本)", flush=True)
 
-    print(f"   🧵 {NUM_WORKERS} 线程并行调 Kimi K2.5", flush=True)
+    print(f"   🧵 {NUM_WORKERS} 线程并行调 DeepSeek-V3", flush=True)
     print(f"   💰 增量模式：仅翻译新季度，预计 ¥0-30\n", flush=True)
 
     by_ticker: dict = {}
@@ -258,7 +258,7 @@ def main():
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "model": KIMI_MODEL,
+        "model": LLM_MODEL,
         "stats": {
             "total": total,
             "translated": len(by_ticker),

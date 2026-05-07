@@ -9,13 +9,13 @@
 
   "summary_cn": "Donald Robertson 升任首席会计官，接替 Tim Teter，自 2026-04-24 生效"
 
-要求 Kimi 输出：
+要求 LLM 输出：
 - ≤80 字
 - 保留人名/公司名英文
 - 不要套话开头
 - 直接陈述关键事实
 
-成本：单次 Kimi K2.5 ~¥0.024（输入 5K + 输出 0.3K tokens）
+成本：单次 DeepSeek-V3 ~¥0.024（输入 5K + 输出 0.3K tokens）
 """
 import json
 import os
@@ -41,7 +41,7 @@ NUM_WORKERS_LLM = 8
 MAX_RETRIES = 3
 LLM_URL = "https://api.siliconflow.cn/v1/chat/completions"
 # 成本对比 (per 1M tokens, 2026-05 SiliconFlow):
-#   Pro/moonshotai/Kimi-K2.5         ¥4 in / ¥16 out  ← 最贵, 上次用这个超支
+#   Pro/moonshotai/Kimi K2.5         ¥4 in / ¥16 out  ← 最贵, 上次用这个超支
 #   Pro/moonshotai/Kimi-K2-Instruct  ¥4 in / ¥16 out  ← 同价 (老版本)
 #   deepseek-ai/DeepSeek-V3          ¥2 in / ¥8 out   ← 便宜一半, 短摘要够用 ✅
 #   Qwen/Qwen2.5-72B-Instruct        ¥1.26 / ¥1.26    ← 最便宜, 但中文质量一般

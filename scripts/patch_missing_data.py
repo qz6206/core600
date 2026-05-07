@@ -3,7 +3,7 @@
 
 任务：
 1. Options: BF-B/BRK-B (Polygon 用 . 代替 -)
-2. Description CN: TYL (Kimi 重试)
+2. Description CN: TYL (LLM 重试)
 3. Transcripts CN: 失败列表里的所有股票（解析 transcripts.json stats.translation_failed + 文件中没有但 stocks.json 里有的）
 
 每个任务独立，互不影响。结束后报告修复了多少。
@@ -39,9 +39,9 @@ def load_keys():
 
 
 KEYS = load_keys()
-KIMI_URL = "https://api.siliconflow.cn/v1/chat/completions"
-# 2026-05-06 切换到 DeepSeek-V3 (¥2 in / ¥8 out, 比 Kimi-K2.5 砍 50%)
-KIMI_MODEL = "deepseek-ai/DeepSeek-V3"
+LLM_URL = "https://api.siliconflow.cn/v1/chat/completions"
+# 2026-05-06 切换到 DeepSeek-V3 (¥2 in / ¥8 out, 比 Kimi K2.5 砍 50%)
+LLM_MODEL = "deepseek-ai/DeepSeek-V3"
 
 with open(STOCKS_JSON) as f:
     STOCKS = {s["ticker"]: s for s in json.load(f)["stocks"]}
@@ -188,13 +188,13 @@ def patch_options():
 
 
 # ============================================
-# 任务 2: Description CN TYL（Kimi 重试）
+# 任务 2: Description CN TYL（LLM 重试）
 # ============================================
 
 def translate_kimi(prompt: str, max_tokens: int) -> str | None:
-    """通用 Kimi 调用"""
+    """通用 LLM 调用"""
     body = {
-        "model": KIMI_MODEL,
+        "model": LLM_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": max_tokens,
         "temperature": 0.3,
@@ -202,7 +202,7 @@ def translate_kimi(prompt: str, max_tokens: int) -> str | None:
     for attempt in range(3):
         try:
             req = urllib.request.Request(
-                KIMI_URL,
+                LLM_URL,
                 data=json.dumps(body).encode(),
                 headers={"Authorization": f"Bearer {KEYS['SILICONFLOW_API_KEY']}",
                          "Content-Type": "application/json"},
@@ -212,7 +212,7 @@ def translate_kimi(prompt: str, max_tokens: int) -> str | None:
                 data = json.loads(r.read())
             return data["choices"][0]["message"]["content"].strip()
         except Exception as e:
-            print(f"      Kimi 重试 {attempt+1}: {e}")
+            print(f"      LLM 重试 {attempt+1}: {e}")
             time.sleep(5 * (attempt + 1))
     return None
 

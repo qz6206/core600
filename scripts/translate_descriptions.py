@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""用 Kimi K2.5 翻译所有 600 强公司简介 → data/descriptions_cn.json
+"""用 DeepSeek-V3 翻译所有 600 强公司简介 → data/descriptions_cn.json
 
 流程：
 1. 从 FMP /api/v3/profile/{ticker} 拉英文简介
-2. Kimi K2.5（zai-org/Kimi-K2.5）翻译成中文，严格保留英文原名/产品名
+2. DeepSeek-V3翻译成中文，严格保留英文原名/产品名
 3. 输出 data/descriptions_cn.json：{ "by_ticker": { "AAPL": "Apple Inc. ..." } }
 
 成本估算：516 × ~450 输入 + ~425 输出 ≈ 232k+ tokens 总，约 ¥3-5
@@ -25,9 +25,9 @@ ENV_LOCAL = ROOT / ".env.local"
 
 NUM_WORKERS = 8
 MAX_RETRIES = 3
-# 2026-05-06 切换到 DeepSeek-V3 (¥2 in / ¥8 out, 比 Kimi-K2.5 砍 50%)
-KIMI_MODEL = "deepseek-ai/DeepSeek-V3"
-KIMI_URL = "https://api.siliconflow.cn/v1/chat/completions"
+# 2026-05-06 切换到 DeepSeek-V3 (¥2 in / ¥8 out, 比 Kimi K2.5 砍 50%)
+LLM_MODEL = "deepseek-ai/DeepSeek-V3"
+LLM_URL = "https://api.siliconflow.cn/v1/chat/completions"
 
 
 def load_keys() -> tuple[str, str]:
@@ -63,7 +63,7 @@ def fetch_profile(ticker: str) -> dict | None:
 
 
 def translate_description(ticker: str, name: str, text: str) -> str | None:
-    """调 Kimi K2.5 翻译"""
+    """调 DeepSeek-V3 翻译"""
     prompt = f"""你是一位专业财经译者，请把下面这段美股 {ticker}（{name}）的公司简介翻译成简洁、准确、自然的中文。
 
 要求：
@@ -78,7 +78,7 @@ def translate_description(ticker: str, name: str, text: str) -> str | None:
 {text}"""
 
     body = {
-        "model": KIMI_MODEL,
+        "model": LLM_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": 2000,
         "temperature": 0.3,
@@ -86,7 +86,7 @@ def translate_description(ticker: str, name: str, text: str) -> str | None:
     for attempt in range(MAX_RETRIES):
         try:
             req = urllib.request.Request(
-                KIMI_URL,
+                LLM_URL,
                 data=json.dumps(body).encode(),
                 headers={
                     "Authorization": f"Bearer {SF_KEY}",
@@ -124,7 +124,7 @@ def main():
         stocks = json.load(f)["stocks"]
     total = len(stocks)
     print(f"   ✓ {total} 只股票", flush=True)
-    print(f"   🧵 {NUM_WORKERS} 线程并行调 Kimi K2.5", flush=True)
+    print(f"   🧵 {NUM_WORKERS} 线程并行调 DeepSeek-V3", flush=True)
     print(f"   💰 预计成本 ¥3-5，耗时 ~30 min\n", flush=True)
 
     by_ticker = {}
@@ -157,7 +157,7 @@ def main():
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "model": KIMI_MODEL,
+        "model": LLM_MODEL,
         "stats": {
             "total": total,
             "translated": len(by_ticker),
