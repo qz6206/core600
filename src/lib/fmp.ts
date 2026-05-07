@@ -219,7 +219,7 @@ export interface InterpretationBadge {
 export interface InterpretationThirdMetric {
   label: string;                          // 例: "Adj EBITDA Margin" / "NIM 净息差" / "毛利率"
   actual: number;                         // 0-1 for percent metrics, raw number otherwise
-  format: "pct" | "usd" | "ratio";
+  format: "pct" | "usd" | "ratio" | "raw";
   estimate: number | null;                // 共识预期（可选）
   surprise_pct: number | null;            // vs estimate
   yoy_change_pp: number | null;           // 同比变化（基点或个百分点, 看 format）

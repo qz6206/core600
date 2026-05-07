@@ -237,13 +237,15 @@ def call_llm(prompt: str, api_key: str) -> tuple[dict | None, dict]:
 
 
 def check_balance(api_key: str) -> float | None:
-    """返回 SiliconFlow 余额 (¥), 失败返回 None"""
+    """返回 SiliconFlow 总可用余额 (¥), 失败返回 None
+    SiliconFlow 把余额拆成 balance(赠送) + chargeBalance(充值), 实际可用是 totalBalance
+    """
     try:
         r = requests.get(USER_URL, headers={"Authorization": f"Bearer {api_key}"}, timeout=15)
         if r.status_code != 200:
             return None
         data = r.json().get("data", {})
-        return float(data.get("balance", 0))
+        return float(data.get("totalBalance") or data.get("balance") or 0)
     except Exception:
         return None
 
@@ -288,10 +290,33 @@ def merge_into_record(rec: dict, llm_out: dict) -> None:
 
     n = llm_out.get("narrative")
     if isinstance(n, dict) and n.get("themes"):
+        # Sanitize themes: 只保留有 title + detail 的 dict, 最多 3 个
+        clean_themes: list[dict] = []
+        salvage_evidence = None
+        for t in n.get("themes") or []:
+            if isinstance(t, dict) and t.get("title") and t.get("detail"):
+                clean_themes.append({
+                    "title": str(t["title"]),
+                    "detail": str(t["detail"]),
+                })
+            elif isinstance(t, str) and "tone_evidence" in t.lower():
+                # LLM 偶尔把 tone_evidence 错串到 themes 里, 抢救一下
+                salvage_evidence = t
+        clean_themes = clean_themes[:3]
+
+        evidence = n.get("tone_evidence")
+        if not evidence and salvage_evidence:
+            # 从错位字符串里抠出 evidence 内容 (取冒号后的部分)
+            for sep in ['":', "”:", ":", "："]:
+                idx = salvage_evidence.find(sep)
+                if idx > 0:
+                    evidence = salvage_evidence[idx+1:].strip(' "“”')[:300]
+                    break
+
         rec["narrative"] = {
-            "themes": n.get("themes") or [],
+            "themes": clean_themes,
             "tone": n.get("tone") or "mixed",
-            "tone_evidence": n.get("tone_evidence"),
+            "tone_evidence": evidence,
             "generated_by": MODEL,
             "generated_at": datetime.now().isoformat(),
         }

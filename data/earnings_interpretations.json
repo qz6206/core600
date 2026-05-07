@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T21:16:08.237672",
+  "generated_at": "2026-05-06T21:31:02.663860",
   "schema_version": 1,
   "stats": {
     "total": 516,
@@ -32,7 +32,9 @@
         "gross_margin": 0.5261401557,
         "gross_margin_yoy_bps": -86.60558200000001,
         "net_margin": 0.1696329255,
-        "net_margin_yoy_bps": -195.4018569999999
+        "net_margin_yoy_bps": -195.4018569999999,
+        "rev_yoy_pct_alt": 0.044,
+        "rev_yoy_pct_alt_label": "核心基础增长"
       },
       "kpis": [
         {
@@ -172,9 +174,49 @@
           "hint": "最近 4 季回购 $487.0M，较前 4 季 $1.24B 放缓"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "Q2 2026",
+        "items": [
+          {
+            "metric": "营收",
+            "range": "$1,790-1,820M",
+            "midpoint": 1805000000,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          },
+          {
+            "metric": "每股收益",
+            "range": "$1.39-1.42",
+            "midpoint": 1.405,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          }
+        ],
+        "annual_note": "维持全年核心营收增长4%至6%的预期，上调全年每股收益指引至$5.90-6.04。",
+        "summary_tone": "maintain",
+        "summary_text": "维持全年营收增长指引，因汇率有利小幅上调全年EPS指引，对Q2给出稳健预期。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "🔥 客户亲密度驱动增长",
+            "detail": "CEO Padraig McDonnell强调，差异化的企业服务业务是关键的“战略差异化因素”，通过派驻专家和数字化能力（CrossLab Connect）巩固客户关系，获得对实验室运营的独特洞察，从而“独特地随着时间推移获得钱包份额”。该业务以低双位数复合年增长率增长，并与几乎所有前20大生物制药公司达成协议。"
+          },
+          {
+            "title": "🚀 创新产品动能强劲",
+            "detail": "多项新产品获得市场积极反响。Altura色谱柱在生物制药（包括GLP-1）和PFAS工作流程中表现出色，使生物色谱柱增长翻倍。Pro iQ LC/MS单四极杆家族本季度增长超过40%，吸引了从小分子向生物制剂转型的客户。癌症诊断的Omnis自动化平台和新的玻片扫描系统也开局强劲。"
+          },
+          {
+            "title": "⚙️ Ignite系统提升运营",
+            "detail": "Ignite Operating System作为企业运营系统，在首个12个月已取得明确财务成果，包括定价实现翻倍、产生可观采购节省、简化组织结构及启动关税缓解计划。CFO Adam Elinoff指出，Ignite在第四季度贡献了近200个基点的定价，并帮助数字订单增长达到整体订单增长的两倍以上。公司正将其扩展到新的价值创造工作流程。"
+          }
+        ],
+        "tone": "mixed",
+        "tone_evidence": ": “CEO表示‘今年是稳健的开局’，‘这是一个健康的潜在业绩’，并对‘长期趋势保持强劲’、‘对今年剩余时间非常积极’表达了信心。CFO也指出‘我们有信心今年剩余时间将看到改善的盈利增长’。整体语气积极且对未来展望乐观。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:30:01.343116"
+      },
+      "narrative_status": "done"
     },
     "AAPL": {
       "ticker": "AAPL",
@@ -392,22 +434,22 @@
       "narrative": {
         "themes": [
           {
-            "title": "CEO 过渡公布：John Ternus 9 月 1 日接任，Tim Cook 转任执行董事长",
-            "detail": "Cook 任职 CEO 15 年后宣布交棒，将由 25 年 Apple 老兵 John Ternus 接任。Cook 称「在这个世界上，没有人比 John 更让我信任来领导 Apple 的未来」。Ternus 承诺延续 Cook 时代的财务纪律和审慎风格，强调路线图「令人难以置信」。"
+            "title": "iPhone 17 驱动强劲增长 📱",
+            "detail": "iPhone 营收 570 亿美元，同比增长 22%，创 3 月季度纪录。CEO Tim Cook 表示：“驱动人们选择 17 的是人们喜欢设计。人们喜欢性能。他们喜欢耐用性。他们喜欢相机...我们在我们追踪的大多数市场看到两位数增长。” 这表明 iPhone 17 系列产品力强劲，是公司增长的核心引擎。"
           },
           {
-            "title": "iPhone 17 家族驱动两位数增长，大中华区重回扩张",
-            "detail": "iPhone 营收 570 亿美元同比 +22%，创 3 月季度纪录；iPhone 17 家族被管理层定义为「公司历史上最受欢迎的产品线」，美国客户满意度 99%。大中华区在多个季度疲软后实现两位数增长，是本次财报最关键的拐点信号。"
+            "title": "服务业务创历史新高 💼",
+            "detail": "服务营收创历史最高纪录 310 亿美元，同比增长 16%。CFO Kevan Parekh 指出：“我们全面表现强劲，在我们追踪的绝大多数市场实现两位数增长。” 服务业务的高增长和高毛利率（76.7%）是公司盈利能力和生态系统价值的重要支撑。"
           },
           {
-            "title": "服务业务创纪录 + Apple Intelligence 强调设备端 AI",
-            "detail": "服务营收 310 亿美元创历史新高，毛利率 76.7%；活跃设备装机量突破 25 亿台。管理层强调 Apple Intelligence 「不是作为独立功能的 AI，而是作为跨设备体验中必不可少且直观部分的 AI」，对标云 AI 主打设备端 + 隐私差异化。"
+            "title": "领导层平稳过渡与未来路线图 🚀",
+            "detail": "CEO Tim Cook 宣布将于 9 月 1 日过渡为执行董事长，由 John Ternus 接任 CEO。Cook 表示：“我们的产品路线图令人难以置信...我们有合适的领导者准备接任。” John Ternus 补充道：“我们面前有令人难以置信的路线图...这是我 25 年 Apple 职业生涯中构建产品和服务最令人兴奋的时刻。” 这传递了公司对未来创新和持续发展的强大信心。"
           }
         ],
-        "tone": "confident",
-        "tone_evidence": "营收高于指引区间高端，毛利率 49.3% 同样超指引；所有地理区域均创 3 月季度纪录；管理层明确称今年上半年「非常强劲」「我们对未来无比乐观」，CEO 过渡安排显示对接班人和路线图的高度信心。",
-        "generated_by": "opus-4.7",
-        "generated_at": "2026-05-06T02:28:08.564533"
+        "tone": "mixed",
+        "tone_evidence": ": “管理层多次表达乐观，如 Tim Cook 称‘我对 Apple 的未来无比乐观’，并详细列举了 iPhone、服务及各地区的创纪录增长。CFO 也指出营收增长强劲，毛利率高于指引高端。整体措辞积极，充满信心。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:25:08.978432"
       },
       "narrative_status": "done"
     },
@@ -680,9 +722,42 @@
           "hint": "SBC TTM 占净利 63.4%（≥30% 高稀释区间），股权激励侵蚀利润明显"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "Q1 2026",
+        "items": [
+          {
+            "metric": "营收",
+            "range": "$2.59-2.63B",
+            "midpoint": 2610000000,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          }
+        ],
+        "annual_note": "预计2026年营收同比增长将加速至低双位数，并有志于实现更快的增长。",
+        "summary_tone": "raise",
+        "summary_text": "Q1营收指引中值同比增长15%，高于本季12%的增速，显示增长加速。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "🚀 创新蓝图驱动增长",
+            "detail": "CEO Brian Chesky 表示，公司通过名为“Project Hawaii”的创新模式，组建小型精英团队，专注于改进搜索、预订流程和定价透明度，仅在2025年就推动了数亿美元的营收增长。他提到：“我们相信 Project Hawaii 今年将再带来数亿美元的营收。” 这标志着公司从平台重建转向了系统性的、可规模化的创新，以重新加速增长。"
+          },
+          {
+            "title": "💰 定价与供应优化",
+            "detail": "CFO Ellie Mertz 指出，Q4推出的“Reserve Now, Pay Later”、取消政策更新和简化费用结构，为间夜数预订带来了超过200个基点的增长，为总预订额带来了约300个基点的增长。CEO 补充说，定价举措“今年将带来与 Hawaii 项目相当的营收”。同时，公司通过移除低质量房源和推广“Guest Favorites”来提升供应质量，该类别预订已占近一半。"
+          },
+          {
+            "title": "🌍 国际扩张与AI赋能",
+            "detail": "CEO 强调，公司正通过深入优先国家（如巴西）实现国际增长，巴西已成为第二大首次预订用户贡献市场。在AI方面，公司从解决客户支持难题入手，其定制的AI Agent已能解决三分之一的客户支持问题。CEO 认为：“通过在完整的 Airbnb 体验之上叠加 AI，我们相信我们正在构建一些无法复制的东西。” 这旨在巩固平台优势并抵御竞争。"
+          }
+        ],
+        "tone": "mixed",
+        "tone_evidence": ": “CEO Brian Chesky 多次使用‘强劲’、‘加速’、‘兴奋’等词汇，并明确表示‘我们对未来一年如此兴奋’。CFO Ellie Mertz 也指出‘业务动能正在增强’，并对2026年增长加速表示乐观。整体表述积极且对未来充满信心。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:25:44.449942"
+      },
+      "narrative_status": "done"
     },
     "ABT": {
       "ticker": "ABT",
@@ -912,7 +987,16 @@
         "gross_margin": 0.5209814263,
         "gross_margin_yoy_bps": 2507.2881310000002,
         "net_margin": 0.2400825499,
-        "net_margin_yoy_bps": 1150.825499
+        "net_margin_yoy_bps": 1150.825499,
+        "third_metric": {
+          "label": "Combined Ratio",
+          "actual": 0.763,
+          "format": "pct",
+          "estimate": null,
+          "surprise_pct": null,
+          "yoy_change_pp": null,
+          "note": "再保险优异"
+        }
       },
       "kpis": [
         {
@@ -1112,9 +1196,42 @@
           "hint": "最近 4 季回购 $2.45B，较前 4 季 $276.0M 加大 786%"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "下半年",
+        "items": [
+          {
+            "metric": "运营费用率",
+            "range": "接近历史水平",
+            "midpoint": null,
+            "vs_consensus_pct": null,
+            "format": "pct"
+          }
+        ],
+        "annual_note": "未给指引",
+        "summary_tone": "maintain",
+        "summary_text": "预计下半年运营费用率将恢复到接近历史水平。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "📈 再保险业绩优异",
+            "detail": "再保险部门本季度表现优异，承保利润达4.41亿美元，综合成本率为76%，连续第四个季度低于80%。CEO Nicolas Papadopoulo表示：“我们的专注和严格的承保使再保险集团实现了76%的综合成本率。”这体现了公司在竞争加剧的市场中，通过严格的周期管理和承保纪律获取强劲回报的能力。"
+          },
+          {
+            "title": "🔄 动态管理投资组合",
+            "detail": "公司强调动态管理投资组合以应对市场变化。CEO指出：“动态增加回报有吸引力的领域，同时拒绝那些不再提供充足安全边际的风险。”在财产巨灾险费率面临下行压力时，公司通过区域监控（绿色/黄色/红色）调整承保立场，并在意外险等仍有吸引力的领域寻求增长。"
+          },
+          {
+            "title": "💹 强劲资本回报",
+            "detail": "公司本季度回购了价值7.83亿美元的普通股，董事会还将股票回购授权增加30亿美元。CFO Francois Morin表示：“当有机机会未达到我们的回报阈值时，我们将回购股票视为利用过剩资本的有吸引力的方式。”这反映了管理层对业务内在价值的信心和审慎的资本管理策略。"
+          }
+        ],
+        "tone": "confident",
+        "tone_evidence": "管理层多次使用“强劲”、“优异”、“感觉良好”等词，并强调“Arch 25年来强劲回报和以两位数速度复合增长账面价值的记录”，尽管承认市场“更具竞争性”，但整体表达了对应对挑战和创造回报的信心。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:26:11.553520"
+      },
+      "narrative_status": "done"
     },
     "ACN": {
       "ticker": "ACN",
@@ -1905,9 +2022,42 @@
           "hint": "最近 4 季回购 $0，较前 4 季 $1.00B 放缓"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "FY2026",
+        "items": [
+          {
+            "metric": "Adj EPS",
+            "range": "$4.15-$4.70",
+            "midpoint": 4.425,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          }
+        ],
+        "annual_note": "全年调整后每股收益指引区间现为4.15美元至4.70美元，较此前的3.60美元至4.25美元区间有所上调。",
+        "summary_tone": "raise",
+        "summary_text": "上调全年Adj EPS指引，主要基于有利的压榨和乙醇利润环境将持续的预期。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "🚀 政策利好驱动业绩",
+            "detail": "CEO Juan Luciano指出，美国环保署（EPA）公布的可再生燃料义务量（RVO）最终方案，推动了大豆压榨和乙醇利润显著走强。他表示：“RVO推动了对玉米、大豆及其他国内原料的需求...我们赞赏政府和EPA推进可再生燃料义务量，这增强了美国农民的市场地位并提升了美国的能源安全。”这成为本季度业绩超预期和上调全年指引的核心驱动力。"
+          },
+          {
+            "title": "📈 营养业务强劲复苏",
+            "detail": "营养业务营业利润同比增长42%，其中人类营养增长39%。CEO解释这得益于香料销售增加和Decatur East工厂的持续复苏：“我们终于让Decatur East工厂恢复了生产...现在我们已经恢复了全部产量，并正在恢复过去几年失去的市场地位。”CFO Monish Patolawala补充运营表现和外汇收益也提供了帮助。"
+          },
+          {
+            "title": "⚙️ 运营优化与成本控制",
+            "detail": "管理层强调在制造和交易成本控制上的进展。CEO表示：“我们在提高产量和减少计划外停机时间方面取得了坚实进展...第一季度，我们的团队实现了强劲的全球压榨量，油籽吨位同比增长2%，并创下了全球工厂压榨产量的历史最佳纪录。”公司还计划通过自动化和AI进一步降低交易成本，并持续推进成本节约计划。"
+          }
+        ],
+        "tone": "mixed",
+        "tone_evidence": ": “CEO表示“我们对2026年的前景越来越乐观”，并称“我们现在拥有的政策清晰度，加上团队的严格执行，使我们处于有利地位”。CFO也强调“团队开局非常好”且“非常有能力利用这些机遇”，整体语气积极肯定。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:26:44.219347"
+      },
+      "narrative_status": "done"
     },
     "ADP": {
       "ticker": "ADP",
@@ -1931,7 +2081,9 @@
         "gross_margin": 0.4827586207,
         "gross_margin_yoy_bps": -343.1323240000006,
         "net_margin": 0.2289533944,
-        "net_margin_yoy_bps": 39.39888200000019
+        "net_margin_yoy_bps": 39.39888200000019,
+        "rev_yoy_pct_alt": 0.05,
+        "rev_yoy_pct_alt_label": "有机固定汇率"
       },
       "kpis": [
         {
@@ -2106,9 +2258,56 @@
           "hint": "SBC TTM 占净利 4.2%（≤10% 低稀释区间）"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "FY2026",
+        "items": [
+          {
+            "metric": "营收",
+            "range": "6% 至 7%",
+            "midpoint": 0.065,
+            "vs_consensus_pct": null,
+            "format": "pct"
+          },
+          {
+            "metric": "Adj EBITDA Margin",
+            "range": "扩张 70 至 80 基点",
+            "midpoint": 0.0075,
+            "vs_consensus_pct": null,
+            "format": "pct"
+          },
+          {
+            "metric": "调整后每股收益",
+            "range": "增长 10% 至 11%",
+            "midpoint": 0.105,
+            "vs_consensus_pct": null,
+            "format": "pct"
+          }
+        ],
+        "annual_note": "将全年合并营收增长展望提高至 6% 至 7%，并将调整后息税前利润率扩张预测提高至 70 至 80 基点。",
+        "summary_tone": "raise",
+        "summary_text": "营收、利润率及每股收益指引均获上调，反映本季强劲表现及对AI驱动效率的信心。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "🤖 AI赋能HCM战略",
+            "detail": "CEO Maria Black强调AI是HCM的决定性时刻，ADP正通过ADP Assist等AI智能体引领行业创新。她指出：“AI正在改变工作完成方式，但这并未消除管理工作的需求，而在颠覆时期管理劳动力实际上让HCM变得更加复杂。”ADP将AI构建于其核心流程、数据和专业知识之上，旨在交付现实世界成果，而非仅表面自动化。"
+          },
+          {
+            "title": "📊 强劲财务与运营表现",
+            "detail": "CFO Peter Hadley指出本季业绩强劲，营收增长7%，调整后息税前利润率扩张80个基点，每股收益增长10%。他提到：“我们在AI、服务工具和产品创新方面的投资正在业务中产生有意义的效率提升”，例如AI工具使客户咨询量同比减少8%。公司因此上调了全年营收、利润率和每股收益指引。"
+          },
+          {
+            "title": "🔒 结构性优势构建护城河",
+            "detail": "CEO阐述了ADP的三大结构性优势：强大的劳动力数据基础、深厚的领域专业知识以及品牌的信任度。她表示：“在AI时代，信任比以往任何时候都更加重要，我们通过致力于道德和负责任的AI开发来深化这种信任。”这些优势使ADP能够在监管日益复杂的环境中为客户提供合规保障，并支撑其强劲的客户留存率。"
+          }
+        ],
+        "tone": "mixed",
+        "tone_evidence": ": “CEO Maria Black多次表达信心，如‘我深信工作的世界’、‘这是HCM的决定性时刻’、‘ADP已做好充分准备，能够抓住未来的机遇’。CFO Peter Hadley也指出业绩‘超出预期’并对上调指引感到‘非常满意’，整体语气积极且对未来充满把握。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:27:20.111992"
+      },
+      "narrative_status": "done"
     },
     "ADSK": {
       "ticker": "ADSK",
@@ -2338,7 +2537,16 @@
         "gross_margin": 1,
         "gross_margin_yoy_bps": 5512.637100999999,
         "net_margin": 0.1641,
-        "net_margin_yoy_bps": 262.8407250000001
+        "net_margin_yoy_bps": 262.8407250000001,
+        "third_metric": {
+          "label": "Rate Base Growth",
+          "actual": 0.106,
+          "format": "pct",
+          "estimate": null,
+          "surprise_pct": null,
+          "yoy_change_pp": null,
+          "note": "强劲增长"
+        }
       },
       "kpis": [
         {
@@ -2513,9 +2721,42 @@
           "hint": "SBC TTM 占净利 1.4%（≤10% 低稀释区间）"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "FY2026",
+        "items": [
+          {
+            "metric": "EPS",
+            "range": "$5.25-$5.45",
+            "midpoint": 5.35,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          }
+        ],
+        "annual_note": "2026至2030年期间每股收益6%至8%增长的业绩指引",
+        "summary_tone": "maintain",
+        "summary_text": "确认2026年EPS指引区间，并重申长期盈利增长目标。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "📈 强劲费率基础增长",
+            "detail": "CEO Martin Lyons 表示：“我们预计2025至2030年费率基础将以10.6%的复合年增长率增长。这一强劲的预期费率基础增长将由318亿美元的计划基础设施投资推动。”这为未来盈利增长提供了坚实基础。"
+          },
+          {
+            "title": "⚡ 数据中心需求激增",
+            "detail": "CEO 报告：“就在本周，Ameren Missouri 与大型负荷客户签署了电力服务协议（ESA），累计代表未来需满足的2.2吉瓦新需求。”这为公司销售和盈利预测带来了显著的上行空间，并反映了服务区域内强劲的经济发展势头。"
+          },
+          {
+            "title": "🏗️ 大规模资本投资计划",
+            "detail": "公司计划“向电力、天然气和输电基础设施投资约55亿美元”，以增强电网。CEO Lyons 强调：“这些基础设施投资预计将推动10.6%的复合年费率基础增长，加上销售增长，为我们6%至8%的复合年盈利增长预期奠定基础。”"
+          }
+        ],
+        "tone": "confident",
+        "tone_evidence": "CEO Lyons 多次使用“强劲”、“令人兴奋”、“里程碑”等积极词汇，并明确表示“我对我们团队有效执行投资计划以及所有四个业务板块战略其他要素的能力充满信心”，整体语气乐观且充满确定性。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:27:47.081405"
+      },
+      "narrative_status": "done"
     },
     "AEP": {
       "ticker": "AEP",
@@ -3843,9 +4084,49 @@
           "hint": "13F 上季新进 249 - 清仓 110 = 净流入 +139 家机构"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "FY2026",
+        "items": [
+          {
+            "metric": "营收",
+            "range": "未提供具体区间",
+            "midpoint": null,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          },
+          {
+            "metric": "Adj EBITDA",
+            "range": "未提供具体区间",
+            "midpoint": null,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          }
+        ],
+        "annual_note": "未提供具体营收和EBITDA指引，但提供了基于不同锂价情景的展望区间。",
+        "summary_tone": "raise",
+        "summary_text": "上调2030年锂需求预测10%，并基于近期锂价改善提供更积极的2026年展望区间，显示盈利潜力显著提升。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "📈 锂需求展望上调",
+            "detail": "CEO Jerry Kent Masters 表示：“我们正在更新锂需求展望，以纳入储能领域更强劲的锂需求增长。因此，我们对2030年全球锂需求的预估区间较此前预测上调10%。” 这反映了公司对储能市场长期增长潜力的信心，并支撑了其战略投资和产能规划。"
+          },
+          {
+            "title": "⚙️ 成本效率与现金生成",
+            "detail": "CFO Neal R. Sheorey 指出：“我们以117%的EBITDA至经营现金转化率结束2025年...我们产生了近7亿美元的显著正向自由现金流。” 公司强调在2025年实现了约4.5亿美元的年化成本和生产效率提升，并计划在2026年再实现1亿至1.5亿美元的提升，这增强了财务灵活性并支持去杠杆。"
+          },
+          {
+            "title": "🔄 资产组合优化",
+            "detail": "CEO Jerry Kent Masters 宣布：“我们完成了对 Eurecat 合资企业股权的出售...预计将在第一季度完成对 Ketjen 多数股权出售...这两项交易预计将产生约6.6亿美元的税前收益。” 同时，公司决定闲置 Kemerton 氢氧化锂工厂以改善财务状况。这些行动旨在精简运营，聚焦核心锂业务，并增强财务实力。"
+          }
+        ],
+        "tone": "mixed",
+        "tone_evidence": ":",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:28:27.182727"
+      },
+      "narrative_status": "done"
     },
     "ALGN": {
       "ticker": "ALGN",
@@ -5825,7 +6106,18 @@
         "gross_margin": 0.7391415525,
         "gross_margin_yoy_bps": -132.776765,
         "net_margin": 0.3056803653,
-        "net_margin_yoy_bps": 1149.9049479999999
+        "net_margin_yoy_bps": 1149.9049479999999,
+        "third_metric": {
+          "label": "FFO Growth (Funds From Operations)",
+          "actual": 0.02,
+          "format": "pct",
+          "estimate": null,
+          "surprise_pct": null,
+          "yoy_change_pp": null,
+          "note": "符合预期"
+        },
+        "rev_yoy_pct_alt": 0.05,
+        "rev_yoy_pct_alt_label": "现金外汇中性，剔除DISH流失"
       },
       "kpis": [
         {
@@ -6005,9 +6297,56 @@
           "hint": "SBC TTM 占净利 6.2%（≤10% 低稀释区间）"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "FY2026",
+        "items": [
+          {
+            "metric": "营收",
+            "range": "未提供具体区间",
+            "midpoint": null,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          },
+          {
+            "metric": "Adj EBITDA",
+            "range": "未提供具体区间",
+            "midpoint": null,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          },
+          {
+            "metric": "AFFO per share",
+            "range": "未提供具体区间",
+            "midpoint": null,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          }
+        ],
+        "annual_note": "上调全年物业营收、调整后EBITDA及AFFO每股指引，主要受有利外汇及直线法调整驱动。",
+        "summary_tone": "raise",
+        "summary_text": "因有利外汇及直线法调整，上调全年物业营收、调整后EBITDA及AFFO每股指引中点约1%。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "🚀 增长驱动强劲",
+            "detail": "CEO Steve Vondran强调行业增长驱动因素持续增强，包括无线数据消费增长、云与AI采用加速以及未来6G技术转变。他指出：“这些趋势具有全球性、结构性和长期性特征，直接契合American Tower的核心优势。”这为公司提供了长期且有吸引力的增长跑道。"
+          },
+          {
+            "title": "🏗️ 资本配置严谨",
+            "detail": "公司重申严谨的资本配置框架。CFO Rodney Smith表示，2026年约85%的可支配资本将投向发达市场，包括超过7亿美元的数据中心投资、土地购买及欧洲新建站点。此外，第一季度回购了约1.84亿美元股票，自去年第四季度以来总回购额超5.65亿美元，体现了对股东回报的重视。"
+          },
+          {
+            "title": "📈 数据中心拐点",
+            "detail": "管理层指出，数据中心业务（CoreSite）本季度出现“互连活动的明显拐点”，提升了平台盈利能力和客户关系的长期持久性。数据中心现金营收同比增长约17%，得益于混合云、多云部署及AI相关用例的强劲需求，成为公司长期价值核心驱动因素。"
+          }
+        ],
+        "tone": "confident",
+        "tone_evidence": "管理层多次使用“非常满意”、“强劲”、“处于至少十年来最强的战略footing上”、“充满信心”等积极词汇，并对上调全年指引、业务长期增长驱动及资本配置灵活性表达了明确乐观态度。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:29:05.170010"
+      },
+      "narrative_status": "done"
     },
     "AMZN": {
       "ticker": "AMZN",
@@ -7674,7 +8013,16 @@
         "gross_margin": 0.8893032575,
         "gross_margin_yoy_bps": 1227.3631560000008,
         "net_margin": 0.6648330704,
-        "net_margin_yoy_bps": 2283.4329309999994
+        "net_margin_yoy_bps": 2283.4329309999994,
+        "third_metric": {
+          "label": "Adj EBITDA Margin",
+          "actual": 0.84,
+          "format": "pct",
+          "estimate": null,
+          "surprise_pct": null,
+          "yoy_change_pp": 0.07,
+          "note": "利润率扩大"
+        }
       },
       "kpis": [
         {
@@ -7864,9 +8212,49 @@
           "hint": "最近 4 季回购 $2.19B，较前 4 季 $981.3M 加大 123%"
         }
       ],
-      "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "guidance": {
+        "next_period_label": "Q1 2026",
+        "items": [
+          {
+            "metric": "营收",
+            "range": "$1,745-1,775M",
+            "midpoint": 1760000000,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          },
+          {
+            "metric": "Adj EBITDA",
+            "range": "$1,465-1,495M",
+            "midpoint": 1480000000,
+            "vs_consensus_pct": null,
+            "format": "usd"
+          }
+        ],
+        "annual_note": "未给指引",
+        "summary_tone": "raise",
+        "summary_text": "营收指引环比增长5%-7%，高于通常季节性，显示业务持续强劲。"
+      },
+      "narrative": {
+        "themes": [
+          {
+            "title": "🚀 电商自助服务上线",
+            "detail": "CEO Adam Foroughi 表示，电商业务已运营1.5年，表现非常好。第四季度开放了自助服务平台（仅限推荐），预计今年上半年全面公开发布（GA）。现有客户支出实现实质性增长，新客户通过推荐计划加入，趋势良好。电商模型近期有实质性提升，广告商看到广告支出回报率（ROAS）的巨大改善，并开始快速增加预算。"
+          },
+          {
+            "title": "🤖 AI驱动增长与竞争",
+            "detail": "CEO Adam Foroughi 强调，公司历史上最强的运营表现是由自己的AI模型驱动的。他认为AI将大幅降低游戏创作成本，导致内容爆发式增长，从而使发现平台（如AppLovin）的价值更加凸显。他驳斥了AI会削弱其业务的看跌观点，认为AI只会增强其匹配用户与内容的能力。"
+          },
+          {
+            "title": "💰 卓越盈利能力与股东回报",
+            "detail": "CFO Matt Stumpf 指出，第四季度调整后EBITDA利润率为84%，同比扩大逾700个基点。全年调整后EBITDA利润率为82%，自由现金流达39.5亿美元。本季度回购股票4.82亿美元，全年回购25.8亿美元，全部以自由现金流出资。这反映了公司对业务价值和持久性的信心，以及将强劲财务表现转化为股东回报的承诺。"
+          }
+        ],
+        "tone": "confident",
+        "tone_evidence": "CEO Adam Foroughi 表示'我们正在创造公司历史上最强的运营表现'，并认为'市场情绪与我们的业务现实之间存在真正的脱节'。CFO Matt Stumpf 称本季度是'我们有史以来表现最卓越的一年'，并给出了强劲的下一季度指引。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:31:02.663821"
+      },
+      "narrative_status": "done"
     },
     "APTV": {
       "ticker": "APTV",
@@ -99062,7 +99450,18 @@
         "gross_margin": 0.3770878176,
         "gross_margin_yoy_bps": 1490.412337,
         "net_margin": 0.0503000204,
-        "net_margin_yoy_bps": -448.54066800000004
+        "net_margin_yoy_bps": -448.54066800000004,
+        "third_metric": {
+          "label": "Production / Realized Price",
+          "actual": 1800000,
+          "format": "raw",
+          "estimate": null,
+          "surprise_pct": null,
+          "yoy_change_pp": null,
+          "note": "Permian 目标产量"
+        },
+        "rev_yoy_pct_alt": 0.08,
+        "rev_yoy_pct_alt_label": "剔除外部影响后上游产量"
       },
       "kpis": [
         {
@@ -99248,8 +99647,27 @@
         }
       ],
       "guidance": null,
-      "narrative": null,
-      "narrative_status": "pending"
+      "narrative": {
+        "themes": [
+          {
+            "title": "⚔️ 应对地缘冲击",
+            "detail": "CEO Darren Woods 表示，中东冲突造成了‘前所未有的破坏’，公司利用全球投资组合和贸易能力快速响应，通过优化物流、提升炼油产量（3月环比增加20万桶/日）来支持客户，展现了‘规模、整合和卓越执行力’的优势。"
+          },
+          {
+            "title": "🚀 优势资产驱动增长",
+            "detail": "CFO Neil Hansen 指出，剔除中东、哈萨克斯坦和冬季风暴等外部影响，上游产量同比增长8%，主要来自二叠纪盆地（Permian）和圭亚那（Guyana）的优势资产。公司重申到2026年将二叠纪产量提升至180万桶油当量/日的目标。"
+          },
+          {
+            "title": "🔬 技术与低碳布局",
+            "detail": "公司强调技术是核心竞争优势，在圭亚那实现了首个深水全自主井段。低碳解决方案方面，已启动第二个碳捕集项目，并计划在未来两年启动年捕集400万吨CO2的设施。CEO表示，这些项目‘提供具有吸引力的回报，可与我们在基础业务中的投资相竞争’。"
+          }
+        ],
+        "tone": "confident",
+        "tone_evidence": "CEO多次表达‘充满信心’，如‘我们对我们的优势充满信心’、‘对建立长期可持续盈利和现金流增长的计划充满信心’，并强调在动荡环境中业绩体现了‘基础业务的实力和韧性’。",
+        "generated_by": "deepseek-ai/DeepSeek-V3.2-Exp",
+        "generated_at": "2026-05-06T21:30:25.514156"
+      },
+      "narrative_status": "done"
     },
     "XYL": {
       "ticker": "XYL",

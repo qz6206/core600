@@ -2046,6 +2046,12 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                       ? `${(dc.third_metric.actual * 100).toFixed(1)}%`
                       : dc.third_metric.format === "usd"
                       ? formatUSD(dc.third_metric.actual)
+                      : dc.third_metric.format === "raw" && Math.abs(dc.third_metric.actual) >= 1e9
+                      ? `${(dc.third_metric.actual / 1e9).toFixed(2)}B`
+                      : dc.third_metric.format === "raw" && Math.abs(dc.third_metric.actual) >= 1e6
+                      ? `${(dc.third_metric.actual / 1e6).toFixed(2)}M`
+                      : dc.third_metric.format === "raw" && Math.abs(dc.third_metric.actual) >= 1e3
+                      ? `${(dc.third_metric.actual / 1e3).toFixed(1)}K`
                       : dc.third_metric.actual.toFixed(2)}
                   </td>
                   <td className="py-2 px-3 text-right tabular-nums text-slate-500 dark:text-slate-400">
