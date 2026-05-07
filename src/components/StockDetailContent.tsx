@@ -203,24 +203,41 @@ export default function StockDetailContent({
         {/* 顺序：财报会议 → 财报点评 → 财报日历 → 分析师预期 → 8-K → 内部人交易 → 股本动态 → 机构持仓 → 期权异动 → 公司简介 */}
 
         {/* 3. 财报会议 */}
-        <Section
-          id="transcript"
-          icon="🎙️"
-          title={transcript?.is_annual_letter ? t("年度致股东信") : t("财报会议")}
-          subtitle={
-            transcript?.is_annual_letter
-              ? `${transcript.source_label || `${transcript.year} ${t("年度致股东信")}`} · ${t("中文全文")}`
-              : transcript
-              ? `${transcript.year} ${t("财年")} Q${transcript.quarter} · ${transcript.date?.slice(0, 10) || ""} · ${t("中文全文")}`
-              : t("中文全文")
-          }
-        >
-          {transcript ? (
-            <TranscriptBlock data={transcript} />
-          ) : (
-            <Placeholder text={t("此股票暂无财报会议记录")} />
-          )}
-        </Section>
+        {(() => {
+          // 检测 transcript 季度跟最新财报点评 (interpretation) 是否对应
+          // 不对应: 显示一条 stale banner, 让用户知道这是上一季的 transcript
+          const interpFiscal = interpretation?.is_recent ? interpretation.fiscal_label : null;
+          const transFiscal =
+            transcript && !transcript.is_annual_letter && transcript.year && transcript.quarter
+              ? `${transcript.year} Q${transcript.quarter}`
+              : null;
+          const transcriptStale = !!(interpFiscal && transFiscal && interpFiscal !== transFiscal);
+          return (
+            <Section
+              id="transcript"
+              icon="🎙️"
+              title={transcript?.is_annual_letter ? t("年度致股东信") : t("财报会议")}
+              subtitle={
+                transcript?.is_annual_letter
+                  ? `${transcript.source_label || `${transcript.year} ${t("年度致股东信")}`} · ${t("中文全文")}`
+                  : transcript
+                  ? `${transcript.year} ${t("财年")} Q${transcript.quarter} · ${transcript.date?.slice(0, 10) || ""} · ${t("中文全文")}`
+                  : t("中文全文")
+              }
+            >
+              {transcriptStale && (
+                <div className="mb-3 rounded-md border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 px-3 py-2 text-xs text-amber-800 dark:text-amber-300 leading-relaxed">
+                  ⚠️ {t("以下是上一季")} {transFiscal} {t("的电话会议(对应当前财报点评的")} {interpFiscal} {t("中文翻译尚未发布,通常在新财报发布后 1-2 周内由数据源刷新。")}
+                </div>
+              )}
+              {transcript ? (
+                <TranscriptBlock data={transcript} />
+              ) : (
+                <Placeholder text={t("此股票暂无财报会议记录")} />
+              )}
+            </Section>
+          );
+        })()}
 
         {/* 3. 财报点评 */}
         {interpretation && interpretation.is_recent ? (
@@ -1987,7 +2004,7 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
             <span> {t("现金流数据(KPI / Beat 质量 / 健康度)未对齐当季,等待数据源同步,通常 1-7 天内自动补齐。")}</span>
           )}
           {data.narrative_status === "pending_transcript_lag" && (
-            <span> {t("电话会议中文翻译还在处理,管理层叙事段落将在下周一翻译刷新后自动出现。")}</span>
+            <span> {t("当季电话会议尚未发布或中文翻译尚未刷新(数据源通常在新财报后 1-2 周更新),管理层叙事段落自动等待最新一季 transcript。")}</span>
           )}
         </div>
       )}
