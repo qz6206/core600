@@ -7,12 +7,8 @@ import TimeDisplay from "@/components/TimeDisplay";
 import Footer from "@/components/Footer";
 import Term from "@/components/Term";
 import ScenarioBadge from "@/components/ScenarioBadge";
-import MetricsTrendBlock from "@/components/MetricsTrendBlock";
 import EventChart from "@/components/EventChart";
 import WatchlistStar from "@/components/WatchlistStar";
-import AskAI from "@/components/AskAI";
-import VolatilityBlock from "@/components/VolatilityBlock";
-import PeerComparisonBlock, { type PeerComparisonData } from "@/components/PeerComparisonBlock";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
@@ -60,7 +56,6 @@ interface Props {
   descriptionCn?: string | null;
   transcript?: TranscriptCN | null;
   interpretation?: EarningsInterpretation | null;
-  peerComparison?: PeerComparisonData | null;
 }
 
 export default function StockDetailContent({
@@ -75,7 +70,6 @@ export default function StockDetailContent({
   descriptionCn = null,
   transcript = null,
   interpretation = null,
-  peerComparison = null,
 }: Props) {
   const { t } = useLocale();
   const { profile, quote, quarters } = overview;
@@ -191,16 +185,6 @@ export default function StockDetailContent({
           )}
         </div>
 
-        {/* 0. AI 问答 */}
-        <Section
-          id="ask-ai"
-          icon="🤖"
-          title={t("AI 问答")}
-          subtitle={t(`关于 ${stock.ticker} 的财务问题`)}
-        >
-          <AskAI ticker={stock.ticker} stockName={stock.name_cn || stock.name} />
-        </Section>
-
         {/* 1. K 线 + 事件 marker */}
         <Section
           id="event-chart"
@@ -217,43 +201,21 @@ export default function StockDetailContent({
           />
         </Section>
 
-        {/* 2. 财务概览（最近 4 季度表格 + 8 季度趋势图）*/}
-        {(quarters.length > 0 || (fmpExtras && fmpExtras.shares.length > 0)) && (
+        {/* 2. 财务概览（最近 4 季度表格）*/}
+        {quarters.length > 0 && (
           <Section
             id="financial-overview"
             icon="📊"
             title={t("财务概览")}
-            subtitle={t("4 季度表格 + 8 季度趋势图")}
+            subtitle={t("最近 4 个季度")}
           >
-            {quarters.length > 0 && <FinancialTable quarters={quarters} />}
-            {fmpExtras && fmpExtras.shares.length > 0 && (
-              <div className="mt-6">
-                <MetricsTrendBlock shares={fmpExtras.shares} cashFlow={fmpExtras.sbc} />
-              </div>
-            )}
-          </Section>
-        )}
-
-        {/* 2b. 同业对比 */}
-        {peerComparison && peerComparison.peers.length > 1 && (
-          <Section
-            id="peer-comparison"
-            icon="🔬"
-            title={t("同业对比")}
-            subtitleNode={
-              <>
-                {peerComparison.industry || peerComparison.sector || ""} · {peerComparison.peer_count}{" "}
-                {t("家公司")}
-              </>
-            }
-          >
-            <PeerComparisonBlock data={peerComparison} />
+            <FinancialTable quarters={quarters} />
           </Section>
         )}
 
         {/* 顺序：财报会议 → 财报点评 → 财报日历 → 分析师预期 → 8-K → 内部人交易 → 股本动态 → 机构持仓 → 期权异动 → 公司简介 */}
 
-        {/* 2. 财报会议 */}
+        {/* 3. 财报会议 */}
         <Section
           id="transcript"
           icon="🎙️"
@@ -421,17 +383,7 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        {/* 9.5 波动率分析 (HV30 + IV/HV) */}
-        <Section
-          id="volatility"
-          icon="📊"
-          title={t("波动率分析")}
-          subtitle={t("HV30 + IV/HV 比 + 1 年走势")}
-        >
-          <VolatilityBlock ticker={stock.ticker} atmIv={options?.atm_iv ?? null} />
-        </Section>
-
-        {/* 10. 期权异动 */}
+        {/* 期权异动 */}
         <Section
           id="options-activity"
           icon="🎯"

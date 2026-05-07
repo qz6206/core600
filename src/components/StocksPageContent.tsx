@@ -35,20 +35,12 @@ export default function StocksPageContent({ stocks }: { stocks: Stock[] }) {
               Core 600
             </span>
           </Link>
-          <div className="flex items-center gap-4 text-sm">
-            <Link
-              href="/screener"
-              className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition"
-            >
-              🔍 {t("筛选器")}
-            </Link>
-            <Link
-              href="/"
-              className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition"
-            >
-              ← {t("首页")}
-            </Link>
-          </div>
+          <Link
+            href="/"
+            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition"
+          >
+            ← {t("首页")}
+          </Link>
         </nav>
 
         {/* 标题 */}
