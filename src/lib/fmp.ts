@@ -356,7 +356,12 @@ export interface EarningsInterpretation {
   health?: InterpretationHealth | null;    // ⑤ 健康度 5 维红绿灯
 
   narrative: InterpretationNarrative | null;     // ⑥ 管理层叙事
-  narrative_status: "done" | "pending" | "pending_transcript_lag" | "no_transcript";
+  narrative_status:
+    | "done"
+    | "pending"                          // 季度对齐, 等 LLM 富化
+    | "pending_transcript_lag"           // transcript 老一季, 等下次 cron (财报后 < 60 天)
+    | "transcript_unavailable_in_fmp"    // FMP 60+ 天还没收 → 推测永远没有, UI 引导外部源
+    | "no_transcript";
   data_complete?: boolean;  // false = cashflow 滞后, KPI/Beat/Health 必然为空
 }
 

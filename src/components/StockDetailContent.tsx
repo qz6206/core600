@@ -238,7 +238,24 @@ export default function StockDetailContent({
             >
               {transcriptStale && (
                 <div className="mb-3 rounded-md border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 px-3 py-2 text-xs text-amber-800 dark:text-amber-300 leading-relaxed">
-                  ⚠️ {t("以下是上一季")} {transFiscal} {t("的电话会议(对应当前财报点评的")} {interpFiscal} {t("中文翻译尚未发布,通常在新财报发布后 1-2 周内由数据源刷新。")}
+                  {interpretation?.narrative_status === "transcript_unavailable_in_fmp" ? (
+                    <>
+                      ⚠️ {t("以下是上一季")} {transFiscal} {t("的电话会议(财报点评对应的")} {interpFiscal} {t("在我们使用的数据源中暂未收录,可能因数据源版权限制)。如需当季原文,可前往")}
+                      <a
+                        href={`https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${stock.cik || ""}&type=8-K`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-amber-700 dark:hover:text-amber-200 mx-1"
+                      >
+                        SEC EDGAR
+                      </a>
+                      {t("或公司 IR 网站查阅。")}
+                    </>
+                  ) : (
+                    <>
+                      ⚠️ {t("以下是上一季")} {transFiscal} {t("的电话会议(对应当前财报点评的")} {interpFiscal} {t("中文翻译尚未发布,通常在新财报发布后 1-2 周内由数据源刷新。")}
+                    </>
+                  )}
                 </div>
               )}
               {transcript ? (
@@ -576,7 +593,7 @@ function FinancialTable({
           <FinancialRow label={t("营业利润率")} values={sorted.map(q => q.operatingIncomeRatio * 100)} formatter={v => `${v.toFixed(1)}%`} />
           <FinancialRow label={t("净利率")} values={sorted.map(q => q.netIncomeRatio * 100)} formatter={v => `${v.toFixed(1)}%`} />
           <FinancialRow
-            label={t("摊薄 EPS")}
+            label={<><Term term="GAAP EPS">{t("GAAP EPS")}</Term> <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">({t("摊薄")})</span></>}
             values={sorted.map(q => q.epsdiluted)}
             formatter={v => `$${v.toFixed(2)}`}
           />
@@ -879,6 +896,9 @@ function Form8KList({
             const url = filingUrl(cik, f.accessionNumber, f.primaryDocument);
             const itemLabels = isForm6K ? [] : parse8KItems(f.items);
             const isRoutine = f.summary_skipped === "routine";
+            // 任何非 null 的 summary_skipped (除 routine 外) 表示已尝试过但失败
+            // 不应该显示"生成中…"误导用户
+            const wasAttempted = f.summary_skipped && f.summary_skipped !== "routine";
             return (
               <tr
                 key={f.accessionNumber}
@@ -912,6 +932,10 @@ function Form8KList({
                   ) : isRoutine ? (
                     <span className="text-xs text-slate-400 dark:text-slate-500 italic">
                       {t("常规公告（业绩公告 / 财务表 等），详见原文")}
+                    </span>
+                  ) : wasAttempted ? (
+                    <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                      {t("暂无中文摘要,详见 SEC 原文")}
                     </span>
                   ) : (
                     <span className="text-xs text-slate-400 dark:text-slate-500 italic">
@@ -2007,15 +2031,32 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
         {data.headline}
       </div>
 
-      {/* 数据完整性警示 banner (data_complete=false 或 pending_transcript_lag) */}
-      {(data.data_complete === false || data.narrative_status === "pending_transcript_lag") && (
+      {/* 数据完整性警示 banner */}
+      {(data.data_complete === false ||
+        data.narrative_status === "pending_transcript_lag" ||
+        data.narrative_status === "transcript_unavailable_in_fmp") && (
         <div className="rounded-md border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 px-3 py-2 text-xs text-amber-800 dark:text-amber-300 leading-relaxed">
-          ⏳ {t("部分数据正在更新")}：
+          ⏳ {t("部分数据状态")}：
           {data.data_complete === false && (
             <span> {t("现金流数据(KPI / Beat 质量 / 健康度)未对齐当季,等待数据源同步,通常 1-7 天内自动补齐。")}</span>
           )}
           {data.narrative_status === "pending_transcript_lag" && (
-            <span> {t("当季电话会议尚未发布或中文翻译尚未刷新(数据源通常在新财报后 1-2 周更新),管理层叙事段落自动等待最新一季 transcript。")}</span>
+            <span> {t("当季电话会议中文翻译尚未刷新(数据源通常在新财报后 1-2 周更新),管理层叙事段落自动等待最新一季 transcript。")}</span>
+          )}
+          {data.narrative_status === "transcript_unavailable_in_fmp" && (
+            <span>
+              {" "}
+              {t("当季电话会议在我们使用的数据源(FMP)中暂未收录(可能因数据源版权限制),管理层叙事段落不展示。如需查阅原文,可前往")}
+              <a
+                href={`https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=${data.ticker}&type=8-K&dateb=&owner=include&count=10`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-amber-700 dark:hover:text-amber-200 mx-1"
+              >
+                SEC EDGAR
+              </a>
+              {t("查看公司 8-K 公告,或在 Seeking Alpha / 公司 IR 网站查阅完整 transcript。")}
+            </span>
           )}
         </div>
       )}
@@ -2037,9 +2078,12 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
               </tr>
             </thead>
             <tbody>
-              {/* EPS */}
+              {/* EPS (FMP 给的 reported EPS, 通常是公司公布的 Adjusted/Non-GAAP 口径) */}
               <tr className="border-b border-slate-100 dark:border-white/5">
-                <td className="py-2 pr-3"><Term term="EPS">EPS</Term></td>
+                <td className="py-2 pr-3">
+                  <Term term="Reported EPS">{t("Reported EPS")}</Term>{" "}
+                  <span className="text-xs text-slate-400 dark:text-slate-500">({t("公司公布")})</span>
+                </td>
                 <td className="py-2 px-3 text-right tabular-nums font-semibold">
                   {dc.eps_actual != null ? `$${dc.eps_actual.toFixed(2)}` : "—"}
                 </td>

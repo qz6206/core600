@@ -1219,10 +1219,13 @@ def process_ticker(
     # badges
     badges = make_badges(data_card, fundamentals, market_reaction, earnings, cur_idx)
 
-    # ⭐ narrative status (修 Bug 1 + 3):
-    # - 无 transcript → "no_transcript" (永久, UI 显示"年度信"或"无电话会议")
-    # - 有 transcript 但季度不对应 → "pending" (等下次 transcript 更新)
-    # - 有 transcript 且季度对应 → "pending" (等 LLM 富化)
+    # ⭐ narrative status (修 Bug 1 + 3 + AES case):
+    # - no_transcript: 完全没 transcript (永久, BRK 等)
+    # - pending: 季度对齐, 等 LLM 富化
+    # - pending_transcript_lag: transcript 老一季, 等下次 transcript cron 拿到当季 (短期等)
+    # - transcript_unavailable_in_fmp: 财报已发 60+ 天, FMP 还没收 → 推测 FMP 数据源永远不会有
+    #   (典型: AES / CVS / EA / KR / LOW / WBD 等, 见诊断脚本)
+    #   UI 应该给 fallback (引导用户到公司 IR / Seeking Alpha 等找原文)
     # - LLM 富化完成后由 enrich 脚本设为 "done"
     narrative_status = "no_transcript"
     transcript = transcripts.get(ticker)
@@ -1230,15 +1233,23 @@ def process_ticker(
         t_year = transcript.get("year")
         t_q = transcript.get("quarter")
         if transcript.get("is_annual_letter"):
-            # BRK 等年度致股东信, 不区分季度
-            narrative_status = "pending"
+            narrative_status = "pending"  # BRK 等年度致股东信
         elif t_year and t_q:
             t_label = f"{t_year} Q{t_q}"
             if t_label == fiscal_label:
                 narrative_status = "pending"
             else:
-                # transcript 是老一季, 不能用 → 等下次 transcript cron
-                narrative_status = "pending_transcript_lag"
+                # transcript 是老一季 — 看财报已发多少天, 判断是短期等还是长期没数据
+                try:
+                    earnings_dt = datetime.strptime(earnings_date, "%Y-%m-%d").date()
+                    days_since_earnings = (today - earnings_dt).days
+                except (ValueError, TypeError):
+                    days_since_earnings = 0
+                if days_since_earnings > 60:
+                    # FMP 60 天还没收 → 推测永远不会有
+                    narrative_status = "transcript_unavailable_in_fmp"
+                else:
+                    narrative_status = "pending_transcript_lag"
 
     return {
         "ticker": ticker,

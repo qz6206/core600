@@ -143,6 +143,24 @@ def main():
     with open(STOCKS_JSON) as f:
         stocks = json.load(f)["stocks"]
 
+    # ⭐ 修 (2026-05-07): 加载现有 edgar_filings.json, 后面要 merge 旧的 summary_cn / parsed 字段
+    # 之前的 bug: fetch_edgar 直接覆盖 → 每次 cron 都把 LLM 翻译的 summary_cn 清光
+    # 现在: 按 accessionNumber 匹配, 旧的 summary_cn / parsed 沿用
+    existing_by_ticker: dict = {}
+    if OUTPUT_JSON.exists():
+        try:
+            existing_data = json.load(open(OUTPUT_JSON))
+            existing_by_ticker = existing_data.get("by_ticker", {})
+            n_old_summaries = sum(
+                1
+                for recs in existing_by_ticker.values()
+                for f in recs.get("form8k", [])
+                if f.get("summary_cn")
+            )
+            print(f"   📂 已有 EDGAR 数据: {len(existing_by_ticker)} 只, {n_old_summaries} 条 8-K 已有中文摘要", flush=True)
+        except Exception as e:
+            print(f"   ⚠️  读取旧 edgar_filings.json 失败 (将全新生成): {e}", flush=True)
+
     has_cik = [s for s in stocks if s.get("cik")]
     total = len(has_cik)
     print(f"   ✓ {total} / {len(stocks)} 只有 CIK", flush=True)
@@ -173,6 +191,30 @@ def main():
                 failed.append(ticker)
                 print(f"[{completed}/{total}] {ticker}: 失败", flush=True)
                 continue
+
+            # ⭐ Merge 旧的 summary_cn / parsed 字段 (按 accessionNumber 匹配)
+            old_recs = existing_by_ticker.get(ticker, {})
+            for form_key in ("form4", "form8k", "form6k"):
+                old_by_acc = {
+                    f.get("accessionNumber"): f
+                    for f in (old_recs.get(form_key) or [])
+                    if f.get("accessionNumber")
+                }
+                for new_f in filings.get(form_key, []) or []:
+                    acc = new_f.get("accessionNumber")
+                    old_f = old_by_acc.get(acc) if acc else None
+                    if not old_f:
+                        continue
+                    # 沿用 LLM 翻译过的中文摘要
+                    if "summary_cn" in old_f and old_f.get("summary_skipped") not in (
+                        "circuit_breaker", "auth_failed", "fetch_failed", "transient"
+                    ):
+                        new_f["summary_cn"] = old_f["summary_cn"]
+                        if old_f.get("summary_skipped"):
+                            new_f["summary_skipped"] = old_f["summary_skipped"]
+                    # 沿用 Form 4 解析过的人名/动作/股数
+                    if "parsed" in old_f:
+                        new_f["parsed"] = old_f["parsed"]
 
             by_ticker[ticker] = filings
             if filings["form4"]:

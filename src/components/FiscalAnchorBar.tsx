@@ -138,6 +138,8 @@ export default function FiscalAnchorBar({
     eqrDetail = t("现金流数据滞后");
   } else if (interpretation.narrative_status === "pending_transcript_lag") {
     eqrDetail = t("等待当季 transcript");
+  } else if (interpretation.narrative_status === "transcript_unavailable_in_fmp") {
+    eqrDetail = t("数据源暂无 transcript");
   } else if (interpretation.narrative_status === "pending") {
     eqrDetail = t("叙事生成中");
   } else if (interpretation.narrative_status === "no_transcript") {

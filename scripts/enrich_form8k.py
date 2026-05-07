@@ -208,8 +208,16 @@ def enrich_one(cik: str, ticker: str, name: str, entry: dict, form_type: str, ci
     """如果 entry 没有 summary_cn 字段，抓 HTML + 总结。
     circuit 是熔断器状态字典 (跨线程共享): {"open": False, "consecutive_failures": 0, "lock": Lock}
     """
-    if "summary_cn" in entry:
-        return entry  # 已总结过
+    # ⭐ 修 (2026-05-07): 临时性失败 (circuit_breaker / auth_failed / fetch_failed) 不应永久跳过
+    # 之前的 bug: 一次余额耗尽 → 5420 条永久 circuit_breaker 标记 → 再也不重试
+    # 现在: 这些临时失败下次会重试; routine / llm_failed 才永久跳过
+    transient_skip = {"circuit_breaker", "auth_failed", "fetch_failed", "transient"}
+    if "summary_cn" in entry and entry.get("summary_skipped") not in transient_skip:
+        return entry  # 已总结过, 或永久跳过的 (routine / llm_failed)
+    # transient 失败的: 清掉旧标记重试
+    if entry.get("summary_skipped") in transient_skip:
+        entry.pop("summary_cn", None)
+        entry.pop("summary_skipped", None)
 
     items = entry.get("items", "")
     # 业绩公告类（仅 2.02 / 9.01 没有别的）跳过总结
