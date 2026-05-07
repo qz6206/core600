@@ -12,7 +12,7 @@ import WatchlistStar from "@/components/WatchlistStar";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Stock, SECTOR_CN as SC } from "@/lib/types";
 import { SECTOR_CN, SECTOR_COLORS } from "@/lib/types";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import type {
   FMPProfile,
   FMPQuote,
@@ -209,7 +209,11 @@ export default function StockDetailContent({
             title={t("财务概览")}
             subtitle={t("最近 4 个季度")}
           >
-            <FinancialTable quarters={quarters} />
+            <FinancialTable
+              quarters={quarters}
+              cashFlow={fmpExtras?.sbc}
+              shares={fmpExtras?.shares}
+            />
           </Section>
         )}
 
@@ -494,10 +498,53 @@ function Placeholder({ text }: { text: string }) {
   );
 }
 
-function FinancialTable({ quarters }: { quarters: FMPIncomeQuarter[] }) {
+function FinancialTable({
+  quarters,
+  cashFlow = [],
+  shares = [],
+}: {
+  quarters: FMPIncomeQuarter[];
+  cashFlow?: CashFlowQuarter[];
+  shares?: ShareCountQuarter[];
+}) {
   const { t } = useLocale();
   // 倒序排列（最新在前）
   const sorted = [...quarters].sort((a, b) => b.date.localeCompare(a.date));
+
+  // 按 date 匹配 cashFlow (FCF / OCF 来自 fmp_extras.sbc, 8 季度)
+  const cfByDate = useMemo(() => {
+    const m = new Map<string, CashFlowQuarter>();
+    for (const c of cashFlow) {
+      if (c.date) m.set(c.date, c);
+    }
+    return m;
+  }, [cashFlow]);
+
+  // 取每一季的 FCF / Capex / OCF
+  const cfData = sorted.map(q => {
+    const cf = cfByDate.get(q.date);
+    const fcf = cf?.fcf ?? null;
+    const ocf = cf?.ocf ?? null;
+    // Capex = OCF - FCF (会计恒等式)
+    const capex = fcf != null && ocf != null ? ocf - fcf : null;
+    return { fcf, ocf, capex };
+  });
+
+  // YoY: 用 shares (8 季度营收数据) 找 ~365 天前的对应季度
+  const computeYoY = (): number | null => {
+    if (sorted.length === 0 || shares.length < 5) return null;
+    const cur = sorted[0];
+    const yoyShares = shares.find(s => {
+      if (!s.date || !cur.date) return false;
+      const cd = new Date(cur.date).getTime();
+      const sd = new Date(s.date).getTime();
+      const diff = Math.abs((cd - sd) / 86400000 - 365);
+      return diff <= 31; // 30 天容差
+    });
+    if (!yoyShares?.revenue || !cur.revenue) return null;
+    return ((cur.revenue - yoyShares.revenue) / yoyShares.revenue) * 100;
+  };
+  const yoyRev = computeYoY();
 
   return (
     <div className="overflow-x-auto">
@@ -515,26 +562,53 @@ function FinancialTable({ quarters }: { quarters: FMPIncomeQuarter[] }) {
         <tbody>
           <FinancialRow label={t("营收")} values={sorted.map(q => q.revenue)} formatter={formatUSD} />
           <FinancialRow label={t("毛利率")} values={sorted.map(q => q.grossProfitRatio * 100)} formatter={v => `${v.toFixed(1)}%`} />
-          <FinancialRow label={t("营业利润")} values={sorted.map(q => q.operatingIncome)} formatter={formatUSD} />
-          <FinancialRow label={t("净利润")} values={sorted.map(q => q.netIncome)} formatter={formatUSD} />
+          <FinancialRow label={t("营业利润率")} values={sorted.map(q => q.operatingIncomeRatio * 100)} formatter={v => `${v.toFixed(1)}%`} />
           <FinancialRow label={t("净利率")} values={sorted.map(q => q.netIncomeRatio * 100)} formatter={v => `${v.toFixed(1)}%`} />
           <FinancialRow
             label={t("摊薄 EPS")}
             values={sorted.map(q => q.epsdiluted)}
             formatter={v => `$${v.toFixed(2)}`}
           />
+          <FinancialRow
+            label={<><Term term="FCF">FCF</Term> {t("自由现金流")}</>}
+            values={cfData.map(c => c.fcf as number)}
+            formatter={formatUSD}
+          />
+          <FinancialRow
+            label={t("Capex 资本开支")}
+            values={cfData.map(c => c.capex as number)}
+            formatter={v => formatUSD(Math.abs(v))}
+          />
+          <FinancialRow
+            label={<><Term term="FCF">FCF</Term> / {t("营收")}</>}
+            values={sorted.map((q, i) => {
+              const fcf = cfData[i]?.fcf;
+              return fcf && q.revenue ? (fcf / q.revenue) * 100 : (NaN as unknown as number);
+            })}
+            formatter={v => `${v.toFixed(1)}%`}
+          />
         </tbody>
       </table>
 
-      {sorted.length >= 2 && (
-        <div className="mt-4 text-xs text-slate-500 dark:text-slate-400">
-          {t("最新季度 vs 上一季度环比")}：
-          {(() => {
+      {(yoyRev != null || sorted.length >= 2) && (
+        <div className="mt-4 text-xs text-slate-500 dark:text-slate-400 flex flex-wrap gap-x-4 gap-y-1">
+          {yoyRev != null && (
+            <span>
+              {t("营收同比")} (YoY)：
+              <span className={`ml-1 font-medium ${colorClass(yoyRev)}`}>
+                {formatPercent(yoyRev)}
+              </span>
+            </span>
+          )}
+          {sorted.length >= 2 && (() => {
             const change = calcChange(sorted[0].revenue, sorted[1].revenue);
-            if (change === null) return "—";
+            if (change === null) return null;
             return (
-              <span className={`ml-1 font-medium ${colorClass(change)}`}>
-                {t("营收")} {formatPercent(change)}
+              <span>
+                {t("营收环比")} (QoQ)：
+                <span className={`ml-1 font-medium ${colorClass(change)}`}>
+                  {formatPercent(change)}
+                </span>
               </span>
             );
           })()}
@@ -549,7 +623,7 @@ function FinancialRow({
   values,
   formatter,
 }: {
-  label: string;
+  label: React.ReactNode;
   values: number[];
   formatter: (v: number) => string;
 }) {
