@@ -30,15 +30,20 @@ jobs:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
         run: python3 scripts/fetch_fmp_extras.py
 
+      - name: 重新生成 EQR rule-based 部分 (免费, 不调 LLM)
+        # fmp_extras 一旦更新, 财报点评的数据卡 / KPI / Beat 质量 / 健康度都可能变
+        # 这一步无成本, 总跑一遍以确保 earnings_interpretations.json 反映最新数据
+        run: python3 scripts/generate_earnings_interpretation.py
+
       - name: 检查变化
         id: check
         run: |
-          if git diff --quiet data/fmp_extras.json; then
+          if git diff --quiet data/fmp_extras.json data/earnings_interpretations.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "无变化"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "检测到 FMP extras 变化"
+            echo "检测到数据变化"
           fi
 
       - name: 提交变化
@@ -46,8 +51,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/fmp_extras.json
-          git commit -m "自动更新: FMP 杂项数据刷新
+          git add data/fmp_extras.json data/earnings_interpretations.json
+          git commit -m "自动更新: FMP 杂项 + EQR rule-based 部分刷新
 
           Triggered by GitHub Actions (daily schedule)"
           # 防御并发 push 冲突 (其它 cron 或人工 push 同时发生)
