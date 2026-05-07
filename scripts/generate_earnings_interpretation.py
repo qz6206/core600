@@ -496,6 +496,388 @@ def compute_capital_signal(sbc_history: list, shares_history: list) -> dict | No
     return None
 
 
+# ====== 新版段 ②: KPI 6 项 (rule-based) ======
+
+
+def _find_q_idx(shares: list, fpe: str) -> int | None:
+    """根据 fiscal_period_end 找在 shares[] 里的下标"""
+    if not fpe:
+        return None
+    try:
+        target = datetime.strptime(fpe[:10], "%Y-%m-%d").date()
+    except (ValueError, TypeError):
+        return None
+    for i, s in enumerate(shares):
+        try:
+            d = datetime.strptime(s.get("date", "")[:10], "%Y-%m-%d").date()
+        except (ValueError, TypeError):
+            continue
+        if abs((target - d).days) <= 7:
+            return i
+    return None
+
+
+def _q_yoy_idx(shares: list, cur_idx: int) -> int | None:
+    """同比季 (cur_idx + 4)"""
+    if cur_idx is None:
+        return None
+    target_idx = cur_idx + 4
+    return target_idx if target_idx < len(shares) else None
+
+
+def make_kpis(shares: list, sbc: list, fpe: str) -> list[dict]:
+    """6 项通用 KPI:
+       1) FCF  2) FCF/Rev  3) Capex  4) 回购  5) SBC/Rev  6) OCF/NI 现金转化率
+    """
+    kpis: list[dict] = []
+    sb_idx = _find_q_idx(sbc, fpe)
+    sh_idx = _find_q_idx(shares, fpe)
+    if sb_idx is None or sh_idx is None:
+        return kpis
+
+    cur_sb = sbc[sb_idx]
+    cur_sh = shares[sh_idx]
+    yoy_sb = sbc[sb_idx + 4] if sb_idx + 4 < len(sbc) else None
+    yoy_sh = shares[sh_idx + 4] if sh_idx + 4 < len(shares) else None
+    qoq_sb = sbc[sb_idx + 1] if sb_idx + 1 < len(sbc) else None
+
+    rev = cur_sh.get("revenue") or 0
+    fcf = cur_sb.get("fcf")
+    ocf = cur_sb.get("ocf")
+    capex = (ocf - fcf) if (ocf is not None and fcf is not None) else None
+    buyback = abs(cur_sb.get("buyback") or 0)
+    sbc_amt = cur_sb.get("sbc") or 0
+    ni = cur_sh.get("net_income") or 0
+
+    # 1. FCF
+    if fcf is not None:
+        yoy_fcf = yoy_sb.get("fcf") if yoy_sb else None
+        qoq_fcf = qoq_sb.get("fcf") if qoq_sb else None
+        kpis.append({
+            "label": "FCF 自由现金流",
+            "value": fcf, "format": "usd",
+            "yoy_change_pct": safe_pct(fcf, yoy_fcf) if yoy_fcf else None,
+            "yoy_change_pp": None,
+            "qoq_change_pct": safe_pct(fcf, qoq_fcf) if qoq_fcf else None,
+            "tone": "positive" if fcf > 0 else "negative",
+            "note": None,
+        })
+
+    # 2. FCF / Revenue
+    if fcf is not None and rev > 0:
+        fcf_margin = fcf / rev
+        yoy_fcf_margin = None
+        if yoy_sb and yoy_sh and yoy_sh.get("revenue"):
+            y_fcf = yoy_sb.get("fcf")
+            y_rev = yoy_sh.get("revenue")
+            if y_fcf is not None and y_rev:
+                yoy_fcf_margin = (fcf_margin - y_fcf / y_rev) * 100  # pp
+        tone = "positive" if fcf_margin > 0.20 else ("neutral" if fcf_margin > 0 else "negative")
+        note = "顶级 capital-light" if fcf_margin > 0.40 else None
+        kpis.append({
+            "label": "FCF / 营收",
+            "value": fcf_margin, "format": "pct",
+            "yoy_change_pct": None,
+            "yoy_change_pp": yoy_fcf_margin,
+            "qoq_change_pct": None,
+            "tone": tone,
+            "note": note,
+        })
+
+    # 3. Capex
+    if capex is not None:
+        capex_intensity = capex / rev if rev else None
+        if capex == 0:
+            note = "纯软件平台, 无烧钱压力"
+            tone = "positive"
+        elif capex_intensity is not None and capex_intensity > 0.20:
+            note = f"Capex/Rev {capex_intensity*100:.1f}% (高烧钱)"
+            tone = "negative"
+        else:
+            note = None
+            tone = "neutral"
+        kpis.append({
+            "label": "Capex 资本开支",
+            "value": capex, "format": "usd",
+            "yoy_change_pct": None, "yoy_change_pp": None, "qoq_change_pct": None,
+            "tone": tone, "note": note,
+        })
+
+    # 4. 回购
+    if buyback > 0:
+        yoy_bb = abs(yoy_sb.get("buyback") or 0) if yoy_sb else None
+        qoq_bb = abs(qoq_sb.get("buyback") or 0) if qoq_sb else None
+        yoy_pct = safe_pct(buyback, yoy_bb) if yoy_bb else None
+        qoq_pct = safe_pct(buyback, qoq_bb) if qoq_bb else None
+        if yoy_pct is not None and yoy_pct > 100:
+            tone = "positive"
+            note = f"较去年同期翻 {(buyback/yoy_bb):.1f}×"
+        elif yoy_pct is not None and yoy_pct < -50:
+            tone = "negative"
+            note = "回购大幅放缓"
+        else:
+            tone = "neutral"
+            note = None
+        kpis.append({
+            "label": "股票回购",
+            "value": buyback, "format": "usd",
+            "yoy_change_pct": yoy_pct, "yoy_change_pp": None, "qoq_change_pct": qoq_pct,
+            "tone": tone, "note": note,
+        })
+
+    # 5. SBC / Revenue
+    if rev > 0:
+        sbc_pct = sbc_amt / rev
+        if sbc_pct < 0.05:
+            tone = "positive"; note = "<5% 低稀释"
+        elif sbc_pct < 0.10:
+            tone = "neutral"; note = "<10% 健康区间"
+        elif sbc_pct < 0.20:
+            tone = "neutral"; note = None
+        else:
+            tone = "negative"; note = ">20% 高稀释"
+        yoy_pp = None
+        if yoy_sh and yoy_sb and yoy_sh.get("revenue"):
+            y_sbc_pct = (yoy_sb.get("sbc") or 0) / yoy_sh["revenue"]
+            yoy_pp = (sbc_pct - y_sbc_pct) * 100
+        kpis.append({
+            "label": "SBC / 营收",
+            "value": sbc_pct, "format": "pct",
+            "yoy_change_pct": None, "yoy_change_pp": yoy_pp, "qoq_change_pct": None,
+            "tone": tone, "note": note,
+        })
+
+    # 6. OCF / NI 现金流转化率
+    if ocf is not None and ni and ni > 0:
+        conv = ocf / ni
+        tone = "positive" if conv >= 1.0 else ("neutral" if conv >= 0.7 else "negative")
+        if conv >= 1.2:
+            note = "现金流远超利润, 极优"
+        elif conv >= 1.0:
+            note = "现金流 ≥ 利润, 健康"
+        elif conv < 0.7:
+            note = "现金转化率偏低"
+        else:
+            note = None
+        kpis.append({
+            "label": "OCF / 净利润",
+            "value": conv, "format": "ratio",
+            "yoy_change_pct": None, "yoy_change_pp": None, "qoq_change_pct": None,
+            "tone": tone, "note": note,
+        })
+
+    return kpis
+
+
+# ====== 新版段 ④: Beat 质量评估 (rule-based) ======
+
+
+def make_beat_quality(shares: list, sbc: list, fpe: str, eps_surprise: float | None) -> dict | None:
+    """4 项检查 + 综合 rating"""
+    sb_idx = _find_q_idx(sbc, fpe)
+    sh_idx = _find_q_idx(shares, fpe)
+    if sb_idx is None or sh_idx is None:
+        return None
+    if eps_surprise is None or eps_surprise <= 0:
+        return None  # 没 Beat 就不评质量
+
+    cur_sb = sbc[sb_idx]
+    cur_sh = shares[sh_idx]
+    rev = cur_sh.get("revenue") or 0
+    ocf = cur_sb.get("ocf")
+    fcf = cur_sb.get("fcf")
+    capex = (ocf - fcf) if (ocf is not None and fcf is not None) else None
+    sbc_amt = cur_sb.get("sbc") or 0
+    ni = cur_sh.get("net_income") or 0
+    op_margin = cur_sh.get("operating_margin")
+
+    checks: list[dict] = []
+    good_count = 0
+
+    # 1. GAAP Op Margin (代理 GAAP/Non-GAAP 差距 — 高 GAAP margin 意味不靠 Adj 美化)
+    if op_margin is not None:
+        if op_margin >= 0.30:
+            checks.append({"label": "GAAP Op Margin", "value": f"{op_margin*100:.1f}%",
+                           "status": "good", "hint": "GAAP 真实利润率 ≥30%, 不靠 Adj 美化"})
+            good_count += 1
+        elif op_margin >= 0.10:
+            checks.append({"label": "GAAP Op Margin", "value": f"{op_margin*100:.1f}%",
+                           "status": "ok", "hint": "GAAP 利润率适中"})
+        else:
+            checks.append({"label": "GAAP Op Margin", "value": f"{op_margin*100:.1f}%",
+                           "status": "bad", "hint": "GAAP 利润率偏低, 警惕 Adj 美化"})
+
+    # 2. OCF / 净利润
+    if ocf is not None and ni > 0:
+        conv = ocf / ni
+        if conv >= 1.0:
+            checks.append({"label": "OCF / 净利润", "value": f"{conv*100:.0f}%",
+                           "status": "good", "hint": ">100% = 现金流 ≥ 利润, 质量极优"})
+            good_count += 1
+        elif conv >= 0.7:
+            checks.append({"label": "OCF / 净利润", "value": f"{conv*100:.0f}%",
+                           "status": "ok", "hint": "现金转化率适中"})
+        else:
+            checks.append({"label": "OCF / 净利润", "value": f"{conv*100:.0f}%",
+                           "status": "bad", "hint": "<70% 现金转化率偏低"})
+
+    # 3. SBC / Rev
+    if rev > 0:
+        sbc_pct = sbc_amt / rev * 100
+        if sbc_pct < 10:
+            checks.append({"label": "SBC / 营收", "value": f"{sbc_pct:.1f}%",
+                           "status": "good", "hint": "<10% 健康区间"})
+            good_count += 1
+        elif sbc_pct < 20:
+            checks.append({"label": "SBC / 营收", "value": f"{sbc_pct:.1f}%",
+                           "status": "ok", "hint": "10-20% 中等"})
+        else:
+            checks.append({"label": "SBC / 营收", "value": f"{sbc_pct:.1f}%",
+                           "status": "bad", "hint": ">20% 高稀释"})
+
+    # 4. Capex 强度
+    if capex is not None and rev > 0:
+        if capex == 0:
+            checks.append({"label": "Capex 强度", "value": "$0",
+                           "status": "good", "hint": "纯软件平台, 无 AI capex 烧钱压力"})
+            good_count += 1
+        else:
+            cx_pct = capex / rev * 100
+            if cx_pct < 5:
+                checks.append({"label": "Capex 强度", "value": f"{cx_pct:.1f}% of Rev",
+                               "status": "good", "hint": "<5% 轻资产"})
+                good_count += 1
+            elif cx_pct < 15:
+                checks.append({"label": "Capex 强度", "value": f"{cx_pct:.1f}% of Rev",
+                               "status": "ok", "hint": "中等"})
+            else:
+                checks.append({"label": "Capex 强度", "value": f"{cx_pct:.1f}% of Rev",
+                               "status": "bad", "hint": ">15% 重资产 / 高烧钱"})
+
+    # 综合 rating
+    if good_count >= 4:
+        rating = "premium"; rating_label = "🟢🟢🟢 顶级优质"
+    elif good_count >= 2:
+        rating = "healthy"; rating_label = "🟢🟢 健康"
+    elif good_count >= 1:
+        rating = "mixed"; rating_label = "🟡 一般"
+    else:
+        rating = "questionable"; rating_label = "🔴 可疑"
+
+    summary = None
+    if op_margin is not None and op_margin >= 0.30:
+        summary = f"GAAP Op Margin {op_margin*100:.1f}% — 高质量利润"
+
+    return {
+        "rating": rating,
+        "rating_label": rating_label,
+        "checks": checks,
+        "summary": summary,
+    }
+
+
+# ====== 新版段 ⑤: 健康度 4 维红绿灯 (rule-based) ======
+
+
+def make_health(shares: list, sbc: list, fpe: str) -> dict | None:
+    """4 维: 营收增长 / 毛利率 / 运营效率 / 现金流  (资产负债维度需要 balance sheet, 暂不做)"""
+    sb_idx = _find_q_idx(sbc, fpe)
+    sh_idx = _find_q_idx(shares, fpe)
+    if sb_idx is None or sh_idx is None:
+        return None
+
+    cur_sh = shares[sh_idx]
+    yoy_sh = shares[sh_idx + 4] if sh_idx + 4 < len(shares) else None
+    cur_sb = sbc[sb_idx]
+
+    dimensions: list[dict] = []
+    great_count = 0  # stars=2 计为 great, stars=1 计为 good
+
+    # 1. 营收增长
+    rev = cur_sh.get("revenue")
+    if rev and yoy_sh and yoy_sh.get("revenue"):
+        yoy_g = (rev - yoy_sh["revenue"]) / yoy_sh["revenue"] * 100
+        if yoy_g > 30:
+            dimensions.append({"label": "营收增长", "stars": 2, "status": "great",
+                               "note": f"YoY +{yoy_g:.1f}% 高速增长"})
+            great_count += 1
+        elif yoy_g > 10:
+            dimensions.append({"label": "营收增长", "stars": 1, "status": "good",
+                               "note": f"YoY +{yoy_g:.1f}% 稳健"})
+        elif yoy_g > 0:
+            dimensions.append({"label": "营收增长", "stars": 0, "status": "warn",
+                               "note": f"YoY +{yoy_g:.1f}% 缓增"})
+        else:
+            dimensions.append({"label": "营收增长", "stars": 0, "status": "bad",
+                               "note": f"YoY {yoy_g:.1f}% 下滑"})
+
+    # 2. 毛利率
+    gm = cur_sh.get("gross_margin")
+    if gm is not None:
+        if gm >= 0.70:
+            dimensions.append({"label": "毛利率", "stars": 2, "status": "great",
+                               "note": f"{gm*100:.1f}% — 软件级毛利"})
+            great_count += 1
+        elif gm >= 0.40:
+            dimensions.append({"label": "毛利率", "stars": 1, "status": "good",
+                               "note": f"{gm*100:.1f}% — 健康"})
+        elif gm >= 0.20:
+            dimensions.append({"label": "毛利率", "stars": 0, "status": "warn",
+                               "note": f"{gm*100:.1f}% — 偏低"})
+        else:
+            dimensions.append({"label": "毛利率", "stars": 0, "status": "bad",
+                               "note": f"{gm*100:.1f}% — 薄利"})
+
+    # 3. 运营效率
+    op_m = cur_sh.get("operating_margin")
+    if op_m is not None:
+        if op_m >= 0.30:
+            dimensions.append({"label": "运营效率", "stars": 2, "status": "great",
+                               "note": f"Op Margin {op_m*100:.1f}% 顶级"})
+            great_count += 1
+        elif op_m >= 0.15:
+            dimensions.append({"label": "运营效率", "stars": 1, "status": "good",
+                               "note": f"Op Margin {op_m*100:.1f}% 健康"})
+        elif op_m >= 0:
+            dimensions.append({"label": "运营效率", "stars": 0, "status": "warn",
+                               "note": f"Op Margin {op_m*100:.1f}% 微利"})
+        else:
+            dimensions.append({"label": "运营效率", "stars": 0, "status": "bad",
+                               "note": f"Op Margin {op_m*100:.1f}% 亏损"})
+
+    # 4. 现金流 (FCF Margin)
+    fcf = cur_sb.get("fcf")
+    if fcf is not None and rev:
+        fm = fcf / rev * 100
+        if fm >= 25:
+            dimensions.append({"label": "现金流", "stars": 2, "status": "great",
+                               "note": f"FCF Margin {fm:.1f}% 顶级"})
+            great_count += 1
+        elif fm >= 10:
+            dimensions.append({"label": "现金流", "stars": 1, "status": "good",
+                               "note": f"FCF Margin {fm:.1f}% 健康"})
+        elif fm > 0:
+            dimensions.append({"label": "现金流", "stars": 0, "status": "warn",
+                               "note": f"FCF Margin {fm:.1f}% 薄"})
+        else:
+            dimensions.append({"label": "现金流", "stars": 0, "status": "bad",
+                               "note": f"FCF Margin {fm:.1f}% 烧钱"})
+
+    if not dimensions:
+        return None
+
+    # 综合 rating: 5 = 全 great, 4 = 多数 great, 3 = 中性, 2 = 多数差, 1 = 全差
+    overall = 1 + great_count
+    overall = min(overall, 5)
+    if great_count == 0 and any(d["status"] == "bad" for d in dimensions):
+        overall = max(1, overall - 1)
+
+    return {
+        "overall_rating": overall,
+        "dimensions": dimensions,
+    }
+
+
 # ====== 段 4: market_reaction ======
 
 
@@ -824,6 +1206,11 @@ def process_ticker(
     options = options_data.get(ticker)
     market_reaction = make_market_reaction(options, ratings, form8k, earnings_date)
 
+    # ⭐ 新版段 ②/④/⑤: KPI / Beat 质量 / 健康度
+    kpis = make_kpis(shares, sbc, fpe)
+    beat_quality = make_beat_quality(shares, sbc, fpe, data_card.get("eps_surprise_pct"))
+    health = make_health(shares, sbc, fpe)
+
     # badges
     badges = make_badges(data_card, fundamentals, market_reaction, earnings, cur_idx)
 
@@ -846,9 +1233,13 @@ def process_ticker(
         "generated_at": datetime.now().isoformat(),
         "headline": headline,
         "data_card": data_card,
-        "fundamentals": fundamentals,
-        "market_reaction": market_reaction,
+        "kpis": kpis,                    # ⭐ 新: 段 ②
+        "beat_quality": beat_quality,    # ⭐ 新: 段 ④
+        "health": health,                # ⭐ 新: 段 ⑤
+        "fundamentals": fundamentals,    # 旧字段保留, 用于回退
+        "market_reaction": market_reaction,  # 旧字段保留, 用于回退
         "badges": badges,
+        "guidance": None,                # ⭐ 等 LLM 阶段填
         "narrative": None,
         "narrative_status": narrative_status,
     }
@@ -897,18 +1288,27 @@ def main():
             stats["no_earnings"] += 1
             continue
 
-        # 保留 narrative：如果 fiscal_period_end 没变 + 已有 narrative
+        # 保留 LLM 写过的字段 (narrative / guidance / data_card.third_metric / data_card.rev_yoy_pct_alt):
+        # 只要 fiscal_period_end 没变, 这些字段就沿用旧的, 避免 LLM 白跑
         prior = existing_bt.get(tk)
-        if (
-            prior
-            and prior.get("fiscal_period_end") == rec["fiscal_period_end"]
-            and prior.get("narrative")
-            and prior.get("narrative_status") == "done"
-        ):
-            rec["narrative"] = prior["narrative"]
-            rec["narrative_status"] = "done"
-            stats["narrative_kept"] += 1
-        elif prior and prior.get("narrative") and prior.get("fiscal_period_end") != rec["fiscal_period_end"]:
+        same_fiscal = prior and prior.get("fiscal_period_end") == rec["fiscal_period_end"]
+        if same_fiscal:
+            # narrative
+            if prior.get("narrative") and prior.get("narrative_status") == "done":
+                rec["narrative"] = prior["narrative"]
+                rec["narrative_status"] = "done"
+                stats["narrative_kept"] += 1
+            # guidance
+            if prior.get("guidance"):
+                rec["guidance"] = prior["guidance"]
+            # data_card 的 LLM 字段
+            prior_dc = prior.get("data_card") or {}
+            if prior_dc.get("third_metric"):
+                rec["data_card"]["third_metric"] = prior_dc["third_metric"]
+            if prior_dc.get("rev_yoy_pct_alt") is not None:
+                rec["data_card"]["rev_yoy_pct_alt"] = prior_dc["rev_yoy_pct_alt"]
+                rec["data_card"]["rev_yoy_pct_alt_label"] = prior_dc.get("rev_yoy_pct_alt_label")
+        elif prior and prior.get("narrative"):
             stats["narrative_invalidated"] += 1
 
         if rec["narrative_status"] == "no_transcript":
