@@ -2226,7 +2226,9 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
               <tbody>
                 {data.beat_quality.checks.map((c, i) => (
                   <tr key={i} className="border-b border-slate-100 dark:border-white/5 last:border-0">
-                    <td className="py-2 pr-3 text-slate-600 dark:text-slate-400 whitespace-nowrap">{c.label}</td>
+                    <td className="py-2 pr-3 text-slate-600 dark:text-slate-400 whitespace-nowrap">
+                      <Term term={c.label}>{c.label}</Term>
+                    </td>
                     <td className="py-2 px-3 tabular-nums font-medium">{c.value}</td>
                     <td className="py-2 px-3">
                       <span
