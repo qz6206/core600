@@ -215,19 +215,87 @@ export interface InterpretationBadge {
 }
 
 /** 段 2: 业绩数据卡（实际 vs 预期 vs 同比） */
+/** 第三指标 (按 sector 配, 软件/广告→Adj EBITDA Margin, 半导体→GM, 银行→NIM 等) */
+export interface InterpretationThirdMetric {
+  label: string;                          // 例: "Adj EBITDA Margin" / "NIM 净息差" / "毛利率"
+  actual: number;                         // 0-1 for percent metrics, raw number otherwise
+  format: "pct" | "usd" | "ratio";
+  estimate: number | null;                // 共识预期（可选）
+  surprise_pct: number | null;            // vs estimate
+  yoy_change_pp: number | null;           // 同比变化（基点或个百分点, 看 format）
+  note: string | null;                    // 单注释（如 "创纪录"）
+}
+
 export interface InterpretationDataCard {
   eps_actual: number | null;
   eps_estimate: number | null;
-  eps_surprise_pct: number | null;        // (actual - est) / |est| * 100
+  eps_surprise_pct: number | null;
   rev_actual: number | null;
   rev_estimate: number | null;
   rev_surprise_pct: number | null;
   rev_yoy_pct: number | null;             // 同比
   rev_qoq_pct: number | null;             // 环比
-  gross_margin: number | null;            // 0-1
-  gross_margin_yoy_bps: number | null;    // 同比变化（基点 100 bps = 1%）
+  rev_yoy_pct_alt?: number | null;        // 备用: 业务剥离场景的"可比口径" (如 APP 软件单独 +59%)
+  rev_yoy_pct_alt_label?: string | null;  // 例: "软件平台单独"
+  gross_margin: number | null;
+  gross_margin_yoy_bps: number | null;
   net_margin: number | null;
   net_margin_yoy_bps: number | null;
+  third_metric?: InterpretationThirdMetric | null;  // ⭐ 新: 行业第三指标 (老数据无此字段)
+}
+
+/** ② 关键 KPI (6 项通用) */
+export interface InterpretationKPI {
+  label: string;                          // 例: "FCF 自由现金流"
+  value: number;                          // 数值
+  format: "usd" | "pct" | "ratio" | "raw";
+  yoy_change_pct: number | null;          // 同比 % (FCF, 现金等)
+  yoy_change_pp: number | null;           // 同比 pp (利润率类)
+  qoq_change_pct: number | null;          // 环比 %
+  tone: "positive" | "negative" | "neutral";
+  note: string | null;                    // 例: "纯软件平台无烧钱"
+}
+
+/** ③ Guidance 管理层指引 */
+export interface InterpretationGuidanceItem {
+  metric: string;                         // 例: "营收" / "Adj EBITDA"
+  range: string;                          // 例: "$1,920-1,950M"
+  midpoint: number | null;
+  vs_consensus_pct: number | null;        // vs 共识 %
+  format: "usd" | "pct";
+}
+export interface InterpretationGuidance {
+  next_period_label: string;              // 例: "Q2 2026"
+  items: InterpretationGuidanceItem[];
+  annual_note: string | null;             // 例: "全年指引未给（沿用 Q+1 滚动）"
+  summary_tone: "raise" | "maintain" | "lower" | "mixed";
+  summary_text: string | null;            // 一句话: "高出共识, 隐含 Q2 软件平台 +53% YoY"
+}
+
+/** ④ Beat 质量评估 */
+export interface InterpretationBeatQualityCheck {
+  label: string;                          // 例: "GAAP/Non-GAAP 差距"
+  value: string;                          // 显示文本: "GAAP Op Margin 78.2%"
+  status: "good" | "ok" | "bad";
+  hint: string;                           // 解释
+}
+export interface InterpretationBeatQuality {
+  rating: "premium" | "healthy" | "mixed" | "questionable";
+  rating_label: string;                   // "🟢🟢🟢 顶级优质"
+  checks: InterpretationBeatQualityCheck[];
+  summary: string | null;
+}
+
+/** ⑤ 基本面健康度 (5 维红绿灯) */
+export interface InterpretationHealthDim {
+  label: string;                          // "营收增长" / "毛利率" / ...
+  stars: 0 | 1 | 2;                        // 0=红 / 1=黄绿 / 2=双绿
+  status: "great" | "good" | "ok" | "warn" | "bad";
+  note: string;                           // 一句话说明
+}
+export interface InterpretationHealth {
+  overall_rating: number;                 // 0-5 星
+  dimensions: InterpretationHealthDim[];  // 5 个 (营收增长 / 毛利率 / 运营效率 / 现金流 / 资产负债)
 }
 
 /** 段 3: 基本面信号（4-6 条） */
@@ -276,12 +344,18 @@ export interface EarningsInterpretation {
   generated_at: string;
 
   headline: string;                       // 段 1: 一句话标题
-  data_card: InterpretationDataCard;      // 段 2
-  fundamentals: InterpretationFundamental[];  // 段 3
-  market_reaction: InterpretationMarketReaction;  // 段 4
-  badges: InterpretationBadge[];          // 倾向标签
+  data_card: InterpretationDataCard;      // 段 ① 业绩数据 (含 third_metric)
+  fundamentals: InterpretationFundamental[];  // (旧字段, 已被 health 替代, 但兼容保留)
+  market_reaction: InterpretationMarketReaction;  // (旧字段, 已被砍掉但保留 schema)
+  badges: InterpretationBadge[];          // 顶部色标 chip
 
-  narrative: InterpretationNarrative | null;     // 段 5
+  // === 升级后新增 ⭐ ===
+  kpis?: InterpretationKPI[];              // ② 关键 KPI (6 项)
+  guidance?: InterpretationGuidance | null; // ③ 管理层指引 (LLM 抽 transcript)
+  beat_quality?: InterpretationBeatQuality | null;  // ④ Beat 质量评估
+  health?: InterpretationHealth | null;    // ⑤ 健康度 5 维红绿灯
+
+  narrative: InterpretationNarrative | null;     // ⑥ 管理层叙事
   narrative_status: "done" | "pending" | "no_transcript";
 }
 

@@ -1931,8 +1931,37 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
     inline: "符合预期",
   };
 
+  const fmtPctVal = (v: number, decimals = 1) => `${v > 0 ? "+" : ""}${v.toFixed(decimals)}%`;
+  const fmtPp = (v: number) => `${v > 0 ? "+" : ""}${v.toFixed(0)} pp`;
+  const fmtBps = (v: number) => `${v > 0 ? "+" : ""}${v.toFixed(0)} bps`;
+  const fmtKPIValue = (k: { value: number; format: string }) => {
+    if (k.format === "usd") return formatUSD(k.value);
+    if (k.format === "pct") return `${(k.value * 100).toFixed(1)}%`;
+    if (k.format === "ratio") return `${k.value.toFixed(2)}`;
+    return `${k.value}`;
+  };
+  const toneToColor = (tone: "positive" | "negative" | "neutral") =>
+    tone === "positive"
+      ? "text-emerald-600 dark:text-emerald-400"
+      : tone === "negative"
+      ? "text-red-600 dark:text-red-400"
+      : "text-slate-600 dark:text-slate-400";
+  const dimStatusColor = (status: string) => {
+    if (status === "great") return "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300";
+    if (status === "good") return "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300";
+    if (status === "ok") return "bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300";
+    if (status === "warn") return "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300";
+    return "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300";
+  };
+  const ratingBadgeColor = (rating: string) => {
+    if (rating === "premium") return "bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300";
+    if (rating === "healthy") return "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300";
+    if (rating === "mixed") return "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300";
+    return "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300";
+  };
+
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {/* 顶部：result + 倾向标签 */}
       <div className="flex flex-wrap items-center gap-2">
         <span
@@ -1945,15 +1974,15 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
         ))}
       </div>
 
-      {/* 段 1: 一句话标题 */}
+      {/* headline */}
       <div className="text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
         {data.headline}
       </div>
 
-      {/* 段 2: 业绩数据卡 */}
+      {/* ① 业绩数据 */}
       <div>
         <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-          {t("业绩数据")}
+          ① {t("业绩数据")}
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -1967,6 +1996,7 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
               </tr>
             </thead>
             <tbody>
+              {/* EPS */}
               <tr className="border-b border-slate-100 dark:border-white/5">
                 <td className="py-2 pr-3"><Term term="EPS">EPS</Term></td>
                 <td className="py-2 px-3 text-right tabular-nums font-semibold">
@@ -1977,13 +2007,12 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                 </td>
                 <td className="py-2 px-3 text-right tabular-nums">
                   {dc.eps_surprise_pct != null ? (
-                    <span className={colorClass(dc.eps_surprise_pct)}>
-                      {formatPercent(dc.eps_surprise_pct)}
-                    </span>
+                    <span className={colorClass(dc.eps_surprise_pct)}>{formatPercent(dc.eps_surprise_pct)}</span>
                   ) : "—"}
                 </td>
                 <td className="py-2 pl-3 text-right text-slate-400 dark:text-slate-500">—</td>
               </tr>
+              {/* 营收 */}
               <tr className="border-b border-slate-100 dark:border-white/5">
                 <td className="py-2 pr-3">{t("营收")}</td>
                 <td className="py-2 px-3 text-right tabular-nums font-semibold">
@@ -1994,19 +2023,55 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                 </td>
                 <td className="py-2 px-3 text-right tabular-nums">
                   {dc.rev_surprise_pct != null ? (
-                    <span className={colorClass(dc.rev_surprise_pct)}>
-                      {formatPercent(dc.rev_surprise_pct)}
-                    </span>
+                    <span className={colorClass(dc.rev_surprise_pct)}>{formatPercent(dc.rev_surprise_pct)}</span>
                   ) : "—"}
                 </td>
                 <td className="py-2 pl-3 text-right tabular-nums">
                   {dc.rev_yoy_pct != null ? (
-                    <span className={colorClass(dc.rev_yoy_pct)}>
-                      {formatPercent(dc.rev_yoy_pct)}
-                    </span>
+                    <span className={colorClass(dc.rev_yoy_pct)}>{formatPercent(dc.rev_yoy_pct)}</span>
                   ) : "—"}
                 </td>
               </tr>
+              {/* 第三指标 (动态: 软件→Adj EBITDA Margin / 半导体→GM 等) */}
+              {dc.third_metric && (
+                <tr className="border-b border-slate-100 dark:border-white/5">
+                  <td className="py-2 pr-3">
+                    <span className="font-medium">{dc.third_metric.label}</span>
+                    {dc.third_metric.note && (
+                      <span className="ml-2 text-xs text-amber-600 dark:text-amber-400">{dc.third_metric.note}</span>
+                    )}
+                  </td>
+                  <td className="py-2 px-3 text-right tabular-nums font-semibold">
+                    {dc.third_metric.format === "pct"
+                      ? `${(dc.third_metric.actual * 100).toFixed(1)}%`
+                      : dc.third_metric.format === "usd"
+                      ? formatUSD(dc.third_metric.actual)
+                      : dc.third_metric.actual.toFixed(2)}
+                  </td>
+                  <td className="py-2 px-3 text-right tabular-nums text-slate-500 dark:text-slate-400">
+                    {dc.third_metric.estimate != null
+                      ? dc.third_metric.format === "pct"
+                        ? `~${(dc.third_metric.estimate * 100).toFixed(0)}%`
+                        : formatUSD(dc.third_metric.estimate)
+                      : "—"}
+                  </td>
+                  <td className="py-2 px-3 text-right tabular-nums">
+                    {dc.third_metric.surprise_pct != null ? (
+                      <span className={colorClass(dc.third_metric.surprise_pct)}>
+                        {fmtPctVal(dc.third_metric.surprise_pct)}
+                      </span>
+                    ) : "—"}
+                  </td>
+                  <td className="py-2 pl-3 text-right tabular-nums">
+                    {dc.third_metric.yoy_change_pp != null ? (
+                      <span className={colorClass(dc.third_metric.yoy_change_pp)}>
+                        {fmtPp(dc.third_metric.yoy_change_pp)}
+                      </span>
+                    ) : "—"}
+                  </td>
+                </tr>
+              )}
+              {/* 毛利率 */}
               <tr className="border-b border-slate-100 dark:border-white/5">
                 <td className="py-2 pr-3">{t("毛利率")}</td>
                 <td className="py-2 px-3 text-right tabular-nums font-semibold">
@@ -2016,13 +2081,11 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                 <td className="py-2 px-3 text-right text-slate-400 dark:text-slate-500">—</td>
                 <td className="py-2 pl-3 text-right tabular-nums">
                   {dc.gross_margin_yoy_bps != null ? (
-                    <span className={colorClass(dc.gross_margin_yoy_bps)}>
-                      {dc.gross_margin_yoy_bps > 0 ? "+" : ""}
-                      {dc.gross_margin_yoy_bps.toFixed(0)} bps
-                    </span>
+                    <span className={colorClass(dc.gross_margin_yoy_bps)}>{fmtBps(dc.gross_margin_yoy_bps)}</span>
                   ) : "—"}
                 </td>
               </tr>
+              {/* 净利率 */}
               <tr>
                 <td className="py-2 pr-3">{t("净利率")}</td>
                 <td className="py-2 px-3 text-right tabular-nums font-semibold">
@@ -2032,20 +2095,183 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                 <td className="py-2 px-3 text-right text-slate-400 dark:text-slate-500">—</td>
                 <td className="py-2 pl-3 text-right tabular-nums">
                   {dc.net_margin_yoy_bps != null ? (
-                    <span className={colorClass(dc.net_margin_yoy_bps)}>
-                      {dc.net_margin_yoy_bps > 0 ? "+" : ""}
-                      {dc.net_margin_yoy_bps.toFixed(0)} bps
-                    </span>
+                    <span className={colorClass(dc.net_margin_yoy_bps)}>{fmtBps(dc.net_margin_yoy_bps)}</span>
                   ) : "—"}
                 </td>
               </tr>
             </tbody>
           </table>
+          {/* 备用 YoY 注释 (业务剥离场景如 APP) */}
+          {dc.rev_yoy_pct_alt != null && dc.rev_yoy_pct_alt_label && (
+            <div className="mt-2 text-xs text-slate-500 dark:text-slate-400 italic">
+              📌 {dc.rev_yoy_pct_alt_label} YoY = <span className={colorClass(dc.rev_yoy_pct_alt) + " font-semibold"}>{fmtPctVal(dc.rev_yoy_pct_alt)}</span>
+              {dc.rev_qoq_pct != null && (
+                <span> · {t("环比")} <span className={colorClass(dc.rev_qoq_pct) + " font-semibold"}>{fmtPctVal(dc.rev_qoq_pct)}</span></span>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* 段 3: 基本面信号 */}
-      {data.fundamentals.length > 0 && (
+      {/* ② 关键 KPI */}
+      {data.kpis && data.kpis.length > 0 && (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+            ② {t("关键 KPI")}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {data.kpis.map((k, i) => (
+              <div
+                key={i}
+                className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg"
+              >
+                <div className="flex items-start justify-between mb-1">
+                  <div className="text-xs text-slate-500 dark:text-slate-400">{k.label}</div>
+                  <div
+                    className={`w-2 h-2 rounded-full mt-1.5 ${
+                      k.tone === "positive"
+                        ? "bg-emerald-500"
+                        : k.tone === "negative"
+                        ? "bg-red-500"
+                        : "bg-slate-400"
+                    }`}
+                  />
+                </div>
+                <div className={`text-lg font-semibold tabular-nums ${toneToColor(k.tone)}`}>
+                  {fmtKPIValue(k)}
+                </div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 tabular-nums">
+                  {k.yoy_change_pct != null && (
+                    <span className={colorClass(k.yoy_change_pct)}>{t("同比")} {fmtPctVal(k.yoy_change_pct, 0)}</span>
+                  )}
+                  {k.yoy_change_pp != null && (
+                    <span className={colorClass(k.yoy_change_pp)}>{t("同比")} {fmtPp(k.yoy_change_pp)}</span>
+                  )}
+                  {k.qoq_change_pct != null && (
+                    <span className={colorClass(k.qoq_change_pct) + " ml-2"}>{t("环比")} {fmtPctVal(k.qoq_change_pct, 0)}</span>
+                  )}
+                </div>
+                {k.note && (
+                  <div className="text-[11px] text-slate-400 dark:text-slate-500 mt-1 leading-relaxed">{k.note}</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ③ Guidance 管理层指引 */}
+      {data.guidance && data.guidance.items.length > 0 && (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+            <span>③ {t("管理层指引")}</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">
+              {data.guidance.next_period_label}
+            </span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
+                  <th className="text-left py-2 pr-3 font-normal">{t("指标")}</th>
+                  <th className="text-right py-2 px-3 font-normal">{t("指引区间")}</th>
+                  <th className="text-right py-2 pl-3 font-normal">{t("vs 共识")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.guidance.items.map((g, i) => (
+                  <tr key={i} className="border-b border-slate-100 dark:border-white/5">
+                    <td className="py-2 pr-3">{g.metric}</td>
+                    <td className="py-2 px-3 text-right tabular-nums font-medium">{g.range}</td>
+                    <td className="py-2 pl-3 text-right tabular-nums">
+                      {g.vs_consensus_pct != null ? (
+                        <span className={colorClass(g.vs_consensus_pct)}>
+                          {fmtPctVal(g.vs_consensus_pct)} {g.vs_consensus_pct > 0 ? "✅" : ""}
+                        </span>
+                      ) : "—"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {data.guidance.summary_text && (
+            <div className="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              {data.guidance.summary_text}
+            </div>
+          )}
+          {data.guidance.annual_note && (
+            <div className="mt-1 text-xs text-slate-400 dark:text-slate-500">{data.guidance.annual_note}</div>
+          )}
+        </div>
+      )}
+
+      {/* ④ Beat 质量评估 */}
+      {data.beat_quality && (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+            <span>④ {t("Beat 质量评估")}</span>
+            <span className={`text-xs px-2 py-0.5 rounded font-semibold ${ratingBadgeColor(data.beat_quality.rating)}`}>
+              {data.beat_quality.rating_label}
+            </span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <tbody>
+                {data.beat_quality.checks.map((c, i) => (
+                  <tr key={i} className="border-b border-slate-100 dark:border-white/5 last:border-0">
+                    <td className="py-2 pr-3 text-slate-600 dark:text-slate-400 whitespace-nowrap">{c.label}</td>
+                    <td className="py-2 px-3 tabular-nums font-medium">{c.value}</td>
+                    <td className="py-2 px-3">
+                      <span
+                        className={`inline-block w-2 h-2 rounded-full ${
+                          c.status === "good"
+                            ? "bg-emerald-500"
+                            : c.status === "ok"
+                            ? "bg-slate-400"
+                            : "bg-red-500"
+                        }`}
+                      />
+                    </td>
+                    <td className="py-2 pl-3 text-xs text-slate-500 dark:text-slate-400">{c.hint}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {data.beat_quality.summary && (
+            <div className="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed italic">
+              💡 {data.beat_quality.summary}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ⑤ 健康度 5 维红绿灯 */}
+      {data.health && data.health.dimensions.length > 0 ? (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+            <span>⑤ {t("基本面健康度")}</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">
+              {t("综合评级")} {data.health.overall_rating}/5
+            </span>
+          </div>
+          <div className="space-y-2">
+            {data.health.dimensions.map((d, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-3 p-2 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg"
+              >
+                <div className="flex-shrink-0 w-20 sm:w-24 text-sm text-slate-700 dark:text-slate-300">{d.label}</div>
+                <span className={`flex-shrink-0 inline-block px-2 py-0.5 text-xs rounded font-medium ${dimStatusColor(d.status)}`}>
+                  {d.stars === 2 ? "🟢🟢" : d.stars === 1 ? "🟢" : "⚪"}
+                </span>
+                <div className="flex-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{d.note}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : data.fundamentals && data.fundamentals.length > 0 ? (
         <div>
           <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
             {t("基本面信号")}
@@ -2067,111 +2293,44 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
             })}
           </ul>
         </div>
+      ) : null}
+
+      {/* (旧) 市场反应 — 仅老数据 (没有新 health/kpis 字段时) 显示 */}
+      {!data.kpis && !data.health && (mr.atm_iv != null || mr.put_call_ratio != null || mr.form8k_30d > 0) && (
+        <div>
+          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+            {t("市场反应")}
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+            <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+              <div className="text-xs text-slate-500 dark:text-slate-400 mb-1"><Term term="ATM IV">ATM IV</Term></div>
+              <div className="text-base font-semibold tabular-nums">
+                {mr.atm_iv != null ? `${(mr.atm_iv * 100).toFixed(1)}%` : "—"}
+              </div>
+            </div>
+            <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+              <div className="text-xs text-slate-500 dark:text-slate-400 mb-1"><Term term="Put/Call">Put/Call</Term></div>
+              <div className="text-base font-semibold tabular-nums">
+                {mr.put_call_ratio != null ? mr.put_call_ratio.toFixed(2) : "—"}
+              </div>
+            </div>
+            <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+              <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">{t("财报后 30 天 ")}<Term term="8-K">8-K</Term></div>
+              <div className="text-base font-semibold tabular-nums">{mr.form8k_30d}</div>
+            </div>
+            <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
+              <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">{t("评级 30 天")}</div>
+              <div className="text-sm tabular-nums">
+                {mr.ratings_30d ? (
+                  <>
+                    ↑{mr.ratings_30d.upgrade} ↓{mr.ratings_30d.downgrade}
+                  </>
+                ) : "—"}
+              </div>
+            </div>
+          </div>
+        </div>
       )}
-
-      {/* 段 4: 市场反应 */}
-      <div>
-        <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-          {t("市场反应")}
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-          {/* ATM IV */}
-          <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
-            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
-              <Term term="ATM IV">ATM IV</Term>
-            </div>
-            <div className="text-base font-semibold tabular-nums">
-              {mr.atm_iv != null ? `${(mr.atm_iv * 100).toFixed(1)}%` : "—"}
-            </div>
-            <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-              {mr.iv_level === "high"
-                ? t("高位（≥50%）")
-                : mr.iv_level === "medium"
-                ? t("中等")
-                : mr.iv_level === "low"
-                ? t("低位（<20%）")
-                : "—"}
-            </div>
-          </div>
-
-          {/* Put/Call */}
-          <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
-            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
-              <Term term="Put/Call">Put/Call</Term>
-            </div>
-            <div
-              className={`text-base font-semibold tabular-nums ${
-                mr.pcr_label === "bullish"
-                  ? "text-emerald-600 dark:text-emerald-400"
-                  : mr.pcr_label === "bearish"
-                  ? "text-red-600 dark:text-red-400"
-                  : ""
-              }`}
-            >
-              {mr.put_call_ratio != null ? mr.put_call_ratio.toFixed(2) : "—"}
-            </div>
-            <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-              {mr.pcr_label === "bullish"
-                ? t("看涨主导")
-                : mr.pcr_label === "bearish"
-                ? t("看跌主导")
-                : mr.pcr_label === "neutral"
-                ? t("中性")
-                : "—"}
-            </div>
-          </div>
-
-          {/* 评级 30 天 */}
-          <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
-            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
-              {t("财报后 30 天评级")}
-            </div>
-            <div className="text-sm tabular-nums flex flex-wrap gap-x-2">
-              {mr.ratings_30d ? (
-                <>
-                  {mr.ratings_30d.upgrade > 0 && (
-                    <span className="text-emerald-600 dark:text-emerald-400">
-                      <Term term="升级">{t("升级")}</Term> {mr.ratings_30d.upgrade}
-                    </span>
-                  )}
-                  {mr.ratings_30d.downgrade > 0 && (
-                    <span className="text-red-600 dark:text-red-400">
-                      <Term term="降级">{t("降级")}</Term> {mr.ratings_30d.downgrade}
-                    </span>
-                  )}
-                  {mr.ratings_30d.initiate > 0 && (
-                    <span className="text-blue-600 dark:text-blue-400">
-                      <Term term="首次覆盖">{t("首次覆盖")}</Term> {mr.ratings_30d.initiate}
-                    </span>
-                  )}
-                  {mr.ratings_30d.upgrade + mr.ratings_30d.downgrade + mr.ratings_30d.initiate === 0 && (
-                    <span className="text-slate-400 dark:text-slate-500">{t("无评级变动")}</span>
-                  )}
-                </>
-              ) : (
-                <span className="text-slate-400 dark:text-slate-500">—</span>
-              )}
-            </div>
-          </div>
-
-          {/* 8-K 30 天 */}
-          <div className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg">
-            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
-              {t("财报后 30 天 ")}<Term term="8-K">8-K</Term>
-            </div>
-            <div className="text-base font-semibold tabular-nums">
-              {mr.form8k_30d}
-            </div>
-            <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-              {mr.form8k_30d === 0
-                ? t("无重大事项")
-                : mr.form8k_30d <= 2
-                ? t("常规公告")
-                : t("公告活跃")}
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* 段 5: 管理层叙事 (Opus 4.7 提炼) */}
       {data.narrative_status === "done" && data.narrative ? (
