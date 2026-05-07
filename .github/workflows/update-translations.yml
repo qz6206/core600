@@ -54,7 +54,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/descriptions_cn.json data/transcripts.json
-          git commit -m "自动更新: 中文翻译刷新 (Kimi K2.5)
+          git commit -m "自动更新: 中文翻译刷新 (DeepSeek-V3)
 
           Triggered by GitHub Actions (weekly schedule)"
-          git push
+          # 防御并发 push 冲突 (其它 cron 或人工 push 同时发生)
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break || (echo "push 失败 (try $i), 5s 后重试" && sleep 5)
+          done

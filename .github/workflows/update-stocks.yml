@@ -71,7 +71,10 @@ jobs:
           $CHANGES
 
           Triggered by GitHub Actions"
-          git push
+          # 防御并发 push 冲突 (其它 cron 或人工 push 同时发生)
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break || (echo "push 失败 (try $i), 5s 后重试" && sleep 5)
+          done
 
       - name: 创建 Issue 通知
         if: steps.check.outputs.has_changes == 'true'
