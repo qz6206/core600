@@ -6,6 +6,7 @@ import LocaleToggle from "@/components/LocaleToggle";
 import TimeDisplay from "@/components/TimeDisplay";
 import Footer from "@/components/Footer";
 import Term from "@/components/Term";
+import FiscalAnchorBar from "@/components/FiscalAnchorBar";
 import ScenarioBadge from "@/components/ScenarioBadge";
 import WatchlistStar from "@/components/WatchlistStar";
 import { useLocale } from "@/components/LocaleProvider";
@@ -183,6 +184,16 @@ export default function StockDetailContent({
             </div>
           )}
         </div>
+
+        {/* 主季度锚点条 — 显示当季焦点 + 各 section 对齐状态 */}
+        <FiscalAnchorBar
+          interpretation={interpretation}
+          transcript={transcript}
+          form4={form4}
+          form8k={form8k}
+          inst13f={inst13f}
+          options={options}
+        />
 
         {/* 财务概览（最近 4 季度表格）*/}
         {quarters.length > 0 && (
