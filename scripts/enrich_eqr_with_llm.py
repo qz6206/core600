@@ -61,7 +61,7 @@ PRICE_OUT_PER_M = 8.0
 
 # 单次调用上限
 MAX_INPUT_TOKENS = 6000  # transcript 截断
-MAX_OUTPUT_TOKENS = 1500
+MAX_OUTPUT_TOKENS = 3500  # 一开始 1500/2200 都遇到截断, 拉到 3500 一次性解决
 
 # Transcript 字符截断 (中文 ~ 2 char/token)
 MAX_TRANSCRIPT_CHARS = 12000
@@ -324,6 +324,9 @@ def merge_into_record(rec: dict, llm_out: dict) -> None:
 
 
 def main() -> int:
+    # 开 line-buffered, 让 log 实时可见 (上次重定向到文件时 print 不显示就是这个原因)
+    sys.stdout.reconfigure(line_buffering=True)
+
     p = argparse.ArgumentParser()
     p.add_argument("--all", action="store_true", help="跑全量, 默认只采样前 10 只")
     p.add_argument("--tickers", type=str, default=None, help="指定 ticker 列表, 逗号分隔, 优先级最高")
@@ -441,15 +444,26 @@ def main() -> int:
         consecutive_fail = 0
         merge_into_record(rec, out)
         success += 1
+
+        # ⭐ 每只立刻落盘 (避免中途崩溃丢失 — 上次烧 ¥6.18 的教训)
+        # 单次写盘 ~50ms 可忽略, 但避免大批量数据丢失
+        interp["generated_at"] = datetime.now().isoformat()
+        try:
+            with open(INTERP_FILE, "w") as f:
+                json.dump(interp, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"  ⚠️  写盘失败 (继续): {e}", flush=True)
+
         elapsed = time.time() - t0
         print(
             f"  [{i}/{len(candidates)}] ✅ {tk} — "
             f"in={usage['input_tokens']} out={usage['output_tokens']} "
             f"¥{usage['cost_cny']:.4f} (累计 ¥{total_cost:.2f}) "
-            f"{elapsed:.0f}s"
+            f"{elapsed:.0f}s",
+            flush=True,  # 也修上次 log 不显示进度的问题
         )
 
-    # 写回
+    # 末尾再写一次 (兜底, 也更新 generated_at)
     interp["generated_at"] = datetime.now().isoformat()
     with open(INTERP_FILE, "w") as f:
         json.dump(interp, f, ensure_ascii=False, indent=2)
@@ -460,7 +474,8 @@ def main() -> int:
         f"   用时 {elapsed:.0f}s\n"
         f"   Token 总入 {total_input:,} / 出 {total_output:,}\n"
         f"   花费 ¥{total_cost:.2f}\n"
-        f"   写入 {INTERP_FILE.name}"
+        f"   写入 {INTERP_FILE.name}",
+        flush=True,
     )
     if failed:
         print("\n❌ 失败列表 (前 10):")

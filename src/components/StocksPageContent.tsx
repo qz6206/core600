@@ -35,12 +35,14 @@ export default function StocksPageContent({ stocks }: { stocks: Stock[] }) {
               Core 600
             </span>
           </Link>
-          <Link
-            href="/"
-            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition"
-          >
-            ← {t("首页")}
-          </Link>
+          <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+            <Link href="/calendar" className="hover:text-slate-900 dark:hover:text-white transition">
+              📅 {t("财报日历")}
+            </Link>
+            <Link href="/" className="hover:text-slate-900 dark:hover:text-white transition">
+              ← {t("首页")}
+            </Link>
+          </div>
         </nav>
 
         {/* 标题 */}

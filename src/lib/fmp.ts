@@ -259,10 +259,10 @@ export interface InterpretationKPI {
 /** ③ Guidance 管理层指引 */
 export interface InterpretationGuidanceItem {
   metric: string;                         // 例: "营收" / "Adj EBITDA"
-  range: string;                          // 例: "$1,920-1,950M"
+  range: string | null;                   // 例: "$1,920-1,950M" (LLM 抽不到具体区间时为 null)
   midpoint: number | null;
   vs_consensus_pct: number | null;        // vs 共识 %
-  format: "usd" | "pct";
+  format: "usd" | "pct" | string;         // LLM 偶尔填 "pp" / "ratio" 等非预设值
 }
 export interface InterpretationGuidance {
   next_period_label: string;              // 例: "Q2 2026"
@@ -327,7 +327,7 @@ export interface InterpretationNarrativeTheme {
 export interface InterpretationNarrative {
   themes: InterpretationNarrativeTheme[]; // 通常 3 条
   tone: "confident" | "cautious" | "defensive";  // 整体语气
-  tone_evidence: string;                  // 语气依据 (30-60 字)
+  tone_evidence: string | null;           // 语气依据 (30-60 字, LLM 偶尔抽不到时为 null)
   generated_by: string;                   // "opus-4.7"
   generated_at: string;                   // ISO timestamp
 }

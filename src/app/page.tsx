@@ -63,12 +63,20 @@ export default function Home() {
             {t("标普 500 + 纳斯达克 100 · 中文用户专属")}
           </p>
 
-          <Link
-            href="/stocks"
-            className="inline-block px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition shadow-lg shadow-indigo-500/30"
-          >
-            {t("查看 516 只股票列表")} →
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/stocks"
+              className="inline-block px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition shadow-lg shadow-indigo-500/30"
+            >
+              {t("查看 516 只股票列表")} →
+            </Link>
+            <Link
+              href="/calendar"
+              className="inline-block px-6 py-3 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/10 rounded-lg font-medium transition"
+            >
+              📅 {t("财报日历")}
+            </Link>
+          </div>
         </div>
 
         {/* 功能预览卡片 — 点击跳转 NVDA 对应 section */}
