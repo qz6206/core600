@@ -441,11 +441,13 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        {/* 公司简介 — 优先中文版（Kimi K2.5 翻译），fallback 英文 */}
+        {/* 公司简介 — EN mode: 用 FMP 原文英文; zh: 中文翻译 fallback 英文 */}
         {(descriptionCn || profile?.description) && (
           <Section icon="ℹ️" title={t("公司简介")}>
             <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
-              {descriptionCn || profile?.description}
+              {isEnglish
+                ? (profile?.description || descriptionCn)
+                : (descriptionCn || profile?.description)}
             </div>
             {profile?.website && (
               <a
@@ -885,7 +887,7 @@ function Form8KList({
   filings: EdgarFiling[];
   isForm6K?: boolean;
 }) {
-  const { t } = useLocale();
+  const { t, isEnglish } = useLocale();
   const [expanded, setExpanded] = useState(false);
   const INITIAL_ROWS = 5;
   const sorted = [...filings].sort((a, b) => b.filingDate.localeCompare(a.filingDate));
@@ -939,7 +941,12 @@ function Form8KList({
                   )}
                 </td>
                 <td className="py-3 pr-3 text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-w-[420px]">
-                  {f.summary_cn ? (
+                  {isEnglish ? (
+                    // EN mode: 不显示中文摘要 (对英文用户没用), 引导点 SEC 看英文原文
+                    <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                      Click SEC → for original filing
+                    </span>
+                  ) : f.summary_cn ? (
                     <span>{f.summary_cn}</span>
                   ) : isRoutine ? (
                     <span className="text-xs text-slate-400 dark:text-slate-500 italic">
