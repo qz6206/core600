@@ -71,7 +71,7 @@ export default function StockDetailContent({
   transcript = null,
   interpretation = null,
 }: Props) {
-  const { t } = useLocale();
+  const { t, isEnglish } = useLocale();
   const { profile, quote, quarters } = overview;
 
   const sectorColor =
@@ -130,12 +130,14 @@ export default function StockDetailContent({
                 </div>
               </div>
 
-              {stock.name_cn && (
+              {/* 中文名仅 zh 模式显示, EN 模式隐藏 */}
+              {stock.name_cn && !isEnglish && (
                 <div className="text-xl font-medium text-slate-700 dark:text-slate-300 mb-1">
                   {t(stock.name_cn)}
                 </div>
               )}
-              <div className="text-base text-slate-500 dark:text-slate-400 mb-3">
+              {/* 英文名: zh 模式作副标题, EN 模式作主标题 (用大字号) */}
+              <div className={`${isEnglish ? "text-xl font-medium text-slate-700 dark:text-slate-300" : "text-base text-slate-500 dark:text-slate-400"} mb-3`}>
                 {stock.name}
               </div>
 
@@ -174,11 +176,11 @@ export default function StockDetailContent({
               <Metric label={t("成交量")} value={formatVolume(quote.volume)} />
               <Metric label={t("均量")} value={formatVolume(quote.avgVolume)} />
               <Metric
-                label="50日均价"
+                label={t("50日均价")}
                 value={formatPrice(quote.priceAvg50)}
               />
               <Metric
-                label="200日均价"
+                label={t("200日均价")}
                 value={formatPrice(quote.priceAvg200)}
               />
             </div>

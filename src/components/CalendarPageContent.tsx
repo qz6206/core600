@@ -10,9 +10,9 @@ import { useLocale } from "@/components/LocaleProvider";
 import type { CalendarEntry } from "@/app/calendar/page";
 
 const RANGE_OPTIONS = [
-  { label: "7 天", days: 7 },
-  { label: "30 天", days: 30 },
-  { label: "60 天", days: 60 },
+  { label_zh: "7 天", label_en: "7 days", days: 7 },
+  { label_zh: "30 天", label_en: "30 days", days: 30 },
+  { label_zh: "60 天", label_en: "60 days", days: 60 },
 ];
 
 function formatDate(d: string, locale: string): string {
@@ -61,7 +61,7 @@ export default function CalendarPageContent({
   recent: CalendarEntry[];
   tickerWithEQR: string[];
 }) {
-  const { t, locale } = useLocale();
+  const { t, locale, isEnglish } = useLocale();
   const [rangeDays, setRangeDays] = useState(30);
 
   const eqrSet = useMemo(() => new Set(tickerWithEQR), [tickerWithEQR]);
@@ -137,7 +137,7 @@ export default function CalendarPageContent({
                   : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
               }`}
             >
-              {t("未来")} {opt.label}
+              {isEnglish ? `Upcoming ${opt.label_en}` : `${t("未来")} ${opt.label_zh}`}
             </button>
           ))}
           <span className="ml-auto self-center text-sm text-slate-500 dark:text-slate-400">

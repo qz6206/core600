@@ -305,6 +305,58 @@ export const T_EN: Record<string, string> = {
   // ===== Term tooltip =====
   "术语解释": "Term definition",
 
-  // ===== Misc retrofit =====
+  // ===== Sectors (GICS 11 个) =====
+  "科技": "Technology",
+  "工业": "Industrials",
+  "金融": "Financials",
+  "医疗": "Health Care",
+  "非必需消费": "Consumer Discretionary",
+  "必需消费": "Consumer Staples",
+  "通讯": "Communication",
+  "能源": "Energy",
+  "公用事业": "Utilities",
+  "房地产": "Real Estate",
+  "材料": "Materials",
+  "All sectors": "All sectors",
+
+  // ===== 首页 features =====
+  "中文全文翻译": "Full transcript translation",
+  "自动解读 + 倾向标签": "Auto analysis + sentiment tags",
+  "下次财报 + 历史发布日": "Next earnings + history",
+  "Beat 历史 + 评级变动": "Beat history + rating changes",
+  "8-K 公司重大事项": "8-K Material Events",
+  "中文化摘要时间线": "Chinese summary timeline",
+  "高管买卖动向追踪": "Executive trading activity",
+  "回购 + SBC 稀释追踪": "Buyback + SBC dilution",
+  "13F 明星基金动态": "13F top funds",
+  "ATM IV + 聪明钱大单": "ATM IV + smart-money flows",
+
+  // ===== 个股详情页 quote 区 =====
+  "50日均价": "50-day MA",
+  "200日均价": "200-day MA",
+  "Volume": "Volume",
+  "Avg Volume": "Avg Volume",
+
+  // ===== EQR result labels =====
+  "✅ 超预期": "✅ Beat",
+  "❌ 未达预期": "❌ Miss",
+  "⚠️ 喜忧参半": "⚠️ Mixed",
+  "= 符合预期": "= In line",
+  "Current focus": "Current focus",
+
+  // ===== Stocks 列表页 =====
+  "Total": "Total",
+  "Both included": "Both included",
+  "Watchlist": "Watchlist",
+  "S&P 500 only": "S&P 500 only",
+  "Nasdaq 100 only": "Nasdaq 100 only",
+
+  // ===== Earnings Calendar 页 =====
+  "Upcoming": "Upcoming",
+  "stocks": "stocks",
+  "Today": "Today",
+  "days later": "days later",
+
+  // ===== Misc =====
   "Retry-After": "Retry-After",
 };

@@ -10,7 +10,7 @@ import WatchlistStar from "@/components/WatchlistStar";
 type IndexFilter = "all" | "sp500" | "nasdaq100" | "both" | "watchlist";
 
 export default function StockList({ stocks }: { stocks: Stock[] }) {
-  const { t } = useLocale();
+  const { t, isEnglish } = useLocale();
   const [search, setSearch] = useState("");
   const [selectedSector, setSelectedSector] = useState<string>("all");
   const [indexFilter, setIndexFilter] = useState<IndexFilter>("all");
@@ -155,7 +155,7 @@ function FilterPill({
 }
 
 function StockCard({ stock }: { stock: Stock }) {
-  const { t } = useLocale();
+  const { t, isEnglish } = useLocale();
   const sectorColor = SECTOR_COLORS[stock.sector] || "bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-500/20 dark:text-slate-300 dark:border-slate-500/30";
 
   return (
@@ -168,7 +168,8 @@ function StockCard({ stock }: { stock: Stock }) {
           <div className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition">
             {stock.ticker}
           </div>
-          {stock.name_cn ? (
+          {/* EN mode: 只显示英文名;  zh: 中+英 */}
+          {stock.name_cn && !isEnglish ? (
             <>
               <div className="text-sm font-medium text-slate-700 dark:text-slate-300 line-clamp-1">
                 {t(stock.name_cn)}
