@@ -177,26 +177,36 @@ export default function FiscalAnchorBar({
   const form4Count = form4.filter((f) => within30d(f.filingDate)).length;
   const form8kCount = form8k.filter((f) => within30d(f.filingDate)).length;
 
-  const form4Status: StatusKind = form4Count > 0 ? "ok" : "info";
+  // 设计原则: 有数据 → ok (绿色 ✓); 无数据 → missing (灰色 —)
+  // 不再用 'info' 中性状态 (用户视觉上分不出 info 跟 missing)
+
+  const form4Status: StatusKind = form4Count > 0 ? "ok" : "missing";
   const form4Detail = form4Count > 0
     ? `${t("财报日±30 天")} ${form4Count} ${t("笔")}`
     : t("无显著买卖");
 
-  const form8kStatus: StatusKind = form8kCount > 0 ? "ok" : "info";
+  const form8kStatus: StatusKind = form8kCount > 0 ? "ok" : "missing";
   const form8kDetail = form8kCount > 0
     ? `${t("财报日±30 天")} ${form8kCount} ${t("份")}`
     : t("无重大事项");
 
-  // 13F (季度数据,显示申报日期)
+  // 13F (季度数据,显示申报日期) - 有数据就绿
   const inst13fDate = inst13f?.summary?.date || null;
-  const inst13fStatus: StatusKind = inst13fDate ? "info" : "missing";
+  const inst13fStatus: StatusKind = inst13fDate ? "ok" : "missing";
   const inst13fDetail = inst13fDate ? `${inst13fDate} ${t("机构持仓")}` : t("无");
 
-  // 期权 (实时快照)
+  // 期权 (实时快照) - 有任何核心字段就绿 (atm_iv / pcr / 异动单 任一有数据)
   const optionsAtmIv = options?.atm_iv ?? null;
-  const optionsStatus: StatusKind = optionsAtmIv != null ? "info" : "missing";
+  const optionsPcr = options?.put_call_ratio ?? null;
+  const optionsTopCount = options?.top_contracts?.length ?? 0;
+  const hasOptions = optionsAtmIv != null || optionsPcr != null || optionsTopCount > 0;
+  const optionsStatus: StatusKind = hasOptions ? "ok" : "missing";
   const optionsDetail = optionsAtmIv != null
     ? `ATM IV ${(optionsAtmIv * 100).toFixed(1)}%`
+    : optionsPcr != null
+    ? `PCR ${optionsPcr.toFixed(2)}`
+    : optionsTopCount > 0
+    ? `${optionsTopCount} ${t("条异动")}`
     : t("无");
 
   // 总结状态: 是否有任何 section 不对齐
