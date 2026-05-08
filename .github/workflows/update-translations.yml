@@ -2,8 +2,10 @@ name: 自动刷新中文翻译 (公司简介 + 财报会议)
 
 on:
   schedule:
-    # 每周一早上 8:00 UTC（季度财报后会更新）
-    - cron: '0 8 * * 1'
+    # 每天早上 8:00 UTC (北京 16:00) - FMP transcript 通常 1-2 周延迟,
+    # 我们每天跑一次让感知延迟从最多 1 周缩短到最多 24 小时。
+    # 脚本 reused 机制保证 99% 股票跳过, 只翻译新到的 fiscal quarter
+    - cron: '0 8 * * *'
   workflow_dispatch:
 
 concurrency:
