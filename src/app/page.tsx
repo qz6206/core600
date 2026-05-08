@@ -14,15 +14,14 @@ export default function Home() {
   const DEMO_TICKER = "NVDA";
   const features = [
     // 第一行：财报核心
-    { icon: "📊", title: "财务概览", desc: "营收 / 毛利率 / FCF / Capex", anchor: "financial-overview" },
     { icon: "🎙️", title: "财报会议", desc: "中文全文翻译", anchor: "transcript" },
     { icon: "📝", title: "财报点评", desc: "自动解读 + 倾向标签", anchor: "earnings-interpretation" },
-    // 第二行：日历 + 信号
     { icon: "📅", title: "财报日历", desc: "下次财报 + 历史发布日", anchor: "earnings-calendar" },
+    // 第二行：信号 + 监管
     { icon: "🔮", title: "分析师预期", desc: "Beat 历史 + 评级变动", anchor: "analyst-estimates" },
     { icon: "📰", title: "8-K 公司重大事项", desc: "中文化摘要时间线", anchor: "form-8k" },
-    // 第三行：监管 + 资金 + 期权
     { icon: "👤", title: "内部人交易", desc: "高管买卖动向追踪", anchor: "insider-trading" },
+    // 第三行：资金 + 机构 + 期权
     { icon: "📉", title: "股本动态", desc: "回购 + SBC 稀释追踪", anchor: "capital-dynamics" },
     { icon: "🏛️", title: "机构持仓", desc: "13F 明星基金动态", anchor: "inst-13f" },
     { icon: "🎯", title: "期权异动", desc: "ATM IV + 聪明钱大单", anchor: "options-activity" },
@@ -50,10 +49,7 @@ export default function Home() {
             </svg>
           </div>
 
-          <div className="inline-block px-4 py-1 mb-6 bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 rounded-full text-sm font-medium">
-            🚀 {t("即将上线")}
-          </div>
-          <h1 className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-slate-900 via-indigo-700 to-purple-700 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-7xl font-bold mb-4 mt-4 bg-gradient-to-r from-slate-900 via-indigo-700 to-purple-700 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent">
             Core 600
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-2">
