@@ -536,8 +536,18 @@ function FinancialTable({
   shares?: ShareCountQuarter[];
 }) {
   const { t } = useLocale();
+  // 过滤掉 FMP 的"占位记录" — 财报还没正式发但 FMP 提前建了行
+  // 典型特征: revenue/NI 有但 diluted shares / margin / EPS 全是 0
+  // 例: AES 2026 Q1 (5-13 才发) FMP 已有 revenue=3.18B 但 diluted=0, gross_margin=0
+  const filtered = quarters.filter((q) => {
+    // 三个核心字段全部为 0 (或 null) → 判定为占位, 跳过
+    const grossEmpty = !q.grossProfitRatio;
+    const opEmpty = !q.operatingIncomeRatio;
+    const epsEmpty = !q.epsdiluted;
+    return !(grossEmpty && opEmpty && epsEmpty);
+  });
   // 倒序排列（最新在前）
-  const sorted = [...quarters].sort((a, b) => b.date.localeCompare(a.date));
+  const sorted = [...filtered].sort((a, b) => b.date.localeCompare(a.date));
 
   // 按 date 匹配 cashFlow (FCF / OCF 来自 fmp_extras.sbc, 8 季度)
   const cfByDate = useMemo(() => {
