@@ -158,12 +158,13 @@ function StockCard({ stock }: { stock: Stock }) {
   const { t, isEnglish } = useLocale();
   const sectorColor = SECTOR_COLORS[stock.sector] || "bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-500/20 dark:text-slate-300 dark:border-slate-500/30";
 
+  // 卡片用 flex-col, 中间内容 flex-1 撑开, sector tag 固定在底部 → 所有卡片 sector 位置对齐
   return (
     <Link
       href={`/stocks/${stock.ticker}`}
-      className="block p-4 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 transition group shadow-sm"
+      className="flex flex-col p-4 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg hover:bg-slate-50 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/20 transition group shadow-sm min-h-[140px]"
     >
-      <div className="flex items-start justify-between mb-2">
+      <div className="flex items-start justify-between mb-2 flex-1">
         <div className="min-w-0 flex-1">
           <div className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition">
             {stock.ticker}
@@ -201,7 +202,7 @@ function StockCard({ stock }: { stock: Stock }) {
         </div>
       </div>
       {stock.sector && (
-        <span className={`inline-block px-2 py-0.5 text-xs rounded border ${sectorColor}`}>
+        <span className={`inline-block px-2 py-0.5 text-xs rounded border self-start ${sectorColor}`}>
           {t(SECTOR_CN[stock.sector] || stock.sector)}
         </span>
       )}

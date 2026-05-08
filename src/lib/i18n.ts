@@ -320,12 +320,12 @@ export const T_EN: Record<string, string> = {
   "All sectors": "All sectors",
 
   // ===== 首页 features =====
-  "中文全文翻译": "Full transcript translation",
+  "中文全文翻译": "Full earnings call transcript",
   "自动解读 + 倾向标签": "Auto analysis + sentiment tags",
   "下次财报 + 历史发布日": "Next earnings + history",
   "Beat 历史 + 评级变动": "Beat history + rating changes",
   "8-K 公司重大事项": "8-K Material Events",
-  "中文化摘要时间线": "Chinese summary timeline",
+  "中文化摘要时间线": "SEC filings timeline",
   "高管买卖动向追踪": "Executive trading activity",
   "回购 + SBC 稀释追踪": "Buyback + SBC dilution",
   "13F 明星基金动态": "13F top funds",
