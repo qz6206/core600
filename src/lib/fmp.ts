@@ -420,11 +420,13 @@ export async function getRecentQuarters(ticker: string, limit = 4): Promise<FMPI
 }
 
 // 一次性拉取个股详情页全部基础数据
+// 注: quarters 拉 6 个 (而不是 4 个), UI 端会过滤 FMP 占位记录后再取前 4
+//     占位记录例: AES 2026 Q1 财报 5-13 才发但 FMP 提前建了行 (margin/EPS=0)
 export async function getStockOverview(ticker: string) {
   const [profile, quote, quarters] = await Promise.all([
     getProfile(ticker),
     getQuote(ticker),
-    getRecentQuarters(ticker, 4),
+    getRecentQuarters(ticker, 6),
   ]);
   return { profile, quote, quarters };
 }

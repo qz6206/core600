@@ -546,8 +546,8 @@ function FinancialTable({
     const epsEmpty = !q.epsdiluted;
     return !(grossEmpty && opEmpty && epsEmpty);
   });
-  // 倒序排列（最新在前）
-  const sorted = [...filtered].sort((a, b) => b.date.localeCompare(a.date));
+  // 倒序排列（最新在前）, 取前 4 季 (上游拉 6 季 buffer 给 filter)
+  const sorted = [...filtered].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
 
   // 按 date 匹配 cashFlow (FCF / OCF 来自 fmp_extras.sbc, 8 季度)
   const cfByDate = useMemo(() => {
