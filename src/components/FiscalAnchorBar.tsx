@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLocale } from "@/components/LocaleProvider";
+import Term from "@/components/Term";
 import type { EarningsInterpretation, TranscriptCN, Inst13F, OptionsActivity } from "@/lib/fmp";
 import type { EdgarFiling } from "@/lib/edgar";
 
@@ -227,7 +228,9 @@ export default function FiscalAnchorBar({
           <span className="text-slate-500 dark:text-slate-400">{t("当季焦点")}:</span>
           <span className="font-semibold text-slate-900 dark:text-white">{fiscal}</span>
           <span className="text-slate-400 dark:text-slate-500">·</span>
-          <span className="tabular-nums text-slate-700 dark:text-slate-300">{earningsDate}</span>
+          <Term term="财报披露日">
+            <span className="tabular-nums text-slate-700 dark:text-slate-300">{earningsDate}</span>
+          </Term>
           {releaseTime === "bmo" && (
             <span className="text-[10px] px-1.5 py-0.5 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 rounded">
               {t("盘前")}
