@@ -1986,7 +1986,7 @@ function formatVolume(volume: number | undefined): string {
 // ====== 财报速评 ======
 
 function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation }) {
-  const { t } = useLocale();
+  const { t, isEnglish } = useLocale();
   const dc = data.data_card;
   const mr = data.market_reaction;
 
@@ -2447,50 +2447,76 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
 
       {/* 段 5: 管理层叙事 (Opus 4.7 提炼) */}
       {data.narrative_status === "done" && data.narrative ? (
-        <div>
-          <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-baseline gap-2">
-            <span>{t("管理层叙事")}</span>
-            <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">
-              {t("基于电话会议中文 transcript 提炼")}
-            </span>
-          </div>
-          <div className="space-y-3">
-            {data.narrative.themes.map((theme, i) => (
-              <div
-                key={i}
-                className="p-3 bg-slate-50 dark:bg-white/5 border-l-4 border-indigo-300 dark:border-indigo-500/50 rounded-r-lg"
-              >
-                <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1">
-                  {i + 1}. {theme.title}
-                </div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  {theme.detail}
-                </div>
+        (() => {
+          // EN mode: 优先双语字段, 没有就 fallback 中文
+          type ThemeWithEn = { title: string; detail: string; title_en?: string; detail_en?: string };
+          type NarrativeWithEn = typeof data.narrative & {
+            tone_evidence_en?: string;
+            schema_version?: number;
+          };
+          const nar = data.narrative as NarrativeWithEn;
+          const enAvailable = isEnglish && nar.themes.some((t) => (t as ThemeWithEn).title_en);
+          const renderTitle = (theme: ThemeWithEn) =>
+            enAvailable && theme.title_en ? theme.title_en : theme.title;
+          const renderDetail = (theme: ThemeWithEn) =>
+            enAvailable && theme.detail_en ? theme.detail_en : theme.detail;
+          const renderEvidence = enAvailable && nar.tone_evidence_en
+            ? nar.tone_evidence_en
+            : nar.tone_evidence;
+          return (
+            <div>
+              <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-baseline gap-2">
+                <span>{t("管理层叙事")}</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">
+                  {enAvailable
+                    ? "Extracted from earnings call transcript"
+                    : t("基于电话会议中文 transcript 提炼")}
+                </span>
+                {isEnglish && !enAvailable && (
+                  <span className="text-[10px] px-1.5 py-0.5 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 rounded">
+                    English version pending
+                  </span>
+                )}
               </div>
-            ))}
-          </div>
-          <div className="mt-3 flex items-center gap-2 text-xs">
-            <span className="text-slate-500 dark:text-slate-400">{t("整体语气")}：</span>
-            <span
-              className={`px-2 py-0.5 rounded font-medium ${
-                data.narrative.tone === "confident"
-                  ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
-                  : data.narrative.tone === "cautious"
-                  ? "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300"
-                  : "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300"
-              }`}
-            >
-              {data.narrative.tone === "confident"
-                ? t("自信")
-                : data.narrative.tone === "cautious"
-                ? t("谨慎")
-                : t("防御")}
-            </span>
-            <span className="text-slate-500 dark:text-slate-400">
-              · {data.narrative.tone_evidence}
-            </span>
-          </div>
-        </div>
+              <div className="space-y-3">
+                {nar.themes.map((theme, i) => (
+                  <div
+                    key={i}
+                    className="p-3 bg-slate-50 dark:bg-white/5 border-l-4 border-indigo-300 dark:border-indigo-500/50 rounded-r-lg"
+                  >
+                    <div className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1">
+                      {i + 1}. {renderTitle(theme as ThemeWithEn)}
+                    </div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {renderDetail(theme as ThemeWithEn)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3 flex items-center gap-2 text-xs">
+                <span className="text-slate-500 dark:text-slate-400">{t("整体语气")}：</span>
+                <span
+                  className={`px-2 py-0.5 rounded font-medium ${
+                    nar.tone === "confident"
+                      ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
+                      : nar.tone === "cautious"
+                      ? "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300"
+                      : "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300"
+                  }`}
+                >
+                  {nar.tone === "confident"
+                    ? t("自信")
+                    : nar.tone === "cautious"
+                    ? t("谨慎")
+                    : t("防御")}
+                </span>
+                <span className="text-slate-500 dark:text-slate-400">
+                  · {renderEvidence}
+                </span>
+              </div>
+            </div>
+          );
+        })()
       ) : null}
       {/* narrative_status=pending / no_transcript 时不显示这一段（保持页面紧凑）*/}
 

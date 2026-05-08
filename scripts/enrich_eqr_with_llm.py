@@ -177,13 +177,15 @@ PROMPT_TEMPLATE = """你是资深美股财报分析师, 仅基于下方电话会
   }},
   "narrative": {{
     "themes": [
-      {{"title": "<主题标题, 12 字内, 加 emoji>", "detail": "<60-100 字, 引用 CEO/CFO 原话, 解释意义>"}},
-      {{"title": "...", "detail": "..."}},
-      {{"title": "...", "detail": "..."}}
+      {{"title": "<中文主题标题, 12 字内, 加 emoji>", "title_en": "<English title, ~10 words>", "detail": "<60-100 字中文>", "detail_en": "<English detail, ~80-120 words, similar content>"}},
+      {{"title": "...", "title_en": "...", "detail": "...", "detail_en": "..."}},
+      {{"title": "...", "title_en": "...", "detail": "...", "detail_en": "..."}}
     ],
     "tone": "<confident / cautious / mixed>",
-    "tone_evidence": "<30-60 字: 为什么判断是这个 tone, 引用具体词句>"
-  }}
+    "tone_evidence": "<30-60 字中文>",
+    "tone_evidence_en": "<English version of tone_evidence, ~40-80 words>"
+  }},
+  "guidance_summary_text_en": "<English version of guidance.summary_text>"
 }}
 
 规则:
@@ -192,6 +194,7 @@ PROMPT_TEMPLATE = """你是资深美股财报分析师, 仅基于下方电话会
 - third_metric.actual 比例类务必用小数 (0.85 不是 85)
 - guidance.items 至少 1 项最多 3 项, 没给指引就空数组 []
 - narrative.themes 必须 3 项, 真的没料就用本季亮点 (回购 / 利润率扩张 / 增长加速等)
+- 双语字段: 中文版优先专业财经汉语; 英文版用专业财经英文 (e.g. Beat → Beat, FCF → FCF, Adj EBITDA → Adj EBITDA)
 """
 
 
@@ -286,19 +289,27 @@ def merge_into_record(rec: dict, llm_out: dict) -> None:
             "annual_note": g.get("annual_note"),
             "summary_tone": g.get("summary_tone") or "maintain",
             "summary_text": g.get("summary_text"),
+            "summary_text_en": llm_out.get("guidance_summary_text_en"),  # ⭐ 新: 英文版
         }
 
     n = llm_out.get("narrative")
     if isinstance(n, dict) and n.get("themes"):
         # Sanitize themes: 只保留有 title + detail 的 dict, 最多 3 个
+        # 同时保留 title_en / detail_en 双语字段
         clean_themes: list[dict] = []
         salvage_evidence = None
         for t in n.get("themes") or []:
             if isinstance(t, dict) and t.get("title") and t.get("detail"):
-                clean_themes.append({
+                theme = {
                     "title": str(t["title"]),
                     "detail": str(t["detail"]),
-                })
+                }
+                # 双语字段 (可选, LLM 没填则没有)
+                if t.get("title_en"):
+                    theme["title_en"] = str(t["title_en"])
+                if t.get("detail_en"):
+                    theme["detail_en"] = str(t["detail_en"])
+                clean_themes.append(theme)
             elif isinstance(t, str) and "tone_evidence" in t.lower():
                 # LLM 偶尔把 tone_evidence 错串到 themes 里, 抢救一下
                 salvage_evidence = t
@@ -317,8 +328,10 @@ def merge_into_record(rec: dict, llm_out: dict) -> None:
             "themes": clean_themes,
             "tone": n.get("tone") or "mixed",
             "tone_evidence": evidence,
+            "tone_evidence_en": n.get("tone_evidence_en"),  # ⭐ 新: 英文版
             "generated_by": MODEL,
             "generated_at": datetime.now().isoformat(),
+            "schema_version": 2,  # v2 = 双语 schema
         }
         rec["narrative_status"] = "done"
 
@@ -363,6 +376,9 @@ def main() -> int:
         "transcript_unavailable_in_fmp",
         "no_transcript",
     }
+    # 当前 schema 版本: v2 = 双语 (含 *_en 字段); v1/null = 仅中文, 需升级
+    CURRENT_SCHEMA_VERSION = 2
+
     candidates: list[str] = []
     if args.tickers:
         candidates = [t.strip().upper() for t in args.tickers.split(",")]
@@ -373,6 +389,11 @@ def main() -> int:
             if tk not in trans_bt:
                 continue
             if not args.force and rec.get("narrative_status") in SKIP_STATUSES:
+                # ⭐ 例外: 已 done 但 schema 版本旧 → 升级双语
+                if rec.get("narrative_status") == "done":
+                    nar = rec.get("narrative") or {}
+                    if nar.get("schema_version", 1) < CURRENT_SCHEMA_VERSION:
+                        candidates.append(tk)
                 continue
             candidates.append(tk)
         candidates.sort()
