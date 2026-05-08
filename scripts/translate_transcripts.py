@@ -169,6 +169,7 @@ def process_one(stock: dict, existing: dict | None = None) -> tuple[str, dict | 
         return ticker, None, "no_transcript"
 
     # 增量优化: 如果 existing 已是同样的 year+quarter，直接复用（不浪费 LLM 成本）
+    # ⭐ 但即使 reuse, 也补上 content_en (旧记录可能没存英文原文)
     if existing:
         prev = existing.get(ticker)
         if (
@@ -178,6 +179,9 @@ def process_one(stock: dict, existing: dict | None = None) -> tuple[str, dict | 
             and prev.get("content_cn")
         ):
             # 完整保留旧记录（含 source_label/source_url 等可选字段）
+            # 顺便补上英文原文 (如果之前没存)
+            if "content_en" not in prev:
+                prev = {**prev, "content_en": transcript["content"]}
             return ticker, prev, "reused"
 
     cn = translate_transcript(ticker, name, transcript["content"])
@@ -193,6 +197,7 @@ def process_one(stock: dict, existing: dict | None = None) -> tuple[str, dict | 
         "quarter": transcript["quarter"],
         "date": transcript["date"],
         "content_cn": cn,
+        "content_en": transcript["content"],   # ⭐ 保留英文原文 (FMP 给的, 免费副产品)
         "content_en_chars": len(transcript["content"]),
     }, "translated"
 

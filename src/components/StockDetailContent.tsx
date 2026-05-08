@@ -1184,10 +1184,14 @@ function Stat({
 // ====== 财报会议中文 transcript ======
 
 function TranscriptBlock({ data }: { data: TranscriptCN }) {
-  const { t } = useLocale();
+  const { t, isEnglish } = useLocale();
   const [expanded, setExpanded] = useState(false);
   const PREVIEW_CHARS = 800;
-  const fullText = data.content_cn;
+  // EN mode: 优先英文原文 (data.content_en), 还没有就 fallback 中文 + amber 提示
+  const enText = (data as TranscriptCN & { content_en?: string }).content_en;
+  const useEn = isEnglish && enText;
+  const fullText = useEn ? enText : data.content_cn;
+  const showEnPending = isEnglish && !enText;
   const tooLong = fullText.length > PREVIEW_CHARS;
   const displayed = expanded || !tooLong ? fullText : fullText.slice(0, PREVIEW_CHARS) + "...";
 
@@ -1220,11 +1224,11 @@ function TranscriptBlock({ data }: { data: TranscriptCN }) {
   return (
     <div>
       <div className="text-xs text-slate-500 dark:text-slate-400 mb-3 flex flex-wrap items-center gap-2">
-        <span>{t("中文翻译")}</span>
-        {data.content_en_chars && (
+        <span>{useEn ? "English original" : t("中文翻译")}</span>
+        {!useEn && data.content_en_chars && (
           <span>· {t("英文原文")} {(data.content_en_chars / 1000).toFixed(1)}K {t("字符")}</span>
         )}
-        <span>· {t("中文")} {(fullText.length / 1000).toFixed(1)}K {t("字")}</span>
+        <span>· {(fullText.length / 1000).toFixed(1)}K {useEn ? "chars" : t("字")}</span>
         {data.source_url && (
           <a
             href={data.source_url}
@@ -1236,6 +1240,12 @@ function TranscriptBlock({ data }: { data: TranscriptCN }) {
           </a>
         )}
       </div>
+
+      {showEnPending && (
+        <div className="mb-3 rounded-md border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 px-3 py-2 text-xs text-amber-800 dark:text-amber-300 leading-relaxed">
+          ⏳ English original transcript will be available after next data refresh (within 24h). Showing Chinese translation as fallback.
+        </div>
+      )}
 
       <div className="text-sm text-slate-700 dark:text-slate-200 max-w-none">
         {formatLines(displayed)}
