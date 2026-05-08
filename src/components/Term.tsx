@@ -26,7 +26,7 @@ export default function Term({
   term: string;
   children?: React.ReactNode;
 }) {
-  const { t } = useLocale();
+  const { t, isEnglish } = useLocale();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [coords, setCoords] = useState<{ top: number; left: number; width: number }>({
@@ -37,7 +37,9 @@ export default function Term({
   const ref = useRef<HTMLSpanElement>(null);
   const tooltipRef = useRef<HTMLSpanElement>(null);
   const closeTimerRef = useRef<number | null>(null);
-  const def = GLOSSARY[term];
+  const entry = GLOSSARY[term];
+  // EN mode 用 entry.en, 否则 entry.cn (再走 t() 走繁体转换)
+  const def = entry ? (isEnglish ? entry.en : entry.cn) : null;
 
   useEffect(() => {
     setMounted(true);
