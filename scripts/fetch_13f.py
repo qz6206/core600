@@ -22,6 +22,7 @@
 """
 import json
 import os
+import sys
 import time
 import urllib.request
 import urllib.parse
@@ -182,6 +183,14 @@ def main():
         "by_ticker": by_ticker,
     }
 
+    # ⭐ 安全检查: 失败率 > 50% 视为系统级故障 (FMP API key 失效 / 13F endpoint down 等)
+    # 拒绝写盘, 保留旧 13f.json
+    fail_pct = len(failed) / total if total else 0
+    if total >= 10 and fail_pct > 0.5:
+        print(f"\n❌ 失败 {len(failed)}/{total} = {fail_pct*100:.0f}% > 50%", flush=True)
+        print(f"   疑似 FMP API key 失效 / 13F endpoint 故障 — 拒绝写盘 (保留现有 13f.json)", flush=True)
+        return 1
+
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
@@ -194,7 +203,8 @@ def main():
     if failed:
         print(f"   失败列表（前 20）: {failed[:20]}", flush=True)
     print(f"   💾 输出: {OUTPUT_JSON} ({OUTPUT_JSON.stat().st_size / 1024 / 1024:.2f} MB)", flush=True)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main() or 0)
