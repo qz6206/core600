@@ -2054,9 +2054,13 @@ function formatVolume(volume: number | undefined): string {
 
 function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation }) {
   const { t, tCn, isEnglish } = useLocale();
-  // Helper: 双语字段切换 — EN mode 优先 _en, 否则 fallback 中文 (HK 模式自动 opencc)
+  // Helper: 双语字段切换
+  // - EN: 优先 _en 字段, 没有就走 T_EN 字典 (LLM 旧数据 fallback)
+  // - HK: opencc 转繁
+  // - CN: 原样
   const tx = (zh: string | undefined | null, en: string | undefined | null): string => {
-    if (isEnglish && en) return en;
+    if (!zh) return "";
+    if (isEnglish) return en || t(zh);  // 没 _en 时走字典, 没字典命中再 fallback 原中文
     return tCn(zh);
   };
   const dc = data.data_card;
@@ -2215,7 +2219,7 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                   <td className="py-2 pr-3">
                     <span className="font-medium">{dc.third_metric.label}</span>
                     {dc.third_metric.note && (
-                      <span className="ml-2 text-xs text-amber-600 dark:text-amber-400">{dc.third_metric.note}</span>
+                      <span className="ml-2 text-xs text-amber-600 dark:text-amber-400">{tx(dc.third_metric.note, dc.third_metric.note_en)}</span>
                     )}
                   </td>
                   <td className="py-2 px-3 text-right tabular-nums font-semibold">
@@ -2287,7 +2291,7 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
           {/* 备用 YoY 注释 (业务剥离场景如 APP) */}
           {dc.rev_yoy_pct_alt != null && dc.rev_yoy_pct_alt_label && (
             <div className="mt-2 text-xs text-slate-500 dark:text-slate-400 italic">
-              📌 {dc.rev_yoy_pct_alt_label} YoY = <span className={colorClass(dc.rev_yoy_pct_alt) + " font-semibold"}>{fmtPctVal(dc.rev_yoy_pct_alt)}</span>
+              📌 {tx(dc.rev_yoy_pct_alt_label, dc.rev_yoy_pct_alt_label_en)} YoY = <span className={colorClass(dc.rev_yoy_pct_alt) + " font-semibold"}>{fmtPctVal(dc.rev_yoy_pct_alt)}</span>
               {dc.rev_qoq_pct != null && (
                 <span> · {t("环比")} <span className={colorClass(dc.rev_qoq_pct) + " font-semibold"}>{fmtPctVal(dc.rev_qoq_pct)}</span></span>
               )}
@@ -2364,7 +2368,7 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
               <tbody>
                 {data.guidance.items.map((g, i) => (
                   <tr key={i} className="border-b border-slate-100 dark:border-white/5">
-                    <td className="py-2 pr-3">{g.metric}</td>
+                    <td className="py-2 pr-3">{tx(g.metric, g.metric_en)}</td>
                     <td className="py-2 px-3 text-right tabular-nums font-medium">{g.range}</td>
                     <td className="py-2 pl-3 text-right tabular-nums">
                       {g.vs_consensus_pct != null ? (
@@ -2378,13 +2382,15 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
               </tbody>
             </table>
           </div>
-          {data.guidance.summary_text && (
+          {/* summary_text 是 LLM 自由文本, 79% 有 _en, EN 模式下没 _en 直接隐藏 */}
+          {data.guidance.summary_text && !(isEnglish && !data.guidance.summary_text_en) && (
             <div className="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              {data.guidance.summary_text}
+              {tx(data.guidance.summary_text, data.guidance.summary_text_en)}
             </div>
           )}
-          {data.guidance.annual_note && (
-            <div className="mt-1 text-xs text-slate-400 dark:text-slate-500">{data.guidance.annual_note}</div>
+          {/* annual_note 是 LLM 自由文本, 老数据没 _en — EN 模式下没 _en 直接隐藏避免 CN 残留 */}
+          {data.guidance.annual_note && !(isEnglish && !data.guidance.annual_note_en) && (
+            <div className="mt-1 text-xs text-slate-400 dark:text-slate-500">{tx(data.guidance.annual_note, data.guidance.annual_note_en)}</div>
           )}
         </div>
       )}

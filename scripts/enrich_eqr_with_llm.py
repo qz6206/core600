@@ -159,21 +159,24 @@ PROMPT_TEMPLATE = """你是资深美股财报分析师, 仅基于下方电话会
     "estimate": <华尔街共识, 没提就 null>,
     "surprise_pct": <vs 共识 %, 没提就 null>,
     "yoy_change_pp": <同比 pp 或 null>,
-    "note": "<10 字内点评 (例如: '创纪录' / '超预期 2pp')>"
+    "note": "<中文 10 字内点评 (例如: '创纪录' / '超预期 2pp')>",
+    "note_en": "<English version, ~5 words (e.g. 'Record' / 'Beat by 2pp')>"
   }},
   "rev_yoy_pct_alt": {{
     "value": <某业务剥离/可比口径下的同比 %, 如电话会议里说"剔除某业务后同比 +XX%"; 没有就 null>,
-    "label": "<例: '软件平台单独' / '剔除汇率影响' / '剔除剥离业务'; 没有就 null>"
+    "label": "<中文标签, 例: '软件平台单独' / '剔除汇率影响' / '剔除剥离业务'; 没有就 null>",
+    "label_en": "<English version, e.g. 'Software platform only' / 'Constant currency' / 'Excluding divestitures'; null if no value>"
   }},
   "guidance": {{
     "next_period_label": "<例: 'Q2 2026' / 'FY2026'>",
     "items": [
-      {{"metric": "营收", "range": "<原文区间, 例 '$1,920-1,950M'>", "midpoint": <数值, USD or pct>, "vs_consensus_pct": <数值 or null>, "format": "usd"}},
-      {{"metric": "Adj EBITDA", "range": "...", "midpoint": <数值>, "vs_consensus_pct": <数值 or null>, "format": "usd"}}
+      {{"metric": "营收", "metric_en": "Revenue", "range": "<原文区间, 例 '$1,920-1,950M'>", "midpoint": <数值, USD or pct>, "vs_consensus_pct": <数值 or null>, "format": "usd"}},
+      {{"metric": "Adj EBITDA", "metric_en": "Adj EBITDA", "range": "...", "midpoint": <数值>, "vs_consensus_pct": <数值 or null>, "format": "usd"}}
     ],
-    "annual_note": "<全年指引一句话, 没给就 '未给指引'>",
+    "annual_note": "<中文全年指引一句话, 没给就 '未给指引'>",
+    "annual_note_en": "<English version of annual_note>",
     "summary_tone": "<raise / maintain / lower / mixed>",
-    "summary_text": "<一句话评价指引: 例 '高出共识 2.4%, 隐含下季软件平台 +53% 仍高速'>"
+    "summary_text": "<中文一句话评价指引: 例 '高出共识 2.4%, 隐含下季软件平台 +53% 仍高速'>"
   }},
   "narrative": {{
     "themes": [
@@ -274,22 +277,26 @@ def merge_into_record(rec: dict, llm_out: dict) -> None:
             "surprise_pct": tm.get("surprise_pct"),
             "yoy_change_pp": tm.get("yoy_change_pp"),
             "note": tm.get("note"),
+            "note_en": tm.get("note_en"),  # ⭐ 双语
         }
 
     alt = llm_out.get("rev_yoy_pct_alt")
     if isinstance(alt, dict) and alt.get("value") is not None:
         rec.setdefault("data_card", {})["rev_yoy_pct_alt"] = alt.get("value")
         rec["data_card"]["rev_yoy_pct_alt_label"] = alt.get("label")
+        rec["data_card"]["rev_yoy_pct_alt_label_en"] = alt.get("label_en")  # ⭐ 双语
 
     g = llm_out.get("guidance")
     if isinstance(g, dict) and g.get("items"):
+        # items 已含 metric / metric_en, 直接透传
         rec["guidance"] = {
             "next_period_label": g.get("next_period_label") or "下一财报",
             "items": g.get("items") or [],
             "annual_note": g.get("annual_note"),
+            "annual_note_en": g.get("annual_note_en"),  # ⭐ 双语
             "summary_tone": g.get("summary_tone") or "maintain",
             "summary_text": g.get("summary_text"),
-            "summary_text_en": llm_out.get("guidance_summary_text_en"),  # ⭐ 新: 英文版
+            "summary_text_en": llm_out.get("guidance_summary_text_en"),  # ⭐ 双语
         }
 
     n = llm_out.get("narrative")

@@ -226,6 +226,7 @@ export interface InterpretationThirdMetric {
   surprise_pct: number | null;            // vs estimate
   yoy_change_pp: number | null;           // 同比变化（基点或个百分点, 看 format）
   note: string | null;                    // 单注释（如 "创纪录"）
+  note_en?: string | null;                // EN 翻译 (新 LLM enrich 输出, 老数据走 t() 字典)
 }
 
 export interface InterpretationDataCard {
@@ -239,6 +240,7 @@ export interface InterpretationDataCard {
   rev_qoq_pct: number | null;             // 环比
   rev_yoy_pct_alt?: number | null;        // 备用: 业务剥离场景的"可比口径" (如 APP 软件单独 +59%)
   rev_yoy_pct_alt_label?: string | null;  // 例: "软件平台单独"
+  rev_yoy_pct_alt_label_en?: string | null;  // EN (新 LLM 输出, 老数据走 t() 字典)
   gross_margin: number | null;
   gross_margin_yoy_bps: number | null;
   net_margin: number | null;
@@ -263,6 +265,7 @@ export interface InterpretationKPI {
 /** ③ Guidance 管理层指引 */
 export interface InterpretationGuidanceItem {
   metric: string;                         // 例: "营收" / "Adj EBITDA"
+  metric_en?: string;                     // EN (新 LLM 输出, 老数据走 t() 字典)
   range: string | null;                   // 例: "$1,920-1,950M" (LLM 抽不到具体区间时为 null)
   midpoint: number | null;
   vs_consensus_pct: number | null;        // vs 共识 %
@@ -272,8 +275,10 @@ export interface InterpretationGuidance {
   next_period_label: string;              // 例: "Q2 2026"
   items: InterpretationGuidanceItem[];
   annual_note: string | null;             // 例: "全年指引未给（沿用 Q+1 滚动）"
+  annual_note_en?: string | null;         // EN
   summary_tone: "raise" | "maintain" | "lower" | "mixed";
   summary_text: string | null;            // 一句话: "高出共识, 隐含 Q2 软件平台 +53% YoY"
+  summary_text_en?: string | null;        // EN
 }
 
 /** ④ Beat 质量评估 */
