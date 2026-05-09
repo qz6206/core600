@@ -733,7 +733,7 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
   const hidden = sorted.length - INITIAL_ROWS;
 
   // ====== 场景标签：统计买入/卖出信号 ======
-  const insiderBadges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  const insiderBadges: { color: "green" | "amber" | "red" | "slate"; label: string; labelEn: string; hint: string; hintEn: string }[] = [];
   // 90 天内的统计
   const now = new Date();
   const ninetyDaysAgo = new Date(now.getTime() - 90 * 86400000).toISOString().slice(0, 10);
@@ -765,20 +765,26 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
     insiderBadges.push({
       color: "green",
       label: "内部人买入",
+      labelEn: "Insider Buying",
       hint: `90 天内 ${buyCount} 笔公开市场买入，合计 ${formatUSD(buyValue)}`,
+      hintEn: `${buyCount} open-market buys in 90 days, totaling ${formatUSD(buyValue)}`,
     });
   }
   if (sellCount >= 5 && buyCount === 0) {
     insiderBadges.push({
       color: "red",
       label: "持续套现",
+      labelEn: "Sustained Selling",
       hint: `90 天内 ${sellCount} 笔卖出 (${formatUSD(sellValue)})，无买入`,
+      hintEn: `${sellCount} sells (${formatUSD(sellValue)}) in 90 days, no buys`,
     });
   } else if (sellCount > 0 && buyCount === 0) {
     insiderBadges.push({
       color: "amber",
       label: "仅有卖出",
+      labelEn: "Sells Only",
       hint: `90 天内 ${sellCount} 笔卖出，无买入`,
+      hintEn: `${sellCount} sells in 90 days, no buys`,
     });
   }
 
@@ -788,7 +794,7 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
           {insiderBadges.map((b, i) => (
-            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+            <ScenarioBadge key={i} color={b.color} label={b.label} labelEn={b.labelEn} hint={b.hint} hintEn={b.hintEn} />
           ))}
         </div>
       )}
@@ -1012,7 +1018,7 @@ function Inst13FBlock({ data }: { data: Inst13F }) {
   const { summary, topHolders } = data;
 
   // ====== 场景标签：机构持仓动向 ======
-  const instBadges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  const instBadges: { color: "green" | "amber" | "red" | "slate"; label: string; labelEn: string; hint: string; hintEn: string }[] = [];
   const investorChange = summary.investorsHoldingChange;
   if (investorChange != null && summary.investorsHolding) {
     const pct = (investorChange / summary.investorsHolding) * 100;
@@ -1020,13 +1026,17 @@ function Inst13FBlock({ data }: { data: Inst13F }) {
       instBadges.push({
         color: "green",
         label: "机构增持",
+        labelEn: "Institutions Increasing",
         hint: `本季度机构数 +${investorChange.toLocaleString()} (${pct.toFixed(1)}%)`,
+        hintEn: `Institutions this quarter +${investorChange.toLocaleString()} (${pct.toFixed(1)}%)`,
       });
     } else if (pct <= -5) {
       instBadges.push({
         color: "red",
         label: "机构减持",
+        labelEn: "Institutions Reducing",
         hint: `本季度机构数 ${investorChange.toLocaleString()} (${pct.toFixed(1)}%)`,
+        hintEn: `Institutions this quarter ${investorChange.toLocaleString()} (${pct.toFixed(1)}%)`,
       });
     }
   }
@@ -1037,13 +1047,17 @@ function Inst13FBlock({ data }: { data: Inst13F }) {
       instBadges.push({
         color: "green",
         label: "新建仓多",
+        labelEn: "New Position Wave",
         hint: `本季度新进 ${summary.newPositions} - 清仓 ${summary.closedPositions} = +${net}`,
+        hintEn: `New ${summary.newPositions} - Closed ${summary.closedPositions} = +${net}`,
       });
     } else if (net <= -50) {
       instBadges.push({
         color: "red",
         label: "清仓潮",
+        labelEn: "Closing Wave",
         hint: `本季度新进 ${summary.newPositions} - 清仓 ${summary.closedPositions} = ${net}`,
+        hintEn: `New ${summary.newPositions} - Closed ${summary.closedPositions} = ${net}`,
       });
     }
   }
@@ -1053,13 +1067,17 @@ function Inst13FBlock({ data }: { data: Inst13F }) {
       instBadges.push({
         color: "slate",
         label: "高度机构化",
+        labelEn: "Highly Institutional",
         hint: `13F 机构合计持有 ${summary.ownershipPercent.toFixed(1)}% 流通股 (≥90%)`,
+        hintEn: `13F institutions hold ${summary.ownershipPercent.toFixed(1)}% of float (≥90%)`,
       });
     } else if (summary.ownershipPercent < 50) {
       instBadges.push({
         color: "amber",
         label: "机构化偏低",
+        labelEn: "Low Institutional",
         hint: `13F 机构合计持有 ${summary.ownershipPercent.toFixed(1)}% 流通股 (<50%)`,
+        hintEn: `13F institutions hold ${summary.ownershipPercent.toFixed(1)}% of float (<50%)`,
       });
     }
   }
@@ -1071,7 +1089,7 @@ function Inst13FBlock({ data }: { data: Inst13F }) {
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
           {instBadges.map((b, i) => (
-            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+            <ScenarioBadge key={i} color={b.color} label={b.label} labelEn={b.labelEn} hint={b.hint} hintEn={b.hintEn} />
           ))}
         </div>
       )}
@@ -1296,19 +1314,23 @@ function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
   };
 
   // ====== 场景标签：期权情绪 ======
-  const optBadges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  const optBadges: { color: "green" | "amber" | "red" | "slate"; label: string; labelEn: string; hint: string; hintEn: string }[] = [];
   if (put_call_ratio != null) {
     if (put_call_ratio < 0.7) {
       optBadges.push({
         color: "green",
         label: "看涨情绪",
+        labelEn: "Bullish Sentiment",
         hint: `Put/Call = ${put_call_ratio.toFixed(2)} (<0.7)，多头主导`,
+        hintEn: `Put/Call = ${put_call_ratio.toFixed(2)} (<0.7), bulls dominant`,
       });
     } else if (put_call_ratio > 1.2) {
       optBadges.push({
         color: "red",
         label: "看跌情绪",
+        labelEn: "Bearish Sentiment",
         hint: `Put/Call = ${put_call_ratio.toFixed(2)} (>1.2)，空头主导`,
+        hintEn: `Put/Call = ${put_call_ratio.toFixed(2)} (>1.2), bears dominant`,
       });
     }
   }
@@ -1317,13 +1339,17 @@ function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
       optBadges.push({
         color: "amber",
         label: "高 IV",
+        labelEn: "High IV",
         hint: `ATM IV ${(atm_iv * 100).toFixed(1)}% (≥50%)，市场预期大波动`,
+        hintEn: `ATM IV ${(atm_iv * 100).toFixed(1)}% (≥50%), market expects high volatility`,
       });
     } else if (atm_iv < 0.2) {
       optBadges.push({
         color: "slate",
         label: "低 IV",
+        labelEn: "Low IV",
         hint: `ATM IV ${(atm_iv * 100).toFixed(1)}% (<20%)，市场平静`,
+        hintEn: `ATM IV ${(atm_iv * 100).toFixed(1)}% (<20%), market calm`,
       });
     }
   }
@@ -1333,7 +1359,9 @@ function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
     optBadges.push({
       color: "amber",
       label: "异动密集",
+      labelEn: "Dense Activity",
       hint: `Top 10 中有 ${unusualCount} 个合约 vol/OI ≥ 2`,
+      hintEn: `${unusualCount} of top 10 contracts have vol/OI ≥ 2`,
     });
   }
 
@@ -1344,7 +1372,7 @@ function OptionsActivityBlock({ data }: { data: OptionsActivity }) {
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
           {optBadges.map((b, i) => (
-            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+            <ScenarioBadge key={i} color={b.color} label={b.label} labelEn={b.labelEn} hint={b.hint} hintEn={b.hintEn} />
           ))}
         </div>
       )}
@@ -1508,7 +1536,7 @@ function AnalystEstimatesBlock({
     .slice(0, 4);
 
   // ====== 场景标签：Beat/Miss 历史 + 评级动向 ======
-  const analystBadges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  const analystBadges: { color: "green" | "amber" | "red" | "slate"; label: string; labelEn: string; hint: string; hintEn: string }[] = [];
   if (past.length >= 4) {
     let beatCount = 0;
     let missCount = 0;
@@ -1525,19 +1553,25 @@ function AnalystEstimatesBlock({
       analystBadges.push({
         color: "green",
         label: "连续超预期",
+        labelEn: "Consecutive Beats",
         hint: `最近 ${past.length} 次财报全部 Beat (差异 >3%)`,
+        hintEn: `All of last ${past.length} earnings beat (>3%)`,
       });
     } else if (beatCount >= 3) {
       analystBadges.push({
         color: "green",
         label: "多次超预期",
+        labelEn: "Multiple Beats",
         hint: `最近 ${past.length} 次财报中 ${beatCount} 次 Beat`,
+        hintEn: `${beatCount} of last ${past.length} earnings beat`,
       });
     } else if (missCount >= 2) {
       analystBadges.push({
         color: "red",
         label: "多次低于预期",
+        labelEn: "Multiple Misses",
         hint: `最近 ${past.length} 次财报中 ${missCount} 次 Miss (差异 <-3%)`,
+        hintEn: `${missCount} of last ${past.length} earnings missed (<-3%)`,
       });
     }
   }
@@ -1549,13 +1583,17 @@ function AnalystEstimatesBlock({
     analystBadges.push({
       color: "green",
       label: "评级上调",
+      labelEn: "Rating Upgrades",
       hint: `最近 5 次评级中 ${upCount} 次升级 vs ${downCount} 次降级`,
+      hintEn: `Last 5 ratings: ${upCount} upgrades vs ${downCount} downgrades`,
     });
   } else if (downCount >= 2 && downCount > upCount) {
     analystBadges.push({
       color: "red",
       label: "评级下调",
+      labelEn: "Rating Downgrades",
       hint: `最近 5 次评级中 ${downCount} 次降级 vs ${upCount} 次升级`,
+      hintEn: `Last 5 ratings: ${downCount} downgrades vs ${upCount} upgrades`,
     });
   }
 
@@ -1566,7 +1604,7 @@ function AnalystEstimatesBlock({
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
           {analystBadges.map((b, i) => (
-            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+            <ScenarioBadge key={i} color={b.color} label={b.label} labelEn={b.labelEn} hint={b.hint} hintEn={b.hintEn} />
           ))}
         </div>
       )}
@@ -1832,25 +1870,31 @@ function CapitalDynamicsBlock({
   const ttmBuyback = sortedCF.slice(0, 4).reduce((sum, q) => sum + (q.buyback || 0), 0);
 
   // ====== 场景标签计算（纯规则）======
-  const badges: { color: "green" | "amber" | "red" | "slate"; label: string; hint: string }[] = [];
+  const badges: { color: "green" | "amber" | "red" | "slate"; label: string; labelEn: string; hint: string; hintEn: string }[] = [];
   if (dilutionPct != null) {
     if (dilutionPct <= -1) {
       badges.push({
         color: "green",
         label: "持续缩股",
+        labelEn: "Persistent Buyback",
         hint: `8 季度股本变化 ${dilutionPct.toFixed(2)}% (回购大于稀释)`,
+        hintEn: `8-quarter share change ${dilutionPct.toFixed(2)}% (buyback > dilution)`,
       });
     } else if (dilutionPct >= 1) {
       badges.push({
         color: "red",
         label: "显著稀释",
+        labelEn: "Significant Dilution",
         hint: `8 季度股本变化 +${dilutionPct.toFixed(2)}% (新发大于回购)`,
+        hintEn: `8-quarter share change +${dilutionPct.toFixed(2)}% (issuance > buyback)`,
       });
     } else {
       badges.push({
         color: "slate",
         label: "股本平稳",
+        labelEn: "Stable Share Count",
         hint: `8 季度股本变化 ${dilutionPct.toFixed(2)}%`,
+        hintEn: `8-quarter share change ${dilutionPct.toFixed(2)}%`,
       });
     }
   }
@@ -1859,13 +1903,17 @@ function CapitalDynamicsBlock({
       badges.push({
         color: "green",
         label: "低稀释",
+        labelEn: "Low Dilution",
         hint: `SBC/净利 = ${sbcVsNI.toFixed(1)}% (≤10%)`,
+        hintEn: `SBC/Net Income = ${sbcVsNI.toFixed(1)}% (≤10%)`,
       });
     } else if (sbcVsNI >= 30) {
       badges.push({
         color: "red",
         label: "高稀释",
+        labelEn: "High Dilution",
         hint: `SBC/净利 = ${sbcVsNI.toFixed(1)}% (≥30%)`,
+        hintEn: `SBC/Net Income = ${sbcVsNI.toFixed(1)}% (≥30%)`,
       });
     }
   }
@@ -1876,13 +1924,17 @@ function CapitalDynamicsBlock({
     badges.push({
       color: "amber",
       label: "回购放缓",
+      labelEn: "Buyback Slowdown",
       hint: `最近 4 季回购 ${formatUSD(recentBuyback)} vs 前 4 季 ${formatUSD(priorBuyback)} (<50%)`,
+      hintEn: `Last 4 quarters buyback ${formatUSD(recentBuyback)} vs prior 4 quarters ${formatUSD(priorBuyback)} (<50%)`,
     });
   } else if (priorBuyback > 0 && recentBuyback > priorBuyback * 1.5) {
     badges.push({
       color: "green",
       label: "加大回购",
+      labelEn: "Buyback Acceleration",
       hint: `最近 4 季回购 ${formatUSD(recentBuyback)} vs 前 4 季 ${formatUSD(priorBuyback)} (>150%)`,
+      hintEn: `Last 4 quarters buyback ${formatUSD(recentBuyback)} vs prior 4 quarters ${formatUSD(priorBuyback)} (>150%)`,
     });
   }
 
@@ -1893,7 +1945,7 @@ function CapitalDynamicsBlock({
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs text-slate-500 dark:text-slate-400 mr-1">{t("场景")}:</span>
           {badges.map((b, i) => (
-            <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+            <ScenarioBadge key={i} color={b.color} label={b.label} labelEn={b.labelEn} hint={b.hint} hintEn={b.hintEn} />
           ))}
         </div>
       )}

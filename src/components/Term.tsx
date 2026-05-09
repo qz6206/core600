@@ -138,7 +138,7 @@ export default function Term({
             onMouseLeave={scheduleClose}
             onClick={(e) => e.stopPropagation()}
           >
-            <span className="block font-semibold mb-1">{term}</span>
+            <span className="block font-semibold mb-1">{t(term)}</span>
             <span className="block">{t(def)}</span>
           </span>,
           document.body

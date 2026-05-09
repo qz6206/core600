@@ -24,9 +24,9 @@ export default function ScenarioBadge({
   hint?: string;
   hintEn?: string;
 }) {
-  const { isEnglish } = useLocale();
-  const displayLabel = isEnglish && labelEn ? labelEn : label;
-  const displayHint = isEnglish && hintEn ? hintEn : hint;
+  const { isEnglish, tCn } = useLocale();
+  const displayLabel = isEnglish && labelEn ? labelEn : tCn(label);
+  const displayHint = isEnglish && hintEn ? hintEn : tCn(hint);
   const colorMap = {
     green: "bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30",
     amber: "bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30",
