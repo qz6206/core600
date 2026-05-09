@@ -211,7 +211,9 @@ export interface OptionsContract {
 export interface InterpretationBadge {
   color: "green" | "amber" | "red" | "slate";
   label: string;
+  label_en?: string;
   hint: string;
+  hint_en?: string;
 }
 
 /** 段 2: 业绩数据卡（实际 vs 预期 vs 同比） */
@@ -247,6 +249,7 @@ export interface InterpretationDataCard {
 /** ② 关键 KPI (6 项通用) */
 export interface InterpretationKPI {
   label: string;                          // 例: "FCF 自由现金流"
+  label_en?: string;                      // EN 翻译 (LLM 生成)
   value: number;                          // 数值
   format: "usd" | "pct" | "ratio" | "raw";
   yoy_change_pct: number | null;          // 同比 % (FCF, 现金等)
@@ -254,6 +257,7 @@ export interface InterpretationKPI {
   qoq_change_pct: number | null;          // 环比 %
   tone: "positive" | "negative" | "neutral";
   note: string | null;                    // 例: "纯软件平台无烧钱"
+  note_en?: string | null;                // EN 翻译
 }
 
 /** ③ Guidance 管理层指引 */
@@ -275,23 +279,30 @@ export interface InterpretationGuidance {
 /** ④ Beat 质量评估 */
 export interface InterpretationBeatQualityCheck {
   label: string;                          // 例: "GAAP/Non-GAAP 差距"
+  label_en?: string;
   value: string;                          // 显示文本: "GAAP Op Margin 78.2%"
+  value_en?: string;
   status: "good" | "ok" | "bad";
   hint: string;                           // 解释
+  hint_en?: string;
 }
 export interface InterpretationBeatQuality {
   rating: "premium" | "healthy" | "mixed" | "questionable";
   rating_label: string;                   // "🟢🟢🟢 顶级优质"
+  rating_label_en?: string;
   checks: InterpretationBeatQualityCheck[];
   summary: string | null;
+  summary_en?: string | null;
 }
 
 /** ⑤ 基本面健康度 (5 维红绿灯) */
 export interface InterpretationHealthDim {
   label: string;                          // "营收增长" / "毛利率" / ...
+  label_en?: string;
   stars: 0 | 1 | 2;                        // 0=红 / 1=黄绿 / 2=双绿
   status: "great" | "good" | "ok" | "warn" | "bad";
   note: string;                           // 一句话说明
+  note_en?: string;
 }
 export interface InterpretationHealth {
   overall_rating: number;                 // 0-5 星
@@ -302,6 +313,7 @@ export interface InterpretationHealth {
 export interface InterpretationFundamental {
   category: "earnings" | "growth" | "margin" | "insider" | "institutional" | "buyback" | "sbc";
   text: string;                           // 中文一句话（30-50 字）
+  text_en?: string;                       // EN 翻译
   tone: "positive" | "neutral" | "negative";
 }
 
@@ -344,6 +356,7 @@ export interface EarningsInterpretation {
   generated_at: string;
 
   headline: string;                       // 段 1: 一句话标题
+  headline_en?: string;                   // EN 翻译
   data_card: InterpretationDataCard;      // 段 ① 业绩数据 (含 third_metric)
   fundamentals: InterpretationFundamental[];  // (旧字段, 已被 health 替代, 但兼容保留)
   market_reaction: InterpretationMarketReaction;  // (旧字段, 已被砍掉但保留 schema)

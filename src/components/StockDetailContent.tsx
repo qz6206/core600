@@ -1996,6 +1996,11 @@ function formatVolume(volume: number | undefined): string {
 
 function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation }) {
   const { t, isEnglish } = useLocale();
+  // Helper: 双语字段切换 — EN mode 优先 _en, 没有就 fallback 中文 (or t() 走字典)
+  const tx = (zh: string | undefined | null, en: string | undefined | null): string => {
+    if (isEnglish && en) return en;
+    return zh || "";
+  };
   const dc = data.data_card;
   const mr = data.market_reaction;
 
@@ -2051,13 +2056,13 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
           {t(resultCN[data.result])}
         </span>
         {data.badges.map((b, i) => (
-          <ScenarioBadge key={i} color={b.color} label={t(b.label)} hint={b.hint} />
+          <ScenarioBadge key={i} color={b.color} label={t(b.label)} labelEn={b.label_en} hint={b.hint} hintEn={b.hint_en} />
         ))}
       </div>
 
-      {/* headline */}
+      {/* headline (双语: EN mode 优先 _en) */}
       <div className="text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
-        {data.headline}
+        {(isEnglish && (data as { headline_en?: string }).headline_en) || data.headline}
       </div>
 
       {/* 数据完整性警示 banner */}
@@ -2246,7 +2251,7 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                 className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg"
               >
                 <div className="flex items-start justify-between mb-1">
-                  <div className="text-xs text-slate-500 dark:text-slate-400">{k.label}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400">{tx(k.label, k.label_en)}</div>
                   <div
                     className={`w-2 h-2 rounded-full mt-1.5 ${
                       k.tone === "positive"
@@ -2272,7 +2277,7 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                   )}
                 </div>
                 {k.note && (
-                  <div className="text-[11px] text-slate-400 dark:text-slate-500 mt-1 leading-relaxed">{k.note}</div>
+                  <div className="text-[11px] text-slate-400 dark:text-slate-500 mt-1 leading-relaxed">{tx(k.note, k.note_en)}</div>
                 )}
               </div>
             ))}
@@ -2332,18 +2337,20 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
           <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
             <span>④ {t("Beat 质量评估")}</span>
             <span className={`text-xs px-2 py-0.5 rounded font-semibold ${ratingBadgeColor(data.beat_quality.rating)}`}>
-              {data.beat_quality.rating_label}
+              {tx(data.beat_quality.rating_label, data.beat_quality.rating_label_en)}
             </span>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <tbody>
-                {data.beat_quality.checks.map((c, i) => (
+                {data.beat_quality.checks.map((c, i) => {
+                  const cLabel = tx(c.label, c.label_en);
+                  return (
                   <tr key={i} className="border-b border-slate-100 dark:border-white/5 last:border-0">
                     <td className="py-2 pr-3 text-slate-600 dark:text-slate-400 whitespace-nowrap">
-                      <Term term={c.label}>{c.label}</Term>
+                      <Term term={c.label}>{cLabel}</Term>
                     </td>
-                    <td className="py-2 px-3 tabular-nums font-medium">{c.value}</td>
+                    <td className="py-2 px-3 tabular-nums font-medium">{tx(c.value, c.value_en)}</td>
                     <td className="py-2 px-3">
                       <span
                         className={`inline-block w-2 h-2 rounded-full ${
@@ -2355,15 +2362,16 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                         }`}
                       />
                     </td>
-                    <td className="py-2 pl-3 text-xs text-slate-500 dark:text-slate-400">{c.hint}</td>
+                    <td className="py-2 pl-3 text-xs text-slate-500 dark:text-slate-400">{tx(c.hint, c.hint_en)}</td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
           {data.beat_quality.summary && (
             <div className="mt-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed italic">
-              💡 {data.beat_quality.summary}
+              💡 {tx(data.beat_quality.summary, data.beat_quality.summary_en)}
             </div>
           )}
         </div>
@@ -2384,11 +2392,11 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
                 key={i}
                 className="flex items-start gap-3 p-2 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-lg"
               >
-                <div className="flex-shrink-0 w-20 sm:w-24 text-sm text-slate-700 dark:text-slate-300">{d.label}</div>
+                <div className="flex-shrink-0 w-20 sm:w-24 text-sm text-slate-700 dark:text-slate-300">{tx(d.label, d.label_en)}</div>
                 <span className={`flex-shrink-0 inline-block px-2 py-0.5 text-xs rounded font-medium ${dimStatusColor(d.status)}`}>
                   {d.stars === 2 ? "🟢🟢" : d.stars === 1 ? "🟢" : "⚪"}
                 </span>
-                <div className="flex-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{d.note}</div>
+                <div className="flex-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{tx(d.note, d.note_en)}</div>
               </div>
             ))}
           </div>
@@ -2409,7 +2417,7 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
               return (
                 <li key={i} className="flex items-start gap-2">
                   <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${dotColor}`} />
-                  <span className="text-slate-700 dark:text-slate-300 leading-relaxed">{f.text}</span>
+                  <span className="text-slate-700 dark:text-slate-300 leading-relaxed">{tx(f.text, f.text_en)}</span>
                 </li>
               );
             })}
