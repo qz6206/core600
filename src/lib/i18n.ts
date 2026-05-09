@@ -357,6 +357,17 @@ export const T_EN: Record<string, string> = {
   "Today": "Today",
   "days later": "days later",
 
+  // ===== Market status (TimeDisplay) =====
+  "周末休市": "Closed (weekend)",
+  "开市中": "Market open",
+  "已收市": "Closed",
+
+  // ===== 漏的小词 =====
+  "无": "—",
+  " 历史 + 评级变动": " history + rating changes",
+  "绿色": "green",
+  "红色": "red",
+
   // ===== Misc =====
   "Retry-After": "Retry-After",
 };

@@ -7,8 +7,8 @@ import type { FMPExtras, EarningsInterpretation } from "@/lib/fmp";
 import CalendarPageContent from "@/components/CalendarPageContent";
 
 export const metadata = {
-  title: "财报日历 - Core 600",
-  description: "美股核心 600 强未来 30 天财报日历,按时间排序",
+  title: "Earnings Calendar — Core 600",
+  description: "Upcoming earnings for S&P 500 + Nasdaq 100, sorted by date",
 };
 
 // ISR: 30 分钟刷新一次 (跟 fmp_extras cron 节奏匹配)

@@ -3,8 +3,8 @@ import stocksData from "../../../data/stocks.json";
 import { StockData } from "@/lib/types";
 
 export const metadata = {
-  title: "股票列表 - Core 600",
-  description: "美股核心600强：标普500 + 纳斯达克100 完整成分股列表",
+  title: "Stocks — Core 600",
+  description: "Full list of 516 stocks in S&P 500 + Nasdaq 100",
 };
 
 export default function StocksPage() {

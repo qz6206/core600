@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Core 600 - 美股核心600强一站式数据中心",
-  description: "标普500 + 纳斯达克100 · 内部人交易 · 机构持仓 · 财报会议 · 中文用户专属",
+  title: "Core 600 — S&P 500 + Nasdaq 100 research hub",
+  description: "Free one-stop research hub for 516 US stocks: earnings reviews, institutional holdings, insider trading, options flow, full Chinese transcripts.",
 };
 
 export default function RootLayout({

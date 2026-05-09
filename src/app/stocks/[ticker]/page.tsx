@@ -29,10 +29,11 @@ export async function generateMetadata({ params }: { params: Params }) {
 
   const cn = stock.name_cn || "";
   const en = stock.name;
-  const title = cn ? `${upper} ${cn}（${en}）- Core 600` : `${upper} ${en} - Core 600`;
+  // SEO: title + description 双语合一, 让 Google 中英搜索都能命中
+  const title = cn ? `${upper} ${cn} (${en}) — Core 600` : `${upper} ${en} — Core 600`;
   return {
     title,
-    description: `${upper} ${cn} ${en} | 财务数据、内部人交易、机构持仓、财报会议中文摘要`,
+    description: `${upper} ${en}${cn ? " " + cn : ""} | Earnings review, insider trading, 13F holdings, options flow, full transcript`,
   };
 }
 
