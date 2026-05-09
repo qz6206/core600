@@ -127,33 +127,58 @@ def main():
     print(f"   🧵 {NUM_WORKERS} 线程并行调 DeepSeek-V3", flush=True)
     print(f"   💰 预计成本 ¥3-5，耗时 ~30 min\n", flush=True)
 
-    by_ticker = {}
+    # ⭐ 增量复用: 读已有翻译, 只跑新增/缺失的
+    existing: dict[str, str] = {}
+    if OUTPUT_JSON.exists():
+        try:
+            prev = json.load(open(OUTPUT_JSON))
+            existing = prev.get("by_ticker") or {}
+            print(f"   📦 复用上次翻译: {len(existing)} 只", flush=True)
+        except Exception:
+            pass
+
+    by_ticker = dict(existing)  # 从已有开始, 失败时保留旧值
     failed = []
     completed = 0
+    new_translated = 0
+
+    # 只跑没翻译过的
+    todo = [s for s in stocks if s["ticker"] not in existing]
+    print(f"   🆕 待翻译: {len(todo)} 只", flush=True)
+    if not todo:
+        print("   ✅ 全部已翻译, 无需重跑", flush=True)
+        return
 
     with ThreadPoolExecutor(max_workers=NUM_WORKERS) as pool:
-        futures = {pool.submit(process_one, s["ticker"]): s["ticker"] for s in stocks}
+        futures = {pool.submit(process_one, s["ticker"]): s["ticker"] for s in todo}
         for fut in as_completed(futures):
             completed += 1
             ticker = futures[fut]
             try:
                 _, cn = fut.result()
             except Exception as e:
-                print(f"[{completed}/{total}] {ticker}: 异常 {e}", flush=True)
+                print(f"[{completed}/{len(todo)}] {ticker}: 异常 {e}", flush=True)
                 failed.append(ticker)
                 continue
 
             if cn is None:
                 failed.append(ticker)
                 if completed % 50 == 0:
-                    print(f"[{completed}/{total}] {ticker}: 失败", flush=True)
+                    print(f"[{completed}/{len(todo)}] {ticker}: 失败", flush=True)
                 continue
 
             by_ticker[ticker] = cn
+            new_translated += 1
 
             if completed % 50 == 0:
                 preview = cn[:30].replace("\n", " ")
-                print(f"[{completed}/{total}] {ticker}: ✓ {len(cn)} 字 — {preview}...", flush=True)
+                print(f"[{completed}/{len(todo)}] {ticker}: ✓ {len(cn)} 字 — {preview}...", flush=True)
+
+    # ⭐ 安全检查: 如果新一批 ≥10 只 且 失败率 > 50%, 拒绝写盘 (防止把好数据覆盖回空)
+    if len(todo) >= 10 and len(failed) / len(todo) > 0.5:
+        print(f"\n❌ 失败率 {len(failed)}/{len(todo)} = {len(failed)/len(todo)*100:.0f}% > 50% — 拒绝写盘", flush=True)
+        print(f"   现有 descriptions_cn.json 保留不变 ({len(existing)} 只)", flush=True)
+        return 1
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -161,6 +186,7 @@ def main():
         "stats": {
             "total": total,
             "translated": len(by_ticker),
+            "newly_translated": new_translated,
             "failed": len(failed),
         },
         "by_ticker": by_ticker,
@@ -172,7 +198,7 @@ def main():
 
     elapsed = time.time() - t_start
     print(f"\n📊 完成（耗时 {elapsed/60:.1f} min）:", flush=True)
-    print(f"   ✅ 已翻译: {len(by_ticker)} / {total}", flush=True)
+    print(f"   ✅ 已翻译累计: {len(by_ticker)} / {total} (新增 {new_translated})", flush=True)
     print(f"   ❌ 失败:   {len(failed)}", flush=True)
     if failed:
         print(f"   失败列表（前 20）: {failed[:20]}", flush=True)
