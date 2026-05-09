@@ -71,7 +71,7 @@ export default function StockDetailContent({
   transcript = null,
   interpretation = null,
 }: Props) {
-  const { t, isEnglish } = useLocale();
+  const { t, tCn, isEnglish } = useLocale();
   const { profile, quote, quarters } = overview;
 
   const sectorColor =
@@ -441,13 +441,13 @@ export default function StockDetailContent({
           )}
         </Section>
 
-        {/* 公司简介 — EN mode: 用 FMP 原文英文; zh: 中文翻译 fallback 英文 */}
+        {/* 公司简介 — EN mode: 用 FMP 原文英文; zh-CN: 中文; zh-HK: opencc 转繁 */}
         {(descriptionCn || profile?.description) && (
           <Section icon="ℹ️" title={t("公司简介")}>
             <div className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
               {isEnglish
                 ? (profile?.description || descriptionCn)
-                : (descriptionCn || profile?.description)}
+                : tCn(descriptionCn || profile?.description)}
             </div>
             {profile?.website && (
               <a
@@ -681,9 +681,13 @@ function FinancialRow({
   );
 }
 
-function ownerTitleLabel(parsed: { is_director: boolean; is_officer: boolean; is_ten_pct: boolean; owner_title_cn: string | null }, t: (s: string) => string): string {
-  // 优先用 officerTitle，否则按角色拼
-  if (parsed.owner_title_cn) return parsed.owner_title_cn;
+function ownerTitleLabel(
+  parsed: { is_director: boolean; is_officer: boolean; is_ten_pct: boolean; owner_title_cn: string | null },
+  t: (s: string) => string,
+  tCn: (s: string | null | undefined) => string,
+): string {
+  // 优先用 officerTitle，否则按角色拼 (HK 模式 owner_title_cn 走 opencc)
+  if (parsed.owner_title_cn) return tCn(parsed.owner_title_cn);
   const roles: string[] = [];
   if (parsed.is_director) roles.push(t("董事"));
   if (parsed.is_officer) roles.push(t("高管"));
@@ -719,7 +723,7 @@ function summarizeFiling(parsed: NonNullable<EdgarFiling["parsed"]>, t: (s: stri
 }
 
 function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[] }) {
-  const { t } = useLocale();
+  const { t, tCn } = useLocale();
   const [expanded, setExpanded] = useState(false);
   const INITIAL_ROWS = 5;
 
@@ -807,7 +811,7 @@ function InsiderTradeList({ cik, filings }: { cik: string; filings: EdgarFiling[
             const parsed = f.parsed;
             const summary = parsed ? summarizeFiling(parsed, t) : null;
             const ownerName = parsed?.owner_name || "—";
-            const ownerTitle = parsed ? ownerTitleLabel(parsed, t) : "";
+            const ownerTitle = parsed ? ownerTitleLabel(parsed, t, tCn) : "";
             return (
               <tr
                 key={f.accessionNumber}
@@ -887,7 +891,7 @@ function Form8KList({
   filings: EdgarFiling[];
   isForm6K?: boolean;
 }) {
-  const { t, isEnglish } = useLocale();
+  const { t, tCn, isEnglish } = useLocale();
   const [expanded, setExpanded] = useState(false);
   const INITIAL_ROWS = 5;
   const sorted = [...filings].sort((a, b) => b.filingDate.localeCompare(a.filingDate));
@@ -947,7 +951,7 @@ function Form8KList({
                       Click SEC → for original filing
                     </span>
                   ) : f.summary_cn ? (
-                    <span>{f.summary_cn}</span>
+                    <span>{tCn(f.summary_cn)}</span>
                   ) : isRoutine ? (
                     <span className="text-xs text-slate-400 dark:text-slate-500 italic">
                       {t("常规公告（业绩公告 / 财务表 等），详见原文")}
@@ -1193,13 +1197,13 @@ function Stat({
 // ====== 财报会议中文 transcript ======
 
 function TranscriptBlock({ data }: { data: TranscriptCN }) {
-  const { t, isEnglish } = useLocale();
+  const { t, tCn, isEnglish } = useLocale();
   const [expanded, setExpanded] = useState(false);
   const PREVIEW_CHARS = 800;
   // EN mode: 优先英文原文 (data.content_en), 还没有就 fallback 中文 + amber 提示
   const enText = (data as TranscriptCN & { content_en?: string }).content_en;
   const useEn = isEnglish && enText;
-  const fullText = useEn ? enText : data.content_cn;
+  const fullText = useEn ? enText : tCn(data.content_cn);
   const showEnPending = isEnglish && !enText;
   const tooLong = fullText.length > PREVIEW_CHARS;
   const displayed = expanded || !tooLong ? fullText : fullText.slice(0, PREVIEW_CHARS) + "...";
@@ -1995,11 +1999,11 @@ function formatVolume(volume: number | undefined): string {
 // ====== 财报速评 ======
 
 function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation }) {
-  const { t, isEnglish } = useLocale();
-  // Helper: 双语字段切换 — EN mode 优先 _en, 没有就 fallback 中文 (or t() 走字典)
+  const { t, tCn, isEnglish } = useLocale();
+  // Helper: 双语字段切换 — EN mode 优先 _en, 否则 fallback 中文 (HK 模式自动 opencc)
   const tx = (zh: string | undefined | null, en: string | undefined | null): string => {
     if (isEnglish && en) return en;
-    return zh || "";
+    return tCn(zh);
   };
   const dc = data.data_card;
   const mr = data.market_reaction;
@@ -2474,12 +2478,12 @@ function EarningsInterpretationBlock({ data }: { data: EarningsInterpretation })
           const nar = data.narrative as NarrativeWithEn;
           const enAvailable = isEnglish && nar.themes.some((t) => (t as ThemeWithEn).title_en);
           const renderTitle = (theme: ThemeWithEn) =>
-            enAvailable && theme.title_en ? theme.title_en : theme.title;
+            enAvailable && theme.title_en ? theme.title_en : tCn(theme.title);
           const renderDetail = (theme: ThemeWithEn) =>
-            enAvailable && theme.detail_en ? theme.detail_en : theme.detail;
+            enAvailable && theme.detail_en ? theme.detail_en : tCn(theme.detail);
           const renderEvidence = enAvailable && nar.tone_evidence_en
             ? nar.tone_evidence_en
-            : nar.tone_evidence;
+            : tCn(nar.tone_evidence);
           return (
             <div>
               <div className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 flex items-baseline gap-2">

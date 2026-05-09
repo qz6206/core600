@@ -61,7 +61,7 @@ export default function CalendarPageContent({
   recent: CalendarEntry[];
   tickerWithEQR: string[];
 }) {
-  const { t, locale, isEnglish } = useLocale();
+  const { t, tCn, locale, isEnglish } = useLocale();
   const [rangeDays, setRangeDays] = useState(30);
 
   const eqrSet = useMemo(() => new Set(tickerWithEQR), [tickerWithEQR]);
@@ -192,7 +192,7 @@ export default function CalendarPageContent({
                               </Link>
                             </td>
                             <td className="py-2 px-3 text-slate-700 dark:text-slate-300">
-                              {isEnglish ? e.name : (e.name_cn || e.name)}
+                              {isEnglish ? e.name : tCn(e.name_cn || e.name)}
                             </td>
                             <td className="py-2 px-3 text-slate-500 dark:text-slate-400 text-xs">
                               {e.fiscal_label || "—"}
@@ -258,7 +258,7 @@ export default function CalendarPageContent({
                         </Link>
                       </td>
                       <td className="py-2 px-3 text-slate-700 dark:text-slate-300">
-                        {isEnglish ? e.name : (e.name_cn || e.name)}
+                        {isEnglish ? e.name : tCn(e.name_cn || e.name)}
                       </td>
                       <td className="py-2 px-3 text-slate-500 dark:text-slate-400 text-xs">
                         {e.fiscal_label || "—"}
