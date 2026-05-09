@@ -1292,9 +1292,11 @@ function TranscriptBlock({ data }: { data: TranscriptCN }) {
         </button>
       )}
 
-      <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400">
-        {t("免责声明")}：{t("中文翻译，仅供参考。投资决策请以英文原文及官方文件为准")}
-      </div>
+      {!useEn && (
+        <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400">
+          {t("免责声明")}：{t("中文翻译，仅供参考。投资决策请以英文原文及官方文件为准")}
+        </div>
+      )}
     </div>
   );
 }
