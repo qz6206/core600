@@ -30,6 +30,12 @@ jobs:
       - name: 安装依赖
         run: pip install requests
 
+      - name: 备份当前数据 (validate_data.py 数据骤降检查需要)
+        run: |
+          for f in data/descriptions_cn.json data/transcripts.json data/earnings_interpretations.json; do
+            [ -f "$f" ] && cp "$f" "${f%.json}.prev.json" || true
+          done
+
       - name: 翻译公司简介
         env:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}

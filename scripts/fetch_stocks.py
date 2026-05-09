@@ -169,12 +169,14 @@ def main():
     print(f"   去重总数：      {len(all_stocks)}")
 
     # 保存
+    from datetime import datetime, timezone
     output = Path(__file__).parent.parent / "data" / "stocks.json"
     output.parent.mkdir(exist_ok=True)
     with open(output, "w", encoding="utf-8") as f:
         json.dump({
             "version": "1.0.0",
-            "source": "Wikipedia",
+            "source": "Wikipedia (S&P 500 + Nasdaq 100 lists), cross-verified with FMP",
+            "generated_at": datetime.now(timezone.utc).isoformat(),
             "total": len(all_stocks),
             "stocks": all_stocks,
         }, f, ensure_ascii=False, indent=2)

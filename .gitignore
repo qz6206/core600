@@ -50,4 +50,6 @@ next-env.d.ts
 # 数据校验中间产物
 /data/_verify_report.txt
 /data/_changes.txt
+# validate_data.py 数据骤降检查的备份 (workflow 内 cp 出来, 本地不上传)
+/data/*.prev.json
 __pycache__/

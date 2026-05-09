@@ -25,6 +25,12 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: 备份当前数据 (validate_data.py 数据骤降检查需要)
+        run: |
+          for f in data/fmp_extras.json data/earnings_interpretations.json; do
+            [ -f "$f" ] && cp "$f" "${f%.json}.prev.json" || true
+          done
+
       - name: 拉取 FMP 数据 (estimates/earnings/cashflow/income/ratings)
         env:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}

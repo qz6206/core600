@@ -1,5 +1,5 @@
 /**
- * 中 → 英 翻译字典 (246 条)
+ * 中 → 英 翻译字典 (361 条, 2026-05-09)
  *
  * 用法: LocaleProvider.t() 在 locale=en 时查这个字典,
  *       查不到就 fallback 原中文 (容错)
@@ -8,6 +8,14 @@
  * - key 是源代码里 t("xxx") 的中文原文
  * - value 是英文翻译, 风格简洁专业 (财经术语优先用行业标准用法)
  * - 新增 t() 调用时同步加进来
+ *
+ * EQR narrative_status 值 (5 种, 看 generate_earnings_interpretation.py):
+ * - "done"                            → 段 5 LLM 富化已完成
+ * - "pending"                         → 等下次 LLM cron 富化
+ * - "pending_transcript_lag"          → transcript 老一季, 等下次 transcript cron
+ * - "no_transcript"                   → 公司无电话会议 (BRK 等)
+ * - "transcript_unavailable_in_fmp"   → 财报 60+ 天 FMP 仍没收 (引导用户去 SEC EDGAR)
+ * 改状态机时务必同步更新对应 banner 文案的 t() entries
  */
 export const T_EN: Record<string, string> = {
   // ===== 数字 / 时间 / 单位 =====

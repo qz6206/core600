@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
-  "source": "Wikipedia",
+  "source": "Wikipedia (S&P 500 + Nasdaq 100 lists), cross-verified with FMP",
+  "generated_at": "2026-05-09T15:10:58.253837+00:00",
   "total": 516,
   "stocks": [
     {

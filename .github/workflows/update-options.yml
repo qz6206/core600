@@ -25,6 +25,10 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: 备份当前数据 (validate_data.py 数据骤降检查需要)
+        run: |
+          [ -f data/options.json ] && cp data/options.json data/options.prev.json || true
+
       - name: 拉取 Polygon 期权快照
         env:
           POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}

@@ -21,7 +21,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 备份旧数据
-        run: cp data/stocks.json /tmp/stocks_old.json
+        run: |
+          cp data/stocks.json /tmp/stocks_old.json
+          cp data/stocks.json data/stocks.prev.json  # validate_data.py 数据骤降检查
 
       - name: 设置 Python
         uses: actions/setup-python@v5

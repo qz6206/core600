@@ -3,8 +3,9 @@ name: 自动刷新 EDGAR (Form 4 + 8-K) 数据
 on:
   schedule:
     # 每天 06:15 UTC (北京 14:15) — 之前每 6h 太频繁, 大部分股票一天没新 SEC 公告
-    # 跟 fmp-extras (07:00) 错开 45 分钟避并发, 跟 translations (08:00) 也错开
-    - cron: '15 6 * * *'
+    # 错峰避 SEC throttle 高峰 (UTC 14:00 / 04:00 美东早晨高峰)
+    # 跟 fmp-extras (07:00) 错开 15 分钟避并发, 跟 translations (08:00) 也错开
+    - cron: '45 5 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -25,6 +26,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: 备份当前数据 (validate_data.py 数据骤降检查需要)
+        run: |
+          [ -f data/edgar_filings.json ] && cp data/edgar_filings.json data/edgar_filings.prev.json || true
 
       - name: 拉取 SEC EDGAR 数据 (Form 4 + 8-K + 6-K)
         env:

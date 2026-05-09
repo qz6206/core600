@@ -25,6 +25,10 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: 备份当前数据 (validate_data.py 数据骤降检查需要)
+        run: |
+          [ -f data/13f.json ] && cp data/13f.json data/13f.prev.json || true
+
       - name: 拉取 FMP 13F 数据
         env:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
