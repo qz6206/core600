@@ -84,21 +84,30 @@ def fmt_pct(p: float | None, sign: bool = True) -> str:
 # ====== 段 1: headline ======
 
 
-def make_headline(ticker: str, name: str, fiscal_label: str, result: str, eps_surprise: float | None, rev_surprise: float | None) -> str:
-    name_part = f"{ticker} {name}" if name else ticker
+def make_headline(ticker: str, name: str, fiscal_label: str, result: str, eps_surprise: float | None, rev_surprise: float | None) -> tuple[str, str]:
+    """返回 (zh, en) 双语 headline"""
+    name_part_zh = f"{ticker} {name}" if name else ticker
+    # EN 版只用 ticker (name 是中文, EN 模式不该出现)
+    name_part_en = ticker
+
     result_cn = {"beat": "超预期", "miss": "低于预期", "mixed": "好坏参半", "inline": "符合预期"}[result]
+    result_en = {"beat": "Beat", "miss": "Miss", "mixed": "Mixed", "inline": "In line"}[result]
 
-    bits = []
+    bits_zh, bits_en = [], []
     if eps_surprise is not None:
-        bits.append(f"EPS {fmt_pct(eps_surprise)}")
+        bits_zh.append(f"EPS {fmt_pct(eps_surprise)}")
+        bits_en.append(f"EPS {fmt_pct(eps_surprise)}")
     if rev_surprise is not None:
-        bits.append(f"营收 {fmt_pct(rev_surprise)}")
-    bits_str = "、".join(bits) if bits else ""
+        bits_zh.append(f"营收 {fmt_pct(rev_surprise)}")
+        bits_en.append(f"Revenue {fmt_pct(rev_surprise)}")
 
-    if bits_str:
-        return f"{name_part} {fiscal_label} 财报{result_cn}：{bits_str}（vs 华尔街预期）"
+    if bits_zh:
+        zh = f"{name_part_zh} {fiscal_label} 财报{result_cn}：{'、'.join(bits_zh)}（vs 华尔街预期）"
+        en = f"{name_part_en} {fiscal_label} earnings {result_en}: {', '.join(bits_en)} (vs Wall Street consensus)"
     else:
-        return f"{name_part} {fiscal_label} 财报{result_cn}"
+        zh = f"{name_part_zh} {fiscal_label} 财报{result_cn}"
+        en = f"{name_part_en} {fiscal_label} earnings {result_en}"
+    return zh, en
 
 
 # ====== 段 2: data_card ======
@@ -228,24 +237,28 @@ def compute_beat_streak(earnings: list, cur_idx: int) -> dict | None:
         return {
             "category": "earnings",
             "text": f"最近 4 次财报 EPS 全部 Beat（差异 >3%），盈利兑现度高",
+            "text_en": f"All 4 of last 4 earnings beat EPS estimates (>3%), strong execution",
             "tone": "positive",
         }
     elif beat_count >= 3:
         return {
             "category": "earnings",
-            "text": f"最近 4 次财报 {beat_count} 次 Beat，1 次未达预期",
+            "text": f"最近 4 次财报 {beat_count} 次 Beat,1 次未达预期",
+            "text_en": f"{beat_count} of last 4 earnings beat, 1 missed estimates",
             "tone": "positive",
         }
     elif miss_count >= 2:
         return {
             "category": "earnings",
-            "text": f"最近 4 次财报中 {miss_count} 次 Miss（差异 <-3%），盈利能力有压力",
+            "text": f"最近 4 次财报中 {miss_count} 次 Miss(差异 <-3%),盈利能力有压力",
+            "text_en": f"{miss_count} of last 4 earnings missed (<-3%), profitability pressure",
             "tone": "negative",
         }
     elif beat_count == 2:
         return {
             "category": "earnings",
-            "text": f"最近 4 次财报 2 次 Beat，整体表现稳健",
+            "text": f"最近 4 次财报 2 次 Beat,整体表现稳健",
+            "text_en": f"2 of last 4 earnings beat, overall steady performance",
             "tone": "neutral",
         }
     return None
@@ -272,30 +285,37 @@ def compute_revenue_acceleration(shares: list) -> dict | None:
         prior_yoy_growth = (prior_q_rev - prior_yoy) / prior_yoy * 100
 
     text = f"营收同比 {fmt_pct(yoy_growth)}"
+    text_en = f"Revenue YoY {fmt_pct(yoy_growth)}"
     tone = "neutral"
     if yoy_growth > 30:
         text += "，高速增长"
+        text_en += ", high-speed growth"
         tone = "positive"
     elif yoy_growth > 15:
         text += "，稳健增长"
+        text_en += ", steady growth"
         tone = "positive"
     elif yoy_growth < 0:
         text += "，营收同比下滑"
+        text_en += ", revenue declining YoY"
         tone = "negative"
     elif yoy_growth < 5:
         text += "，增长乏力"
+        text_en += ", growth sluggish"
         tone = "negative"
 
     if prior_yoy_growth is not None:
         delta = yoy_growth - prior_yoy_growth
         if delta > 5:
             text += f"，较上季 {fmt_pct(prior_yoy_growth)} 加速"
+            text_en += f", accelerating from {fmt_pct(prior_yoy_growth)} prior quarter"
             tone = "positive"
         elif delta < -5:
             text += f"，较上季 {fmt_pct(prior_yoy_growth)} 减速"
+            text_en += f", decelerating from {fmt_pct(prior_yoy_growth)} prior quarter"
             tone = "negative" if tone == "neutral" else tone
 
-    return {"category": "growth", "text": text, "tone": tone}
+    return {"category": "growth", "text": text, "text_en": text_en, "tone": tone}
 
 
 def compute_margin_signal(shares: list) -> dict | None:
@@ -311,22 +331,28 @@ def compute_margin_signal(shares: list) -> dict | None:
     delta_bps = (cur_gm - yoy_gm) * 10000
 
     text = f"毛利率 {cur_gm*100:.1f}%"
+    text_en = f"Gross margin {cur_gm*100:.1f}%"
     tone = "neutral"
     if delta_bps >= 200:
         text += f"，同比扩张 {delta_bps:.0f} 基点"
+        text_en += f", expanded {delta_bps:.0f} bps YoY"
         tone = "positive"
     elif delta_bps >= 50:
         text += f"，同比 +{delta_bps:.0f} 基点"
+        text_en += f", +{delta_bps:.0f} bps YoY"
         tone = "positive"
     elif delta_bps <= -200:
         text += f"，同比收缩 {delta_bps:.0f} 基点"
+        text_en += f", contracted {delta_bps:.0f} bps YoY"
         tone = "negative"
     elif delta_bps <= -50:
         text += f"，同比 {delta_bps:.0f} 基点"
+        text_en += f", {delta_bps:.0f} bps YoY"
         tone = "negative"
     else:
         text += f"，同比基本持平"
-    return {"category": "margin", "text": text, "tone": tone}
+        text_en += ", roughly flat YoY"
+    return {"category": "margin", "text": text, "text_en": text_en, "tone": tone}
 
 
 def compute_insider_signal(form4: list, earnings_date: str) -> dict | None:
@@ -365,30 +391,35 @@ def compute_insider_signal(form4: list, earnings_date: str) -> dict | None:
         return {
             "category": "insider",
             "text": f"财报前后 30 天内部人买入 {buy_count} 笔（{fmt_usd(buy_value)}），无卖出",
+            "text_en": f"Insiders bought {buy_count} times ({fmt_usd(buy_value)}) within 30 days of earnings, no sells",
             "tone": "positive",
         }
     elif buy_count > sell_count:
         return {
             "category": "insider",
             "text": f"财报前后 30 天内部人 {buy_count} 笔买入 vs {sell_count} 笔卖出，买方主导",
+            "text_en": f"Insiders: {buy_count} buys vs {sell_count} sells within 30 days of earnings, buyers dominate",
             "tone": "positive",
         }
     elif sell_count >= 5 and buy_count == 0:
         return {
             "category": "insider",
             "text": f"财报前后 30 天内部人 {sell_count} 笔卖出（{fmt_usd(sell_value)}），无买入",
+            "text_en": f"Insiders sold {sell_count} times ({fmt_usd(sell_value)}) within 30 days of earnings, no buys",
             "tone": "negative",
         }
     elif sell_count > 0 and buy_count == 0:
         return {
             "category": "insider",
             "text": f"财报前后 30 天内部人 {sell_count} 笔卖出，无买入",
+            "text_en": f"Insiders sold {sell_count} times within 30 days of earnings, no buys",
             "tone": "neutral",
         }
     elif sell_count > buy_count:
         return {
             "category": "insider",
             "text": f"财报前后 30 天内部人 {buy_count} 笔买入 vs {sell_count} 笔卖出，卖方主导",
+            "text_en": f"Insiders: {buy_count} buys vs {sell_count} sells within 30 days of earnings, sellers dominate",
             "tone": "neutral",
         }
     return None
@@ -409,30 +440,35 @@ def compute_institutional_signal(inst13f: dict | None) -> dict | None:
         return {
             "category": "institutional",
             "text": f"13F 上季新进 {new_pos} - 清仓 {closed} = 净流入 +{net} 家机构",
+            "text_en": f"13F last quarter: {new_pos} new positions - {closed} closed = net inflow +{net} institutions",
             "tone": "positive",
         }
     elif net <= -50:
         return {
             "category": "institutional",
             "text": f"13F 上季新进 {new_pos} - 清仓 {closed} = 净流出 {net} 家机构",
+            "text_en": f"13F last quarter: {new_pos} new positions - {closed} closed = net outflow {net} institutions",
             "tone": "negative",
         }
     elif abs(net) < 20:
         return {
             "category": "institutional",
             "text": f"13F 上季机构持仓变化温和（新进 {new_pos} / 清仓 {closed}）",
+            "text_en": f"13F last quarter: muted institutional changes ({new_pos} new / {closed} closed)",
             "tone": "neutral",
         }
     elif net > 0:
         return {
             "category": "institutional",
             "text": f"13F 上季机构小幅净流入 +{net} 家",
+            "text_en": f"13F last quarter: modest net inflow +{net} institutions",
             "tone": "neutral",
         }
     else:
         return {
             "category": "institutional",
             "text": f"13F 上季机构小幅净流出 {net} 家",
+            "text_en": f"13F last quarter: modest net outflow {net} institutions",
             "tone": "neutral",
         }
 
@@ -462,12 +498,14 @@ def compute_capital_signal(sbc_history: list, shares_history: list) -> dict | No
             return {
                 "category": "buyback",
                 "text": f"最近 4 季回购 {fmt_usd(recent_buyback)}，较前 4 季 {fmt_usd(prior_buyback)} 加大 {(ratio-1)*100:.0f}%",
+                "text_en": f"Buybacks past 4 quarters {fmt_usd(recent_buyback)}, up {(ratio-1)*100:.0f}% vs prior 4 quarters {fmt_usd(prior_buyback)}",
                 "tone": "positive",
             }
         elif ratio < 0.5:
             return {
                 "category": "buyback",
                 "text": f"最近 4 季回购 {fmt_usd(recent_buyback)}，较前 4 季 {fmt_usd(prior_buyback)} 放缓",
+                "text_en": f"Buybacks past 4 quarters {fmt_usd(recent_buyback)}, slowing vs prior 4 quarters {fmt_usd(prior_buyback)}",
                 "tone": "negative",
             }
 
@@ -477,12 +515,14 @@ def compute_capital_signal(sbc_history: list, shares_history: list) -> dict | No
             return {
                 "category": "sbc",
                 "text": f"SBC TTM 占净利 {sbc_pct:.1f}%（≥30% 高稀释区间），股权激励侵蚀利润明显",
+                "text_en": f"SBC TTM is {sbc_pct:.1f}% of net income (≥30% high-dilution zone), equity comp materially erodes profit",
                 "tone": "negative",
             }
         elif sbc_pct <= 10:
             return {
                 "category": "sbc",
                 "text": f"SBC TTM 占净利 {sbc_pct:.1f}%（≤10% 低稀释区间）",
+                "text_en": f"SBC TTM is {sbc_pct:.1f}% of net income (≤10% low-dilution zone)",
                 "tone": "positive",
             }
 
@@ -490,6 +530,7 @@ def compute_capital_signal(sbc_history: list, shares_history: list) -> dict | No
         return {
             "category": "buyback",
             "text": f"最近 4 季回购 {fmt_usd(recent_buyback)}",
+            "text_en": f"Buybacks past 4 quarters {fmt_usd(recent_buyback)}",
             "tone": "neutral",
         }
 
@@ -555,12 +596,14 @@ def make_kpis(shares: list, sbc: list, fpe: str) -> list[dict]:
         qoq_fcf = qoq_sb.get("fcf") if qoq_sb else None
         kpis.append({
             "label": "FCF 自由现金流",
+            "label_en": "Free Cash Flow",
             "value": fcf, "format": "usd",
             "yoy_change_pct": safe_pct(fcf, yoy_fcf) if yoy_fcf else None,
             "yoy_change_pp": None,
             "qoq_change_pct": safe_pct(fcf, qoq_fcf) if qoq_fcf else None,
             "tone": "positive" if fcf > 0 else "negative",
             "note": None,
+            "note_en": None,
         })
 
     # 2. FCF / Revenue
@@ -574,14 +617,17 @@ def make_kpis(shares: list, sbc: list, fpe: str) -> list[dict]:
                 yoy_fcf_margin = (fcf_margin - y_fcf / y_rev) * 100  # pp
         tone = "positive" if fcf_margin > 0.20 else ("neutral" if fcf_margin > 0 else "negative")
         note = "顶级 capital-light" if fcf_margin > 0.40 else None
+        note_en = "Top-tier capital-light" if fcf_margin > 0.40 else None
         kpis.append({
             "label": "FCF / 营收",
+            "label_en": "FCF / Revenue",
             "value": fcf_margin, "format": "pct",
             "yoy_change_pct": None,
             "yoy_change_pp": yoy_fcf_margin,
             "qoq_change_pct": None,
             "tone": tone,
             "note": note,
+            "note_en": note_en,
         })
 
     # 3. Capex
@@ -589,18 +635,22 @@ def make_kpis(shares: list, sbc: list, fpe: str) -> list[dict]:
         capex_intensity = capex / rev if rev else None
         if capex == 0:
             note = "纯软件平台, 无烧钱压力"
+            note_en = "Pure software platform, no capex burn"
             tone = "positive"
         elif capex_intensity is not None and capex_intensity > 0.20:
             note = f"Capex/Rev {capex_intensity*100:.1f}% (高烧钱)"
+            note_en = f"Capex/Rev {capex_intensity*100:.1f}% (high burn)"
             tone = "negative"
         else:
             note = None
+            note_en = None
             tone = "neutral"
         kpis.append({
             "label": "Capex 资本开支",
+            "label_en": "Capex",
             "value": capex, "format": "usd",
             "yoy_change_pct": None, "yoy_change_pp": None, "qoq_change_pct": None,
-            "tone": tone, "note": note,
+            "tone": tone, "note": note, "note_en": note_en,
         })
 
     # 4. 回购
@@ -612,39 +662,44 @@ def make_kpis(shares: list, sbc: list, fpe: str) -> list[dict]:
         if yoy_pct is not None and yoy_pct > 100:
             tone = "positive"
             note = f"较去年同期翻 {(buyback/yoy_bb):.1f}×"
+            note_en = f"{(buyback/yoy_bb):.1f}× vs same quarter last year"
         elif yoy_pct is not None and yoy_pct < -50:
             tone = "negative"
             note = "回购大幅放缓"
+            note_en = "Buybacks significantly slowed"
         else:
             tone = "neutral"
             note = None
+            note_en = None
         kpis.append({
             "label": "股票回购",
+            "label_en": "Share Buybacks",
             "value": buyback, "format": "usd",
             "yoy_change_pct": yoy_pct, "yoy_change_pp": None, "qoq_change_pct": qoq_pct,
-            "tone": tone, "note": note,
+            "tone": tone, "note": note, "note_en": note_en,
         })
 
     # 5. SBC / Revenue
     if rev > 0:
         sbc_pct = sbc_amt / rev
         if sbc_pct < 0.05:
-            tone = "positive"; note = "<5% 低稀释"
+            tone = "positive"; note = "<5% 低稀释"; note_en = "<5% low dilution"
         elif sbc_pct < 0.10:
-            tone = "neutral"; note = "<10% 健康区间"
+            tone = "neutral"; note = "<10% 健康区间"; note_en = "<10% healthy zone"
         elif sbc_pct < 0.20:
-            tone = "neutral"; note = None
+            tone = "neutral"; note = None; note_en = None
         else:
-            tone = "negative"; note = ">20% 高稀释"
+            tone = "negative"; note = ">20% 高稀释"; note_en = ">20% high dilution"
         yoy_pp = None
         if yoy_sh and yoy_sb and yoy_sh.get("revenue"):
             y_sbc_pct = (yoy_sb.get("sbc") or 0) / yoy_sh["revenue"]
             yoy_pp = (sbc_pct - y_sbc_pct) * 100
         kpis.append({
             "label": "SBC / 营收",
+            "label_en": "SBC / Revenue",
             "value": sbc_pct, "format": "pct",
             "yoy_change_pct": None, "yoy_change_pp": yoy_pp, "qoq_change_pct": None,
-            "tone": tone, "note": note,
+            "tone": tone, "note": note, "note_en": note_en,
         })
 
     # 6. OCF / NI 现金流转化率
@@ -653,17 +708,22 @@ def make_kpis(shares: list, sbc: list, fpe: str) -> list[dict]:
         tone = "positive" if conv >= 1.0 else ("neutral" if conv >= 0.7 else "negative")
         if conv >= 1.2:
             note = "现金流远超利润, 极优"
+            note_en = "Cash flow far exceeds profit, exceptional"
         elif conv >= 1.0:
             note = "现金流 ≥ 利润, 健康"
+            note_en = "Cash flow ≥ profit, healthy"
         elif conv < 0.7:
             note = "现金转化率偏低"
+            note_en = "Cash conversion below normal"
         else:
             note = None
+            note_en = None
         kpis.append({
             "label": "OCF / 净利润",
+            "label_en": "OCF / Net Income",
             "value": conv, "format": "ratio",
             "yoy_change_pct": None, "yoy_change_pp": None, "qoq_change_pct": None,
-            "tone": tone, "note": note,
+            "tone": tone, "note": note, "note_en": note_en,
         })
 
     return kpis
@@ -697,82 +757,125 @@ def make_beat_quality(shares: list, sbc: list, fpe: str, eps_surprise: float | N
     # 1. GAAP Op Margin (代理 GAAP/Non-GAAP 差距 — 高 GAAP margin 意味不靠 Adj 美化)
     if op_margin is not None:
         if op_margin >= 0.30:
-            checks.append({"label": "GAAP Op Margin", "value": f"{op_margin*100:.1f}%",
-                           "status": "good", "hint": "GAAP 真实利润率 ≥30%, 不靠 Adj 美化"})
+            checks.append({"label": "GAAP Op Margin", "label_en": "GAAP Op Margin",
+                           "value": f"{op_margin*100:.1f}%", "value_en": f"{op_margin*100:.1f}%",
+                           "status": "good",
+                           "hint": "GAAP 真实利润率 ≥30%, 不靠 Adj 美化",
+                           "hint_en": "True GAAP margin ≥30%, no reliance on Adj polishing"})
             good_count += 1
         elif op_margin >= 0.10:
-            checks.append({"label": "GAAP Op Margin", "value": f"{op_margin*100:.1f}%",
-                           "status": "ok", "hint": "GAAP 利润率适中"})
+            checks.append({"label": "GAAP Op Margin", "label_en": "GAAP Op Margin",
+                           "value": f"{op_margin*100:.1f}%", "value_en": f"{op_margin*100:.1f}%",
+                           "status": "ok",
+                           "hint": "GAAP 利润率适中",
+                           "hint_en": "Moderate GAAP margin"})
         else:
-            checks.append({"label": "GAAP Op Margin", "value": f"{op_margin*100:.1f}%",
-                           "status": "bad", "hint": "GAAP 利润率偏低, 警惕 Adj 美化"})
+            checks.append({"label": "GAAP Op Margin", "label_en": "GAAP Op Margin",
+                           "value": f"{op_margin*100:.1f}%", "value_en": f"{op_margin*100:.1f}%",
+                           "status": "bad",
+                           "hint": "GAAP 利润率偏低, 警惕 Adj 美化",
+                           "hint_en": "Low GAAP margin, watch for Adj polishing"})
 
     # 2. OCF / 净利润
     if ocf is not None and ni > 0:
         conv = ocf / ni
         if conv >= 1.0:
-            checks.append({"label": "OCF / 净利润", "value": f"{conv*100:.0f}%",
-                           "status": "good", "hint": ">100% = 现金流 ≥ 利润, 质量极优"})
+            checks.append({"label": "OCF / 净利润", "label_en": "OCF / Net Income",
+                           "value": f"{conv*100:.0f}%", "value_en": f"{conv*100:.0f}%",
+                           "status": "good",
+                           "hint": ">100% = 现金流 ≥ 利润, 质量极优",
+                           "hint_en": ">100% = cash flow ≥ profit, top-tier quality"})
             good_count += 1
         elif conv >= 0.7:
-            checks.append({"label": "OCF / 净利润", "value": f"{conv*100:.0f}%",
-                           "status": "ok", "hint": "现金转化率适中"})
+            checks.append({"label": "OCF / 净利润", "label_en": "OCF / Net Income",
+                           "value": f"{conv*100:.0f}%", "value_en": f"{conv*100:.0f}%",
+                           "status": "ok",
+                           "hint": "现金转化率适中",
+                           "hint_en": "Moderate cash conversion"})
         else:
-            checks.append({"label": "OCF / 净利润", "value": f"{conv*100:.0f}%",
-                           "status": "bad", "hint": "<70% 现金转化率偏低"})
+            checks.append({"label": "OCF / 净利润", "label_en": "OCF / Net Income",
+                           "value": f"{conv*100:.0f}%", "value_en": f"{conv*100:.0f}%",
+                           "status": "bad",
+                           "hint": "<70% 现金转化率偏低",
+                           "hint_en": "<70% cash conversion below normal"})
 
     # 3. SBC / Rev
     if rev > 0:
         sbc_pct = sbc_amt / rev * 100
         if sbc_pct < 10:
-            checks.append({"label": "SBC / 营收", "value": f"{sbc_pct:.1f}%",
-                           "status": "good", "hint": "<10% 健康区间"})
+            checks.append({"label": "SBC / 营收", "label_en": "SBC / Revenue",
+                           "value": f"{sbc_pct:.1f}%", "value_en": f"{sbc_pct:.1f}%",
+                           "status": "good",
+                           "hint": "<10% 健康区间",
+                           "hint_en": "<10% healthy zone"})
             good_count += 1
         elif sbc_pct < 20:
-            checks.append({"label": "SBC / 营收", "value": f"{sbc_pct:.1f}%",
-                           "status": "ok", "hint": "10-20% 中等"})
+            checks.append({"label": "SBC / 营收", "label_en": "SBC / Revenue",
+                           "value": f"{sbc_pct:.1f}%", "value_en": f"{sbc_pct:.1f}%",
+                           "status": "ok",
+                           "hint": "10-20% 中等",
+                           "hint_en": "10-20% moderate"})
         else:
-            checks.append({"label": "SBC / 营收", "value": f"{sbc_pct:.1f}%",
-                           "status": "bad", "hint": ">20% 高稀释"})
+            checks.append({"label": "SBC / 营收", "label_en": "SBC / Revenue",
+                           "value": f"{sbc_pct:.1f}%", "value_en": f"{sbc_pct:.1f}%",
+                           "status": "bad",
+                           "hint": ">20% 高稀释",
+                           "hint_en": ">20% high dilution"})
 
     # 4. Capex 强度
     if capex is not None and rev > 0:
         if capex == 0:
-            checks.append({"label": "Capex 强度", "value": "$0",
-                           "status": "good", "hint": "纯软件平台, 无 AI capex 烧钱压力"})
+            checks.append({"label": "Capex 强度", "label_en": "Capex Intensity",
+                           "value": "$0", "value_en": "$0",
+                           "status": "good",
+                           "hint": "纯软件平台, 无 AI capex 烧钱压力",
+                           "hint_en": "Pure software platform, no AI capex burn"})
             good_count += 1
         else:
             cx_pct = capex / rev * 100
             if cx_pct < 5:
-                checks.append({"label": "Capex 强度", "value": f"{cx_pct:.1f}% of Rev",
-                               "status": "good", "hint": "<5% 轻资产"})
+                checks.append({"label": "Capex 强度", "label_en": "Capex Intensity",
+                               "value": f"{cx_pct:.1f}% of Rev", "value_en": f"{cx_pct:.1f}% of Rev",
+                               "status": "good",
+                               "hint": "<5% 轻资产",
+                               "hint_en": "<5% asset-light"})
                 good_count += 1
             elif cx_pct < 15:
-                checks.append({"label": "Capex 强度", "value": f"{cx_pct:.1f}% of Rev",
-                               "status": "ok", "hint": "中等"})
+                checks.append({"label": "Capex 强度", "label_en": "Capex Intensity",
+                               "value": f"{cx_pct:.1f}% of Rev", "value_en": f"{cx_pct:.1f}% of Rev",
+                               "status": "ok",
+                               "hint": "中等",
+                               "hint_en": "Moderate"})
             else:
-                checks.append({"label": "Capex 强度", "value": f"{cx_pct:.1f}% of Rev",
-                               "status": "bad", "hint": ">15% 重资产 / 高烧钱"})
+                checks.append({"label": "Capex 强度", "label_en": "Capex Intensity",
+                               "value": f"{cx_pct:.1f}% of Rev", "value_en": f"{cx_pct:.1f}% of Rev",
+                               "status": "bad",
+                               "hint": ">15% 重资产 / 高烧钱",
+                               "hint_en": ">15% asset-heavy / high burn"})
 
     # 综合 rating
     if good_count >= 4:
-        rating = "premium"; rating_label = "🟢🟢🟢 顶级优质"
+        rating = "premium"; rating_label = "🟢🟢🟢 顶级优质"; rating_label_en = "🟢🟢🟢 Top-tier"
     elif good_count >= 2:
-        rating = "healthy"; rating_label = "🟢🟢 健康"
+        rating = "healthy"; rating_label = "🟢🟢 健康"; rating_label_en = "🟢🟢 Healthy"
     elif good_count >= 1:
-        rating = "mixed"; rating_label = "🟡 一般"
+        rating = "mixed"; rating_label = "🟡 一般"; rating_label_en = "🟡 Mixed"
     else:
-        rating = "questionable"; rating_label = "🔴 可疑"
+        rating = "questionable"; rating_label = "🔴 可疑"; rating_label_en = "🔴 Questionable"
 
     summary = None
+    summary_en = None
     if op_margin is not None and op_margin >= 0.30:
         summary = f"GAAP Op Margin {op_margin*100:.1f}% — 高质量利润"
+        summary_en = f"GAAP Op Margin {op_margin*100:.1f}% — high-quality profit"
 
     return {
         "rating": rating,
         "rating_label": rating_label,
+        "rating_label_en": rating_label_en,
         "checks": checks,
         "summary": summary,
+        "summary_en": summary_en,
     }
 
 
@@ -798,70 +901,102 @@ def make_health(shares: list, sbc: list, fpe: str) -> dict | None:
     if rev and yoy_sh and yoy_sh.get("revenue"):
         yoy_g = (rev - yoy_sh["revenue"]) / yoy_sh["revenue"] * 100
         if yoy_g > 30:
-            dimensions.append({"label": "营收增长", "stars": 2, "status": "great",
-                               "note": f"YoY +{yoy_g:.1f}% 高速增长"})
+            dimensions.append({"label": "营收增长", "label_en": "Revenue Growth",
+                               "stars": 2, "status": "great",
+                               "note": f"YoY +{yoy_g:.1f}% 高速增长",
+                               "note_en": f"YoY +{yoy_g:.1f}% high-speed growth"})
             great_count += 1
         elif yoy_g > 10:
-            dimensions.append({"label": "营收增长", "stars": 1, "status": "good",
-                               "note": f"YoY +{yoy_g:.1f}% 稳健"})
+            dimensions.append({"label": "营收增长", "label_en": "Revenue Growth",
+                               "stars": 1, "status": "good",
+                               "note": f"YoY +{yoy_g:.1f}% 稳健",
+                               "note_en": f"YoY +{yoy_g:.1f}% steady"})
         elif yoy_g > 0:
-            dimensions.append({"label": "营收增长", "stars": 0, "status": "warn",
-                               "note": f"YoY +{yoy_g:.1f}% 缓增"})
+            dimensions.append({"label": "营收增长", "label_en": "Revenue Growth",
+                               "stars": 0, "status": "warn",
+                               "note": f"YoY +{yoy_g:.1f}% 缓增",
+                               "note_en": f"YoY +{yoy_g:.1f}% slow growth"})
         else:
-            dimensions.append({"label": "营收增长", "stars": 0, "status": "bad",
-                               "note": f"YoY {yoy_g:.1f}% 下滑"})
+            dimensions.append({"label": "营收增长", "label_en": "Revenue Growth",
+                               "stars": 0, "status": "bad",
+                               "note": f"YoY {yoy_g:.1f}% 下滑",
+                               "note_en": f"YoY {yoy_g:.1f}% declining"})
 
     # 2. 毛利率
     gm = cur_sh.get("gross_margin")
     if gm is not None:
         if gm >= 0.70:
-            dimensions.append({"label": "毛利率", "stars": 2, "status": "great",
-                               "note": f"{gm*100:.1f}% — 软件级毛利"})
+            dimensions.append({"label": "毛利率", "label_en": "Gross Margin",
+                               "stars": 2, "status": "great",
+                               "note": f"{gm*100:.1f}% — 软件级毛利",
+                               "note_en": f"{gm*100:.1f}% — software-grade margin"})
             great_count += 1
         elif gm >= 0.40:
-            dimensions.append({"label": "毛利率", "stars": 1, "status": "good",
-                               "note": f"{gm*100:.1f}% — 健康"})
+            dimensions.append({"label": "毛利率", "label_en": "Gross Margin",
+                               "stars": 1, "status": "good",
+                               "note": f"{gm*100:.1f}% — 健康",
+                               "note_en": f"{gm*100:.1f}% — healthy"})
         elif gm >= 0.20:
-            dimensions.append({"label": "毛利率", "stars": 0, "status": "warn",
-                               "note": f"{gm*100:.1f}% — 偏低"})
+            dimensions.append({"label": "毛利率", "label_en": "Gross Margin",
+                               "stars": 0, "status": "warn",
+                               "note": f"{gm*100:.1f}% — 偏低",
+                               "note_en": f"{gm*100:.1f}% — below normal"})
         else:
-            dimensions.append({"label": "毛利率", "stars": 0, "status": "bad",
-                               "note": f"{gm*100:.1f}% — 薄利"})
+            dimensions.append({"label": "毛利率", "label_en": "Gross Margin",
+                               "stars": 0, "status": "bad",
+                               "note": f"{gm*100:.1f}% — 薄利",
+                               "note_en": f"{gm*100:.1f}% — thin margin"})
 
     # 3. 运营效率
     op_m = cur_sh.get("operating_margin")
     if op_m is not None:
         if op_m >= 0.30:
-            dimensions.append({"label": "运营效率", "stars": 2, "status": "great",
-                               "note": f"Op Margin {op_m*100:.1f}% 顶级"})
+            dimensions.append({"label": "运营效率", "label_en": "Operating Efficiency",
+                               "stars": 2, "status": "great",
+                               "note": f"Op Margin {op_m*100:.1f}% 顶级",
+                               "note_en": f"Op Margin {op_m*100:.1f}% top-tier"})
             great_count += 1
         elif op_m >= 0.15:
-            dimensions.append({"label": "运营效率", "stars": 1, "status": "good",
-                               "note": f"Op Margin {op_m*100:.1f}% 健康"})
+            dimensions.append({"label": "运营效率", "label_en": "Operating Efficiency",
+                               "stars": 1, "status": "good",
+                               "note": f"Op Margin {op_m*100:.1f}% 健康",
+                               "note_en": f"Op Margin {op_m*100:.1f}% healthy"})
         elif op_m >= 0:
-            dimensions.append({"label": "运营效率", "stars": 0, "status": "warn",
-                               "note": f"Op Margin {op_m*100:.1f}% 微利"})
+            dimensions.append({"label": "运营效率", "label_en": "Operating Efficiency",
+                               "stars": 0, "status": "warn",
+                               "note": f"Op Margin {op_m*100:.1f}% 微利",
+                               "note_en": f"Op Margin {op_m*100:.1f}% thin profit"})
         else:
-            dimensions.append({"label": "运营效率", "stars": 0, "status": "bad",
-                               "note": f"Op Margin {op_m*100:.1f}% 亏损"})
+            dimensions.append({"label": "运营效率", "label_en": "Operating Efficiency",
+                               "stars": 0, "status": "bad",
+                               "note": f"Op Margin {op_m*100:.1f}% 亏损",
+                               "note_en": f"Op Margin {op_m*100:.1f}% loss"})
 
     # 4. 现金流 (FCF Margin)
     fcf = cur_sb.get("fcf")
     if fcf is not None and rev:
         fm = fcf / rev * 100
         if fm >= 25:
-            dimensions.append({"label": "现金流", "stars": 2, "status": "great",
-                               "note": f"FCF Margin {fm:.1f}% 顶级"})
+            dimensions.append({"label": "现金流", "label_en": "Cash Flow",
+                               "stars": 2, "status": "great",
+                               "note": f"FCF Margin {fm:.1f}% 顶级",
+                               "note_en": f"FCF Margin {fm:.1f}% top-tier"})
             great_count += 1
         elif fm >= 10:
-            dimensions.append({"label": "现金流", "stars": 1, "status": "good",
-                               "note": f"FCF Margin {fm:.1f}% 健康"})
+            dimensions.append({"label": "现金流", "label_en": "Cash Flow",
+                               "stars": 1, "status": "good",
+                               "note": f"FCF Margin {fm:.1f}% 健康",
+                               "note_en": f"FCF Margin {fm:.1f}% healthy"})
         elif fm > 0:
-            dimensions.append({"label": "现金流", "stars": 0, "status": "warn",
-                               "note": f"FCF Margin {fm:.1f}% 薄"})
+            dimensions.append({"label": "现金流", "label_en": "Cash Flow",
+                               "stars": 0, "status": "warn",
+                               "note": f"FCF Margin {fm:.1f}% 薄",
+                               "note_en": f"FCF Margin {fm:.1f}% thin"})
         else:
-            dimensions.append({"label": "现金流", "stars": 0, "status": "bad",
-                               "note": f"FCF Margin {fm:.1f}% 烧钱"})
+            dimensions.append({"label": "现金流", "label_en": "Cash Flow",
+                               "stars": 0, "status": "bad",
+                               "note": f"FCF Margin {fm:.1f}% 烧钱",
+                               "note_en": f"FCF Margin {fm:.1f}% burning cash"})
 
     if not dimensions:
         return None
@@ -967,63 +1102,107 @@ def make_badges(
     streak = compute_beat_streak(earnings_history, cur_idx)
     if streak:
         if "全部 Beat" in streak["text"]:
-            badges.append({"color": "green", "label": "连续超预期", "hint": streak["text"]})
+            badges.append({"color": "green",
+                           "label": "连续超预期", "label_en": "Consecutive Beats",
+                           "hint": streak["text"], "hint_en": streak.get("text_en")})
         elif "Miss" in streak["text"] and streak["tone"] == "negative":
-            badges.append({"color": "red", "label": "多次低于预期", "hint": streak["text"]})
+            badges.append({"color": "red",
+                           "label": "多次低于预期", "label_en": "Repeated Misses",
+                           "hint": streak["text"], "hint_en": streak.get("text_en")})
 
     # 2. 本季 Beat 强度
     eps_pct = data_card.get("eps_surprise_pct")
     if eps_pct is not None:
         if eps_pct > 10:
-            badges.append({"color": "green", "label": "EPS 大超预期", "hint": f"EPS 实际超预期 {eps_pct:.1f}%"})
+            badges.append({"color": "green",
+                           "label": "EPS 大超预期", "label_en": "Big EPS Beat",
+                           "hint": f"EPS 实际超预期 {eps_pct:.1f}%",
+                           "hint_en": f"Actual EPS beat estimates by {eps_pct:.1f}%"})
         elif eps_pct < -5:
-            badges.append({"color": "red", "label": "EPS 不及预期", "hint": f"EPS 实际低于预期 {eps_pct:.1f}%"})
+            badges.append({"color": "red",
+                           "label": "EPS 不及预期", "label_en": "EPS Miss",
+                           "hint": f"EPS 实际低于预期 {eps_pct:.1f}%",
+                           "hint_en": f"Actual EPS missed estimates by {eps_pct:.1f}%"})
 
     rev_pct = data_card.get("rev_surprise_pct")
     if rev_pct is not None:
         if rev_pct > 5:
-            badges.append({"color": "green", "label": "营收超预期", "hint": f"营收超预期 {rev_pct:.1f}%"})
+            badges.append({"color": "green",
+                           "label": "营收超预期", "label_en": "Revenue Beat",
+                           "hint": f"营收超预期 {rev_pct:.1f}%",
+                           "hint_en": f"Revenue beat estimates by {rev_pct:.1f}%"})
         elif rev_pct < -3:
-            badges.append({"color": "red", "label": "营收不及预期", "hint": f"营收低于预期 {rev_pct:.1f}%"})
+            badges.append({"color": "red",
+                           "label": "营收不及预期", "label_en": "Revenue Miss",
+                           "hint": f"营收低于预期 {rev_pct:.1f}%",
+                           "hint_en": f"Revenue missed estimates by {rev_pct:.1f}%"})
 
     # 3. 营收增速
     rev_yoy = data_card.get("rev_yoy_pct")
     if rev_yoy is not None:
         if rev_yoy > 30:
-            badges.append({"color": "green", "label": "营收高增长", "hint": f"营收同比 +{rev_yoy:.1f}% (>30%)"})
+            badges.append({"color": "green",
+                           "label": "营收高增长", "label_en": "High Revenue Growth",
+                           "hint": f"营收同比 +{rev_yoy:.1f}% (>30%)",
+                           "hint_en": f"Revenue YoY +{rev_yoy:.1f}% (>30%)"})
         elif rev_yoy < 0:
-            badges.append({"color": "red", "label": "营收下滑", "hint": f"营收同比 {rev_yoy:.1f}%"})
+            badges.append({"color": "red",
+                           "label": "营收下滑", "label_en": "Revenue Decline",
+                           "hint": f"营收同比 {rev_yoy:.1f}%",
+                           "hint_en": f"Revenue YoY {rev_yoy:.1f}%"})
 
     # 4. 毛利率
     gm_bps = data_card.get("gross_margin_yoy_bps")
     if gm_bps is not None:
         if gm_bps >= 200:
-            badges.append({"color": "green", "label": "毛利扩张", "hint": f"毛利率同比 +{gm_bps:.0f} 基点"})
+            badges.append({"color": "green",
+                           "label": "毛利扩张", "label_en": "Margin Expansion",
+                           "hint": f"毛利率同比 +{gm_bps:.0f} 基点",
+                           "hint_en": f"Gross margin YoY +{gm_bps:.0f} bps"})
         elif gm_bps <= -200:
-            badges.append({"color": "red", "label": "毛利收缩", "hint": f"毛利率同比 {gm_bps:.0f} 基点"})
+            badges.append({"color": "red",
+                           "label": "毛利收缩", "label_en": "Margin Contraction",
+                           "hint": f"毛利率同比 {gm_bps:.0f} 基点",
+                           "hint_en": f"Gross margin YoY {gm_bps:.0f} bps"})
 
     # 5. 资金面：内部人/机构（从 fundamentals 提取）
     for fund in fundamentals:
         if fund["category"] == "insider":
             if fund["tone"] == "positive":
-                badges.append({"color": "green", "label": "内部人买入", "hint": fund["text"]})
+                badges.append({"color": "green",
+                               "label": "内部人买入", "label_en": "Insider Buying",
+                               "hint": fund["text"], "hint_en": fund.get("text_en")})
             elif "持续套现" in fund["text"] or "无买入" in fund["text"] and fund["tone"] == "negative":
-                badges.append({"color": "red", "label": "内部人卖出", "hint": fund["text"]})
+                badges.append({"color": "red",
+                               "label": "内部人卖出", "label_en": "Insider Selling",
+                               "hint": fund["text"], "hint_en": fund.get("text_en")})
         elif fund["category"] == "institutional":
             if "净流入 +" in fund["text"] and fund["tone"] == "positive":
-                badges.append({"color": "green", "label": "机构净流入", "hint": fund["text"]})
+                badges.append({"color": "green",
+                               "label": "机构净流入", "label_en": "Institutional Net Inflow",
+                               "hint": fund["text"], "hint_en": fund.get("text_en")})
             elif "净流出" in fund["text"] and fund["tone"] == "negative":
-                badges.append({"color": "red", "label": "机构净流出", "hint": fund["text"]})
+                badges.append({"color": "red",
+                               "label": "机构净流出", "label_en": "Institutional Net Outflow",
+                               "hint": fund["text"], "hint_en": fund.get("text_en")})
         elif fund["category"] == "buyback":
             if "加大" in fund["text"]:
-                badges.append({"color": "green", "label": "加大回购", "hint": fund["text"]})
+                badges.append({"color": "green",
+                               "label": "加大回购", "label_en": "Buyback Acceleration",
+                               "hint": fund["text"], "hint_en": fund.get("text_en")})
             elif "放缓" in fund["text"]:
-                badges.append({"color": "amber", "label": "回购放缓", "hint": fund["text"]})
+                badges.append({"color": "amber",
+                               "label": "回购放缓", "label_en": "Buyback Slowdown",
+                               "hint": fund["text"], "hint_en": fund.get("text_en")})
         elif fund["category"] == "sbc":
             if "高稀释" in fund["text"]:
-                badges.append({"color": "red", "label": "高稀释", "hint": fund["text"]})
+                badges.append({"color": "red",
+                               "label": "高稀释", "label_en": "High Dilution",
+                               "hint": fund["text"], "hint_en": fund.get("text_en")})
             elif "低稀释" in fund["text"]:
-                badges.append({"color": "green", "label": "低稀释", "hint": fund["text"]})
+                badges.append({"color": "green",
+                               "label": "低稀释", "label_en": "Low Dilution",
+                               "hint": fund["text"], "hint_en": fund.get("text_en")})
 
     # 6. 评级动向
     r30 = market_reaction.get("ratings_30d")
@@ -1031,9 +1210,15 @@ def make_badges(
         u = r30.get("upgrade", 0)
         d = r30.get("downgrade", 0)
         if u >= 3 and u > d * 2:
-            badges.append({"color": "green", "label": "评级上调潮", "hint": f"财报后 30 天 {u} 次升级 vs {d} 次降级"})
+            badges.append({"color": "green",
+                           "label": "评级上调潮", "label_en": "Upgrade Wave",
+                           "hint": f"财报后 30 天 {u} 次升级 vs {d} 次降级",
+                           "hint_en": f"30 days post-earnings: {u} upgrades vs {d} downgrades"})
         elif d >= 3 and d > u * 2:
-            badges.append({"color": "red", "label": "评级下调潮", "hint": f"财报后 30 天 {d} 次降级 vs {u} 次升级"})
+            badges.append({"color": "red",
+                           "label": "评级下调潮", "label_en": "Downgrade Wave",
+                           "hint": f"财报后 30 天 {d} 次降级 vs {u} 次升级",
+                           "hint_en": f"30 days post-earnings: {d} downgrades vs {u} upgrades"})
 
     return badges
 
@@ -1184,8 +1369,8 @@ def process_ticker(
         q_recent.get("calendar_year") if q_recent else None,
     )
 
-    # headline
-    headline = make_headline(
+    # headline (双语)
+    headline, headline_en = make_headline(
         ticker,
         name,
         fiscal_label,
@@ -1261,6 +1446,7 @@ def process_ticker(
         "result": result,
         "generated_at": datetime.now().isoformat(),
         "headline": headline,
+        "headline_en": headline_en,        # ⭐ 双语
         "data_card": data_card,
         "kpis": kpis,                    # ⭐ 新: 段 ②
         "beat_quality": beat_quality,    # ⭐ 新: 段 ④
